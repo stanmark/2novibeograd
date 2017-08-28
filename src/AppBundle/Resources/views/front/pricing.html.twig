@@ -1,0 +1,95 @@
+{% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block  SEO %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Design Lots">
+    <link rel="icon" href="favicon.ico">
+    {% for sEO in sEOs %}
+        <title>{{ sEO.titletag }}</title>
+        <meta name="description" content="{{ sEO.description }}" />
+    {% endfor %}
+{% endblock %}
+
+
+
+{% block body %}
+
+  <main class="main-content">
+		    <div class="container body-content pricing-page">
+				<!-- Page Header -->
+				<div class="page-header">
+					<h1>Mesecno clanstvo</h1>
+					<p class="lead">Tekst</p>
+				</div>
+				
+                                
+				<div class="container-fluid">
+                                    {% for price in pricings %}
+					<div class="col-sm-4">
+                                            <div class="row table-price">
+                                                <div class="col-sm-0">
+						<div class="table-price-cell">
+							<div class="price"><span>rsd</span>{{ price.price }}<small>mesecno</small></div>
+							<div class="price-interval hide"></div>
+							<div class="price-plan">{{price.name}}</div>
+							<div class="price-description ">{{price.description}}</div>
+							<ul class="price-list">
+                                                            
+                                                            {% for price in price.features %}
+								<li>{{ price.features }}<span class="feat-color"></span></li>
+								
+								
+								
+                                                            {% endfor %} 
+                                                         
+							</ul>
+                                                       
+						</div>
+                                                            </div>
+					</div>
+					</div>
+					{% endfor %}
+                                        </div>
+				
+                                
+				
+				<small class="meta-text">Notes: <em class="fa fa-info-circle"></em> * Limited access to clubhouse during club private functions</small>
+				<br/>
+				<hr/>
+							
+				<div class="page-header">
+					<h4 class="pull-right"><a href="faq.html"><em class="fa feat-color fa-comments"></em> See Full FAQ </a></h4>
+					<h2>Common Questions </h2>
+				</div>
+				
+				
+				<div class="row">
+					<div class="col-md-3">
+						<h4>If we join mid year, do we only pay half price?</h4>
+						<p>Nullam id dolor id nibh ultricies cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consect etura quam venenatis vestibulum.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>Can I get a refund for quitting membership?</h4>
+						<p>Nullam id dolor id nibh ultricies cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consect etura quam venenatis vestibulum.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>How may people are eligible for a family membership?</h4>
+						<p>Nullam id dolor id nibh ultricies cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consect etura quam venenatis vestibulum.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>What's the best way to raise concerns?</h4>
+						<p>Nullam id dolor id nibh ultricies cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consect etura quam venenatis vestibulum.</p>
+					</div>
+				</div>	
+					
+				
+					
+					
+				
+					
+		    </div><!-- /.container -->
+		</main><!-- /.main-content -->
+{% endblock %}

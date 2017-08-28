@@ -1,0 +1,42 @@
+trener_detail:
+    path:     /trener/{id}/{name}/
+    defaults: { _controller: "AppBundle:Front/teamMember:detail" }
+    methods:  GET
+    
+team:
+    path:     /tim/
+    defaults: { _controller: "AppBundle:Front/teamsingle:index" }
+    methods:  GET   
+    
+place:
+    path:     /raspored/
+    defaults: { _controller: "AppBundle:Front/place:index" }
+    methods:  GET  
+    
+place_detail:
+    path:     /raspored/{id}/{name}/
+    defaults: { _controller: "AppBundle:Front/place:detail" }
+    methods:  GET    
+    
+pricing:
+    path:     /cenovnik/
+    defaults: { _controller: "AppBundle:Front/Pricing:index" }
+    methods:  GET     
+    
+league:
+    path:     /takmicenja/
+    defaults: { _controller: "AppBundle:Front/League:index" }
+    methods:  GET  
+    
+league_detail:
+    path:     /takmicenja/{id}/{name}/
+    defaults: { _controller: "AppBundle:Front/League:detail" }
+    methods:  GET     
+    
+game_detail:
+    path:     /takmicenja/{id}/{name}/utakmice/
+    defaults: { _controller: "AppBundle:Front/Game:detail" }
+    methods:  GET     
+        
+  
+    

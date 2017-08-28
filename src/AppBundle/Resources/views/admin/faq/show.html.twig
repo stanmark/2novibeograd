@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Faq</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fAQ.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ fAQ.title }}</td>
+            </tr>
+            <tr>
+                <th>Answer</th>
+                <td>{{ fAQ.answer }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ fAQ.category }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('faq_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('faq_edit', { 'id': fAQ.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>Game</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Bodteam1</th>
+                <td>{{ game.bodTeam1 }}</td>
+            </tr>
+            <tr>
+                <th>Bodteam2</th>
+                <td>{{ game.bodTeam2 }}</td>
+            </tr>
+            <tr>
+                <th>Setteam1</th>
+                <td>{{ game.setTeam1 }}</td>
+            </tr>
+            <tr>
+                <th>Setteam2</th>
+                <td>{{ game.setTeam2 }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ game.id }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if game.created %}{{ game.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if game.updated %}{{ game.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('game_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('game_edit', { 'id': game.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

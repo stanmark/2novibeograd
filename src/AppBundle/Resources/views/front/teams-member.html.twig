@@ -1,0 +1,116 @@
+{% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block  SEO %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Design Lots">
+    <link rel="icon" href="favicon.ico">
+    {% for sEO in sEOs %}
+        <title>{{ sEO.titletag }}</title>
+        <meta name="description" content="{{ sEO.description }}" />
+    {% endfor %}
+{% endblock %}
+
+
+{% block  body %}            
+
+    <!-- Start Main Content -->
+    <main class="main-content">
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-sm-9 col-sm-push-3 main-column team-page">
+
+                    <div class="page-title">
+                        <h2>{{ oneMember.name }}</h2>
+                        <p class="lead">{{ oneMember.position }}</p>
+                    </div>
+
+                    <div class="col-sm-4 pull-right">
+                        <div class="grid grid-col-1">
+                            <div class="grid-sizer"></div>
+                            <div class="gutter-sizer"></div>
+
+                            <!-- Gallery Item -->
+                            <div class="grid-item ftr-1 hover-box-container hb-effect-fade">
+                                <a href="{{ vich_uploader_asset(oneMember, 'imageFile') }}" class="fancybox hover-box" data-fancybox-group="gallery1" title="{{ oneMember.imagetitle }}">
+                                    <img src="{{ vich_uploader_asset(oneMember, 'imageFile') }}" alt="{{ oneMember.alt }}" />
+                                    <div class="hover-box-content-container">
+                                        <div class="hover-box-content">
+                                            <em class="fa fa-search"></em>
+                                        </div>
+                                    </div>
+                                    <div class="caption-text">{{ oneMember.imagecaption }}</div>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <p>{{ oneMember.description }}</p>
+
+                    <blockquote class="col-sm-4">
+                        <p>{{ oneMember.blockquote }}</p>
+                        <footer><cite title="Source Title">David Brant</cite></footer>
+                    </blockquote>
+
+                    <p>{{ oneMember.longdescription }}</p>
+
+                </div><!--/.main-column -->
+                <aside class="sidebar col-sm-3 col-sm-pull-9 sticky">
+                    <h3>Info, {{ oneMember.name }}</h3>
+                    <div class="post-meta">
+                        <em class="date">Ažurirano {{ oneMember.updated|date('d-m-Y') }}</em>
+                    </div>
+                    <hr/>
+
+                    <img src="{{ vich_uploader_asset(oneMember, 'imageFile1') }}" alt="{{ oneMember.alt1 }}" />
+
+                    <h4>{{ oneMember.position }}</h4>
+                    <p>{{ oneMember.description }}</p>
+
+
+                    <ul class="social-links">
+                        <li><a href="{{ oneMember.faceurl }}" class="fa fa-facebook-square"></a></li>
+                        <li><a href="{{ oneMember.gurl }}" class="fa fa-google-plus"></a></li>
+                        <li><a href="{{ oneMember.inurl }}" class="fa fa-linkedin-square"></a></li>
+
+                    </ul>
+
+
+                    <div class="rule-icon"><em class="icon-football3"></em></div>
+
+
+                    <div class="widget widget-stats widget-stats-alt">
+                        <h3>Player Stats</h3>
+                        <ul class="list-unstyled list-bordered">
+                            <li>
+                                <em class="stat-icon icon-trophy-one2"></em> 
+                                Game Wins <strong class="counter pull-right" data-from="0" data-to="11" data-speed="3000" data-refresh-interval="50"></strong>
+                            </li>
+                            <li>
+                                <em class="stat-icon icon-soccer-shoe2"></em> 
+                                Yards gained <strong class="counter pull-right" data-from="0" data-to="1026" data-speed="3000" data-refresh-interval="50"></strong>
+                            </li>
+                            <li>
+                                <em class="stat-icon icon-football4"></em> 
+                                Touch Downs <strong class="counter pull-right" data-from="0" data-to="135" data-speed="3000" data-refresh-interval="50"></strong>
+                            </li>
+                            <li>
+                                <em class="stat-icon icon-clipboard-move2"></em> 
+                                Successful Plays <strong class="counter pull-right" data-from="0" data-to="21050" data-speed="3000" data-refresh-interval="50"></strong>
+                            </li>
+                            <li>
+                                <em class="stat-icon icon-stop-watch2"></em> 
+                                Turn Overs <strong class="counter pull-right" data-from="0" data-to="64" data-speed="3000" data-refresh-interval="50"></strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                </aside>
+
+            </div><!-- /.container -->
+    </main><!-- /.main-content -->
+
+{% endblock %}

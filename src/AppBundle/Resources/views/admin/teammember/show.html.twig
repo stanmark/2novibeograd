@@ -1,0 +1,112 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>Teammember</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ teamMember.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ teamMember.name }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ teamMember.position }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ teamMember.phone }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ teamMember.mail }}</td>
+            </tr>
+            <tr>
+                <th>Education</th>
+                <td>{{ teamMember.education }}</td>
+            </tr>
+            <tr>
+                <th>Faceurl</th>
+                <td>{{ teamMember.faceurl }}</td>
+            </tr>
+            <tr>
+                <th>Gurl</th>
+                <td>{{ teamMember.gurl }}</td>
+            </tr>
+            <tr>
+                <th>Inurl</th>
+                <td>{{ teamMember.inurl }}</td>
+            </tr>
+            <tr>
+                <th>Longdescription</th>
+                <td>{{ teamMember.longdescription }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ teamMember.description }}</td>
+            </tr>
+            <tr>
+                <th>Blockquote</th>
+                <td>{{ teamMember.blockquote }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ teamMember.url }}</td>
+            </tr>
+            <tr>
+                <th>Alt</th>
+                <td>{{ teamMember.alt }}</td>
+            </tr>
+            <tr>
+                <th>Imagetitle</th>
+                <td>{{ teamMember.imagetitle }}</td>
+            </tr>
+            <tr>
+                <th>Imagecaption</th>
+                <td>{{ teamMember.imagecaption }}</td>
+            </tr>
+            <tr>
+                <th>Url1</th>
+                <td>{{ teamMember.url1 }}</td>
+            </tr>
+            <tr>
+                <th>Alt1</th>
+                <td>{{ teamMember.alt1 }}</td>
+            </tr>
+            <tr>
+                <th>Imagetitle1</th>
+                <td>{{ teamMember.imagetitle1 }}</td>
+            </tr>
+            <tr>
+                <th>Imagecaption1</th>
+                <td>{{ teamMember.imagecaption1 }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if teamMember.created %}{{ teamMember.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if teamMember.updated %}{{ teamMember.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('teammember_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('teammember_edit', { 'id': teamMember.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

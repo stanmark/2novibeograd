@@ -1,0 +1,36 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>Galerry</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ galerry.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ galerry.url }}</td>
+            </tr>
+            <tr>
+                <th>Alt</th>
+                <td>{{ galerry.alt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('galerry_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('galerry_edit', { 'id': galerry.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

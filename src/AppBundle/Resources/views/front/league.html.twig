@@ -1,0 +1,172 @@
+{% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block  SEO %}
+    {% for sEO in sEOs %}
+        <title>{{ sEO.titletag }}</title>
+        <meta name="description" content="{{ sEO.description }}" />
+    {% endfor %}
+{% endblock %}
+
+{% block  body %}  	    
+
+
+    <!-- Start Main Content -->
+    <main class="main-content">
+        <div class="container body-content">
+
+            <div class="row">
+                <div class="col-sm-9 main-column fixtures-page">
+            {% for element in niz %}
+                    <div class="page-header">
+                        <h2>liga</h2>
+                        <p class="lead">{{element.group.groupp}}</p>
+                    </div>
+
+
+                    <!-- Responsive Table Heading Labels -->
+                    <style>
+                        @media only screen and (max-width: 767px) {
+                            td:nth-of-type(1):before { content: "Competitor"; }
+                            td:nth-of-type(2):before { content: "Position"; }
+                            td:nth-of-type(3):before { content: "Wins"; }
+                            td:nth-of-type(4):before { content: "Draws"; }
+                            td:nth-of-type(5):before { content: "Losses"; }                          
+                            td:nth-of-type(6):before { content: "%"; }
+                        }
+                    </style>
+
+
+                    <!-- Start Events Filter -->
+                    <div class="events-filter">
+                        <ul class="list-inline">
+                            <li><strong>Pregled: </strong></li>
+                            <li><a class="feat-color" href="points-leaderboard.html"><em class="fa fa-trophy"></em> Tabela</a> &nbsp;</li>
+                            <li><a class="meta-text" href="fixtures-alt.html"><em class="fa fa-list"></em> Raspored utakmica</a> &nbsp;</li>
+
+                        </ul>
+                    </div>
+
+                   
+                    <!-- Time Leaderboard -->			
+                    <table class="table-striped table-responsive table-hover table-leaderboard table-tops table-top-5">
+                        <thead>
+                            <tr>
+                                <th>Ekipe</th>
+                                <th>Pozicija</th>
+                                <th>Pobeda</th>
+                                <th>Izgubljenih</th>
+                                <th>Broj utakmica</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                           {% for team in element.teams %}
+                            <tr>
+                                <td><img src="" alt="" />{{ team.team }} </td>
+                                <td>1</td>
+                                <td>18</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>155%</td>
+                            </tr>
+                            {% endfor %}
+                            
+                        {% for game in element.games %}
+ 
+{{ game.team1.team }}-
+{{ game.team2.team }},
+      {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endfor %}
+
+
+     
+                </div><!--/.main-column -->
+
+
+
+                <aside class="sidebar col-sm-3 sticky">
+                    <!-- Start Widget -->
+                    <div class="widget widget-countdown">	
+                        <h3>Next Game</h3>
+                        <div class="versus clearfix">
+                            <div>
+                                <div style="background-color: #f8ca40;"><img src="img/icon1.jpg" alt="icon" /></div> 
+                                <strong>Seattle Bulls</strong>
+                            </div>
+                            <span class="vs">VS</span>
+                            <div>
+                                <div style="background-color: #11471b;"><img src="img/icon3.jpg" alt="icon" /></div>
+                                <strong>NY Eagles</strong>
+                            </div>
+                        </div>
+                        <div class="countdown countdown-4 clearfix" data-countdown="2019/01/01"></div>
+                        <div class="meta-text">
+                            <span><em class="fa feat-color fa-calendar"></em> 03/06/16</span> 
+                            <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Location</a> </span>
+                            <span><a class="read-more" href="event.html"> See Event</a></span> 
+                        </div>
+                        <p>Nullam id dolue putid enean lacinia bibendum nulla sed… <a class="read-more" href="event.html"> More</a></p>
+                    </div>
+
+
+
+
+
+
+                    <!-- Widget -->
+                    <div class="widget widget-single-post">
+                        <h3>Featured Event</h3>
+                        <a href="#">
+                            <div class="hover-box-container">
+                                <div class="hover-box">
+                                    <em class="date">17 March</em>
+                                    <img src="http://placehold.it/900x600"  alt="Fill" />
+                                </div>
+                            </div>
+                            <h4>Nominated club of the year</h4>
+                            <p>Nullam id dolor id nibh ultr cies vehicula ut id elit natoque penbus et magnis ut id elit...</p>
+
+                        </a>	
+                    </div>
+                </aside>
+
+            </div><!-- /.container -->
+    </main><!-- /.main-content -->
+
+
+
+
+
+    <!--Start Footer -->
+    <div id="footer">
+        <!-- Start Pre Footer -->
+        <footer class="pre-footer">
+            <div class="container">
+                <div class="foot-left">
+                    <ol class="breadcrumb">
+                        <li><a href="#"><em class="fa fa-home"></em></a></li>
+                        <li><a href="#">Our Club</a></li>
+                        <li class="active">Events</li>
+                    </ol>
+                </div>
+
+                <div class="foot-right">
+
+                </div>
+            </div>
+        </footer>
+
+    <!-- JavaScript
+            ================================================== -->
+    <script src="{{ asset ('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="./library/js/vendor/jquery.min.js"><\/script>')</script>
+
+</body>
+</html>
+
+
+
+
+{% endblock %}

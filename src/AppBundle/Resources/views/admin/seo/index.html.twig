@@ -1,0 +1,38 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block table2 %}
+     <h1>Seos list</h1>
+{% endblock %}
+
+{% block body %}
+   
+        <thead>
+            <tr>               
+                <th>Description</th>
+                <th>Titletag</th>
+                <th>Nikad ne menjati</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sEO in sEOs %}
+            <tr>
+                <td><a href="{{ path('seo_show', { 'id': sEO.id }) }}">{{ sEO.description }}</a></td>               
+                <td>{{ sEO.titletag }}</td>
+                <td>{{ sEO.title }}</td>
+                <td>
+                    
+                            <a href="{{ path('seo_show', { 'id': sEO.id }) }}" class="btn btn-info btn-circle"> <i class="fa fa-eye"></i></a>
+                     
+                            <a href="{{ path('seo_edit', { 'id': sEO.id }) }}"class="btn btn-info btn-circle"><i class="fa fa-pencil-square-o"></i></a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+            <a href="{{ path('seo_new') }}"class="btn btn-default">Unesi</a>
+    
+{% endblock %}

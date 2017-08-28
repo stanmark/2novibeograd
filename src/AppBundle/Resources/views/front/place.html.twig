@@ -1,0 +1,140 @@
+{% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block  SEO %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Design Lots">
+    <link rel="icon" href="favicon.ico">
+    {% for sEO in sEOs %}
+        <title>{{ sEO.titletag }}</title>
+        <meta name="description" content="{{ sEO.description }}" />
+    {% endfor %}
+{% endblock %}
+
+{% block  body %}  	    
+    <!-- Start Main Content -->
+    <main class="main-content">
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-sm-9 main-column">
+                    <!-- Start Meta -->
+                    <div class="post-title">
+                        <h1>{{ onePlace.title }}</h1>
+                        <div class="post-meta">
+                            <em class="date">{{ onePlace.updated | date('d-m-Y') }}</em>
+                            <em class="author"><a href="archive-list.html">DesignLots</a></em>
+                            <em class="category"><a href="archive-list.html">Games</a><a href="archive-list.html">Club News</a></em>
+                            <em class="comments"><a href="#" data-scroll-nav='0'>5</a></em>
+                        </div>
+                    </div>
+
+
+                    <!-- Start Feature Gallery -->
+                    <div class="single-gallery-carousel">
+                        <div class="single-carousel">
+                            <!-- Item -->
+                            {% for galerry in galerries %}                
+                                <div class="item">        
+                                    <div class="hover-box-container hb-effect-lift">
+                                        <div class="hover-box">                                       
+                                            <img src="{{ vich_uploader_asset(galerry, 'imageFile') }}" alt="{{ galerry.alt }}" />
+                                            <div class="hover-box-content-container">
+                                                <div class="hover-box-content">
+                                                    {{ galerry.alt }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}       
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <!-- Start Content -->
+                    <p class="lead">{{ onePlace.shortdescription }}</p>
+
+                    <p>{{ onePlace.description }}</p>
+
+                    <blockquote class="col-md-4 pull-right">
+                        <p>Sala je odlicno pripremljena za treninge, prvi trening je besplatan</p>
+
+                    </blockquote>
+
+                    <p>{{ onePlace.description1 }}</p>
+
+
+
+                    <!-- Start Tags -->
+                    <ul class="post-section list-unstaled list-inline post-tags">
+
+                    </ul>
+
+
+                    <!-- Start Author -->
+                    <div class="post-section post-author-box clearfix"> 
+                        {% for onePlace in onePlace.member %}
+                            <h3>Trener, {{ onePlace.name }}</h3>
+                            <div>
+                                <div class="author-box-left">
+                                    <img src="{{ vich_uploader_asset(onePlace, 'imageFile') }}" alt="Trener, {{ onePlace.name }}" />
+                                    <ul class="social-links">
+                                        <li><a href="{{ onePlace.faceurl }}"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="{{ onePlace.inurl }}"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="{{ onePlace.gurl }}"><i class="fa fa-globe"></i></a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="author-box-right">
+                                    <p class="author-desc">{{ onePlace.description }}</p>                                    
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                    <!-- Start Pager -->
+                    <ul class="post-section pager">
+                        <li class="previous disabled"><a href="#"><span>Početak</span> <h4>End of line</h4></a></li>
+                        <li class="next"><a href="#"><span>Sledeća lokacija</span> <h4>Naziv sledece lokacije</h4></a></li>
+                    </ul>
+                </div>
+                <aside class="sidebar col-sm-3 sticky">
+                    <!-- Start Widget -->
+                    <div class="widget widget-tabs">
+                        <h3>{{ onePlace.title }}</h3>
+                        <div class="tab-container" id="tab-container1">
+                            <ul class="nav nav-tabs tab-nav"></ul>
+                            <div class="tab-contents">
+                                <a class="v_nav v_active " data-tab="tab1">Informacije</a>
+                                <div id="tab1" class="tab_content clearfix">
+                                    <ul class="list-post-thumbs">
+                                        <li>      
+                                            {# <i class="fa fa-location-arrow fa-3x"></i> #}                                                                  
+                                            <div>
+                                                <p><strong>Adresa</strong></p>
+                                                <p>{{ onePlace.adress }}</p>                                                    
+                                            </div>   
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <p><strong>Raspored treninga</strong></p>
+                                                {% for time in times %}
+                                                    <p>{{ time.day }} OD {{ time.begin|date('H-m') }} DO {{ time.end|date('H-m') }}</p>
+                                                {% endfor %}
+                                            </div>
+                                        </li>                                    
+                                    </ul>	
+                                </div>                               
+                            </div>
+                        </div>
+                    </div>                
+                </aside>
+            </div><!-- /.container -->
+        </div>
+    </main><!-- /.main-content -->
+</body>
+</html>
+{% endblock %}

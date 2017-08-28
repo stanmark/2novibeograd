@@ -1,0 +1,171 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: sr
+
+framework:
+    #esi: ~
+    translator: ~
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation: { enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
+    
+    
+vich_uploader:
+    db_driver: orm  
+    
+    mappings:
+        user_upload:
+            uri_prefix:         /web/upload/images
+            upload_destination: '%kernel.root_dir%/../web/upload/images'
+            namer:              vich_uploader.namer_origname
+            
+        admin_upload:
+            uri_prefix:         /web/public/Front/images
+            upload_destination: '%kernel.root_dir%/../web/public/Front/images'
+            namer:              vich_uploader.namer_origname     
+            
+assetic:
+  
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+   
+    filters:
+        cssrewrite: ~
+        uglifyjs:
+            bin:  %kernel.root_dir%\Resources\node_modules\uglify-js\bin\uglifyjs
+        uglifycss:
+            bin: %kernel.root_dir%\Resources\node_modules\uglifycss\uglifycss
+            
+    assets:
+        jq_front:
+            inputs:
+                -  '@AppBundle/Resources/skin/front/library/js/isotope.pkgd.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/imagesloaded.pkgd.min.js'             
+                -  '@AppBundle/Resources/skin/front/library/js/owl-carousel/owl.carousel.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/cleantabs.jquery.js'
+                -  '@AppBundle/Resources/skin/front/library/js/fancybox/jquery.fancybox.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.scrollUp.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/valign.js'
+                -  '@AppBundle/Resources/skin/front/library/js/anijs/anijs-min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/anijs/anijs-helper-scrollreveal.js'
+                -  '@AppBundle/Resources/skin/front/library/js/anijs/anijs-helper-dom.js'
+                -  '@AppBundle/Resources/skin/front/library/js/menuzord.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.stickit.js'
+                -  '@AppBundle/Resources/skin/front/library/js/scrollIt.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.countdown.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/tooltipster/tooltipster.bundle.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/footer-reveal.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/headhesive.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.stellar.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.countTo.js'
+                -  '@AppBundle/Resources/skin/front/library/js/typed.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.waypoints.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/slidebars/slidebars.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/tendina.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.sidr.js'
+                -  '@AppBundle/Resources/skin/front/library/js/pace.js'
+                -  '@AppBundle/Resources/skin/front/library/js/list.js'
+                -  '@AppBundle/Resources/skin/front/library/js/jquery.fitvids.js'
+                -  '@AppBundle/Resources/skin/front/library/js/skyforms/js/jquery-ui.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/skyforms/js/jquery.form.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/skyforms/js/jquery.validate.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/skyforms/js/jquery.maskedinput.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/skyforms/js/jquery.modal.js'
+                -  '@AppBundle/Resources/skin/front/library/js/skyforms/js/jquery.placeholder.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/revolution/js/jquery.themepunch.tools.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/revolution/js/jquery.themepunch.revolution.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/revolution/js/extensions/revolution.extension.slideanims.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/revolution/js/extensions/revolution.extension.layeranimation.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/revolution/js/extensions/revolution.extension.navigation.min.js'
+                -  '@AppBundle/Resources/skin/front/library/js/revolution/js/extensions/revolution.extension.kenburn.min.js'
+                -  '@AppBundle/Resources/skin/front/js/validate-contact.js'
+                -  '@AppBundle/Resources/skin/front/js/scripts.js'
+                -  '@AppBundle/Resources/skin/front/library/js/ie10-viewport-bug-workaround.js'
+                -  '@AppBundle/Resources/skin/front/library/bs/js/bootstrap.min.js'
+                 
+        jq_admin:
+            inputs:  
+                -  '@AppBundle/Resources/skin/admin/vendor/jquery/jquery.min.js'
+                -  '@AppBundle/Resources/skin/admin/vendor/bootstrap/js/bootstrap.min.js'
+                -  '@AppBundle/Resources/skin/admin/vendor/metisMenu/metisMenu.min.js'
+                -  '@AppBundle/Resources/skin/admin/vendor/raphael/raphael.min.js'
+                -  '@AppBundle/Resources/skin/admin/vendor/morrisjs/morris.min.js'
+                -  '@AppBundle/Resources/skin/admin/data/morris-data.js'
+                -  '@AppBundle/Resources/skin/admin/dist/js/sb-admin-2.js'
+                -  '@AppBundle/Resources/skin/admin/vendor/datatables/js/jquery.dataTables.min.js'
+                -  '@AppBundle/Resources/skin/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js'
+                -  '@AppBundle/Resources/skin/admin/vendor/datatables-responsive/dataTables.responsive.js' 
+                -  '@AppBundle/Resources/skin/admin/js/duplicateFields.min.js'
+                -  '@AppBundle/Resources/skin/admin/js/jslog.js'
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "sasam09@gmail.com"
+        sender_name: "JOBlider"
+    registration:
+        confirmation:
+            from_email:
+                address: "sasam09@gmail.com"
+                sender_name: "JOB lider"

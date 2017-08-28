@@ -1,0 +1,41 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>Galerries list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for galerry in galerries %}
+            <tr>
+                <td><a href="{{ path('galerry_show', { 'id': galerry.id }) }}">{{ galerry.id }}</a></td>
+                <td>{{ galerry.url }}</td>
+                <td>{{ galerry.alt }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('galerry_show', { 'id': galerry.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('galerry_edit', { 'id': galerry.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('galerry_new') }}">Create a new galerry</a>
+        </li>
+    </ul>
+{% endblock %}

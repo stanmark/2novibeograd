@@ -1,0 +1,20 @@
+{% extends '@AppBundle/Resources/views/admin/formBase.html.twig' %}
+{% block form2 %}  
+   <h1>Seo edit</h1>       
+{% endblock  %}
+{% block body %}
+    
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+         <input type="submit" value="Izmeni" class="btn btn-default" style="float: right;" />
+    {{ form_end(edit_form) }}
+
+   
+            <a href="{{ path('seo_index') }}"class="btn btn-default" style="float: left;">Nazad</a>
+        
+              {{ form_start(delete_form) }}
+                <input type="submit" value="Brisi" class="btn btn-default" style="float: right;">
+            {{ form_end(delete_form) }}
+     
+{% endblock %}

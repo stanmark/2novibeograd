@@ -1,0 +1,47 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>Leagues list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>League</th>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for league in leagues %}
+            <tr>
+                <td><a href="{{ path('league_show', { 'id': league.id }) }}">{{ league.league }}</a></td>
+                <td>{{ league.id }}</td>
+                <td>{% if league.created %}{{ league.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if league.updated %}{{ league.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ league.url }}</td>
+                <td>{{ league.alt }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('league_show', { 'id': league.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('league_edit', { 'id': league.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('league_new') }}">Create a new league</a>
+        </li>
+    </ul>
+{% endblock %}

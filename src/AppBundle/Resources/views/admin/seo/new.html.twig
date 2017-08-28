@@ -1,0 +1,18 @@
+{% extends '@AppBundle/Resources/views/admin/formBase.html.twig' %}
+
+{% block form2 %}  
+     <h1>Seo creation</h1>         
+{% endblock  %}
+
+{% block body %}
+    
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Unesi" class="btn btn-default" style="float: right;"  />
+    {{ form_end(form) }}
+
+    
+            <a href="{{ path('seo_index') }}"class="btn btn-default" style="float: left;">Nazad</a>
+       
+{% endblock %}

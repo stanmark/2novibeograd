@@ -1,0 +1,78 @@
+{% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block  SEO %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Design Lots">
+    <link rel="icon" href="favicon.ico">
+    {% for sEO in sEOs %}
+        <title>{{ sEO.titletag }}</title>
+        <meta name="description" content="{{ sEO.description }}" />
+    {% endfor %}
+{% endblock %}
+
+
+{% block  body %}  
+
+
+    <!-- Start Main Content -->
+    <main class="main-content">
+        <div class="container body-content">
+
+            <div class="row">
+                <div class="col-sm-12 main-column team-page">
+
+                    <div class="page-header">
+                        <h2>Nas klub</h2>
+                        <p class="lead">Nas klub je osnovan neki tekst</p>
+                    </div>
+                    <div class="grid grid-col-3">
+                        <div class="grid-sizer"></div>
+                        <div class="gutter-sizer"></div>
+                        <!-- Team Item -->
+                        {% for teamMember in teamMembers %}
+                            <div class="grid-item team-member">	
+                                <div class="hover-box-container hb-effect-fade">
+
+                                    <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}" class="hover-box">
+                                        <img src="{{ vich_uploader_asset(teamMember, 'imageFile') }}" alt="{{ teamMember.alt }}" />
+                                        <div class="hover-box-content-container">
+                                            <div class="hover-box-content">
+                                                <em class="fa fa-link"></em>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="team-member-details">
+                                    <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}">
+                                        <h4>{{ teamMember.name }}</h4>
+                                        <small class="meta-text">{{ teamMember.position }}</small>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}                
+                    </div><!-- /.grid -->	
+
+                </div><!--/.main-column -->
+            </div><!-- /.container -->
+    </main><!-- /.main-content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}		
+
+

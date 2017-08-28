@@ -1,0 +1,48 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>League</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>League</th>
+                <td>{{ league.league }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ league.id }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if league.created %}{{ league.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if league.updated %}{{ league.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ league.url }}</td>
+            </tr>
+            <tr>
+                <th>Alt</th>
+                <td>{{ league.alt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('league_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('league_edit', { 'id': league.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

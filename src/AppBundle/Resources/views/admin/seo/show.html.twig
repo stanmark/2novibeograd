@@ -1,0 +1,41 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block table2 %}
+    <h1>Seo</h1>
+    {% endblock %}
+
+{% block body %}
+    
+
+  
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sEO.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ sEO.description }}</td>
+            </tr>
+            <tr>
+                <th>Titletag</th>
+                <td>{{ sEO.titletag }}</td>
+            </tr>
+            <tr>
+                <th>Nikada ne menjati</th>
+                <td>{{ sEO.title }}</td>
+            </tr>
+        
+        </tbody>
+    </table>
+
+    
+            <a href="{{ path('seo_index') }}"class="btn btn-default" style="float: left;">Nazad</a>
+          {{ form_start(delete_form) }}
+              <input type="submit" value="Brisi" class="btn btn-default" style="float: right;">
+            {{ form_end(delete_form) }}
+            <a href="{{ path('seo_edit', { 'id': sEO.id }) }}"class="btn btn-default" style="float: right;" >Izmeni</a>
+       
+          
+      
+{% endblock %}

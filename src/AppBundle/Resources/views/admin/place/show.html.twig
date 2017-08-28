@@ -1,0 +1,52 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>Place</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ place.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ place.title }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ place.adress }}</td>
+            </tr>
+            <tr>
+                <th>Shortdescription</th>
+                <td>{{ place.shortdescription }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ place.description }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if place.created %}{{ place.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if place.updated %}{{ place.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('place_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('place_edit', { 'id': place.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

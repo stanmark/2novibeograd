@@ -1,0 +1,41 @@
+{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+
+{% block body %}
+    <h1>Pricings list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pricing in pricings %}
+            <tr>
+                <td><a href="{{ path('pricing_show', { 'id': pricing.id }) }}">{{ pricing.id }}</a></td>
+                <td>{{ pricing.name }}</td>
+                <td>{{ pricing.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pricing_show', { 'id': pricing.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pricing_edit', { 'id': pricing.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pricing_new') }}">Create a new pricing</a>
+        </li>
+    </ul>
+{% endblock %}
