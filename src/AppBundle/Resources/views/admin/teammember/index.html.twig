@@ -1,4 +1,4 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Teammembers list</h1>
@@ -15,17 +15,7 @@
                 <th>Faceurl</th>
                 <th>Gurl</th>
                 <th>Inurl</th>
-                <th>Longdescription</th>
                 <th>Description</th>
-                <th>Blockquote</th>
-                <th>Url</th>
-                <th>Alt</th>
-                <th>Imagetitle</th>
-                <th>Imagecaption</th>
-                <th>Url1</th>
-                <th>Alt1</th>
-                <th>Imagetitle1</th>
-                <th>Imagecaption1</th>
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Actions</th>
@@ -43,17 +33,7 @@
                 <td>{{ teamMember.faceurl }}</td>
                 <td>{{ teamMember.gurl }}</td>
                 <td>{{ teamMember.inurl }}</td>
-                <td>{{ teamMember.longdescription }}</td>
                 <td>{{ teamMember.description }}</td>
-                <td>{{ teamMember.blockquote }}</td>
-                <td>{{ teamMember.url }}</td>
-                <td>{{ teamMember.alt }}</td>
-                <td>{{ teamMember.imagetitle }}</td>
-                <td>{{ teamMember.imagecaption }}</td>
-                <td>{{ teamMember.url1 }}</td>
-                <td>{{ teamMember.alt1 }}</td>
-                <td>{{ teamMember.imagetitle1 }}</td>
-                <td>{{ teamMember.imagecaption1 }}</td>
                 <td>{% if teamMember.created %}{{ teamMember.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if teamMember.updated %}{{ teamMember.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>

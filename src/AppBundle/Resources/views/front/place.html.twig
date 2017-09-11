@@ -1,140 +1,109 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
-{% block  SEO %}
+{% block body %}
+    {% include '@AppBundle/Resources/views/front/header.html.twig' %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Design Lots">
-    <link rel="icon" href="favicon.ico">
-    {% for sEO in sEOs %}
-        <title>{{ sEO.titletag }}</title>
-        <meta name="description" content="{{ sEO.description }}" />
-    {% endfor %}
-{% endblock %}
-
-{% block  body %}  	    
-    <!-- Start Main Content -->
-    <main class="main-content">
-        <div class="container body-content">
-            <div class="row">
-                <div class="col-sm-9 main-column">
-                    <!-- Start Meta -->
-                    <div class="post-title">
-                        <h1>{{ onePlace.title }}</h1>
-                        <div class="post-meta">
-                            <em class="date">{{ onePlace.updated | date('d-m-Y') }}</em>
-                            <em class="author"><a href="archive-list.html">DesignLots</a></em>
-                            <em class="category"><a href="archive-list.html">Games</a><a href="archive-list.html">Club News</a></em>
-                            <em class="comments"><a href="#" data-scroll-nav='0'>5</a></em>
-                        </div>
-                    </div>
-
-
-                    <!-- Start Feature Gallery -->
-                    <div class="single-gallery-carousel">
-                        <div class="single-carousel">
-                            <!-- Item -->
-                            {% for galerry in galerries %}                
-                                <div class="item">        
-                                    <div class="hover-box-container hb-effect-lift">
-                                        <div class="hover-box">                                       
-                                            <img src="{{ vich_uploader_asset(galerry, 'imageFile') }}" alt="{{ galerry.alt }}" />
-                                            <div class="hover-box-content-container">
-                                                <div class="hover-box-content">
-                                                    {{ galerry.alt }}
+    
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+         style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
+    <div class="c-breadcrumbs-wrapper">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
+                <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
+            </div>
+            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
+                <li class="c-font-white">/</li>
+                <li><a href="#" class="c-font-white">Tim trenera</a></li>
+            </ul>
+        </div>
+    </div>
+</div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+    
+    <!-- BEGIN: PAGE CONTAINER -->
+    <div class="c-layout-page">
+        <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+ 
+        <!-- BEGIN: PAGE CONTENT -->
+        <!-- BEGIN: BLOG LISTING -->
+        <div class="c-content-box c-size-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="c-content-blog-post-1-view">
+                            <div class="c-content-blog-post-1">
+                                <div class="c-media">
+                                    <div class="c-content-media-2-slider" data-slider="owl">
+                                        <div class="owl-carousel owl-theme c-theme owl-single" data-rtl="false" data-single-item="true" data-auto-play="4000">
+                                            {% for onePlace in onePlace.galerry %}                                          
+                                                <div class="item">
+                                                    <div class="c-content-media-2" style="background-image: url(/web/upload/images/599322376a438_1.jpg); min-height: 460px;">
+                                                        <img src="{{ vich_uploader_asset(onePlace, 'imageFile') }}" alt="{{ onePlace.alt }}" />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            {% endfor %}    
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}       
+
+                                <div class="c-title c-font-bold c-font-uppercase">
+                                    <a href="">{{onePlace.title}}</a>
+                                </div>
+
+                                <div class="c-panel c-margin-b-30">
+                                    <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
+                                    <div class="c-date">on <span class="c-font-uppercase">20 May 2015, 10:30AM</span></div>
+                                    <ul class="c-tags c-theme-ul-bg">
+                                        <li>ux</li>
+                                        <li>marketing</li>
+                                        <li>events</li>
+                                    </ul>							
+                                    <div class="c-comments"><a href="#"><i class="icon-speech"></i> 30 comments</a></div>
+                                </div>
+
+                                <div class="c-desc">
+                                    <p>{{onePlace.description}}</p>                                
+                                </div>                           
+                            </div>
                         </div>
                     </div>
-
-                    <br/>
-
-                    <!-- Start Content -->
-                    <p class="lead">{{ onePlace.shortdescription }}</p>
-
-                    <p>{{ onePlace.description }}</p>
-
-                    <blockquote class="col-md-4 pull-right">
-                        <p>Sala je odlicno pripremljena za treninge, prvi trening je besplatan</p>
-
-                    </blockquote>
-
-                    <p>{{ onePlace.description1 }}</p>
+                    <div class="col-md-3">
+                        <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
 
 
-
-                    <!-- Start Tags -->
-                    <ul class="post-section list-unstaled list-inline post-tags">
-
-                    </ul>
-
-
-                    <!-- Start Author -->
-                    <div class="post-section post-author-box clearfix"> 
-                        {% for onePlace in onePlace.member %}
-                            <h3>Trener, {{ onePlace.name }}</h3>
-                            <div>
-                                <div class="author-box-left">
-                                    <img src="{{ vich_uploader_asset(onePlace, 'imageFile') }}" alt="Trener, {{ onePlace.name }}" />
-                                    <ul class="social-links">
-                                        <li><a href="{{ onePlace.faceurl }}"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="{{ onePlace.inurl }}"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="{{ onePlace.gurl }}"><i class="fa fa-globe"></i></a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="author-box-right">
-                                    <p class="author-desc">{{ onePlace.description }}</p>                                    
-                                </div>
+                        <div class="c-content-ver-nav">
+                            <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                                <h3 class="c-font-bold c-font-uppercase">INFO</h3>
+                                <div class="c-line-left c-theme-bg"></div>
                             </div>
-
-                        {% endfor %}
+                            <ul class="c-menu c-arrow-dot1 c-theme">
+                                <li><a href="#">{{onePlace.adress}}</a></li>
+                                    {% for onePlace in onePlace.member %}
+                                    <li><a href="#">{{ onePlace.name  }}</a></li>
+                                    {% endfor %}
+                                    {% for time in times %}
+                                    <li><a href="#">{{ time.day }} OD {{ time.begin|date('H-m') }} DO {{ time.end|date('H-m') }}</a></li>                                  
+                                    {% endfor %}                               
+                            </ul>
+                        </div>            
                     </div>
-                    <!-- Start Pager -->
-                    <ul class="post-section pager">
-                        <li class="previous disabled"><a href="#"><span>Početak</span> <h4>End of line</h4></a></li>
-                        <li class="next"><a href="#"><span>Sledeća lokacija</span> <h4>Naziv sledece lokacije</h4></a></li>
-                    </ul>
                 </div>
-                <aside class="sidebar col-sm-3 sticky">
-                    <!-- Start Widget -->
-                    <div class="widget widget-tabs">
-                        <h3>{{ onePlace.title }}</h3>
-                        <div class="tab-container" id="tab-container1">
-                            <ul class="nav nav-tabs tab-nav"></ul>
-                            <div class="tab-contents">
-                                <a class="v_nav v_active " data-tab="tab1">Informacije</a>
-                                <div id="tab1" class="tab_content clearfix">
-                                    <ul class="list-post-thumbs">
-                                        <li>      
-                                            {# <i class="fa fa-location-arrow fa-3x"></i> #}                                                                  
-                                            <div>
-                                                <p><strong>Adresa</strong></p>
-                                                <p>{{ onePlace.adress }}</p>                                                    
-                                            </div>   
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <p><strong>Raspored treninga</strong></p>
-                                                {% for time in times %}
-                                                    <p>{{ time.day }} OD {{ time.begin|date('H-m') }} DO {{ time.end|date('H-m') }}</p>
-                                                {% endfor %}
-                                            </div>
-                                        </li>                                    
-                                    </ul>	
-                                </div>                               
-                            </div>
-                        </div>
-                    </div>                
-                </aside>
-            </div><!-- /.container -->
+            </div> 
         </div>
-    </main><!-- /.main-content -->
-</body>
-</html>
-{% endblock %}
+        <!-- END: BLOG LISTING  -->
+
+        <!-- END: PAGE CONTENT -->
+    </div>
+    <!-- END: PAGE CONTAINER -->
+
+
+
+
+
+
+
+
+
+
+    {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+{% endblock %} 

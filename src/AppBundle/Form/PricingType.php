@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class PricingType extends AbstractType
 {
@@ -14,16 +13,7 @@ class PricingType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-                ->add('name')
-                ->add('description')
-                ->add('features', EntityType::class, [
-                    'class' => \AppBundle\Entity\Features::class,
-                    'choice_label' => 'features',
-                    'multiple' => true,
-                    'attr' => [
-                        'class' => 'form-control select2',
-                ]]);
+        $builder->add('name')->add('price')->add('description')->add('features');
     }
     
     /**

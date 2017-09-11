@@ -97,6 +97,13 @@ class Company
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
 
 
 
@@ -373,5 +380,29 @@ class Company
     public function getMail()
     {
         return $this->mail;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Company
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

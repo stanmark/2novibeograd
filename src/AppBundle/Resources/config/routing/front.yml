@@ -5,7 +5,7 @@ trener_detail:
     
 team:
     path:     /tim/
-    defaults: { _controller: "AppBundle:Front/teamsingle:index" }
+    defaults: { _controller: "AppBundle:Front/teamMember:index" }
     methods:  GET   
     
 place:
@@ -36,7 +36,17 @@ league_detail:
 game_detail:
     path:     /takmicenja/{id}/{name}/utakmice/
     defaults: { _controller: "AppBundle:Front/Game:detail" }
-    methods:  GET     
+    methods:  GET  
+    
+about:
+    path:     /onama/
+    defaults: { _controller: "AppBundle:Front/Company:index" }
+    methods:  GET
+    
+contact:
+    path:     /kontakt/
+    defaults: { _controller: "AppBundle:Front/Contact:index" }
+    methods:  GET      
         
   
     

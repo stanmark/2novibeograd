@@ -1,13 +1,9 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
-
-{% block table2 %}
-    <h1>Seo</h1>
-    {% endblock %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    
+    <h1>Seo</h1>
 
-  
+    <table>
         <tbody>
             <tr>
                 <th>Id</th>
@@ -22,20 +18,31 @@
                 <td>{{ sEO.titletag }}</td>
             </tr>
             <tr>
-                <th>Nikada ne menjati</th>
+                <th>Title</th>
                 <td>{{ sEO.title }}</td>
             </tr>
-        
+            <tr>
+                <th>Created</th>
+                <td>{% if sEO.created %}{{ sEO.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if sEO.updated %}{{ sEO.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
         </tbody>
     </table>
 
-    
-            <a href="{{ path('seo_index') }}"class="btn btn-default" style="float: left;">Nazad</a>
-          {{ form_start(delete_form) }}
-              <input type="submit" value="Brisi" class="btn btn-default" style="float: right;">
+    <ul>
+        <li>
+            <a href="{{ path('seo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('seo_edit', { 'id': sEO.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-            <a href="{{ path('seo_edit', { 'id': sEO.id }) }}"class="btn btn-default" style="float: right;" >Izmeni</a>
-       
-          
-      
+        </li>
+    </ul>
 {% endblock %}

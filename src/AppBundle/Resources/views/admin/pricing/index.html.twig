@@ -1,4 +1,4 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Pricings list</h1>
@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Price</th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
@@ -17,6 +18,7 @@
             <tr>
                 <td><a href="{{ path('pricing_show', { 'id': pricing.id }) }}">{{ pricing.id }}</a></td>
                 <td>{{ pricing.name }}</td>
+                <td>{{ pricing.price }}</td>
                 <td>{{ pricing.description }}</td>
                 <td>
                     <ul>

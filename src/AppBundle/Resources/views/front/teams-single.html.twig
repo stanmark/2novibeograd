@@ -1,78 +1,86 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
-{% block  SEO %}
+{% block body %}
+    {% include '@AppBundle/Resources/views/front/header.html.twig' %}
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Design Lots">
-    <link rel="icon" href="favicon.ico">
-    {% for sEO in sEOs %}
-        <title>{{ sEO.titletag }}</title>
-        <meta name="description" content="{{ sEO.description }}" />
-    {% endfor %}
-{% endblock %}
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+         style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
+    <div class="c-breadcrumbs-wrapper">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
+                <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
+            </div>
+            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
+                <li class="c-font-white">/</li>
+                <li><a href="#" class="c-font-white">Tim trenera</a></li>
+            </ul>
+        </div>
+    </div>
+</div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+    <!-- BEGIN: PAGE CONTAINER -->
+    
+<div class="c-layout-page">       
 
-
-{% block  body %}  
-
-
-    <!-- Start Main Content -->
-    <main class="main-content">
-        <div class="container body-content">
-
-            <div class="row">
-                <div class="col-sm-12 main-column team-page">
-
-                    <div class="page-header">
-                        <h2>Nas klub</h2>
-                        <p class="lead">Nas klub je osnovan neki tekst</p>
+        <!-- BEGIN: CONTENT/MISC/TEAM-3 -->
+        <div class="c-content-box c-size-md c-bg-white-1">
+            <div class="container">
+                <!-- Begin: Testimonals 1 component -->
+                <div class="c-content-team-1-slider" data-slider="owl" data-items="3">
+                    <!-- Begin: Title 1 component -->
+                    <div class="c-content-title-1">
+                        <h3 class="c-center c-font-uppercase c-font-bold">Upoznajte nas tim</h3>
+                        <div class="c-line-center c-theme-bg"></div>
                     </div>
-                    <div class="grid grid-col-3">
-                        <div class="grid-sizer"></div>
-                        <div class="gutter-sizer"></div>
-                        <!-- Team Item -->
-                        {% for teamMember in teamMembers %}
-                            <div class="grid-item team-member">	
-                                <div class="hover-box-container hb-effect-fade">
-
-                                    <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}" class="hover-box">
-                                        <img src="{{ vich_uploader_asset(teamMember, 'imageFile') }}" alt="{{ teamMember.alt }}" />
-                                        <div class="hover-box-content-container">
-                                            <div class="hover-box-content">
-                                                <em class="fa fa-link"></em>
-                                            </div>
+                    <!-- End-->
+                    <div class="row">
+                        
+                        
+                    {% for teamMember in teamMembers %}    
+                        <div class="col-md-4 col-sm-6 c-margin-b-30">
+                            <div class="c-content-person-1 c-option-2">
+                                <div class="c-caption c-content-overlay">
+                                    <div class="c-overlay-wrapper">
+                                        <div class="c-overlay-content">
+                                            <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}"><i class="icon-link"></i></a>
+                                            
+                                            {% for teamMember in teamMember.membergalerry %} 
+                                            <a href="{{ vich_uploader_asset(teamMember, 'imageFile') }}" data-lightbox="fancybox" data-fancybox-group="gallery-4">
+                                                <i class="icon-magnifier"></i>
+                                            </a>
+                                             {% endfor %}    
+                                                
                                         </div>
-                                    </a>
+                                    </div>                                 
                                 </div>
-                                <div class="team-member-details">
-                                    <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}">
-                                        <h4>{{ teamMember.name }}</h4>
-                                        <small class="meta-text">{{ teamMember.position }}</small>
-                                    </a>
+                                <div class="c-body">
+                                    <div class="c-head">
+                                        <div class="c-name c-font-uppercase c-font-bold"><a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}">{{ teamMember.name }}</a></div>
+                                        <ul class="c-socials c-theme-ul-ul">                        
+                                            <li><a href="{{ teamMember.faceurl}}"><i class="icon-social-facebook"></i></a></li>
+                                            <li><a href="{{ teamMember.gurl}}"><i class="icon-social-dropbox"></i></a></li>
+                                            <li><a href="{{ teamMember.inurl}}"><i class="icon-social-dropbox"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="c-position">
+                                        {{ teamMember.position }}
+                                    </div>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, dolor nemo amet elit. 
+                                        Nulla nemo consequuntur.
+                                    </p>
                                 </div>
                             </div>
-                        {% endfor %}                
-                    </div><!-- /.grid -->	
-
-                </div><!--/.main-column -->
-            </div><!-- /.container -->
-    </main><!-- /.main-content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% endblock %}		
-
-
+                        </div>
+                       {% endfor %} 
+                        <!-- End-->
+                    </div>
+                    <!-- End-->
+                </div>
+            </div><!-- END: CONTENT/MISC/TEAM-3 -->
+            <!-- END: PAGE CONTENT -->
+        </div>
+        <!-- END: PAGE CONTAINER -->
+    </div>
+    {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+{% endblock %}    

@@ -1,194 +1,73 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
-{% block  SEO %}
-    {% for sEO in sEOs %}
-        <title>{{ sEO.titletag }}</title>
-        <meta name="description" content="{{ sEO.description }}" />
-    {% endfor %}
-{% endblock %}
+{% block body %}
+    {% include '@AppBundle/Resources/views/front/header.html.twig' %}
 
-{% block  body %}  	    
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+         style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
+    <div class="c-breadcrumbs-wrapper">
+        <div class="container">
+            <div class="c-page-title c-pull-left">
+                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
+                <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
+            </div>
+            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
+                <li class="c-font-white">/</li>
+                <li><a href="#" class="c-font-white">Tim trenera</a></li>
+            </ul>
+        </div>
+    </div>
+</div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+    
+    
+    <!-- BEGIN: PAGE CONTAINER -->
+    <div class="c-layout-page">
+        <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
 
-    <!-- Start Main Content -->
-    <main class="main-content">
-        <div class="container body-content">
-
-            <div class="row">
-                <div class="col-sm-9 main-column events-page">
-
-                    <div class="page-header">
-                        <h2>Raspored treninga</h2>
-                        <p class="lead">Imamo mnogo dobre sale</p>
-                    </div>
-
-                    <!-- Start Post -->
-
-                    {% for place in places %}                
-
-                        <article class="row">
-                            <div class="col-sm-4">
-                                <div class="post-image hover-box-container hb-effect-fade post-title">
-
-                                    <a href="{{ path('place_detail', {'id': place.id, 'name': place.title}) }}" class="hover-box" title="{{ place.title }}">
-                                        
-                                            <img src="{{ vich_uploader_asset(place, 'imageFile') }}" alt="" />
-                                       
-                                        <div class="hover-box-content-container">
-                                            <div class="hover-box-content">
-                                                <em class="fa fa-link"></em>
+     
+        <!-- BEGIN: PAGE CONTENT -->
+        <!-- BEGIN: BLOG LISTING -->
+        <div class="c-content-box c-size-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        {% for place in places %} 
+                            <div class="c-content-blog-post-1-list">
+                                <div class="c-content-blog-post-1">
+                                    <div class="c-media">
+                                        <div class="c-content-media-2-slider" data-slider="owl"> 
+                                            <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-auto-play="4000" data-rtl="false">
+                                                {% for place in place.galerry %}
+                                                    <div class="item">
+                                                        <div class="c-content-media-2" style="min-height: 460px;">
+                                                            <img src="{{ vich_uploader_asset(place, 'imageFile') }}" alt="{{ place.alt }}" />
+                                                        </div> 
+                                                    </div>  
+                                                {% endfor %} 
                                             </div>
                                         </div>
-                                    </a>
-                                    {# <div class="item-notice">$18</div> #}
+                                    </div>
+                                    <div class="c-title c-font-bold c-font-uppercase">
+                                        <a href="{{ path('place_detail', {'id': place.id, 'name': place.title}) }}">{{ place.title }}</a>
+                                    </div>
+                                    <div class="c-desc">
+                                        {{ place.description }}
+                                        <a href="{{ path('place_detail', {'id': place.id, 'name': place.title}) }}">više</a>
+                                    </div>
+                                    <div class="c-panel">
+                                        <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
+                                        <div class="c-date">on <span class="c-font-uppercase">{{place.created | date('d-m-Y') }}</span></div>                                      					                              
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-8">
-                                <div class="post-title">
-                                    <a href="{{ path('place_detail', {'id': place.id, 'name': place.title}) }}" title="{{ place.title }}"><h2>{{ place.title }}</h2></a>                                 
-                                </div>	
-                                <div class="post-excerpt">
-                                    <p>{{ place.shortdescription }}<a class="read-more" href="{{ path('place_detail', {'id': place.id, 'name': place.title}) }}">vise</a></p>
-                                </div>
-                            </div>
-                        </article>
-                        <!-- Rule Seperator -->
-                        <div class="hr-title-sep clearfix">
-                            <h4 class="hr-title meta-text">Raspored treninga</h4>
-                            <hr/>
-                        </div>
-                    {% endfor %}
-                </div><!--/.main-column -->
-                <aside class="sidebar col-sm-3 sticky">
-                    {#  <!-- Start Widget -->
-                      <div class="widget widget-countdown">	
-                          <h3>Next Game</h3>
-                          <div class="versus clearfix">
-                              <div>
-                                  <div style="background-color: #f8ca40;"><img src="img/icon1.jpg" alt="icon" /></div> 
-                                  <strong>Seattle Bulls</strong>
-                              </div>
-                              <span class="vs">VS</span>
-                              <div>
-                                  <div style="background-color: #11471b;"><img src="img/icon3.jpg" alt="icon" /></div>
-                                  <strong>NY Eagles</strong>
-                              </div>
-                          </div>
-                          <div class="countdown countdown-4 clearfix" data-countdown="2019/01/01"></div>
-                          <div class="meta-text">
-                              <span><em class="fa feat-color fa-calendar"></em> 03/06/16</span> 
-                              <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Location</a> </span>
-                              <span><a class="read-more" href="event.html"> See Event</a></span> 
-                          </div>
-                          <p>Nullam id dolue putid… <a class="read-more" href="event.html"> More</a></p>
-                      </div>
-  
-  
-                      <!-- Start Widget -->
-                      <div class="widget widget-calendar">
-                          <h3>Calender</h3>
-                          <table class="table-striped table-events">
-                              <thead>
-                                  <tr>
-                                      <th>M</th>
-                                      <th>T</th>
-                                      <th>W</th>
-                                      <th>T</th>
-                                      <th>F</th>
-                                      <th>S</th>
-                                      <th>S</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-  
-                                  <tr>
-                                      <td class="null-time"><div class="evt"></div></td>
-                                      <td class="null-time"><div class="evt"></div></td>
-                                      <td class="null-time"><div class="evt"></div></td>
-                                      <td class="null-time"><div class="evt"></div></td>
-                                      <td><div class="evt"><b>1</b></div></td>
-                                      <td class="current-day"><div class="evt"><b>2</b></div></td>
-                                      <td class="active-time"><div class="evt"><b>3</b>
-                                              <a href="event.html" title="event"><em class="ttip fa fa-circle" title="Melbourne VS Our Team"></em></a>
-                                      </td>
-                                  </tr>
-  
-  
-                                  <tr>
-                                      <td><div class="evt"><b>4</b></div></td>
-                                      <td class="active-time"><div class="evt"><b>5</b>
-                                              <a href="event.html" title="event"><em class="ttip fa fa-circle" title="Sydney VS Our Team - Away Game "></em></a>
-                                      </td>
-                                      <td><div class="evt"><b>6</b></div></td>
-                                      <td><div class="evt"><b>7</b></div></td>
-                                      <td><div class="evt"><b>8</b></div></td>
-                                      <td><div class="evt"><b>9</b></div></td>
-                                      <td><div class="evt"><b>10</b></div></td>
-                                  </tr>
-  
-                                  <tr>
-                                      <td><div class="evt"><b>11</b></div></td>
-                                      <td><div class="evt"><b>12</b></div></td>
-                                      <td class="active-time"><div class="evt"><b>13</b>
-                                              <a href="event.html" title="event"><em class="ttip fa fa-circle" title="Melbourne VS Our Team"></em></a>
-                                      </td>
-                                      <td><div class="evt"><b>14</b></div></td>
-                                      <td><div class="evt"><b>15</b></div></td>
-                                      <td class="active-time"><div class="evt"><b>16</b>
-                                              <a href="event.html" title="event"><em class="ttip fa fa-circle" title="Quarter Finals - Tigers VS Our Team - Home Game"></em></a>
-                                      </td>
-                                      <td><div class="evt"><b>17</b></div></td>
-                                  </tr>
-  
-                                  <tr>
-                                      <td><div class="evt"><b>18</b></div></td>
-                                      <td><div class="evt"><b>19</b></div></td>
-                                      <td><div class="evt"><b>20</b></div></td>
-                                      <td class="active-time"><div class="evt"><b>21</b>
-                                              <a href="event.html" title="event"><em class="ttip fa fa-circle" title="Sydney VS Our Team - Away Game "></em></a>
-                                      </td>
-                                      <td><div class="evt"><b>22</b></div></td>
-                                      <td><div class="evt"><b>23</b></div></td>
-                                      <td><div class="evt"><b>24</b></div></td>
-                                  </tr>
-  
-                                  <tr>
-                                      <td class="active-time"><div class="evt"><b>25</b>
-                                              <a href="event.html" title="event"><em class="ttip fa fa-circle" title="Melbourne VS Our Team"></em></a>
-                                      </td>
-                                      <td><div class="evt"><b>26</b></div></td>
-                                      <td><div class="evt"><b>27</b></div></td>
-                                      <td><div class="evt"><b>28</b></div></td>
-                                      <td><div class="evt"><b>29</b></div></td>
-                                      <td><div class="evt"><b>30</b></div></td>
-                                      <td><div class="evt"><b>31</b></div></td>
-                                  </tr>
-  
-                              </tbody>
-                          </table>
-                      </div>
-  
-  
-  
-                      <!-- Widget -->
-                      <div class="widget widget-single-post">
-                          <h3>Featured Event</h3>
-                          <a href="#">
-                              <div class="hover-box-container">
-                                  <div class="hover-box">
-                                      <em class="date">17 March</em>
-                                      <img src="http://placehold.it/900x600"  alt="Fill" />
-                                  </div>
-                              </div>
-                              <h4>Nominated club of the year</h4>
-                              <p>Nullam id dolor id nibh ultr cies vehicula ut id elit natoque penbus et magnis ut id elit...</p>
-  
-                          </a>	
-                      </div>#}
-                </aside>
-            </div><!-- /.container -->
-    </main><!-- /.main-content -->
-
-
-
-</body>
-</html>
-{% endblock %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!-- END: BLOG LISTING  -->
+        <!-- END: PAGE CONTENT -->
+    </div>
+    <!-- END: PAGE CONTAINER -->
+    {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+{% endblock %}        

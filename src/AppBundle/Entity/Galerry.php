@@ -48,12 +48,25 @@ class Galerry
     /**
      * @var \AppBundle\Entity\place
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\place")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="place_id", referencedColumnName="id")
-     * })
+     * Many Galerry have One Place.
+     * @ORM\ManyToOne(targetEntity="place", inversedBy="galerry")
+     * @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      */
      private $place;
+     
+     /**
+     * @var datetime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var datetime $updated
+     * 
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    protected $updated;
 
 
     /**
@@ -146,5 +159,73 @@ class Galerry
     public function getPlace()
     {
         return $this->place;
+    }
+    
+     /**
+     * Gets triggered only on insert
+     * 
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Galerry
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Galerry
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

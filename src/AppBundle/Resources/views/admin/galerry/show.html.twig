@@ -1,4 +1,4 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Galerry</h1>
@@ -16,6 +16,14 @@
             <tr>
                 <th>Alt</th>
                 <td>{{ galerry.alt }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if galerry.created %}{{ galerry.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if galerry.updated %}{{ galerry.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

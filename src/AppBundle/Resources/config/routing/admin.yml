@@ -151,32 +151,7 @@ pricing_delete:
     path:     /cenovnik/{id}/delete
     defaults: { _controller: "AppBundle:Admin/Pricing:delete" }
     methods:  DELETE   
-    
-faq_index:
-    path:     /faq/
-    defaults: { _controller: "AppBundle:Admin/FAQ:index" }
-    methods:  GET
-
-faq_show:
-    path:     /faq/{id}/show
-    defaults: { _controller: "AppBundle:Admin/FAQ:show" }
-    methods:  GET
-
-faq_new:
-    path:     /faq/new
-    defaults: { _controller: "AppBundle:Admin/FAQ:new" }
-    methods:  [GET, POST]
-
-faq_edit:
-    path:     /faq/{id}/edit
-    defaults: { _controller: "AppBundle:Admin/FAQ:edit" }
-    methods:  [GET, POST]
-
-faq_delete:
-    path:     /faq/{id}/delete
-    defaults: { _controller: "AppBundle:Admin/FAQ:delete" }
-    methods:  DELETE    
-    
+  
 league_index:
     path:     /league/
     defaults: { _controller: "AppBundle:Admin/League:index" }
@@ -226,6 +201,185 @@ game_delete:
     path:     /game/{id}/delete
     defaults: { _controller: "AppBundle:Admin/Game:delete" }
     methods:  DELETE
+    
+features_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Features:index" }
+    methods:  GET
+
+features_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Features:show" }
+    methods:  GET
+
+features_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Features:new" }
+    methods:  [GET, POST]
+
+features_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Features:edit" }
+    methods:  [GET, POST]
+
+features_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Features:delete" }
+    methods:  DELETE
+    
+groupp_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Groupp:index" }
+    methods:  GET
+
+groupp_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Groupp:show" }
+    methods:  GET
+
+groupp_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Groupp:new" }
+    methods:  [GET, POST]
+
+groupp_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Groupp:edit" }
+    methods:  [GET, POST]
+
+groupp_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Groupp:delete" }
+    methods:  DELETE
+    
+leaguegallery_index:
+    path:     /
+    defaults: { _controller: "AppBundle:LeagueGallery:index" }
+    methods:  GET
+
+leaguegallery_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:LeagueGallery:show" }
+    methods:  GET
+
+leaguegallery_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:LeagueGallery:new" }
+    methods:  [GET, POST]
+
+leaguegallery_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:LeagueGallery:edit" }
+    methods:  [GET, POST]
+
+leaguegallery_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:LeagueGallery:delete" }
+    methods:  DELETE
+
+    
+membergallery_index:
+    path:     /
+    defaults: { _controller: "AppBundle:MemberGallery:index" }
+    methods:  GET
+
+membergallery_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:MemberGallery:show" }
+    methods:  GET
+
+membergallery_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:MemberGallery:new" }
+    methods:  [GET, POST]
+
+membergallery_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:MemberGallery:edit" }
+    methods:  [GET, POST]
+
+membergallery_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:MemberGallery:delete" }
+    methods:  DELETE
+    
+    
+settresults_index:
+    path:     /
+    defaults: { _controller: "AppBundle:SettResults:index" }
+    methods:  GET
+
+settresults_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:SettResults:show" }
+    methods:  GET
+
+settresults_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:SettResults:new" }
+    methods:  [GET, POST]
+
+settresults_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:SettResults:edit" }
+    methods:  [GET, POST]
+
+settresults_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:SettResults:delete" }
+    methods:  DELETE
+
+team_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Team:index" }
+    methods:  GET
+
+team_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Team:show" }
+    methods:  GET
+
+team_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Team:new" }
+    methods:  [GET, POST]
+
+team_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Team:edit" }
+    methods:  [GET, POST]
+
+team_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Team:delete" }
+    methods:  DELETE
+
+time_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Time:index" }
+    methods:  GET
+
+time_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Time:show" }
+    methods:  GET
+
+time_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Time:new" }
+    methods:  [GET, POST]
+
+time_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Time:edit" }
+    methods:  [GET, POST]
+
+time_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Time:delete" }
+    methods:  DELETE
+    
+    
     
     
     

@@ -1,0 +1,76 @@
+{% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block body %}
+    {% include '@AppBundle/Resources/views/front/header.html.twig' %}
+
+    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+         style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
+        <div class="c-breadcrumbs-wrapper">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
+                    <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
+                    <li class="c-font-white">/</li>
+                    <li><a href="#" class="c-font-white">Tim trenera</a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+
+    <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
+    <div class="c-content-box c-size-md c-bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 wow animated fadeInLeft">						
+                    <!-- Begin: Title 1 component -->
+                    <div class="c-content-title-1">
+                        <h3 class="c-font-uppercase c-font-bold">O nama</h3>
+                        <div class="c-line-left c-theme-bg"></div>
+                    </div>
+                    <!-- End-->
+                    {% for company in companies %}
+                        <p>{{ company.description }}</p>
+                    {% endfor %}
+
+                </div>
+                <div class="col-sm-6 wow animated fadeInRight">
+                    <div class="c-content-client-logos-1">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold">Sponzori</h3>
+                            <div class="c-line-left c-theme-bg"></div>
+                        </div>
+                        <!-- End-->
+                        <div class="c-logos">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-6 c-logo c-logo-1">
+                                    <a href="#"><img class="c-img-pos" src="../../assets/base/img/content/client-logos/client1.jpg" alt=""/></a>
+                                </div>
+                                <div class="col-md-4 col-xs-6 c-logo c-logo-2">
+                                    <a href="#"><img class="c-img-pos" src="../../assets/base/img/content/client-logos/client2.jpg" alt=""/></a>
+                                </div>
+                                <div class="col-md-4 col-xs-6 c-logo c-logo-3">
+                                    <a href="#"><img class="c-img-pos" src="../../assets/base/img/content/client-logos/client3.jpg" alt=""/></a>
+                                </div>
+                                <div class="col-md-4 col-xs-6 c-logo c-logo-4">
+                                    <a href="#"><img class="c-img-pos" src="../../assets/base/img/content/client-logos/client4.jpg" alt=""/></a>
+                                </div>
+                                <div class="col-md-4 col-xs-6 c-logo c-logo-5">
+                                    <a href="#"><img class="c-img-pos" src="../../assets/base/img/content/client-logos/client5.jpg" alt=""/></a>
+                                </div>
+                                <div class="col-md-4 col-xs-6 c-logo c-logo-6">
+                                    <a href="#"><img class="c-img-pos" src="../../assets/base/img/content/client-logos/client6.jpg" alt=""/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div><!-- END: CONTENT/MISC/ABOUT-1 -->
+</div>
+<!-- END: PAGE CONTAINER -->
+{% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+{% endblock %}     

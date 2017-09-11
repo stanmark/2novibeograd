@@ -39,12 +39,7 @@ class place
      */
     private $adress;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="shortdescription", type="text", nullable=true)
-     */
-    private $shortdescription;
+   
     
     /**
      * @var string
@@ -53,12 +48,7 @@ class place
      */
     private $description;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description1", type="text", nullable=true)
-     */
-    private $description1;
+    
     
     
     /**
@@ -85,17 +75,13 @@ class place
     private $member;
     
     /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
+     * One place has Many Gallery.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Galerry", mappedBy="place")
      */
-    private $url;
-    
-    /**
-     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="url")
-     * @var File
-     */
-    private $imageFile;
+    private $galerry;
+
+  
+   
     
     /**
      * Constructor
@@ -103,6 +89,7 @@ class place
     public function __construct()
     {
         $this->member = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->galerry = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -254,81 +241,7 @@ class place
     {
         $this->updated = new \DateTime("now");
     }
-    
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return teamMember
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
 
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-   
-
-    /**
-     * Set shortdescription
-     *
-     * @param string $shortdescription
-     *
-     * @return place
-     */
-    public function setShortdescription($shortdescription)
-    {
-        $this->shortdescription = $shortdescription;
-
-        return $this;
-    }
-
-    /**
-     * Get shortdescription
-     *
-     * @return string
-     */
-    public function getShortdescription()
-    {
-        return $this->shortdescription;
-    }
-  
-
-    /**
-     * Set description1
-     *
-     * @param string $description1
-     *
-     * @return place
-     */
-    public function setDescription1($description1)
-    {
-        $this->description1 = $description1;
-
-        return $this;
-    }
-
-    /**
-     * Get description1
-     *
-     * @return string
-     */
-    public function getDescription1()
-    {
-        return $this->description1;
-    }
 
     /**
      * Add member
@@ -364,12 +277,38 @@ class place
         return $this->member;
     }
     
-     public function setImageFile(File $url = null) {
-        $this->imageFile = $url;
+
+    /**
+     * Add galerry
+     *
+     * @param \AppBundle\Entity\Galerry $galerry
+     *
+     * @return place
+     */
+    public function addGalerry(\AppBundle\Entity\Galerry $galerry)
+    {
+        $this->galerry[] = $galerry;
+
         return $this;
     }
 
-    public function getImageFile() {
-        return $this->imageFile;
+    /**
+     * Remove galerry
+     *
+     * @param \AppBundle\Entity\Galerry $galerry
+     */
+    public function removeGalerry(\AppBundle\Entity\Galerry $galerry)
+    {
+        $this->galerry->removeElement($galerry);
+    }
+
+    /**
+     * Get galerry
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGalerry()
+    {
+        return $this->galerry;
     }
 }

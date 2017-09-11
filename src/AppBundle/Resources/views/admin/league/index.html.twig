@@ -1,4 +1,4 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Leagues list</h1>
@@ -10,8 +10,6 @@
                 <th>Id</th>
                 <th>Created</th>
                 <th>Updated</th>
-                <th>Url</th>
-                <th>Alt</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,8 +20,6 @@
                 <td>{{ league.id }}</td>
                 <td>{% if league.created %}{{ league.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if league.updated %}{{ league.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ league.url }}</td>
-                <td>{{ league.alt }}</td>
                 <td>
                     <ul>
                         <li>

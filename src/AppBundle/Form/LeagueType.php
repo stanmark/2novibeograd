@@ -5,8 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class LeagueType extends AbstractType
 {
@@ -15,13 +13,7 @@ class LeagueType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-                ->add('league')
-                ->add('created')
-                ->add('updated')
-               ->add('imageFile', VichImageType::class,  ['label' => 'Slika']) 
-                ->add('alt')
-                ;
+        $builder->add('league')->add('created')->add('updated');
     }
     
     /**

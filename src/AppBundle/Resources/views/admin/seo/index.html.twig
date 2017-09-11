@@ -1,38 +1,47 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
-
-{% block table2 %}
-     <h1>Seos list</h1>
-{% endblock %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-   
+    <h1>Seos list</h1>
+
+    <table>
         <thead>
-            <tr>               
+            <tr>
+                <th>Id</th>
                 <th>Description</th>
                 <th>Titletag</th>
-                <th>Nikad ne menjati</th>
+                <th>Title</th>
+                <th>Created</th>
+                <th>Updated</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for sEO in sEOs %}
             <tr>
-                <td><a href="{{ path('seo_show', { 'id': sEO.id }) }}">{{ sEO.description }}</a></td>               
+                <td><a href="{{ path('seo_show', { 'id': sEO.id }) }}">{{ sEO.id }}</a></td>
+                <td>{{ sEO.description }}</td>
                 <td>{{ sEO.titletag }}</td>
                 <td>{{ sEO.title }}</td>
+                <td>{% if sEO.created %}{{ sEO.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if sEO.updated %}{{ sEO.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    
-                            <a href="{{ path('seo_show', { 'id': sEO.id }) }}" class="btn btn-info btn-circle"> <i class="fa fa-eye"></i></a>
-                     
-                            <a href="{{ path('seo_edit', { 'id': sEO.id }) }}"class="btn btn-info btn-circle"><i class="fa fa-pencil-square-o"></i></a>
-
+                    <ul>
+                        <li>
+                            <a href="{{ path('seo_show', { 'id': sEO.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('seo_edit', { 'id': sEO.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    
-            <a href="{{ path('seo_new') }}"class="btn btn-default">Unesi</a>
-    
+    <ul>
+        <li>
+            <a href="{{ path('seo_new') }}">Create a new sEO</a>
+        </li>
+    </ul>
 {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Settresults list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Team1set</th>
+                <th>Team2set</th>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for settResult in settResults %}
+            <tr>
+                <td><a href="{{ path('settresults_show', { 'id': settResult.id }) }}">{{ settResult.team1Set }}</a></td>
+                <td>{{ settResult.team2Set }}</td>
+                <td>{{ settResult.id }}</td>
+                <td>{% if settResult.created %}{{ settResult.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if settResult.updated %}{{ settResult.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('settresults_show', { 'id': settResult.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('settresults_edit', { 'id': settResult.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('settresults_new') }}">Create a new settResult</a>
+        </li>
+    </ul>
+{% endblock %}

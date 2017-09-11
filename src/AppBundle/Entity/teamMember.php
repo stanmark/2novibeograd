@@ -81,12 +81,7 @@ class teamMember
      */
     private $inurl;
 
-     /**
-     * @var string
-     *
-     * @ORM\Column(name="longdescription", type="text")
-     */
-    private $longdescription;
+    
     
     /**
      * @var string
@@ -94,83 +89,7 @@ class teamMember
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="blockquote", type="string", length=255)
-     */
-    private $blockquote;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
-     */
-    private $alt;
-    
-    /**
-     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="url")
-     * @var File
-     */
-    private $imageFile;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imagetitle", type="string", length=255)
-     */
-    private $imagetitle;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imagecaption", type="string", length=255)
-     */
-    private $imagecaption;
-    
-     /**
-     * @var string
-     *
-     * @ORM\Column(name="url1", type="string", length=255)
-     */
-    
-    
-    private $url1;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="alt1", type="string", length=255)
-     */
-    private $alt1;
-    
-    /**
-     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="url1")
-     * @var File
-     */
-    private $imageFile1;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imagetitle1", type="string", length=255)
-     */
-   private $imagetitle1;
-   
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="imagecaption1", type="string", length=255)
-     */
-    private $imagecaption1;
+     
 
     /**
      * @var datetime $created
@@ -201,9 +120,16 @@ class teamMember
      */
     private $place;
     
+    /**
+     * One member has Many Gallery.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MemberGallery", mappedBy="teamMember")
+     */
+    private $membergalerry;
+    
     public function __construct()
     {
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->membergalerry = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -525,252 +451,6 @@ class teamMember
         $this->updated = new \DateTime("now");
     }
 
-    /**
-     * Set shortdescription
-     *
-     * @param string $shortdescription
-     *
-     * @return teamMember
-     */
-    public function setShortdescription($shortdescription)
-    {
-        $this->shortdescription = $shortdescription;
-
-        return $this;
-    }
-
-    /**
-     * Get shortdescription
-     *
-     * @return string
-     */
-    public function getShortdescription()
-    {
-        return $this->shortdescription;
-    }
-
-    /**
-     * Set url1
-     *
-     * @param string $url1
-     *
-     * @return teamMember
-     */
-    public function setUrl1($url1)
-    {
-        $this->url1 = $url1;
-
-        return $this;
-    }
-
-    /**
-     * Get url1
-     *
-     * @return string
-     */
-    public function getUrl1()
-    {
-        return $this->url1;
-    }
-
-    /**
-     * Set alt1
-     *
-     * @param string $alt1
-     *
-     * @return teamMember
-     */
-    public function setAlt1($alt1)
-    {
-        $this->alt1 = $alt1;
-
-        return $this;
-    }
-
-    /**
-     * Get alt1
-     *
-     * @return string
-     */
-    public function getAlt1()
-    {
-        return $this->alt1;
-    }
-
-    
-    
-    public function setImageFile(File $url = null) {
-        $this->imageFile = $url;
-        return $this;
-    }
-
-    public function getImageFile() {
-        return $this->imageFile;
-    }
-    
-     public function setImageFile1(File $url1 = null) {
-        $this->imageFile1 = $url1;
-        return $this;
-    }
-
-    public function getImageFile1() {
-        return $this->imageFile1;
-    }
-    
-
-
-    /**
-     * Set imagetitle
-     *
-     * @param string $imagetitle
-     *
-     * @return teamMember
-     */
-    public function setImagetitle($imagetitle)
-    {
-        $this->imagetitle = $imagetitle;
-
-        return $this;
-    }
-
-    /**
-     * Get imagetitle
-     *
-     * @return string
-     */
-    public function getImagetitle()
-    {
-        return $this->imagetitle;
-    }
-
-    /**
-     * Set imagecaption
-     *
-     * @param string $imagecaption
-     *
-     * @return teamMember
-     */
-    public function setImagecaption($imagecaption)
-    {
-        $this->imagecaption = $imagecaption;
-
-        return $this;
-    }
-
-    /**
-     * Get imagecaption
-     *
-     * @return string
-     */
-    public function getImagecaption()
-    {
-        return $this->imagecaption;
-    }
-
-    /**
-     * Set imagecaption1
-     *
-     * @param string $imagecaption1
-     *
-     * @return teamMember
-     */
-    public function setImagecaption1($imagecaption1)
-    {
-        $this->imagecaption1 = $imagecaption1;
-
-        return $this;
-    }
-
-    /**
-     * Get imagecaption1
-     *
-     * @return string
-     */
-    public function getImagecaption1()
-    {
-        return $this->imagecaption1;
-    }
-
-    /**
-     * Set imagetitle2
-     *
-     * @param string $imagetitle2
-     *
-     * @return teamMember
-     */
-   
-
-    /**
-     * Set imagetitle1
-     *
-     * @param string $imagetitle1
-     *
-     * @return teamMember
-     */
-    public function setImagetitle1($imagetitle1)
-    {
-        $this->imagetitle1 = $imagetitle1;
-
-        return $this;
-    }
-
-    /**
-     * Get imagetitle1
-     *
-     * @return string
-     */
-    public function getImagetitle1()
-    {
-        return $this->imagetitle1;
-    }
-
-    /**
-     * Set longdescription
-     *
-     * @param string $longdescription
-     *
-     * @return teamMember
-     */
-    public function setLongdescription($longdescription)
-    {
-        $this->longdescription = $longdescription;
-
-        return $this;
-    }
-
-    /**
-     * Get longdescription
-     *
-     * @return string
-     */
-    public function getLongdescription()
-    {
-        return $this->longdescription;
-    }
-
-    /**
-     * Set blockquote
-     *
-     * @param string $blockquote
-     *
-     * @return teamMember
-     */
-    public function setBlockquote($blockquote)
-    {
-        $this->blockquote = $blockquote;
-
-        return $this;
-    }
-
-    /**
-     * Get blockquote
-     *
-     * @return string
-     */
-    public function getBlockquote()
-    {
-        return $this->blockquote;
-    }
 
     /**
      * Set position
@@ -828,5 +508,39 @@ class teamMember
     public function getPlace()
     {
         return $this->place;
+    }
+
+    /**
+     * Add membergalerry
+     *
+     * @param \AppBundle\Entity\MemberGallery $membergalerry
+     *
+     * @return teamMember
+     */
+    public function addMembergalerry(\AppBundle\Entity\MemberGallery $membergalerry)
+    {
+        $this->membergalerry[] = $membergalerry;
+
+        return $this;
+    }
+
+    /**
+     * Remove membergalerry
+     *
+     * @param \AppBundle\Entity\MemberGallery $membergalerry
+     */
+    public function removeMembergalerry(\AppBundle\Entity\MemberGallery $membergalerry)
+    {
+        $this->membergalerry->removeElement($membergalerry);
+    }
+
+    /**
+     * Get membergalerry
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMembergalerry()
+    {
+        return $this->membergalerry;
     }
 }

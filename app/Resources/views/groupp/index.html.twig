@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupps list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Groupp</th>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupp in groupps %}
+            <tr>
+                <td><a href="{{ path('groupp_show', { 'id': groupp.id }) }}">{{ groupp.groupp }}</a></td>
+                <td>{{ groupp.id }}</td>
+                <td>{% if groupp.created %}{{ groupp.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if groupp.updated %}{{ groupp.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('groupp_show', { 'id': groupp.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('groupp_edit', { 'id': groupp.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groupp_new') }}">Create a new groupp</a>
+        </li>
+    </ul>
+{% endblock %}

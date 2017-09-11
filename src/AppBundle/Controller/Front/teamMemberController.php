@@ -17,6 +17,23 @@ class teamMemberController extends Controller
      * Finds and displays one teamMember.
      *
      */
+    
+     public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
+        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
+        
+
+        return $this->render('@AppBundle/Resources/views/front/teams-single.html.twig', array(
+            'teamMembers' => $teamMembers,
+            'sEOs' => $sEOs,
+        ));
+    }
+    
+    
+    
     public function detailAction($id, $name)
     {
         $em = $this->getDoctrine()->getManager();

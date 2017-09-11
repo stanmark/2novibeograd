@@ -1,270 +1,72 @@
-<html lang="en">
+<!DOCTYPE html>
+
+<html lang="en"  >
+
     <head>
 
         {% block  SEO %}
 
         {% endblock %}
 
-        {% block stylesheets %}
+        
+        <link href="{{ asset('public/Front/csss/animate.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/bootstrap-social.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/components.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/cubeportfolio.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/custom.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/default.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/jquery.fancybox.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/owl.carousel.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/plugins.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/slider.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/socicon.css')}}" rel="stylesheet" type="text/css"/>
+        
+        
+       {# {% stylesheets 'public/Front/csss/*' filter='cssrewrite' filter='uglifycss' %}
+        <link rel="stylesheet" href="{{ asset_url }}" /> 
+        {% endstylesheets %}#}
 
-            <!-- Bootstrap core CSS -->
-            <link href="{{ asset('public/Front/library/bs/css/bootstrap.min.css')}}" rel="stylesheet">
-
-
-            <!-- Menu Stylesheets -->
-            <link href="{{ asset('public/Front/library/css/menuzord/menuzord.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/css/menuzord/menuzord-animations.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/css/menuzord/skins/menuzord-border-top.css')}}" rel="stylesheet">      
-
-            <!-- RS5.0 Stylesheets -->
-            <link href="{{ asset('public/Front/library/js/revolution/css/settings.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/js/revolution/css/layers.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/js/revolution/css/navigation.css')}}" rel="stylesheet">
-
-            <!-- Forms -->
-            <link href="{{ asset('public/Front/library/js/skyforms/css/sky-forms.css')}}" rel="stylesheet">
-
-
-            <!-- Style Sheets -->
-            <link href="{{ asset('public/Front/library/css/ie10-viewport-bug-workaround.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/css/font-awesome.min.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/css/iconmoon.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/js/owl-carousel/owl.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/js/fancybox/jquery.fancybox.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/js/anijs/anicollection.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/js/tooltipster/tooltipster.bundle.min.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/js/slidebars/slidebars.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/css/library.css')}}" rel="stylesheet">
-            <link href="{{ asset('public/Front/library/css/responsive.css')}}" rel="stylesheet">
-
-
-            <!-- Custom styles for this template -->
-            <link href="{{ asset('public/Front/library/css/styles.css')}}" rel="stylesheet">
-            {# <link rel="stylesheet" type="text/css" href="styles.css">#}
-            <!-- Place RTL Style Sheet here -->
-
-
-            <!--[if lt IE 9]>
-                    <script src="./library/bs/js/html5shiv.min.js"></script>
-                    <script src="./library/bs/js/respond.min.js"></script>
-            <![endif]-->
-
-        {% endblock %}
-    </head>
-
-    {% block  search %}
-
-        <body class="">
-            <!-- Start Full Screen Overlay -->
-            <div class="canvas-overlay">
-                <!-- Close Button -->
-                <a class="overlay-btn btn-closer" href="#"></a>
-                <!-- Content Container -->
-                <div class="container" data-anijs="if: scroll, on:window, do: fadeInDown animated, before: scrollReveal, after: $fireOnce removeAnim ">
-                    <h2>Search</h2>
-                    <form class="search-hero">
-                        <div class="input-group">
-                            <label class="input">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </label>
-                            <span class="input-group-btn">
-                                <button class="btn btn-success" type="button">Search</button>
-                            </span>
-                        </div>
-                    </form>
-
-                    <br/><br/>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <h3>Linkovi</h3>
-                            <ul class="list-styled list-bordered">
-                                <li><a href="index.html">Naslovna</a></li>
-                                <li><a href="{{ path('place') }}">Raspored treninga</a></li>
-                                <li><a href="contact.html">Budimo u kontaktu</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <h3>Poslednje vesti</h3>
-                            <ul class="list-styled list-bordered">
-                                <li><a href="post-standard.html">Nominated club of the year</a></li>
-                                <li><a href="post-standard.html">Pre season camp success</a></li>
-                                <li><a href="post-standard.html">Road to the grand finals</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <h3>Pratite nas</h3>
-                            <ul class="social-links sl-vertical list-bordered">
-                                <li><a href="{{ asset ('https://www.facebook.com/oknovibeograd/') }}"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                <li><a href="{{ asset ('https://plus.google.com/b/102461848503559434006/') }}"><i class="fa fa-google-plus"></i>Google +</a></li>    
-                                <li><a href="{{ asset ('https://www.oknovibeograd.rs/') }}"><i class="fa fa-globe"></i>Website</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Full Screen Overlay -->
-        {% endblock %}
-        {% block  header %}
-            <!-- Start Header -->
-            <header id="header">
-
-                <!-- Start Pre Header -->
-                <nav class="pre-header">
-                    <div class="container">
-                        <div class="head-left">
-                            <ul class="social-links sl-circle">
-                                <li><a href="{{ asset ('https://www.facebook.com/oknovibeograd/') }}"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="{{ asset ('https://plus.google.com/b/102461848503559434006/') }}"><i class="fa fa-google-plus"></i></a></li>    
-                                <li><a href="{{ asset ('https://www.oknovibeograd.rs/') }}"><i class="fa fa-globe"></i></a></li>
-                            </ul>	
-                        </div>
-                        <div class="head-right">
-                            <strong>Sledeća utakmica:</strong> <div id="clock"></div>
-                        </div>	
-                    </div>
-                </nav>
-                <!-- End Pre Header -->
-
-            {% endblock %}
-
-            {% block  mainheader %}
-                <!-- Start Main Header -->
-                <nav class="main-header header-reveal">
-                    <div class="container">
-                        <!-- Start Menu -->
-                        <div id="menuzord" class="menuzord">
-                            <div class="head-left">
-                                <a href="{# {{ path ('naslovna') }} #}" class="menuzord-brand">
-                                    <!-- Sport <div class="tag-line">Sporting Club Theme</div> -->
-                                    <img class="logo-img" width="50" src="{{ asset ('public/Front/images/1.png') }}" alt="Logo" />
-                                </a>
-                            </div>
-
-                            <ul class="menuzord-menu head-right">
-                                <li><a href="index.html">Naslovna</a></li>
-                                <li><a href="{{ path ('team') }}">Tim trenera</a></li>
-                                <li><a href="{{ path('place') }}">Rapored treninga</a></li>
-                                <li><a href="{{ path('pricing') }}">Cenovnik</a></li>
-                                <li><a href="{{ path('league') }}">Takmičenja</a></li>
-                                <li><a href="index.html">Galerija</a></li>
-                                <li><a href="index.html">O nama</a></li>
-                                <li><a href="index.html">Kontakt</a></li>                  
-                                <li class="overlay-tigger">
-                                    <a class="overlay-btn btn-open" href="#"><em class="fa fa-search"></em></a>
-                                </li>	
-                            </ul>
-                        </div><!--/.menuzord -->
-                    </div>
-                </nav>
-                <!-- End Main Header -->
-            {% endblock %}
-
-            {% block  postheader %}
-                <!-- Start Post Header -->
-                <nav class="post-header">
-                    <div class="container">
-                        <div class="head-left">
-                            <ul class="mini-nav">
-                                <li><a href="index.html">Naslovna</a></li>
-                                <li><a href="contact.html">Kontakt</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="head-right">
-                            <em class="fa fa-phone-square feat-color"></em> + 381 (0) 60 33 86 930
-                        </div>	
-                    </div>
-                </nav>
-                <!-- End Post Header -->
-            </header>
-            <!-- End Header -->
-        {% endblock %}
-
-        {% block  body %}
-        {% endblock %}
-
-
-        {% block  footer %}
-            <!-- Start Footer -->
-            <footer class="main-footer">
-                <div class="container">
-                    <!-- Start Row -->
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="widget widget-contact">
-                                <h3>Contact Us</h3>
-                                <ul class="list-styled list-bordered">
-                                    <li><strong>Telephone Enquiry:</strong><br/>+61 555 555 1234</li>
-                                    <li><strong>Facsimile:</strong><br/>+61 555 555 1234</li>
-                                    <li><a href="#">info@sports.com</a></li>
-                                </ul>
-                            </div>		
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="widget widget-text">
-                                <h3>Our Mission</h3>
-                                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="widget widget-paired-list">
-                                <h3>Club House</h3>
-                                <ul class="list-paired">
-                                    <li><em class="fa fa-clock-o scale-80 feat-color"></em> Monday <span>9am - 10pm</span></li>
-                                    <li><em class="fa fa-clock-o scale-80 feat-color"></em> Tue-Fri <span>9am - 9pm</span></li>
-                                    <li><em class="fa fa-clock-o scale-80 feat-color"></em> Sat-Sun <span>7am - 9pm</span></li>
-                                    <li><em class="fa fa-clock-o scale-80 feat-color"></em> Holidays <span>9am - 1pm</span></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="widget widget-brand-address">
-                                <h3><img class="logo-img" src="" alt="OK NBG" /></h3>
-                                <ul class="list-styled list-bordered">
-                                    <li><strong>Address:</strong><br/>310 Ashfield Ave, Suburbia, Brisbane, Australia, 4000 </li>
-                                    <li><a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">View on map</a></li>
-                                </ul>
-                            </div>
-                        </div>	
-                    </div><!--/.row -->
-                </div>
-            </footer>
-        {% endblock %}
-
-        {% block  postfooter %}
-            <!-- Start Post Footer -->
-            <footer class="post-footer">
-                <div class="container">
-                    <div class="foot-left">
-                        <div>&copy; DesignLots <span class="copy-year"></span>. All rights reserved.</div> 
-                    </div>
-
-                    <div class="foot-right">
-                        <ul class="social-links">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-globe"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
-        </div><!--/footer -->
-    {% endblock %}
+  {#      <link rel="icon" {% image '@AppBundle/Resources/skin/images/joblider-logo.png' %}
+    <img src="{{ asset_url }}"  />
+    {% endimage %} #}
 
 
 
-    <script src="{{ asset ('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js') }}"></script>
-    <script>window.jQuery || document.write('<script src="{{ asset ('@AppBundle/Resources/skin/front/library/js/vendor/jquery.min.js') }}"><\/script>')</script>
+   <link href="{{ asset ('http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all')}}"rel="stylesheet" type="text/css"/>
 
 
-    {% block java %}
-        {% javascripts '@jq_front' %}
-        <script src="{{ asset_url }}"></script>
-        {% endjavascripts %}
-    {% endblock %}
-    </body>
+        {#  <link rel="hortcut icon" {% image '@AppBundle/Resources/skin/images/joblider-logo.png' %}
+          <img src="{{ asset_url }}"  />
+    {% endimage %} #}
+
+</head>
+
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+
+
+{% block body %}
+
+{% endblock %}  
+
+    <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div><!-- END: LAYOUT/FOOTERS/GO2TOP -->
+
+    {% javascripts '@jq_front' filter='uglifyjs' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(document).ready(function () {
+            App.init(); // init core    
+        });
+    </script>
+    <!-- END: THEME SCRIPTS -->
+
+    <!-- END: LAYOUT/BASE/BOTTOM -->
+</body>
+</html>
+

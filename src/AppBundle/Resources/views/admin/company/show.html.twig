@@ -1,81 +1,76 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
-
-{% block table2 %}
-    <h1>{{ teammeber.name }}</h1>
-{% endblock %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1>Company</h1>
 
+    <table>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ company.name }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ company.adress }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ company.phone }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ company.mail }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ company.city }}</td>
+            </tr>
+            <tr>
+                <th>Faceurl</th>
+                <td>{{ company.faceurl }}</td>
+            </tr>
+            <tr>
+                <th>Gurl</th>
+                <td>{{ company.gurl }}</td>
+            </tr>
+            <tr>
+                <th>Pib</th>
+                <td>{{ company.pib }}</td>
+            </tr>
+            <tr>
+                <th>Matnumber</th>
+                <td>{{ company.matnumber }}</td>
+            </tr>
+            <tr>
+                <th>Bankacount</th>
+                <td>{{ company.bankacount }}</td>
+            </tr>
+            <tr>
+                <th>Bank</th>
+                <td>{{ company.bank }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ company.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ company.description }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <tbody>
-        <tr>
-            <th>Name</th>
-            <td>{{ company.name }}</td>
-        </tr>
-        <tr>
-            <th>Adress</th>
-            <td>{{ company.adress }}</td>
-        </tr>
-        <tr>
-            <th>City</th>
-            <td>{{ company.city }}</td>
-        </tr>
-        <tr>
-            <th>Faceurl</th>
-            <td>{{ company.faceurl }}</td>
-        </tr>
-        <tr>
-            <th>Linkedinurl</th>
-            <td>{{ company.linkedinurl }}</td>
-        </tr>
-        <tr>
-            <th>Gurl</th>
-            <td>{{ company.gurl }}</td>
-        </tr>
-        <tr>
-            <th>Twiterurl</th>
-            <td>{{ company.twiterurl }}</td>
-        </tr>
-        <tr>
-            <th>Pib</th>
-            <td>{{ company.pib }}</td>
-        </tr>
-        <tr>
-            <th>Matnumber</th>
-            <td>{{ company.matnumber }}</td>
-        </tr>
-        <tr>
-            <th>Bankacount</th>
-            <td>{{ company.bankacount }}</td>
-        </tr>
-        <tr>
-            <th>Bank</th>
-            <td>{{ company.bank }}</td>
-        </tr>
-        <tr>
-        <tr>
-            <th>Phone</th>
-            <td>{{ company.phone }}</td>
-        </tr>
-        <tr>
-            <th>mail</th>
-            <td>{{ company.mail }}</td>
-        </tr>
-        <tr>
-
-            <th>Id</th>
-            <td>{{ company.id }}</td>
-        </tr>
-    </tbody>
-</table>
-
-
-<a href="{{ path('company_index') }}"class="btn btn-default" style="float: left;">Nazad</a>
-{{ form_start(delete_form) }}
-<input type="submit"value="Brisi" class="btn btn-default" style="float: right;">
-{{ form_end(delete_form) }}
-<a href="{{ path('company_edit', { 'id': company.id }) }}"class="btn btn-default" style="float: right;" >Izmeni</a>
-
-
-
+    <ul>
+        <li>
+            <a href="{{ path('company_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('company_edit', { 'id': company.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
 {% endblock %}

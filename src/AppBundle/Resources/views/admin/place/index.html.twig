@@ -1,4 +1,4 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     <h1>Places list</h1>
@@ -9,7 +9,6 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Adress</th>
-                <th>Shortdescription</th>
                 <th>Description</th>
                 <th>Created</th>
                 <th>Updated</th>
@@ -22,7 +21,6 @@
                 <td><a href="{{ path('place_show', { 'id': place.id }) }}">{{ place.id }}</a></td>
                 <td>{{ place.title }}</td>
                 <td>{{ place.adress }}</td>
-                <td>{{ place.shortdescription }}</td>
                 <td>{{ place.description }}</td>
                 <td>{% if place.created %}{{ place.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if place.updated %}{{ place.updated|date('Y-m-d H:i:s') }}{% endif %}</td>

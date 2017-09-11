@@ -1,30 +1,24 @@
-{% extends '@AppBundle/Resources/views/admin/tableBase.html.twig' %}
-
- {% block table2 %}
-     <h1>Companija</h1>
-    {% endblock %}
-
+{% extends 'base.html.twig' %}
 
 {% block body %}
-   
+    <h1>Companies list</h1>
 
-  
+    <table>
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Adress</th>
+                <th>Phone</th>
+                <th>Mail</th>
                 <th>City</th>
                 <th>Faceurl</th>
-                <th>Linkedinurl</th>
                 <th>Gurl</th>
-                <th>Twiterurl</th>
                 <th>Pib</th>
                 <th>Matnumber</th>
                 <th>Bankacount</th>
                 <th>Bank</th>
-                <th>phone</th>
-                <th>mail</th>
                 <th>Id</th>
+                <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -33,31 +27,35 @@
             <tr>
                 <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.name }}</a></td>
                 <td>{{ company.adress }}</td>
+                <td>{{ company.phone }}</td>
+                <td>{{ company.mail }}</td>
                 <td>{{ company.city }}</td>
                 <td>{{ company.faceurl }}</td>
-                <td>{{ company.linkedinurl }}</td>
                 <td>{{ company.gurl }}</td>
-                <td>{{ company.twiterurl }}</td>
                 <td>{{ company.pib }}</td>
                 <td>{{ company.matnumber }}</td>
                 <td>{{ company.bankacount }}</td>
                 <td>{{ company.bank }}</td>
-                 <td>{{ company.phone }}</td>
-                <td>{{ company.mail }}</td>
                 <td>{{ company.id }}</td>
+                <td>{{ company.description }}</td>
                 <td>
-                    
-                            <a href="{{ path('company_show', { 'id': company.id }) }}"class="btn btn-info btn-circle"> <i class="fa fa-eye"></i></a>
-                        
-                            <a href="{{ path('company_edit', { 'id': company.id }) }}"class="btn btn-info btn-circle"><i class="fa fa-pencil-square-o"></i></a>
-                      
+                    <ul>
+                        <li>
+                            <a href="{{ path('company_show', { 'id': company.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    
-            <a href="{{ path('company_new') }}"class="btn btn-default">Unesi</a>
-     
+    <ul>
+        <li>
+            <a href="{{ path('company_new') }}">Create a new company</a>
+        </li>
+    </ul>
 {% endblock %}

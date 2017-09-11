@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Settresult</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Team1set</th>
+                <td>{{ settResult.team1Set }}</td>
+            </tr>
+            <tr>
+                <th>Team2set</th>
+                <td>{{ settResult.team2Set }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ settResult.id }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if settResult.created %}{{ settResult.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if settResult.updated %}{{ settResult.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('settresults_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('settresults_edit', { 'id': settResult.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

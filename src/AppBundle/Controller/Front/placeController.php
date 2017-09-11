@@ -22,13 +22,11 @@ class placeController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $places = $em->getRepository('AppBundle:place')->findAll();
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
-
+        $places = $em->getRepository('AppBundle:place')->findAll();      
+        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();       
         return $this->render('@AppBundle/Resources/views/front/allplace.html.twig', array(
-          
-            'places' => $places,
+   
+            'places' => $places,        
             'sEOs' => $sEOs,
             
         ));

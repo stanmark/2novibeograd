@@ -48,24 +48,16 @@ class League
     protected $updated;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
+     * One place has Many Gallery.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeagueGallery", mappedBy="league")
      */
-    private $url;
+    private $galerry;
     
-    /**
-     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="url")
-     * @var File
-     */
-    private $imageFile;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
-     */
-    private $alt;
+    public function __construct()
+    {
+       
+        $this->galerry = new \Doctrine\Common\Collections\ArrayCollection();
+    }
     
     
 
@@ -243,5 +235,39 @@ class League
         $this->shortdescription = $shortdescription;
 
         return $this;
+    }
+
+    /**
+     * Add galerry
+     *
+     * @param \AppBundle\Entity\LeagueGalerry $galerry
+     *
+     * @return League
+     */
+    public function addGalerry(\AppBundle\Entity\LeagueGalerry $galerry)
+    {
+        $this->galerry[] = $galerry;
+
+        return $this;
+    }
+
+    /**
+     * Remove galerry
+     *
+     * @param \AppBundle\Entity\LeagueGalerry $galerry
+     */
+    public function removeGalerry(\AppBundle\Entity\LeagueGalerry $galerry)
+    {
+        $this->galerry->removeElement($galerry);
+    }
+
+    /**
+     * Get galerry
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGalerry()
+    {
+        return $this->galerry;
     }
 }
