@@ -34,6 +34,9 @@
         <link href="{{ asset('public/Admin/admincss/custom.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/datatables.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/datatables.bootstrap.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Admin/admincss/select2.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Admin/admincss/select2-bootstrap.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Admin/admincss/login-5.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="favicon.ico" /> 
     </head>
     <!-- END HEAD -->
@@ -46,17 +49,7 @@
                 
             {% javascripts '@jq_admin'%}{# filter='uglifyjs'#}
             <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-            <script>
-                $(document).ready(function ()
-                {
-                    $('#clickmewow').click(function ()
-                    {
-                        $('#radio1003').attr('checked', 'checked');
-                    });
-                })
-            </script>
-            
+            {% endjavascripts %}        
     </body>
 
 </html>

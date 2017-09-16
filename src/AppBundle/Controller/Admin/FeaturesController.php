@@ -4,21 +4,20 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Features;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Feature controller.
  *
- * @Route("features")
+ * 
  */
 class FeaturesController extends Controller
 {
     /**
      * Lists all feature entities.
      *
-     * @Route("/", name="features_index")
-     * @Method("GET")
+     
      */
     public function indexAction()
     {
@@ -34,12 +33,11 @@ class FeaturesController extends Controller
     /**
      * Creates a new feature entity.
      *
-     * @Route("/new", name="features_new")
-     * @Method({"GET", "POST"})
+    
      */
     public function newAction(Request $request)
     {
-        $feature = new Feature();
+        $feature = new Features();
         $form = $this->createForm('AppBundle\Form\FeaturesType', $feature);
         $form->handleRequest($request);
 
@@ -60,8 +58,7 @@ class FeaturesController extends Controller
     /**
      * Finds and displays a feature entity.
      *
-     * @Route("/{id}", name="features_show")
-     * @Method("GET")
+   
      */
     public function showAction(Features $feature)
     {
@@ -76,8 +73,7 @@ class FeaturesController extends Controller
     /**
      * Displays a form to edit an existing feature entity.
      *
-     * @Route("/{id}/edit", name="features_edit")
-     * @Method({"GET", "POST"})
+    
      */
     public function editAction(Request $request, Features $feature)
     {
@@ -101,8 +97,7 @@ class FeaturesController extends Controller
     /**
      * Deletes a feature entity.
      *
-     * @Route("/{id}", name="features_delete")
-     * @Method("DELETE")
+    
      */
     public function deleteAction(Request $request, Features $feature)
     {
@@ -121,9 +116,7 @@ class FeaturesController extends Controller
     /**
      * Creates a form to delete a feature entity.
      *
-     * @param Features $feature The feature entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     
      */
     private function createDeleteForm(Features $feature)
     {

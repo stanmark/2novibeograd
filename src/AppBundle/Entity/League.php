@@ -163,88 +163,14 @@ class League
         $this->updated = new \DateTime("now");
     }
 
-    
-    
-    public function setImageFile(File $url = null) {
-        $this->imageFile = $url;
-        return $this;
-    }
-
-    public function getImageFile() {
-        return $this->imageFile;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return League
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return League
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-       
-
-    /**
-     * Set shortdescription
-     *
-     * @param string $shortdescription
-     *
-     * @return teamMember
-     */
-    public function setShortdescription($shortdescription)
-    {
-        $this->shortdescription = $shortdescription;
-
-        return $this;
-    }
-
     /**
      * Add galerry
      *
-     * @param \AppBundle\Entity\LeagueGalerry $galerry
+     * @param \AppBundle\Entity\LeagueGallery $galerry
      *
      * @return League
      */
-    public function addGalerry(\AppBundle\Entity\LeagueGalerry $galerry)
+    public function addGalerry(\AppBundle\Entity\LeagueGallery $galerry)
     {
         $this->galerry[] = $galerry;
 
@@ -254,9 +180,9 @@ class League
     /**
      * Remove galerry
      *
-     * @param \AppBundle\Entity\LeagueGalerry $galerry
+     * @param \AppBundle\Entity\LeagueGallery $galerry
      */
-    public function removeGalerry(\AppBundle\Entity\LeagueGalerry $galerry)
+    public function removeGalerry(\AppBundle\Entity\LeagueGallery $galerry)
     {
         $this->galerry->removeElement($galerry);
     }

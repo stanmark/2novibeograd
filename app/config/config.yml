@@ -18,7 +18,7 @@ framework:
     form: ~
     csrf_protection: ~
     validation: { enable_annotations: true }
-    #serializer: { enable_annotations: true }
+    serializer: { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale: '%locale%'
@@ -160,6 +160,19 @@ assetic:
                 -  '@AppBundle/Resources/skin/admin/jss/datatables.bootstrap.js'
                 -  '@AppBundle/Resources/skin/admin/jss/table-datatables-scroller.min.js'
                 -  '@AppBundle/Resources/skin/admin/jss/table-datatables-responsive.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/jquery.repeater.min.js'               
+                -  '@AppBundle/Resources/skin/admin/jss/bootstrap-datepicker.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/form-repeater.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/components-date-time-pickers.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/components-select2.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/select2.full.min.js'   
+                -  '@AppBundle/Resources/skin/admin/jss/jquery.validate.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/additional-methods.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/jquery.backstretch.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/login-5.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/respond.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/excanvas.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/ie8.fix.min.js'
 
 fos_user:
     db_driver: orm
@@ -173,3 +186,4 @@ fos_user:
             from_email:
                 address: "sasam09@gmail.com"
                 sender_name: "JOB lider"
+                

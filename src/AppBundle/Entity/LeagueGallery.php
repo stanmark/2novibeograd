@@ -50,7 +50,7 @@ class LeagueGallery
      * @var \AppBundle\Entity\League
      *
      * Many Galerry have One member.
-     * @ORM\ManyToOne(targetEntity="league", inversedBy="galerry")
+     * @ORM\ManyToOne(targetEntity="League", inversedBy="galerry")
      * @ORM\JoinColumn(name="league_id", referencedColumnName="id")
      */
      private $league;

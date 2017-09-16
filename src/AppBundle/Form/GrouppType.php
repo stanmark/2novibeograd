@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class GrouppType extends AbstractType
 {
@@ -13,7 +15,18 @@ class GrouppType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('groupp')->add('created')->add('updated')->add('league');
+        $builder
+                ->add('groupp', TextType::class, [
+                    'label' => 'Grupa',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]])
+                ->add('league', EntityType::class, [
+                    'class' => \AppBundle\Entity\League::class,
+                    'choice_label' => 'league',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]]);
     }
     
     /**

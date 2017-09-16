@@ -50,6 +50,12 @@ class Game
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+    
+    /**
+     * One place has Many Gallery.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SettResults", mappedBy="idGame")
+     */
+    private $settresults;
 
     
     /**
@@ -108,7 +114,12 @@ class Game
      */
     protected $updated;
 
-
+    public function __construct()
+    {
+       
+        $this->game = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
 
     /**
      * Set result
@@ -416,6 +427,42 @@ class Game
         $this->place = $place;
 
         return $this;
+    }
+
+    
+
+    /**
+     * Add settresult
+     *
+     * @param \AppBundle\Entity\SettResults $settresult
+     *
+     * @return Game
+     */
+    public function addSettresult(\AppBundle\Entity\SettResults $settresult)
+    {
+        $this->settresults[] = $settresult;
+
+        return $this;
+    }
+
+    /**
+     * Remove settresult
+     *
+     * @param \AppBundle\Entity\SettResults $settresult
+     */
+    public function removeSettresult(\AppBundle\Entity\SettResults $settresult)
+    {
+        $this->settresults->removeElement($settresult);
+    }
+
+    /**
+     * Get settresults
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSettresults()
+    {
+        return $this->settresults;
     }
 
     /**

@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class SEOType extends AbstractType
 {
@@ -13,7 +15,20 @@ class SEOType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('description')->add('titletag')->add('title')->add('created')->add('updated');
+        $builder
+                ->add('description', CKEditorType::class, [
+                    'label' => 'Opis'
+                    ])
+                ->add('titletag', TextType::class, [
+                    'label' => 'Naziv naslova',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]])
+                ->add('title', TextType::class, [
+                    'label' => 'Naslov ne dirati ja unosim',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]]);
     }
     
     /**

@@ -1,9 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
-    <h1>Settresults list</h1>
-
-    <table>
+{% block thead %}
         <thead>
             <tr>
                 <th>Team1set</th>
@@ -14,7 +11,9 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        {% endblock %}
+
+{% block tbody %}
         {% for settResult in settResults %}
             <tr>
                 <td><a href="{{ path('settresults_show', { 'id': settResult.id }) }}">{{ settResult.team1Set }}</a></td>

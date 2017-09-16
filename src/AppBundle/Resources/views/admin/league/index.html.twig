@@ -1,9 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
-    <h1>Leagues list</h1>
-
-    <table>
+{% block thead %}
         <thead>
             <tr>
                 <th>League</th>
@@ -13,7 +10,9 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        {% endblock %}
+
+{% block tbody %}
         {% for league in leagues %}
             <tr>
                 <td><a href="{{ path('league_show', { 'id': league.id }) }}">{{ league.league }}</a></td>

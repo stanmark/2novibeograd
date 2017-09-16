@@ -1,9 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
-    <h1>Teammembers list</h1>
-
-    <table>
+{% block thead %}
         <thead>
             <tr>
                 <th>Id</th>
@@ -21,7 +18,9 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        {% endblock %}
+
+{% block tbody %}
         {% for teamMember in teamMembers %}
             <tr>
                 <td><a href="{{ path('teammember_show', { 'id': teamMember.id }) }}">{{ teamMember.id }}</a></td>

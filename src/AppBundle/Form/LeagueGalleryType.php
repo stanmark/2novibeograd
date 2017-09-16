@@ -5,6 +5,9 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class LeagueGalleryType extends AbstractType
 {
@@ -13,7 +16,20 @@ class LeagueGalleryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('url')->add('alt')->add('created')->add('updated')->add('league');
+        $builder
+                ->add('imageFile', VichImageType::class, ['label' => 'Slika'])
+                ->add('alt', TextType::class, [
+                    'label' => 'Alternativni naziv slike',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]])
+               
+                ->add('league', EntityType::class, [
+                    'class' => \AppBundle\Entity\League::class,
+                    'choice_label' => 'league',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]]);
     }
     
     /**

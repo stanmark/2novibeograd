@@ -1,9 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
-    <h1>Galerries list</h1>
-
-    <table>
+{% block thead %}
         <thead>
             <tr>
                 <th>Id</th>
@@ -14,14 +11,16 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+       {% endblock %}
+
+{% block tbody %}
         {% for galerry in galerries %}
             <tr>
                 <td><a href="{{ path('galerry_show', { 'id': galerry.id }) }}">{{ galerry.id }}</a></td>
                 <td>{{ galerry.url }}</td>
                 <td>{{ galerry.alt }}</td>
-                <td>{% if galerry.created %}{{ galerry.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if galerry.updated %}{{ galerry.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if galerry.created %}{{ galerry.created|date('d-m-Y H:i:s') }}{% endif %}</td>
+                <td>{% if galerry.updated %}{{ galerry.updated|date('d-m-Y H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>

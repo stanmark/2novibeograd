@@ -1,9 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
-    <h1>Times list</h1>
-
-    <table>
+{% block thead %}
         <thead>
             <tr>
                 <th>Id</th>
@@ -16,7 +13,9 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+       {% endblock %}
+
+{% block tbody %}
         {% for time in times %}
             <tr>
                 <td><a href="{{ path('time_show', { 'id': time.id }) }}">{{ time.id }}</a></td>

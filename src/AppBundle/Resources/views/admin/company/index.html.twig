@@ -1,9 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
-    <h1>Companies list</h1>
-
-    <table>
+{% block thead %}
+   
         <thead>
             <tr>
                 <th>Name</th>
@@ -22,7 +20,9 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+{% endblock %}
+
+{% block tbody %}
         {% for company in companies %}
             <tr>
                 <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.name }}</a></td>
@@ -51,7 +51,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+   
 
     <ul>
         <li>

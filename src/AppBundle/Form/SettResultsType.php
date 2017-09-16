@@ -5,6 +5,8 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class SettResultsType extends AbstractType
 {
@@ -13,7 +15,23 @@ class SettResultsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('team1Set')->add('team2Set')->add('created')->add('updated')->add('idGame');
+        $builder
+                ->add('team1Set', TextType::class, [
+                    'label' => 'Team 1 set',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]])
+                ->add('team2Set', TextType::class, [
+                    'label' => 'Team dva set',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]])                
+                ->add('idGame', EntityType::class, [
+                    'class' => \AppBundle\Entity\Game::class,
+                    'choice_label' => 'id',
+                    'attr' => [
+                        'class' => 'form-control input-circle-right'
+            ]]);
     }
     
     /**

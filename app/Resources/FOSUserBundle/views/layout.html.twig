@@ -1,28 +1,61 @@
+<head>
+<link href="{{ asset('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/font-awesome.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/simple-line-icons.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/bootstrap.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/bootstrap-switch.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/select2.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/select2-bootstrap.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/components.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/plugins.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+<link href="{{ asset('public/Admin/admincss/login-5.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+</head>
 
-{% block menu %}
-    <!-- Custom Css for login -->
-           <link href="{{ asset('public/Admin/css/style.css')}}" rel="stylesheet">
-{% endblock  %}
-
-
-{% block content %}
-<div class="container">                                   
-
-
-{% if app.request.hasPreviousSession %}
-    {% for type, messages in app.session.flashbag.all() %}
-        {% for message in messages %}
-            <div class="flash-{{ type }}">
-                {{ message }}
+<body class=" login">
+    <!-- BEGIN : LOGIN PAGE 5-1 -->
+    <div class="user-login-5">
+        <div class="row bs-reset">
+            <div class="col-md-6 bs-reset mt-login-5-bsfix">
+                <div class="login-bg" style="background-image:url(../images/login.jpg)">
+                    <img class="login-logo" src="" /> 
+                </div>
             </div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
+            <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
+                <div class="login-content"> 
+                    
+                    
+                    {% if app.request.hasPreviousSession %}
+                        {% for type, messages in app.session.flashbag.all() %}
+                            {% for message in messages %}
+                                <div class="flash-{{ type }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
 
-<div>
-    {% block fos_user_content %}
-    {% endblock fos_user_content %}
-</div>
-</div>
-{% endblock  %}
+                   
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
+                    
+                    
+                  
+                </div>
+                    
+                    
+            </div>
+        </div>
+    </div>
+   
+    {% javascripts '@jq_admin'%}{# filter='uglifyjs'#}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %} 
+ 
+</body>
+
+
+
+
+
+
 

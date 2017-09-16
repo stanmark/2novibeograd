@@ -13,7 +13,12 @@ class TimeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('date')->add('day')->add('begin')->add('end')->add('created')->add('updated')->add('place');
+        $builder
+                ->add('date')
+                ->add('day')
+                ->add('begin')
+                ->add('end')             
+                ->add('place');
     }
     
     /**

@@ -4,21 +4,19 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\SettResults;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Settresult controller.
  *
- * @Route("settresults")
+ * 
  */
 class SettResultsController extends Controller
 {
     /**
      * Lists all settResult entities.
      *
-     * @Route("/", name="settresults_index")
-     * @Method("GET")
+   
      */
     public function indexAction()
     {
@@ -34,12 +32,11 @@ class SettResultsController extends Controller
     /**
      * Creates a new settResult entity.
      *
-     * @Route("/new", name="settresults_new")
-     * @Method({"GET", "POST"})
+    
      */
     public function newAction(Request $request)
     {
-        $settResult = new Settresult();
+        $settResult = new Settresults();
         $form = $this->createForm('AppBundle\Form\SettResultsType', $settResult);
         $form->handleRequest($request);
 
@@ -60,8 +57,7 @@ class SettResultsController extends Controller
     /**
      * Finds and displays a settResult entity.
      *
-     * @Route("/{id}", name="settresults_show")
-     * @Method("GET")
+ 
      */
     public function showAction(SettResults $settResult)
     {
@@ -76,8 +72,7 @@ class SettResultsController extends Controller
     /**
      * Displays a form to edit an existing settResult entity.
      *
-     * @Route("/{id}/edit", name="settresults_edit")
-     * @Method({"GET", "POST"})
+   
      */
     public function editAction(Request $request, SettResults $settResult)
     {
@@ -101,8 +96,7 @@ class SettResultsController extends Controller
     /**
      * Deletes a settResult entity.
      *
-     * @Route("/{id}", name="settresults_delete")
-     * @Method("DELETE")
+
      */
     public function deleteAction(Request $request, SettResults $settResult)
     {
@@ -121,9 +115,7 @@ class SettResultsController extends Controller
     /**
      * Creates a form to delete a settResult entity.
      *
-     * @param SettResults $settResult The settResult entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     
      */
     private function createDeleteForm(SettResults $settResult)
     {

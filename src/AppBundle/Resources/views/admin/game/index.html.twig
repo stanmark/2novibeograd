@@ -1,49 +1,68 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table+.html.twig' %}
 
-{% block body %}
-    <h1>Games list</h1>
+{% block thead %}
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Bodteam1</th>
+            <th>Bodteam2</th>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Bodteam1</th>
-                <th>Bodteam2</th>
-                <th>Setteam1</th>
-                <th>Setteam2</th>
-                <th>Id</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+            {% for game in games %}
+                {% for game in game.settresults %}  
+                    <th class="none">Setteam1</th>
+                    <th class="none">Setteam2</th>  
+                    {% endfor %}  
+                {% endfor %}  
+
+
+            <th>Created</th>
+            <th>Updated</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+{% endblock %}
+
+{% block tbody %}
+    <tbody>
         {% for game in games %}
             <tr>
+                <td>{{ game.id }}</td>
                 <td><a href="{{ path('game_show', { 'id': game.id }) }}">{{ game.bodTeam1 }}</a></td>
                 <td>{{ game.bodTeam2 }}</td>
-                <td>{{ game.setTeam1 }}</td>
-                <td>{{ game.setTeam2 }}</td>
-                <td>{{ game.id }}</td>
-                <td>{% if game.created %}{{ game.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if game.updated %}{{ game.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('game_show', { 'id': game.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('game_edit', { 'id': game.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+
+                {% for game in game.settresults %}  
+                    <td>{{ game.team1Set }}</td>
+                    <td>{{ game.team2Set }}</td>
+                {% endfor %}   
+
+
+                <td>{% if game.created %}{{ game.created|date('d-m-Y H:i:s') }}{% endif %}</td>
+                <td>{% if game.updated %}{{ game.updated|date('d-m-Y H:i:s') }}{% endif %}</td>               
+                <td>   
+                    <div class="btn-group pull-right">
+                        <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Tools
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="{{ path('game_show', { 'id': game.id }) }}">
+                                    <i class="fa fa-view"></i> Prikazi </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('game_edit', { 'id': game.id }) }}">
+                                    <i class="fa fa-edit"></i> Edit </a>
+                            </li>                                                        
+                        </ul>
+                    </div>              
+                </td>           
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <ul>
-        <li>
-            <a href="{{ path('game_new') }}">Create a new game</a>
-        </li>
-    </ul>
+<ul>
+    <li>
+        <a href="{{ path('game_new') }}">Create a new game</a>
+    </li>
+</ul>
 {% endblock %}

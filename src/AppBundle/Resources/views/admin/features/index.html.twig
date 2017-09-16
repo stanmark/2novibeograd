@@ -1,9 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
-    <h1>Features list</h1>
-
-    <table>
+{% block thead %}
         <thead>
             <tr>
                 <th>Id</th>
@@ -11,7 +8,9 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+      {% endblock %}
+
+{% block tbody %}
         {% for feature in features %}
             <tr>
                 <td><a href="{{ path('features_show', { 'id': feature.id }) }}">{{ feature.id }}</a></td>

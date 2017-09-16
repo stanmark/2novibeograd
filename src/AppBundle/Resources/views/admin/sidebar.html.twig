@@ -16,10 +16,10 @@
                 <a href="{{ path('admin_homepage') }}" class="nav-link nav-toggle">
                     <i class="icon-home"></i>
                     <span class="title">Admin</span>
-                   
+
                     <span class="arrow open"></span>
                 </a>
-                
+
             </li>
             <li class="nav-item start active open ">
                 <a href="{{ path('seo_index') }}" class="nav-link nav-toggle">
@@ -35,12 +35,26 @@
                     <span class="arrow open"></span>
                 </a>            
             </li>
-             <li class="nav-item start active open ">
-                <a href="{{ path('teammember_index') }}" class="nav-link nav-toggle">
-                    <i class="icon-settings"></i>
-                    <span class="title">Tim trenera</span>
-                    <span class="arrow open"></span>
-                </a>            
+
+
+            <li class="nav-item start active open">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-puzzle"></i>
+                    <span class="title">Timtrenera</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ path('teammember_index') }}" class="nav-link ">
+                            <span class="title">Treneri</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ path('membergallery_index') }}" class="nav-link ">
+                            <span class="title">Galerija trenera</span>                           
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item start active open ">
                 <a href="{{ path('place_index') }}" class="nav-link nav-toggle">
@@ -56,14 +70,26 @@
                     <span class="arrow open"></span>
                 </a>            
             </li>
-            <li class="nav-item start active open ">
-                <a href="{{ path('pricing_index') }}" class="nav-link nav-toggle">
-                    <i class="icon-settings"></i>
+
+            <li class="nav-item start active open">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-puzzle"></i>
                     <span class="title">Cenovnik</span>
-                    <span class="arrow open"></span>
-                </a>            
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ path('pricing_index') }}" class="nav-link ">
+                            <span class="title">Cene</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ path('features_index') }}" class="nav-link ">
+                            <span class="title">Pogodnosti</span>                           
+                        </a>
+                    </li>
+                </ul>
             </li>
-        
 
             <li class="nav-item start active open">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -78,11 +104,41 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
+                        <a href="{{ path('groupp_index') }}" class="nav-link ">
+                            <span class="title">Grupe</span>                           
+                        </a>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="{{ path('team_index') }}" class="nav-link ">
+                            <span class="title">Timovi</span>                           
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
                         <a href="{{ path('game_index') }}" class="nav-link ">
                             <span class="title">Utakmice</span>                           
                         </a>
                     </li>
+                    <li class="nav-item  ">
+                        <a href="{{ path('settresults_index') }}" class="nav-link ">
+                            <span class="title">Rezultat u setovima</span>                           
+                        </a>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="{{ path('leaguegallery_index') }}" class="nav-link ">
+                            <span class="title">Glerija lige</span>                           
+                        </a>
+                    </li>
                 </ul>
+
+            <li class="nav-item start active open ">
+                <a href="{{ path('time_index') }}" class="nav-link nav-toggle">
+                    <i class="icon-settings"></i>
+                    <span class="title">Vreme</span>
+                    <span class="arrow open"></span>
+                </a>            
+            </li>
             </li>
         </ul>
         <!-- END SIDEBAR MENU -->
