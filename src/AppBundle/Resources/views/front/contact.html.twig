@@ -1,7 +1,7 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
 {% block body %}
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
-
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
     <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
          style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
         <div class="c-breadcrumbs-wrapper">
@@ -126,9 +126,10 @@
     <!-- END: CONTENT/CONTACT/FEEDBACK-2 -->
 
     <!-- END: PAGE CONTENT -->
-</div>
+
 <!-- END: PAGE CONTAINER -->
-</div>
+
 <!-- END: PAGE CONTAINER -->
+</body>
 {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}     
