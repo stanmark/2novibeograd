@@ -1,52 +1,48 @@
 {% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
 {% block body %}
-    {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
-    <!-- BEGIN CONTAINER -->
-    <div class="page-container">
-        {% include '@AppBundle/Resources/views/admin/sidebar.html.twig' %}
-        <!-- BEGIN CONTENT -->
-        <div class="page-content-wrapper">
-            <!-- BEGIN CONTENT BODY -->
-            <div class="page-content">
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
+        <div class="clearfix"> </div>
+        {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
 
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            {% include '@AppBundle/Resources/views/admin/sidebar.html.twig' %}
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
 
-                <div class="row">
-                    <div class="col-md-12 ">
-                        <!-- BEGIN SAMPLE FORM PORTLET-->
-                        <div class="portlet light ">
-                            <div class="portlet-title">
-                                <div class="caption font-red-sunglo">
-                                    <i class="icon-settings font-red-sunglo"></i>
-                                    <span class="caption-subject bold uppercase"> Unos</span>
-                                </div>                
-                            </div>
-                            <div class="portlet-body form">
-                               
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <!-- BEGIN SAMPLE FORM PORTLET-->
+                            <div class="portlet light ">
+                                <div class="portlet-title">
+                                    <div class="caption font-normal-sunglo">
+                                        <i class="icon-settings font-red-sunglo"></i>
+                                        <span class="caption-subject bold uppercase"> Unos</span>
+                                    </div>                
+                                </div>
+                                <div class="portlet-body form">
+
                                     <div class="form-body">
                                         {% block form %}
-                                            {% endblock %}                         
+                                        {% endblock %}                         
                                     </div>                                  
-                              
+
+                                </div>
                             </div>
+
                         </div>
 
                     </div>
 
                 </div>
-
             </div>
 
-
-
-
-
-
-
-
-
-
-            <!-- END CONTAINER -->
-            {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %} 
-        {% endblock %}
+        </div>
+        <!-- END CONTAINER -->
+        {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %} 
+    </body>
+{% endblock %}
 
 

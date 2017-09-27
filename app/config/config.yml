@@ -37,6 +37,12 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+#        - bootstrap_3_layout.html.twig
+        - bootstrap_3_horizontal_layout.html.twig
+#        - form_div_layout.html.twig
+#        - form_table_layout.html.twig
+#        - foundation_5_layout.html.twig
 
 # Doctrine Configuration
 doctrine:
@@ -99,26 +105,82 @@ assetic:
         jq_front:
             inputs:
                 - '@AppBundle/Resources/skin/front/js/jquery.min.js' 
-                - '@AppBundle/Resources/skin/front/js/jquery-migrate.min.js'
+#                - '@AppBundle/Resources/skin/front/js/jquery-migrate-3.0.0.min.js'  
+                - '@AppBundle/Resources/skin/front/js/app.js'
                 - '@AppBundle/Resources/skin/front/js/bootstrap.min.js'
+                - '@AppBundle/Resources/skin/front/js/bootstrap-slider.js'  
+                - '@AppBundle/Resources/skin/front/js/components.js'
+                - '@AppBundle/Resources/skin/front/js/components-shop.js'              
+                - '@AppBundle/Resources/skin/front/js/isotope.pkgd.min.js'
+                - '@AppBundle/Resources/skin/front/js/imagesloaded.pkgd.min.js'
+                - '@AppBundle/Resources/skin/front/js/isotope-grid.js'                              
+                - '@AppBundle/Resources/skin/front/js/jquery-migrate.min.js'                
                 - '@AppBundle/Resources/skin/front/js/jquery.easing.min.js'
-                - '@AppBundle/Resources/skin/front/js/wow.min.js'
-                - '@AppBundle/Resources/skin/front/js/reveal-animate.js'
                 - '@AppBundle/Resources/skin/front/js/jquery.cubeportfolio.min.js'
-                - '@AppBundle/Resources/skin/front/js/owl.carousel.min.js'
                 - '@AppBundle/Resources/skin/front/js/jquery.counterup.min.js'
                 - '@AppBundle/Resources/skin/front/js/jquery.waypoints.min.js'
                 - '@AppBundle/Resources/skin/front/js/jquery.fancybox.pack.js'
                 - '@AppBundle/Resources/skin/front/js/jquery.smooth-scroll.js'
-                - '@AppBundle/Resources/skin/front/js/bootstrap-slider.js'
-                - '@AppBundle/Resources/skin/front/js/js.cookie.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.themepunch.revolution.min.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.themepunch.tools.min.js'
+                - '@AppBundle/Resources/skin/admin/jss/js.cookie.min.js'                
+                - '@AppBundle/Resources/skin/front/js/owl.carousel.min.js'
+                - '@AppBundle/Resources/skin/front/js/packery-mode.pkgd.min.js'               
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.slideanims.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.layeranimation.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.navigation.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.parallax.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.video.min.js'
+                - '@AppBundle/Resources/skin/front/js/reveal-animate.js'               
+                - '@AppBundle/Resources/skin/front/js/slider-8.js'
+                - '@AppBundle/Resources/skin/front/js/typed.min.js'              
+                - '@AppBundle/Resources/skin/front/js/wow.min.js'
+                
+        jq_front_home:
+            inputs:   
+#                 <!-- BEGIN: CORE PLUGINS -->
+                - '@AppBundle/Resources/skin/front/js/jquery.min.js' 
+                - '@AppBundle/Resources/skin/front/js/jquery-migrate.min.js' 
+                - '@AppBundle/Resources/skin/front/js/bootstrap.min.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.easing.min.js'
+                - '@AppBundle/Resources/skin/front/js/wow.min.js'
+                - '@AppBundle/Resources/skin/front/js/reveal-animate.js' 
+#                <!-- END: CORE PLUGINS -->
+#                <!-- BEGIN: LAYOUT PLUGINS -->
+                - '@AppBundle/Resources/skin/front/js/jquery.themepunch.revolution.min.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.themepunch.tools.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.slideanims.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.layeranimation.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.navigation.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.parallax.min.js'
+                - '@AppBundle/Resources/skin/front/js/revolution.extension.video.min.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.cubeportfolio.min.js'
+                - '@AppBundle/Resources/skin/front/js/owl.carousel.min.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.waypoints.min.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.counterup.min.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.fancybox.pack.js'
+                - '@AppBundle/Resources/skin/front/js/jquery.smooth-scroll.js'
+                - '@AppBundle/Resources/skin/front/js/typed.min.js' 
+                - '@AppBundle/Resources/skin/front/js/bootstrap-slider.js' 
+                - '@AppBundle/Resources/skin/admin/jss/js.cookie.min.js'   
+#                <!-- END: LAYOUT PLUGINS -->
+#                <!-- BEGIN: THEME SCRIPTS -->
                 - '@AppBundle/Resources/skin/front/js/components.js'
-                - '@AppBundle/Resources/skin/front/js/components-shop.js'
+                - '@AppBundle/Resources/skin/front/js/components-shop.js' 
                 - '@AppBundle/Resources/skin/front/js/app.js'
-                 
+#                <!-- END: THEME SCRIPTS -->
+#               <!-- BEGIN: PAGE SCRIPTS -->
+                - '@AppBundle/Resources/skin/front/js/slider-8.js'
+                - '@AppBundle/Resources/skin/front/js/isotope.pkgd.min.js'
+                - '@AppBundle/Resources/skin/front/js/imagesloaded.pkgd.min.js'
+                - '@AppBundle/Resources/skin/front/js/packery-mode.pkgd.min.js'
+                - '@AppBundle/Resources/skin/front/js/isotope-grid.js'    
+#               <!-- END: PAGE SCRIPTS -->
+                      
         jq_admin:
             inputs:  
-                -  '@AppBundle/Resources/skin/admin/jss/jquery.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/jquery-3.2.1.min.js'
+                -  '@AppBundle/Resources/skin/admin/jss/jquery-migrate-3.0.0.min.js'
                 -  '@AppBundle/Resources/skin/admin/jss/js.cookie.min.js'
                 -  '@AppBundle/Resources/skin/admin/jss/jquery.blockui.min.js'            
                 -  '@AppBundle/Resources/skin/admin/jss/bootstrap.min.js'
@@ -173,17 +235,18 @@ assetic:
                 -  '@AppBundle/Resources/skin/admin/jss/respond.min.js'
                 -  '@AppBundle/Resources/skin/admin/jss/excanvas.min.js'
                 -  '@AppBundle/Resources/skin/admin/jss/ie8.fix.min.js'
-
+                
+                
 fos_user:
-    db_driver: orm
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: AppBundle\Entity\User
     from_email:
         address: "sasam09@gmail.com"
-        sender_name: "JOBlider"
+        sender_name: "JOBlider"   
     registration:
         confirmation:
             from_email:
                 address: "sasam09@gmail.com"
-                sender_name: "JOB lider"
+                sender_name: "JOB lider"    
                 

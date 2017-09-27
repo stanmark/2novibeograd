@@ -379,6 +379,32 @@ time_delete:
     defaults: { _controller: "AppBundle:Admin/Time:delete" }
     methods:  DELETE
     
+homeslider_index:
+    path:     /homeslider/
+    defaults: { _controller: "AppBundle:Admin/HomeSlider:index" }
+    methods:  GET
+
+homeslider_show:
+    path:     /homeslider/{id}/show
+    defaults: { _controller: "AppBundle:Admin/HomeSlider:show" }
+    methods:  GET
+
+homeslider_new:
+    path:     /homeslider/new
+    defaults: { _controller: "AppBundle:Admin/HomeSlider:new" }
+    methods:  [GET, POST]
+
+homeslider_edit:
+    path:     /homeslider/{id}/edit
+    defaults: { _controller: "AppBundle:Admin/HomeSlider:edit" }
+    methods:  [GET, POST]
+
+homeslider_delete:
+    path:     /homeslider/{id}/delete
+    defaults: { _controller: "AppBundle:Admin/HomeSlider:delete" }
+    methods:  DELETE
+    
+    
     
     
     

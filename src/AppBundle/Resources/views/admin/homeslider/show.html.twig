@@ -1,0 +1,54 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+
+
+
+ {% block thead %}
+         <h1>Homeslider</h1>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ homeSlider.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ homeSlider.url }}</td>
+            </tr>
+            <tr>
+                <th>Alt</th>
+                <td>{{ homeSlider.alt }}</td>
+            </tr>
+            <tr>
+                <th>Maintitle</th>
+                <td>{{ homeSlider.mainTitle }}</td>
+            </tr>
+            <tr>
+                <th>Subtitle</th>
+                <td>{{ homeSlider.subTitle }}</td>
+            </tr>
+            <tr>
+                <th>Subtitledescription</th>
+                <td>{{ homeSlider.subTitleDescription }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if homeSlider.created %}{{ homeSlider.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if homeSlider.updated %}{{ homeSlider.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+            <a href="{{ path('homeslider_index') }}">Back to the list</a>
+    
+            <a href="{{ path('homeslider_edit', { 'id': homeSlider.id }) }}">Edit</a>
+      
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

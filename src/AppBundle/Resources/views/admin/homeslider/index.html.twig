@@ -1,0 +1,52 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+
+
+{% block thead %}
+        <thead>
+            <tr>
+                <th>Id</th>
+               
+                <th>Alt</th>
+                <th>Maintitle</th>
+                <th>Subtitle</th>
+                <th>Subtitledescription</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+       {% endblock %}
+
+{% block tbody %}
+        {% for homeSlider in homeSliders %}
+            <tr>
+                <td><a href="{{ path('homeslider_show', { 'id': homeSlider.id }) }}">{{ homeSlider.id }}</a></td>
+               
+                <td>{{ homeSlider.alt }}</td>
+                <td>{{ homeSlider.mainTitle }}</td>
+                <td>{{ homeSlider.subTitle }}</td>
+                <td>{{ homeSlider.subTitleDescription }}</td>
+                <td>{% if homeSlider.created %}{{ homeSlider.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if homeSlider.updated %}{{ homeSlider.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('homeslider_show', { 'id': homeSlider.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('homeslider_edit', { 'id': homeSlider.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('homeslider_new') }}">Create a new homeSlider</a>
+        </li>
+    </ul>
+{% endblock %}

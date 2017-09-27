@@ -41,15 +41,15 @@
     </head>
     <!-- END HEAD -->
 
-    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">
+   {# <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">#}
        
         {% block body %}
         {% endblock %}
 
                 
-            {% javascripts '@jq_admin'%}{# filter='uglifyjs'#}
+            {% javascripts '@jq_admin'%}{ filter='uglifyjs'}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}        
-    </body>
+    {#</body>#}
 
 </html>

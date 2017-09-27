@@ -1,3 +1,8 @@
+home:
+    path:     /
+    defaults: { _controller: "AppBundle:Front/Home:index" }
+    methods:  GET
+
 trener_detail:
     path:     /trener/{id}/{name}/
     defaults: { _controller: "AppBundle:Front/teamMember:detail" }

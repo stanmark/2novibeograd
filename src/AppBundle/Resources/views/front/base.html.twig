@@ -1,67 +1,82 @@
-<!DOCTYPE html>
 
-<html lang="en"  >
 
     <head>
 
-        <link href="{{ asset('public/Front/csss/animate.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/bootstrap-social.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/components.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/cubeportfolio.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/custom.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/default.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/jquery.fancybox.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/owl.carousel.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/plugins.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/slider.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/socicon.css')}}" rel="stylesheet" type="text/css"/>
+        {% block SEO %}
+
+        {% endblock %}
         
+        {% block GlobalMandatoryStyles %}
+            
+            <link href="{{ asset ('http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all')}}"rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/socicon.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/bootstrap-social.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/animate.min.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
         
-       {# {% stylesheets 'public/Front/csss/*' filter='cssrewrite' filter='uglifycss' %}
-        <link rel="stylesheet" href="{{ asset_url }}" /> 
-        {% endstylesheets %}#}
+        {% endblock %}
+        
+        {% block BasePlugins %}
+            
+            <link href="{{ asset('public/Front/csss/settings.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/layers.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/navigation.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/cubeportfolio.min.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/owl.carousel.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/jquery.fancybox.css')}}" rel="stylesheet" type="text/css"/>
+            <link href="{{ asset('public/Front/csss/slider.css')}}" rel="stylesheet" type="text/css"/>
 
-  {#      <link rel="icon" {% image '@AppBundle/Resources/skin/images/joblider-logo.png' %}
-    <img src="{{ asset_url }}"  />
-    {% endimage %} #}
+        {% endblock %}
+        
+        {% block ThemeStyles %}
+            <link href="{{ asset('public/Front/csss/plugins.css')}}" rel="stylesheet" type="text/css"/>
+             <link href="{{ asset('public/Front/csss/components.css')}}" rel="stylesheet" type="text/css"/>
+             <link href="{{ asset('public/Front/csss/default.css')}}" rel="stylesheet" type="text/css"/>
+             <link href="{{ asset('public/Front/csss/custom.css')}}" rel="stylesheet" type="text/css"/>
+        {% endblock %}
+        
 
+      {#
+        <link href="{{ asset('public/Front/csss/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/custom-rtl.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Front/csss/default-rtl.css')}}" rel="stylesheet" type="text/css"/>#}
 
+        {# {% stylesheets 'public/Front/csss/*' filter='cssrewrite' filter='uglifycss' %}
+         <link rel="stylesheet" href="{{ asset_url }}" /> 
+         {% endstylesheets %}#}
 
-   <link href="{{ asset ('http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all')}}"rel="stylesheet" type="text/css"/>
+        {#      <link rel="icon" {% image '@AppBundle/Resources/skin/images/joblider-logo.png' %}
+          <img src="{{ asset_url }}"  />
+          {% endimage %} #}
+
 
 
         {#  <link rel="hortcut icon" {% image '@AppBundle/Resources/skin/images/joblider-logo.png' %}
           <img src="{{ asset_url }}"  />
     {% endimage %} #}
 
-</head>
+    </head>
+    
 
 
 
 
-{% block body %}
+    {% block body %}
 
-{% endblock %}  
+    {% endblock %}  
 
     <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
     <div class="c-layout-go2top">
         <i class="icon-arrow-up"></i>
     </div><!-- END: LAYOUT/FOOTERS/GO2TOP -->
 
-    {% javascripts '@jq_front' filter='uglifyjs' %}
+    
+    
+    {% javascripts '@jq_front' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
-    <script>
-        $(document).ready(function () {
-            App.init(); // init core    
-        });
-    </script>
-    <!-- END: THEME SCRIPTS -->
 
-    <!-- END: LAYOUT/BASE/BOTTOM -->
 
-</html>
 
