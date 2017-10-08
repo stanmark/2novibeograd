@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Game
  *
- * @ORM\Table(name="game", indexes={ @ORM\Index(name="game_ibfk_3", columns={"groupp_id"}), @ORM\Index(name="team1_id", columns={"team1_id"}), @ORM\Index(name="team2_id", columns={"team2_id"})})
+ * @ORM\Table(name="game")
  * @ORM\Entity
  */
 class Game
@@ -68,17 +68,6 @@ class Game
      */
     private $place;
 
- 
-
-    /**
-     * @var \AppBundle\Entity\Groupp
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="groupp_id", referencedColumnName="id")
-     * })
-     */
-    private $groupp;
 
     /**
      * @var \AppBundle\Entity\Team
@@ -306,46 +295,7 @@ class Game
      *
      * @return Game
      */
-    public function setLeague(\AppBundle\Entity\League $league = null)
-    {
-        $this->league = $league;
-
-        return $this;
-    }
-
-    /**
-     * Get league
-     *
-     * @return \AppBundle\Entity\League
-     */
-    public function getLeague()
-    {
-        return $this->league;
-    }
-
-    /**
-     * Set groupp
-     *
-     * @param \AppBundle\Entity\Groupp $groupp
-     *
-     * @return Game
-     */
-    public function setGroupp(\AppBundle\Entity\Groupp $groupp = null)
-    {
-        $this->groupp = $groupp;
-
-        return $this;
-    }
-
-    /**
-     * Get groupp
-     *
-     * @return \AppBundle\Entity\Groupp
-     */
-    public function getGroupp()
-    {
-        return $this->groupp;
-    }
+   
 
     /**
      * Set team1

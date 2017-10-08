@@ -1,0 +1,37 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+{% block thead %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+     {% block tbody %}
+        {% for ourService in ourServices %}
+            <tr>
+                <td><a href="{{ path('ourservices_show', { 'id': ourService.id }) }}">{{ ourService.id }}</a></td>
+                <td>{{ ourService.title }}</td>
+                <td>{{ ourService.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('ourservices_show', { 'id': ourService.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ourservices_edit', { 'id': ourService.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ourservices_new') }}">Create a new ourService</a>
+        </li>
+    </ul>
+{% endblock %}

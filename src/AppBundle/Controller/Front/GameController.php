@@ -29,33 +29,13 @@ class GameController extends Controller
         $groupps = $em->getRepository('AppBundle:Groupp')->findBy(
                 [ 'league' => $oneleague ]
                 );
-         $games = $em->getRepository('AppBundle:Game')->findAll();
+        $games = $em->getRepository('AppBundle:Game')->findAll();
         
  
-        $niz = [];
-        foreach ( $groupps as $groupp) {
-            $teams = $em->getRepository('AppBundle:Team')->findBy(
-                ['group' => $groupp ]
-                );
-            $games = $em->getRepository('AppBundle:Game')->findBy(
-                ['groupp' => $groupp ]
-                );
-            
-            
-            $niz[] = [
-                'group'=> $groupp, 
-                'teams' => $teams,
-                'games' => $games
-                
-            ];
-            
-               
-            
-        }
         
 
         return $this->render('@AppBundle/Resources/views/front/game.html.twig.', array(           
-            'niz' => $niz,
+            'groupps' =>$groupps,
             'games' => $games,
             'oneleague' => $oneleague,
             'sEOs' => $sEOs,

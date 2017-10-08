@@ -1,0 +1,293 @@
+{% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block  SEO %}
+    {% for sEO in sEOs %}
+        <title>{{ sEO.titletag }}</title>
+        <meta name="description" content="{{ sEO.description }}" />
+    {% endfor %}
+{% endblock %}
+
+{% block  body %}     
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+    <!-- Start Main Content -->
+    <main class="main-content">
+        <div class="container body-content">
+
+            <div class="row">
+                <div class="col-sm-9 main-column fixtures-page">
+            {% for element in niz %}
+                    <div class="page-header">
+                        <h2>liga</h2>
+                        <p class="lead">{{element.group.groupp}}</p>
+                    </div>
+<!-- Start Events Filter -->
+                    <div class="events-filter">
+                        <ul class="list-inline">
+                            <li><strong>Pregled: </strong></li>
+                            <li><a class="feat-color" href="points-leaderboard.html"><em class="fa fa-trophy"></em> Tabela</a> &nbsp;</li>
+                            <li><a class="meta-text" href="fixtures-alt.html"><em class="fa fa-list"></em> Raspored utakmica</a> &nbsp;</li>
+
+                        </ul>
+                    </div>
+
+        
+                        {% for game in element.games %}
+ 
+{{ game.team1.team }}-
+{{ game.team2.team }},
+      {% endfor %}
+                    <!-- Start Data Row -->
+                    <div class="data-row fixtures-alt">
+                        <div class="data-row-in">
+                            <div class="data-row-cell">
+                                <p>18 <span class="interval">March</span></p>
+                            </div>
+                            <div class="data-row-cell">
+                                <h4>
+                                    <img src="img/icon6.jpg" alt="icon" /> Miami Tigers 
+                                    <span class="vs">VS</span> 
+                                    <img src="img/icon1.jpg" alt="icon" /> Seattle Bulls
+                                </h4>
+                                <small class="meta-text">
+                                    <span><em class="fa feat-color fa-clock-o"></em> 06:00pm </span> 
+                                    <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Edihad Stadium</a> </span>
+                                    <span><em class="fa feat-color fa-trophy"></em> Last Meet: June 2015 / Tigers</span> 
+                                    <span class="ttip" title="Check for venue and time updates"><em class="feat-color fa fa-info-circle"></em> Additional Info</span>
+                                </small>
+                            </div>
+                            <div class="data-row-cell">
+                                <a href="event.html" class="btn btn-success pull-right">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Start Data Row -->
+                    <div class="data-row fixtures-alt">
+                        <div class="data-row-in">
+                            <div class="data-row-cell">
+                                <p>25 <span class="interval">March</span></p>
+                            </div>
+                            <div class="data-row-cell">
+                                <h4>
+                                    <img src="img/icon2.jpg" alt="icon" /> Oxford Tridents
+                                    <span class="vs">VS</span> 
+                                    <img src="img/icon3.jpg" alt="icon" /> NY Eagles
+                                </h4>
+                                <small class="meta-text">
+                                    <span><em class="fa feat-color fa-clock-o"></em> 06:00pm </span> 
+                                    <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Edihad Stadium</a> </span>
+                                    <span><em class="fa feat-color fa-trophy"></em> Last Meet: June 2015 / Tigers</span> 
+                                    <span class="ttip" title="Check for venue and time updates"><em class="feat-color fa fa-info-circle"></em> Additional Info</span>
+                                </small>
+                            </div>
+                            <div class="data-row-cell">
+                                <a href="event.html" class="btn btn-success pull-right">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Start Data Row -->
+                    <div class="data-row fixtures-alt">
+                        <div class="data-row-in">
+                            <div class="data-row-cell">
+                                <p>06 <span class="interval">April</span></p>
+                            </div>
+                            <div class="data-row-cell">
+                                <h4>
+                                    <img src="img/icon4.jpg" alt="icon" /> Gosford Rams
+                                    <span class="vs">VS</span> 
+                                    <img src="img/icon5.jpg" alt="icon" /> Old Red Guys
+                                </h4>
+                                <small class="meta-text">
+                                    <span><em class="fa feat-color fa-clock-o"></em> 06:00pm </span> 
+                                    <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Edihad Stadium</a> </span>
+                                    <span><em class="fa feat-color fa-trophy"></em> Last Meet: June 2015 / Tigers</span> 
+                                    <span class="ttip" title="Check for venue and time updates"><em class="feat-color fa fa-info-circle"></em> Additional Info</span>
+                                </small>
+                            </div>
+                            <div class="data-row-cell">
+                                <a href="event.html" class="btn btn-success pull-right">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Start Data Row -->
+                    <div class="data-row fixtures-alt">
+                        <div class="data-row-in">
+                            <div class="data-row-cell">
+                                <p>11 <span class="interval">April</span></p>
+                            </div>
+                            <div class="data-row-cell">
+                                <h4>
+                                    <img src="img/icon7.jpg" alt="icon" /> Balmain Cubs
+                                    <span class="vs">VS</span> 
+                                    <img src="img/icon8.jpg" alt="icon" /> New York Talls
+                                </h4>
+                                <small class="meta-text">
+                                    <span><em class="fa feat-color fa-clock-o"></em> 06:00pm </span> 
+                                    <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Edihad Stadium</a> </span>
+                                    <span><em class="fa feat-color fa-trophy"></em> Last Meet: June 2015 / Tigers</span> 
+                                    <span class="ttip" title="Check for venue and time updates"><em class="feat-color fa fa-info-circle"></em> Additional Info</span>
+                                </small>
+                            </div>
+                            <div class="data-row-cell">
+                                <a href="event.html" class="btn btn-success pull-right">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Start Data Row -->
+                    <div class="data-row fixtures-alt">
+                        <div class="data-row-in">
+                            <div class="data-row-cell">
+                                <p>23 <span class="interval">April</span></p>
+                            </div>
+                            <div class="data-row-cell">
+                                <h4>
+                                    <img src="img/icon9.jpg" alt="icon" /> Kitty Hawks
+                                    <span class="vs">VS</span> 
+                                    <img src="img/icon6.jpg" alt="icon" /> Miami Tigers
+                                </h4>
+                                <small class="meta-text">
+                                    <span><em class="fa feat-color fa-clock-o"></em> 06:00pm </span> 
+                                    <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Edihad Stadium</a> </span>
+                                    <span><em class="fa feat-color fa-trophy"></em> Last Meet: June 2015 / Tigers</span> 
+                                    <span class="ttip" title="Check for venue and time updates"><em class="feat-color fa fa-info-circle"></em> Additional Info</span>
+                                </small>
+                            </div>
+                            <div class="data-row-cell">
+                                <a href="event.html" class="btn btn-success pull-right">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Start Data Row -->
+                    <div class="data-row fixtures-alt">
+                        <div class="data-row-in">
+                            <div class="data-row-cell">
+                                <p>30 <span class="interval">April</span></p>
+                            </div>
+                            <div class="data-row-cell">
+                                <h4>
+                                    <img src="img/icon1.jpg" alt="icon" /> Seattle Bulls
+                                    <span class="vs">VS</span> 
+                                    <img src="img/icon7.jpg" alt="icon" /> Balmain Cubs
+                                </h4>
+                                <small class="meta-text">
+                                    <span><em class="fa feat-color fa-clock-o"></em> 06:00pm </span> 
+                                    <span><em class="fa feat-color fa-map-marker"></em> <a href="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28369.415587766056!2d152.98820641500242!3d-27.276331333808365!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b93fb9c9442c901%3A0x10b5aa2f23d9e4e1!2sAshford+Circuit%2C+Petrie+QLD+4502!5e0!3m2!1sen!2sau!4v1406620130126" class="fancybox fancybox.iframe">Edihad Stadium</a> </span>
+                                    <span><em class="fa feat-color fa-trophy"></em> Last Meet: June 2015 / Tigers</span> 
+                                    <span class="ttip" title="Check for venue and time updates"><em class="feat-color fa fa-info-circle"></em> Additional Info</span>
+                                </small>
+                            </div>
+                            <div class="data-row-cell">
+                                <a href="event.html" class="btn btn-success pull-right">Read More</a>
+                            </div>
+                        </div>
+                    </div>		
+
+
+                </div><!--/.main-column -->
+
+{% endfor %}
+
+                <aside class="sidebar col-sm-3 sticky">
+                    <!-- Start Widget -->
+                    <div class="widget widget-leaderboard">
+                        <h3>Leaderboard</h3>
+                        <!-- Time Leaderboard -->			
+                        <table class="table-striped table-responsive table-hover table-leaderboard table-tops table-top-3">
+                            <thead>
+                                <tr>
+                                    <th>Team</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="img/icon6.jpg" alt="icon" /> Miami Tigers</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/icon1.jpg" alt="icon1" /> Seattle Bulls</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/icon2.jpg" alt="icon2"/> Oxford Tridents </td>
+                                    <td>3</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td><img src="img/icon4.jpg" alt="icon4" /> Gosford Rams <em class="fa fa-info-circle ttip feat-color" title="Current placement is under review with pending game disqualification."></em></td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/icon5.jpg" alt="icon5" /> Old Red Guys</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/icon7.jpg" alt="icon7"/> Balmain Cubs</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/icon8.jpg" alt="icon8" /> New York Talls</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="img/icon10.jpg" alt="icon10" /> Kitty Hawks Alt </td>
+                                    <td>8</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>	
+
+
+
+                    <!-- Start Widget -->
+                    <div class="widget widget-tags">
+                        <h3>Tag Cloud</h3>
+                        <ul class="list-tags">
+                            <li><a href="#">Sport</a></li>
+                            <li><a href="#">Games</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Club</a></li>
+                            <li><a href="#">Athlete</a></li>
+                            <li><a href="#">Winner</a></li>
+                            <li><a href="#">Field</a></li>
+                            <li><a href="#">Tears</a></li>
+                            <li><a href="#">Ball</a></li>
+                            <li><a href="#">Points</a></li>
+                            <li><a href="#">Kids</a></li>
+                            <li><a href="#">Training</a></li>
+                            <li><a href="#">Loss</a></li>
+                            <li><a href="#">Season</a></li>
+                        </ul>	
+                    </div>
+
+
+
+                    <!-- Widget -->
+                    <div class="widget widget-single-post">
+                        <h3>Featured Event</h3>
+                        <a href="#">
+                            <div class="hover-box-container">
+                                <div class="hover-box">
+                                    <em class="date">17 March</em>
+                                    <img src="http://placehold.it/900x600"  alt="Fill" />
+                                </div>
+                            </div>
+                            <h4>Nominated club of the year</h4>
+                            <p>Nullam id dolor id nibh ultr cies vehicula ut id elit natoque penbus et magnis ut id elit...</p>
+
+                        </a>	
+                    </div>
+                </aside>
+
+
+
+            </div><!-- /.container -->
+    </main><!-- /.main-content -->
+</body>
+</html>
+{% endblock %}

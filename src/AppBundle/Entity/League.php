@@ -53,10 +53,20 @@ class League
      */
     private $galerry;
     
+    /**
+     * One place has Many Gallery.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Groupp", mappedBy="league")
+     */
+    private $groupp;
+    
+    
+    
+    
     public function __construct()
     {
        
         $this->galerry = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     
@@ -195,5 +205,39 @@ class League
     public function getGalerry()
     {
         return $this->galerry;
+    }
+
+    /**
+     * Add groupp
+     *
+     * @param \AppBundle\Entity\Groupp $groupp
+     *
+     * @return League
+     */
+    public function addGroupp(\AppBundle\Entity\Groupp $groupp)
+    {
+        $this->groupp[] = $groupp;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupp
+     *
+     * @param \AppBundle\Entity\Groupp $groupp
+     */
+    public function removeGroupp(\AppBundle\Entity\Groupp $groupp)
+    {
+        $this->groupp->removeElement($groupp);
+    }
+
+    /**
+     * Get groupp
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroupp()
+    {
+        return $this->groupp;
     }
 }

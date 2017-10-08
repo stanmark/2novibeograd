@@ -1,0 +1,52 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+
+    
+
+ {% block thead %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Alt</th>
+                <th>Mainpicture</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+     {% endblock %}
+     {% block tbody %}
+        {% for mainGallery in mainGalleries %}
+            <tr>
+                <td><a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">{{ mainGallery.id }}</a></td>
+                <td>{{ mainGallery.url }}</td>
+                <td>{{ mainGallery.alt }}</td>
+                <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
+                <td>{{ mainGallery.title }}</td>
+                <td>{{ mainGallery.description }}</td>
+                <td>{% if mainGallery.created %}{{ mainGallery.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if mainGallery.updated %}{{ mainGallery.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('maingallery_edit', { 'id': mainGallery.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('maingallery_new') }}">Create a new mainGallery</a>
+        </li>
+    </ul>
+{% endblock %}

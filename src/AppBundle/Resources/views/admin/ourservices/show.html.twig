@@ -1,0 +1,35 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+{% block thead %}
+    <h1>Ourservice</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ourService.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ ourService.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ ourService.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('ourservices_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('ourservices_edit', { 'id': ourService.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

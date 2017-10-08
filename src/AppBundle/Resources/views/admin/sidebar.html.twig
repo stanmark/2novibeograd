@@ -21,28 +21,52 @@
                 </a>
 
             </li>
-            <li class="nav-item start active open ">
-                <a href="{{ path('seo_index') }}" class="nav-link nav-toggle">
-                    <i class="icon-diamond"></i>
-                    <span class="title">SEO</span>
-                    <span class="arrow open"></span>
-                </a>            
-            </li>
-            <li class="nav-item start active open ">
-                <a href="{{ path('company_index') }}" class="nav-link nav-toggle">
+            <li class="nav-item start active open">
+                <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-puzzle"></i>
-                    <span class="title">Kompanija</span>
-                    <span class="arrow open"></span>
-                </a>            
+                    <span class="title">Sajt</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ path('seo_index') }}" class="nav-link ">
+                            <span class="title">SEO</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ path('company_index') }}" class="nav-link ">
+                            <span class="title">Kompanija</span>                           
+                        </a>
+                    </li>
+                     <li class="nav-item  ">
+                        <a href="{{ path('homeslider_index') }}" class="nav-link ">
+                            <span class="title">Slajder na naslovnoj</span>                           
+                        </a>
+                    </li>
+                     <li class="nav-item  ">
+                        <a href="{{ path('whyus_index') }}" class="nav-link ">
+                            <span class="title">Zasto mi na naslovnoj</span>                           
+                        </a>
+                    </li>
+                    
+                      <li class="nav-item  ">
+                        <a href="{{ path('maingallery_index') }}" class="nav-link ">
+                            <span class="title">glavna galerija</span>                           
+                        </a>
+                    </li>
+                    
+                      <li class="nav-item  ">
+                        <a href="{{ path('gallerycategory_index') }}" class="nav-link ">
+                            <span class="title">Kategorija glavne galerije</span>                           
+                        </a>
+                    </li>
+                     <li class="nav-item  ">
+                        <a href="{{ path('ourservices_index') }}" class="nav-link ">
+                            <span class="title">Nase usluge</span>                           
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item start active open ">
-                <a href="{{ path('homeslider_index') }}" class="nav-link nav-toggle">
-                    <i class="icon-puzzle"></i>
-                    <span class="title">Slajder na naslovnoj</span>
-                    <span class="arrow open"></span>
-                </a>            
-            </li>
-
 
             <li class="nav-item start active open">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -137,8 +161,7 @@
                             <span class="title">Glerija lige</span>                           
                         </a>
                     </li>
-                </ul>
-
+                </ul>          
             <li class="nav-item start active open ">
                 <a href="{{ path('time_index') }}" class="nav-link nav-toggle">
                     <i class="icon-settings"></i>

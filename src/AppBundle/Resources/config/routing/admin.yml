@@ -404,6 +404,106 @@ homeslider_delete:
     defaults: { _controller: "AppBundle:Admin/HomeSlider:delete" }
     methods:  DELETE
     
+whyus_index:
+    path:     /whyus/
+    defaults: { _controller: "AppBundle:Admin/WhyUs:index" }
+    methods:  GET
+
+whyus_show:
+    path:     /whyus/{id}/show
+    defaults: { _controller: "AppBundle:Admin/WhyUs:show" }
+    methods:  GET
+
+whyus_new:
+    path:     /whyus/new
+    defaults: { _controller: "AppBundle:Admin/WhyUs:new" }
+    methods:  [GET, POST]
+
+whyus_edit:
+    path:     /whyus/{id}/edit
+    defaults: { _controller: "AppBundle:Admin/WhyUs:edit" }
+    methods:  [GET, POST]
+
+whyus_delete:
+    path:     /whyus/{id}/delete
+    defaults: { _controller: "AppBundle:Admin/WhyUs:delete" }
+    methods:  DELETE   
+    
+gallerycategory_index:
+    path:     /gallerycategory/
+    defaults: { _controller: "AppBundle:Admin/GalleryCategory:index" }
+    methods:  GET
+
+gallerycategory_show:
+    path:     /gallerycategory/{id}/show
+    defaults: { _controller: "AppBundle:Admin/GalleryCategory:show" }
+    methods:  GET
+
+gallerycategory_new:
+    path:     /gallerycategory/new
+    defaults: { _controller: "AppBundle:Admin/GalleryCategory:new" }
+    methods:  [GET, POST]
+
+gallerycategory_edit:
+    path:     /gallerycategory/{id}/edit
+    defaults: { _controller: "AppBundle:Admin/GalleryCategory:edit" }
+    methods:  [GET, POST]
+
+gallerycategory_delete:
+    path:     /gallerycategory/{id}/delete
+    defaults: { _controller: "AppBundle:Admin/GalleryCategory:delete" }
+    methods:  DELETE
+    
+maingallery_index:
+    path:     /maingallery/
+    defaults: { _controller: "AppBundle:Admin/MainGallery:index" }
+    methods:  GET
+
+maingallery_show:
+    path:     /maingallery/{id}/show
+    defaults: { _controller: "AppBundle:Admin/MainGallery:show" }
+    methods:  GET
+
+maingallery_new:
+    path:     /maingallery/new
+    defaults: { _controller: "AppBundle:Admin/MainGallery:new" }
+    methods:  [GET, POST]
+
+maingallery_edit:
+    path:     /maingallery/{id}/edit
+    defaults: { _controller: "AppBundle:Admin/MainGallery:edit" }
+    methods:  [GET, POST]
+
+maingallery_delete:
+    path:     /maingallery/{id}/delete
+    defaults: { _controller: "AppBundle:Admin/MainGallery:delete" }
+    methods:  DELETE    
+    
+ourservices_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Admin/OurServices:index" }
+    methods:  GET
+
+ourservices_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Admin/OurServices:show" }
+    methods:  GET
+
+ourservices_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Admin/OurServices:new" }
+    methods:  [GET, POST]
+
+ourservices_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Admin/OurServices:edit" }
+    methods:  [GET, POST]
+
+ourservices_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Admin/OurServices:delete" }
+    methods:  DELETE    
+    
     
     
     

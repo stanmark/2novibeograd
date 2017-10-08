@@ -1,0 +1,40 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+{% block thead %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+            {% endblock %}
+
+{% block tbody %}
+        {% for whyU in whyuses %}
+            <tr>
+                <td><a href="{{ path('whyus_show', { 'id': whyU.id }) }}">{{ whyU.id }}</a></td>
+                <td>{{ whyU.title }}</td>
+                <td>{{ whyU.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('whyus_show', { 'id': whyU.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('whyus_edit', { 'id': whyU.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('whyus_new') }}">Create a new whyU</a>
+        </li>
+    </ul>
+{% endblock %}

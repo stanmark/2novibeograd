@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="groupp")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Groupp
 {
@@ -178,4 +179,6 @@ class Groupp
     {
         return $this->league;
     }
+    
+  
 }

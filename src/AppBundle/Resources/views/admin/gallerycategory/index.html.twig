@@ -1,0 +1,43 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+
+    {% block thead %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+      {% endblock %}
+      
+      {% block tbody %}
+        {% for galleryCategory in galleryCategories %}
+            <tr>
+                <td><a href="{{ path('gallerycategory_show', { 'id': galleryCategory.id }) }}">{{ galleryCategory.id }}</a></td>
+                <td>{{ galleryCategory.category }}</td>
+                <td>{% if galleryCategory.created %}{{ galleryCategory.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if galleryCategory.updated %}{{ galleryCategory.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gallerycategory_show', { 'id': galleryCategory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gallerycategory_edit', { 'id': galleryCategory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gallerycategory_new') }}">Create a new galleryCategory</a>
+        </li>
+    </ul>
+{% endblock %}

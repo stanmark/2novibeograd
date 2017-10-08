@@ -38,10 +38,7 @@ class HomeSlider
      * @var File
      */
     private $imageFile;
-    
-    
-    
-    
+
     /**
      * @var string
      *
@@ -70,6 +67,22 @@ class HomeSlider
      * @ORM\Column(name="SubTitleDescription", type="string", length=255)
      */
     private $subTitleDescription;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CallToActionLink", type="string", length=255)
+     */
+    
+    private $CallToActionLink;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CallToActionButton", type="string", length=255)
+     */
+    
+    private $CallToActionButton;
 
 
     /**
@@ -300,4 +313,52 @@ class HomeSlider
         return $this->imageFile;
     }
 
+
+    /**
+     * Set callToActionLink
+     *
+     * @param string $callToActionLink
+     *
+     * @return HomeSlider
+     */
+    public function setCallToActionLink($callToActionLink)
+    {
+        $this->CallToActionLink = $callToActionLink;
+
+        return $this;
+    }
+
+    /**
+     * Get callToActionLink
+     *
+     * @return string
+     */
+    public function getCallToActionLink()
+    {
+        return $this->CallToActionLink;
+    }
+
+    /**
+     * Set callToActionButton
+     *
+     * @param string $callToActionButton
+     *
+     * @return HomeSlider
+     */
+    public function setCallToActionButton($callToActionButton)
+    {
+        $this->CallToActionButton = $callToActionButton;
+
+        return $this;
+    }
+
+    /**
+     * Get callToActionButton
+     *
+     * @return string
+     */
+    public function getCallToActionButton()
+    {
+        return $this->CallToActionButton;
+    }
 }

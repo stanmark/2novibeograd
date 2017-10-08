@@ -1,0 +1,56 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+{% block thead %}
+    <h1>Maingallery</h1>
+
+    
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mainGallery.id }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ mainGallery.url }}</td>
+            </tr>
+            <tr>
+                <th>Alt</th>
+                <td>{{ mainGallery.alt }}</td>
+            </tr>
+            <tr>
+                <th>Mainpicture</th>
+                <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ mainGallery.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ mainGallery.description }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if mainGallery.created %}{{ mainGallery.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if mainGallery.updated %}{{ mainGallery.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('maingallery_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('maingallery_edit', { 'id': mainGallery.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

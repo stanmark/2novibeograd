@@ -79,6 +79,17 @@ class Team
     private $alt;
     
     
+     /**
+     * @var \AppBundle\Entity\League
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\League")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="league_id", referencedColumnName="id")
+     * })
+     */
+    private $league;
+    
+    
     /**
      * Get id
      *
@@ -260,5 +271,29 @@ class Team
 
     public function getImageFile() {
         return $this->imageFile;
+    }
+
+    /**
+     * Set league
+     *
+     * @param \AppBundle\Entity\League $league
+     *
+     * @return Team
+     */
+    public function setLeague(\AppBundle\Entity\League $league = null)
+    {
+        $this->league = $league;
+
+        return $this;
+    }
+
+    /**
+     * Get league
+     *
+     * @return \AppBundle\Entity\League
+     */
+    public function getLeague()
+    {
+        return $this->league;
     }
 }

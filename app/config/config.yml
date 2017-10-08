@@ -169,6 +169,7 @@ assetic:
                 - '@AppBundle/Resources/skin/front/js/components-shop.js' 
                 - '@AppBundle/Resources/skin/front/js/app.js'
 #                <!-- END: THEME SCRIPTS -->
+
 #               <!-- BEGIN: PAGE SCRIPTS -->
                 - '@AppBundle/Resources/skin/front/js/slider-8.js'
                 - '@AppBundle/Resources/skin/front/js/isotope.pkgd.min.js'
@@ -249,4 +250,11 @@ fos_user:
             from_email:
                 address: "sasam09@gmail.com"
                 sender_name: "JOB lider"    
+                
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/DoctrineMigrations"
+    namespace: Application\Migrations
+    table_name: migration_versions
+    name: Application Migrations
+    organize_migrations: false                
                 
