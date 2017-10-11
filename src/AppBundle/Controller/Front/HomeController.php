@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Front;
 use AppBundle\Entity\HomeSlider;
 use AppBundle\Entity\WhyUs;
 use AppBundle\Entity\MainGallery;
+use AppBundle\Entity\OurServices;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -25,8 +26,10 @@ class HomeController extends Controller
         $homeSliders = $em->getRepository('AppBundle:HomeSlider')->findAll();
         $whyuses = $em->getRepository('AppBundle:WhyUs')->findBy([], ['created' => 'DESC'], 3) ;
         $mainPictures = $em->getRepository('AppBundle:MainGallery')->getAllImagesWhereMainIsTrue();
+        $ourServices = $em->getRepository('AppBundle:OurServices')->findAll();
 
         return $this->render('@AppBundle/Resources/views/front/home.html.twig', array(
+            'ourServices' => $ourServices,
             'homeSliders' => $homeSliders,
             'whyuses' => $whyuses,
             'mainPictures' => $mainPictures

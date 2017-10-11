@@ -113,61 +113,67 @@
                         <div class="col-md-7">
                             <div class="c-content-feature-5">
                                 <div class="c-content-title-1 wow amimate fadeInDown">
-                                    <h3 class="c-left c-font-dark c-font-uppercase c-font-bold">Zašto<br/>OK NBG ?</h3>
+                                    <h3 class="c-left c-font-dark c-font-uppercase c-font-bold">OK<br/>NBG</h3>
                                     <div class="c-line-left c-bg-blue-3 c-theme-bg"></div>
                                 </div>
                                 <div class="c-text wow animate fadeInLeft">
                                     OK Novi Beograd vrši upis novih članova tokom cele godine. 
                                 </div>
-                                <button type="submit" class="btn c-btn-uppercase btn-md c-btn-bold c-btn-square c-theme-btn wow animate fadeIn">Istraži</button>
+                                <button type="submit" class="btn c-btn-uppercase btn-md c-btn-bold c-btn-square c-theme-btn wow animate fadeIn">Explore</button>
                                 <img class="c-photo img-responsive wow animate fadeInUp" width="420" alt="" src="{{ asset ('images/why us.jpg') }}"/>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="c-content-accordion-1 c-theme wow animate fadeInRight">
                                 <div class="panel-group" id="accordion" role="tablist">
-                                    <div class="panel">
-                                        <div class="panel-heading" role="tab" id="headingOne">
-                                            <h4 class="panel-title">
-                                                <a class="c-font-bold c-font-uppercase c-font-19" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    ZA SADA MORA ZAKUCAVANJE U KODU
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body c-font-18">
-                                                ZA SADA MORA ZAKUCAVANJE U KODU
+                                    {% for whyU in whyuses | slice(2,1)  %}  
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="headingOne">
+                                                <h4 class="panel-title">
+                                                    <a class="c-font-bold c-font-uppercase c-font-19" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        {{  whyU.title }}
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="panel-body c-font-18">
+                                                    {{  whyU.description }}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="panel">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed c-font-uppercase c-font-bold c-font-19" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                     ZA SADA MORA ZAKUCAVANJE U KODU
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                            <div class="panel-body c-font-18">
-                                               ZA SADA MORA ZAKUCAVANJE U KODU
+                                    {% endfor %}
+                                    {% for whyU in whyuses | slice(1,1)  %}  
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="headingTwo">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed c-font-uppercase c-font-bold c-font-19" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        {{  whyU.title }}
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                <div class="panel-body c-font-18">
+                                                    {{  whyU.description }}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="panel">
-                                        <div class="panel-heading" role="tab" id="headingThree">
-                                            <h4 class="panel-title">
-                                                <a class="collapsed c-font-uppercase c-font-bold c-font-19" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    ZA SADA MORA ZAKUCAVANJE U KODU
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                            <div class="panel-body c-font-18">
-                                                 ZA SADA MORA ZAKUCAVANJE U KODU
+                                    {% endfor %}
+                                    {% for whyU in whyuses | slice(0,1)  %}  
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="headingThree">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed c-font-uppercase c-font-bold c-font-19" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                        {{  whyU.title }}
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                <div class="panel-body c-font-18">
+                                                    {{  whyU.description }}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
@@ -178,7 +184,7 @@
         <!-- END: CONTENT/MISC/WHY-CHOOSE-US-1 -->
 
         <!-- BEGIN: CONTENT/ISOTOPE/GRID-2 -->
-        <div class="c-content-box c-size-md c-bg-img-center" style="background-image: url(../../assets/base/img/content/backgrounds/bg-65.jpg)">
+        <div class="c-content-box c-size-md c-bg-img-center" style="background-image: url(../../../web/public/Front/images/volleyball-1034436_1920.jpg)">
             <div class="container">
                 <div class="c-content-title-1">
                     <h3 class="c-center c-font-uppercase c-font-bold">Galerije</h3>
@@ -186,24 +192,20 @@
                     <p class="c-font-center c-font-grey-3">Galerije kluba</p>
                 </div>
                 <div class="c-content-isotope-grid c-opt-2">
-                  
-                    
                     {% for mainPicture in mainPictures %}      
-                    <div class="c-content-isotope-item">
-                        <div class="c-content-isotope-image-container">
-                            <img class="c-content-isotope-image" src="{{ vich_uploader_asset(mainPicture, 'imageFile') }}"/>
-                            <div class="c-content-isotope-overlay">
-                                <div class="c-content-isotope-overlay-content">
-                                    <h3 class="c-content-isotope-overlay-title c-font-white c-font-uppercase">{{ mainPicture.title }}</h3>
-                                    <p class="c-content-isotope-overlay-desc c-font-white"> {{ mainPicture.description }}</p>
-                                    <a href="javascript:;" class="c-content-isotope-overlay-btn btn c-btn-white c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">Read More</a>
+                        <div class="c-content-isotope-item">
+                            <div class="c-content-isotope-image-container">
+                                <img class="c-content-isotope-image" src="{{ vich_uploader_asset(mainPicture, 'imageFile') }}"/>
+                                <div class="c-content-isotope-overlay">
+                                    <div class="c-content-isotope-overlay-content">
+                                        <h3 class="c-content-isotope-overlay-title c-font-white c-font-uppercase">{{ mainPicture.title }}</h3>
+                                        <p class="c-content-isotope-overlay-desc c-font-white"> {{ mainPicture.description }}</p>
+                                        <a href="javascript:;" class="c-content-isotope-overlay-btn btn c-btn-white c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">Read More</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
-                    
-                    
                 </div>
             </div> 
         </div><!-- END: CONTENT/ISOTOPE/GRID-2 -->
@@ -217,22 +219,17 @@
                         <div class="c-line-center"></div>
                     </div>
                     <div class="row">
-                        
-                        
-                        
-                        <div class="col-md-4 col-sm-6">
-                            <div class="c-content-feature-2 c-option-2 c-theme-bg-parent-hover">
-                                <div class="c-icon-wrapper c-theme-bg-on-parent-hover">
-                                    <div class="c-content-line-icon c-theme c-icon-screen-chart"></div>
+                        {% for ourService in ourServices %}
+                            <div class="col-md-4 col-sm-6">
+                                <div class="c-content-feature-2 c-option-2 c-theme-bg-parent-hover">
+                                    <div class="c-icon-wrapper c-theme-bg-on-parent-hover">
+                                        <div class="c-content-line-icon c-theme c-icon-screen-{{ourService.icon}}}chart"></div>
+                                    </div>
+                                    <h3 class="c-font-uppercase c-title">{{ ourService.title }}</h3>
+                                    <p>{{ ourService.description }}</p>
                                 </div>
-                                <h3 class="c-font-uppercase c-title">Our services</h3>
-                                <p>Zasto smo najbolji opis</p>
                             </div>
-                        </div>
-                        
-                        
-                        
-                      
+                        {% endfor %}
                     </div>
                 </div>
             </div> 
@@ -242,7 +239,7 @@
         <!-- BEGIN: FEATURES 4.4 --> 
         <div class="c-content-box c-size-md c-no-padding c-bg-dark-2">
             <div class="c-content-feature-4">
-                <div class="c-bg-parallax c-feature-bg c-content-left c-diagonal c-border-right-dark-2" style="background-image: url(../../assets/base/img/content/backgrounds/bg-54.jpg)"></div>		
+                <div class="c-bg-parallax c-feature-bg c-content-left c-diagonal c-border-right-dark-2" style="background-image: url(../../../web/public/Front/images/volleyball-1034436_1920.jpg)"></div>		
                 <div class="c-content-area c-content-right"></div>		
                 <div class="container">
                     <div class="c-feature-content c-right">
@@ -250,7 +247,7 @@
                             <div class="c-wrapper wow fadeInDown">
                                 <div class="c-body c-animate">
                                     <div class="c-content-title-1 animated wow fadeInDown" data-wow-delay="0.2s">
-                                        <h3 class="c-font-uppercase c-font-bold c-font-white">The Best of JANGO</h3>
+                                        <h3 class="c-font-uppercase c-font-bold c-font-white">Ovo popuniti rucno</h3>
                                         <div class="c-line-right"></div>
                                         <p>Ever growing with constant innovation</p>
                                     </div>
@@ -276,7 +273,7 @@
         <!-- BEGIN: FEATURES 4.3 --> 
         <div class="c-content-box c-size-md c-no-padding c-bg-white">
             <div class="c-content-feature-4">
-                <div class="c-bg-parallax c-feature-bg c-content-right c-diagonal c-border-left-white" style="background-image: url(../../assets/base/img/content/backgrounds/bg-40.jpg)"></div>		
+                <div class="c-bg-parallax c-feature-bg c-content-right c-diagonal c-border-left-white" style="background-image: url(../../../web/public/Front/images/volleyball-1034436_1920.jpg)"></div>		
                 <div class="c-content-area c-content-left"></div>		
                 <div class="container">
                     <div class="c-feature-content c-left">
@@ -284,7 +281,7 @@
                             <div class="c-wrapper">
                                 <div class="c-body">
                                     <div class="c-content-title-1 wow animate fadeInDown">
-                                        <h3 class="c-font-uppercase c-font-bold c-left">Ultra Responsive</h3>
+                                        <h3 class="c-font-uppercase c-font-bold c-left">Ovo isto popuniti rucno</h3>
                                         <div class="c-line-left"></div>
                                         <p class="c-left">JANGO has it all</p>
                                     </div>
@@ -306,7 +303,7 @@
         </div>
         <!-- END: FEATURES 4.3 --><!-- END: CONTENT/FEATURES/FEATURES-4-3 -->
 
-      
+
 
         <!-- BEGIN: CONTENT/MISC/LATEST-ITEMS-1 -->
         <div class="c-content-box c-size-md c-bg-grey-1">

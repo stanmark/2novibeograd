@@ -47,36 +47,16 @@ class LeagueController extends Controller
         $games = $em->getRepository('AppBundle:Game')->findAll();
         
  
-        $niz = [];
-        foreach ( $groupps as $groupp) {
-            $teams = $em->getRepository('AppBundle:Team')->findBy(
-                ['group' => $groupp ]
-                );
-             $games = $em->getRepository('AppBundle:Game')->findBy(
-                ['groupp' => $groupp ]
-                );
-            
-            
-            $niz[] = [
-                'group'=> $groupp, 
-                'teams' => $teams,
-                'games' => $games
-                
-            ];}
+       
 
-        return $this->render('@AppBundle/Resources/views/front/league.html.twig.', array(           
-            'niz' => $niz,
+        return $this->render('@AppBundle/Resources/views/front/league.html.twig.', array(                      
+            'groupps' => $groupps,
             'games' => $games,
             'oneleague' => $oneleague,
             'sEOs' => $sEOs,
         ));   
         
-        return $this->render('@AppBundle/Resources/views/front/game.html.twig.', array(           
-            'niz' => $niz,
-            'games' => $games,
-            'oneleague' => $oneleague,
-            'sEOs' => $sEOs,
-        )); 
+       
     }
     
     public function gameAction($id, $name)

@@ -1,0 +1,24 @@
+ourservices_index:
+    path:     /
+    defaults: { _controller: "AppBundle:OurServices:index" }
+    methods:  GET
+
+ourservices_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:OurServices:show" }
+    methods:  GET
+
+ourservices_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:OurServices:new" }
+    methods:  [GET, POST]
+
+ourservices_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:OurServices:edit" }
+    methods:  [GET, POST]
+
+ourservices_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:OurServices:delete" }
+    methods:  DELETE

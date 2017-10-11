@@ -52,6 +52,19 @@ class Groupp
      * })
      */
     private $league;
+    
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Team", mappedBy="group")
+     */
+    private $team;
+    
+     public function __construct()
+    {
+       
+        $this->$team = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -181,4 +194,38 @@ class Groupp
     }
     
   
+
+    /**
+     * Add team
+     *
+     * @param \AppBundle\Entity\Team $team
+     *
+     * @return Groupp
+     */
+    public function addTeam(\AppBundle\Entity\Team $team)
+    {
+        $this->team[] = $team;
+
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param \AppBundle\Entity\Team $team
+     */
+    public function removeTeam(\AppBundle\Entity\Team $team)
+    {
+        $this->team->removeElement($team);
+    }
+
+    /**
+     * Get team
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
 }

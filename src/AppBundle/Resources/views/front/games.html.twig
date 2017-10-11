@@ -17,7 +17,8 @@
             {% for league in leagues %}
                     <div class="page-header">
                         <h2>liga</h2>
-                        <p class="lead">{{league.groupp}}</p>
+                        <p class="lead">{{league}}</p>
+                        {{ dump(league) }}
                     </div>
 <!-- Start Events Filter -->
                     <div class="events-filter">
@@ -28,8 +29,8 @@
 
                         </ul>
                     </div>
-
-        
+            {% endfor  %}
+        {#
                         {% for game in element.games %}
  
 {{ game.team1.team }}-
@@ -289,5 +290,5 @@
             </div><!-- /.container -->
     </main><!-- /.main-content -->
 </body>
-</html>
+</html>#}
 {% endblock %}

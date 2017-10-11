@@ -1,40 +1,40 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
 {% block body %}
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
-<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-         style="background-image: url(../../../../public/Front/images/volleyball-1034436_1920.jpg)">
-    <div class="c-breadcrumbs-wrapper">
-        <div class="container">
-            <div class="c-page-title c-pull-left">
-                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
-                <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
+    
+    <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+        <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+             style="background-image: url(../../../../public/Front/images/volleyball-1034436_1920.jpg)">
+            <div class="c-breadcrumbs-wrapper">
+                <div class="container">
+                    <div class="c-page-title c-pull-left">
+                        <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
+                        <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
+                    </div>
+                    <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                        <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
+                        <li class="c-font-white">/</li>
+                        <li><a href="#" class="c-font-white">Tim trenera</a></li>
+                    </ul>
+                </div>
             </div>
-            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
-                <li class="c-font-white">/</li>
-                <li><a href="#" class="c-font-white">Tim trenera</a></li>
-            </ul>
-        </div>
-    </div>
-</div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-     
+        </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
         <!-- BEGIN: PAGE CONTENT -->
         <div class="c-content-box c-size-md c-bg-white">
             <div class="container">
                 <div class="c-content-title-1">
-                    <h3 class="c-center c-font-dark c-font-uppercase">Liga</h3>
+                    <h3 class="c-center c-font-dark c-font-uppercase">{{oneleague.league}}</h3>
                     <div class="c-line-center c-theme-bg"></div>
-                    <p class="c-center">Naziv lige</p>
+                    <p class="c-center">Description</p>
                 </div>
-
-                {% for element in niz %}
-                    <div class="c-content-panel">
-                        <div class="c-label">{{element.group.groupp}}</div>
-                        <div class="c-body">
-                            <div class="row">
-                                <div class="col-md-12">						
+                <div class="c-content-panel">
+                    <div class="c-label">Grupe {{oneleague.league}} </div>                      
+                    <div class="c-body">
+                        <div class="row">
+                            <div class="col-md-12">						
+                                {% for groupp in groupps %}
                                     <div class="table-responsive">
+                                        {{ groupp.groupp }}
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
@@ -48,67 +48,44 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {% for team in element.teams %}
+                                                {% for groupp in groupp.team %}
                                                     <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>{{ team.team }}</td>
+                                                        <th scope="row"></th>
+                                                        <td>{{ groupp.team }} </td>
                                                         <td>Table cell</td>
                                                         <td>Table cell</td>
                                                         <td>Table cell</td>
                                                         <td>Table cell</td>
                                                         <td>Table cell</td>
                                                     </tr>
-                                                {% endfor %}								
+                                                {% endfor %}							
                                             </tbody>
                                         </table>
-
                                     </div>
-
-                                </div>
-
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
-                                            
-                                            
-                                            <div class="c-content-panel">
-			<div class="c-label">Raspored utakmica</div>
-			<div class="c-body">
-				<div class="c-content-tab-1 c-theme c-margin-t-30">
-					<div class="nav-justified">
-						<ul class="nav nav-tabs nav-justified c-font-uppercase c-font-bold">
-							<li class="active"><a href="#tab_3_1_content" data-toggle="tab" class="c-border-purple">Kolo 1</a></li>
-							<li><a href="#tab_3_2_content" data-toggle="tab" class="c-border-purple">Kolo 2</a></li>
-							<li><a href="#tab_3_3_content" data-toggle="tab" class="c-border-purple">Kolo 3</a></li>
-							<li><a href="#tab_3_4_content" data-toggle="tab" class="c-border-purple">Kolo 4</a></li>
-							<li><a href="#tab_3_5_content" data-toggle="tab" class="c-border-purple">Kolo 5</a></li>
-						</ul>
-					</div>
-                                    {% for game in element.games %}
-					<div class="tab-content c-bordered c-padding-lg">
-						<div class="tab-pane active" id="tab_3_1_content">
-							<p>{{ game.team1.team }} - {{ game.team2.team }}</p>
-							
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-                                            
-                                             
-                                            
-
-                                        {% endfor %}
-                                            
-                  
-
-
-
-                {% endfor %}
-
+                </div>
+                <div class="c-content-panel">
+                    <div class="c-label">Raspored utakmica</div>
+                    <div class="c-body">
+                        <div class="c-content-tab-1 c-theme c-margin-t-30">
+                            <div class="nav-justified">
+                                <ul class="nav nav-tabs nav-justified c-font-uppercase c-font-bold">
+                                    <li class="active"><a href="#tab_3_1_content" data-toggle="tab" class="c-border-purple">Kolo 1</a></li>
+                                    <li><a href="#tab_3_2_content" data-toggle="tab" class="c-border-purple">Kolo 2</a></li>
+                                    <li><a href="#tab_3_3_content" data-toggle="tab" class="c-border-purple">Kolo 3</a></li>
+                                    <li><a href="#tab_3_4_content" data-toggle="tab" class="c-border-purple">Kolo 4</a></li>
+                                    <li><a href="#tab_3_5_content" data-toggle="tab" class="c-border-purple">Kolo 5</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
+
     {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}     

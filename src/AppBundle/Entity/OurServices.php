@@ -2,25 +2,45 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * OurServices
+ *
+ * @ORM\Table(name="our_services")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\OurServicesRepository")
  */
 class OurServices
 {
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icon", type="string", length=255)
+     */
+    private $icon;
 
 
     /**
@@ -79,6 +99,30 @@ class OurServices
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set icon
+     *
+     * @param string $icon
+     *
+     * @return OurServices
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    /**
+     * Get icon
+     *
+     * @return string
+     */
+    public function getIcon()
+    {
+        return $this->icon;
     }
 }
 

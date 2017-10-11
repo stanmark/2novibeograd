@@ -65,7 +65,7 @@ class League
     public function __construct()
     {
        
-        $this->galerry = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$galerry = new \Doctrine\Common\Collections\ArrayCollection();
         $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
