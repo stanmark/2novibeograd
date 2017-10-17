@@ -79,19 +79,7 @@ class Team
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
-    
-    
-     /**
-     * @var \AppBundle\Entity\League
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\League")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="league_id", referencedColumnName="id")
-     * })
-     */
-    private $league;
-    
-    
+
     /**
      * Get id
      *

@@ -1,7 +1,7 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
 {% block body %}
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
-    
+
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
         <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
              style="background-image: url(../../../../public/Front/images/volleyball-1034436_1920.jpg)">
@@ -41,7 +41,7 @@
                                                     <th>#</th>
                                                     <th>Ekipe</th>
                                                     <th>Pozicija</th>
-                                                    <th>Pobeda</th>
+                                                    <th>Suma setova</th>
                                                     <th>Izgubljenih</th>
                                                     <th>Broj utakmica</th>
                                                     <th>%</th>
@@ -62,27 +62,57 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="c-content-panel">
-                    <div class="c-label">Raspored utakmica</div>
-                    <div class="c-body">
-                        <div class="c-content-tab-1 c-theme c-margin-t-30">
-                            <div class="nav-justified">
-                                <ul class="nav nav-tabs nav-justified c-font-uppercase c-font-bold">
-                                    <li class="active"><a href="#tab_3_1_content" data-toggle="tab" class="c-border-purple">Kolo 1</a></li>
-                                    <li><a href="#tab_3_2_content" data-toggle="tab" class="c-border-purple">Kolo 2</a></li>
-                                    <li><a href="#tab_3_3_content" data-toggle="tab" class="c-border-purple">Kolo 3</a></li>
-                                    <li><a href="#tab_3_4_content" data-toggle="tab" class="c-border-purple">Kolo 4</a></li>
-                                    <li><a href="#tab_3_5_content" data-toggle="tab" class="c-border-purple">Kolo 5</a></li>
-                                </ul>
+
+                    <div class="c-content-panel">
+                        <div class="c-label">Utakmice</div>                      
+                        <div class="c-body">
+                            <div class="row">
+                                <div class="col-md-12">						
+                                    <div class="table-responsive">
+                                        {{ groupp.groupp }}
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Domacin</th>
+                                                    <th>SET</th>
+                                                    <th>SET</th>
+                                                    <th>Gost</th>
+                                                    <th>Mesto</th>
+                                                    <th>Datum</th>
+                                                    <th>Pocetak</th>
+                                                    <th>Kraj</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for game in games %}
+                                                    <tr>
+                                                        <td>{{ game.team1.team }}</td>
+                                                        <td>{{ game.numberSet1 }}</td>
+                                                        <td>{{ game.numberSet2 }}</td>
+                                                        <td>{{ game.team2.team }}</td>     
+                                                        <td>{{ game.place.title }}</td>  
+                                                        <td>{{ game.date| date('d-m-Y') }}</td>  
+                                                        <td>{{ game.begin| date('H:i:s') }}</td>  
+                                                        <td>{{ game.end| date('H:i:s') }}</td>  
+                                                        
+                                                        {% set foo =  0 %}
+                                                       {% set foo = foo + game.numberSet1 %}
+                                                        {{ foo }}
+                                                    </tr>
+                                               	{% endfor %}					
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}         
             </div>
         </div>
     </body>

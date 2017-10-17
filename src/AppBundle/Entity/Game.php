@@ -31,16 +31,16 @@ class Game
     /**
      * @var integer
      *
-     * @ORM\Column(name="set_team1", type="integer", nullable=false)
+     * @ORM\Column(name="number_set1", type="integer", nullable=false)
      */
-    private $setTeam1;
+    private $numberSet1;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="set_team2", type="integer", nullable=false)
      */
-    private $setTeam2;
+    private $numberSet2;
 
     /**
      * @var integer
@@ -50,13 +50,6 @@ class Game
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-    
-    /**
-     * One place has Many Gallery.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SettResults", mappedBy="idGame")
-     */
-    private $settresults;
-
     
     /**
      * @var \AppBundle\Entity\place
@@ -90,6 +83,29 @@ class Game
     private $team2;
     
     /**
+     * @var datetime $date
+     *
+     * @ORM\Column(type="date")
+     */
+    protected $date;
+    
+    /**
+     * @var datetime $begin
+     *
+     * @ORM\Column(type="time")
+     */
+    protected $begin;
+    
+    /**
+     * @var datetime $end
+     *
+     * @ORM\Column(type="time", nullable = true)
+     */
+    protected $end;
+    
+    
+    
+    /**
      * @var datetime $created
      *
      * @ORM\Column(type="datetime")
@@ -102,37 +118,106 @@ class Game
      * @ORM\Column(type="datetime", nullable = true)
      */
     protected $updated;
-
-    public function __construct()
-    {
-       
-        $this->game = new \Doctrine\Common\Collections\ArrayCollection();
-    }
     
+    /**
+     * @var \AppBundle\Entity\Groupp
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="groupp", referencedColumnName="id")
+     * })
+     */
+    private $groupp;
+    
+    /**
+     * @var \AppBundle\Entity\League
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Round")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="round_id", referencedColumnName="id")
+     * })
+     */
+    private $round;
+    
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SettResults", mappedBy="game")
+     */
+    private $settresults;
+
 
     /**
-     * Set result
+     * Set created
      *
-     * @param integer $result
+     * @param \DateTime $created
      *
      * @return Game
      */
-    public function setResult($result)
+    public function setCreated($created)
     {
-        $this->result = $result;
+        $this->created = $created;
 
         return $this;
     }
 
     /**
-     * Get result
+     * Get created
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getResult()
+    public function getCreated()
     {
-        return $this->result;
+        return $this->created;
     }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Game
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+     /**
+     * Gets triggered only on insert
+     * 
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
+
+    
+
+    
+   
 
     /**
      * Set bodTeam1
@@ -183,51 +268,51 @@ class Game
     }
 
     /**
-     * Set setTeam1
+     * Set numberSet1
      *
-     * @param integer $setTeam1
+     * @param integer $numberSet1
      *
      * @return Game
      */
-    public function setSetTeam1($setTeam1)
+    public function setNumberSet1($numberSet1)
     {
-        $this->setTeam1 = $setTeam1;
+        $this->numberSet1 = $numberSet1;
 
         return $this;
     }
 
     /**
-     * Get setTeam1
+     * Get numberSet1
      *
      * @return integer
      */
-    public function getSetTeam1()
+    public function getNumberSet1()
     {
-        return $this->setTeam1;
+        return $this->numberSet1;
     }
 
     /**
-     * Set setTeam2
+     * Set numberSet2
      *
-     * @param integer $setTeam2
+     * @param integer $numberSet2
      *
      * @return Game
      */
-    public function setSetTeam2($setTeam2)
+    public function setNumberSet2($numberSet2)
     {
-        $this->setTeam2 = $setTeam2;
+        $this->numberSet2 = $numberSet2;
 
         return $this;
     }
 
     /**
-     * Get setTeam2
+     * Get numberSet2
      *
      * @return integer
      */
-    public function getSetTeam2()
+    public function getNumberSet2()
     {
-        return $this->setTeam2;
+        return $this->numberSet2;
     }
 
     /**
@@ -241,61 +326,100 @@ class Game
     }
 
     /**
-     * Set created
+     * Set date
      *
-     * @param \DateTime $created
+     * @param \DateTime $date
      *
      * @return Game
      */
-    public function setCreated($created)
+    public function setDate($date)
     {
-        $this->created = $created;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get created
+     * Get date
      *
      * @return \DateTime
      */
-    public function getCreated()
+    public function getDate()
     {
-        return $this->created;
+        return $this->date;
     }
 
     /**
-     * Set updated
+     * Set begin
      *
-     * @param \DateTime $updated
+     * @param \DateTime $begin
      *
      * @return Game
      */
-    public function setUpdated($updated)
+    public function setBegin($begin)
     {
-        $this->updated = $updated;
+        $this->begin = $begin;
 
         return $this;
     }
 
     /**
-     * Get updated
+     * Get begin
      *
      * @return \DateTime
      */
-    public function getUpdated()
+    public function getBegin()
     {
-        return $this->updated;
+        return $this->begin;
     }
 
     /**
-     * Set league
+     * Set end
      *
-     * @param \AppBundle\Entity\League $league
+     * @param \DateTime $end
      *
      * @return Game
      */
-   
+    public function setEnd($end)
+    {
+        $this->end = $end;
+
+        return $this;
+    }
+
+    /**
+     * Get end
+     *
+     * @return \DateTime
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
+     * Set place
+     *
+     * @param \AppBundle\Entity\place $place
+     *
+     * @return Game
+     */
+    public function setPlace(\AppBundle\Entity\place $place = null)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return \AppBundle\Entity\place
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
 
     /**
      * Set team1
@@ -344,42 +468,64 @@ class Game
     {
         return $this->team2;
     }
-    
-     /**
-     * Gets triggered only on insert
-     * 
-     * @ORM\PrePersist
-     */
-    public function onPrePersist()
-    {
-        $this->created = new \DateTime("now");
-    }
 
     /**
-     * Gets triggered every time on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
-    {
-        $this->updated = new \DateTime("now");
-    }
-
-    /**
-     * Set place
+     * Set groupp
      *
-     * @param \AppBundle\Entity\place $place
+     * @param \AppBundle\Entity\Groupp $groupp
      *
      * @return Game
      */
-    public function setPlace(\AppBundle\Entity\place $place = null)
+    public function setGroupp(\AppBundle\Entity\Groupp $groupp = null)
     {
-        $this->place = $place;
+        $this->groupp = $groupp;
 
         return $this;
     }
 
-    
+    /**
+     * Get groupp
+     *
+     * @return \AppBundle\Entity\Groupp
+     */
+    public function getGroupp()
+    {
+        return $this->groupp;
+    }
+
+    /**
+     * Set round
+     *
+     * @param \AppBundle\Entity\Round $round
+     *
+     * @return Game
+     */
+    public function setRound(\AppBundle\Entity\Round $round = null)
+    {
+        $this->round = $round;
+
+        return $this;
+    }
+
+    /**
+     * Get round
+     *
+     * @return \AppBundle\Entity\Round
+     */
+    public function getRound()
+    {
+        return $this->round;
+    }
+
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->settresults = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Add settresult
@@ -413,15 +559,5 @@ class Game
     public function getSettresults()
     {
         return $this->settresults;
-    }
-
-    /**
-     * Get place
-     *
-     * @return \AppBundle\Entity\place
-     */
-    public function getPlace()
-    {
-        return $this->place;
     }
 }

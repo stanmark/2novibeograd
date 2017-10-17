@@ -59,11 +59,17 @@ class Groupp
      */
     private $team;
     
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="groupp")
+     */
+    private $game;
+    
      public function __construct()
     {
        
-        $this->$team = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$team = new \Doctrine\Common\Collections\ArrayCollection();       
+        $this->$game = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -227,5 +233,73 @@ class Groupp
     public function getTeam()
     {
         return $this->team;
+    }
+
+    /**
+     * Add round
+     *
+     * @param \AppBundle\Entity\Game $round
+     *
+     * @return Groupp
+     */
+    public function addRound(\AppBundle\Entity\Game $round)
+    {
+        $this->round[] = $round;
+
+        return $this;
+    }
+
+    /**
+     * Remove round
+     *
+     * @param \AppBundle\Entity\Game $round
+     */
+    public function removeRound(\AppBundle\Entity\Game $round)
+    {
+        $this->round->removeElement($round);
+    }
+
+    /**
+     * Get round
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRound()
+    {
+        return $this->round;
+    }
+
+    /**
+     * Add game
+     *
+     * @param \AppBundle\Entity\Game $game
+     *
+     * @return Groupp
+     */
+    public function addGame(\AppBundle\Entity\Game $game)
+    {
+        $this->game[] = $game;
+
+        return $this;
+    }
+
+    /**
+     * Remove game
+     *
+     * @param \AppBundle\Entity\Game $game
+     */
+    public function removeGame(\AppBundle\Entity\Game $game)
+    {
+        $this->game->removeElement($game);
+    }
+
+    /**
+     * Get game
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGame()
+    {
+        return $this->game;
     }
 }

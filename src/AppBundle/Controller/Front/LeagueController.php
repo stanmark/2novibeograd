@@ -9,6 +9,7 @@ use AppBundle\Entity\SEO;
 use AppBundle\Entity\Groupp;
 use AppBundle\Entity\Team;
 use AppBundle\Entity\Game;
+use AppBundle\Entity\Round;
 
 /**
  * League controller.
@@ -44,12 +45,13 @@ class LeagueController extends Controller
         $groupps = $em->getRepository('AppBundle:Groupp')->findBy(
                 [ 'league' => $oneleague ]
                 );
-        $games = $em->getRepository('AppBundle:Game')->findAll();
-        
- 
-       
+       $games = $em->getRepository('AppBundle:Game')->findBy(
+                [ 'groupp' => $groupps ]
+                );
+        $rounds = $em->getRepository('AppBundle:Round')->findAll();
 
-        return $this->render('@AppBundle/Resources/views/front/league.html.twig.', array(                      
+        return $this->render('@AppBundle/Resources/views/front/league.html.twig.', array( 
+            'rounds' =>$rounds,
             'groupps' => $groupps,
             'games' => $games,
             'oneleague' => $oneleague,
@@ -58,46 +60,7 @@ class LeagueController extends Controller
         
        
     }
-    
-    public function gameAction($id, $name)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $leagues = $em->getRepository('AppBundle:League')->findAll();
-        $oneleague = $leagues->findOneBy(['id' => $id]);
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
-       
-        $groupps = $em->getRepository('AppBundle:Groupp')->findBy(
-                [ 'league' => $oneleague ]
-                );
-        $games = $em->getRepository('AppBundle:Game')->findAll();
-        
- 
-        $niz = [];
-        foreach ( $groupps as $groupp) {
-            $teams = $em->getRepository('AppBundle:Team')->findBy(
-                ['group' => $groupp ]
-                );
-             $games = $em->getRepository('AppBundle:Game')->findBy(
-                ['groupp' => $groupp ]
-                );
-            
-            
-            $niz[] = [
-                'group'=> $groupp, 
-                'teams' => $teams,
-                'games' => $games
-                
-            ];}  
-        
-        return $this->render('@AppBundle/Resources/views/front/league.html.twig.', array(           
-            'niz' => $niz,
-            'games' => $games,
-            'oneleague' => $oneleague,
-            'sEOs' => $sEOs,
-            
-        )); 
-    }
+  
     
     
 }

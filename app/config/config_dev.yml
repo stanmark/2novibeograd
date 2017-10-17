@@ -40,7 +40,5 @@ monolog:
 swiftmailer:
     delivery_addresses: ['sasam09@gmail.com']
     
-twig:
-    cache:  false  
     
  

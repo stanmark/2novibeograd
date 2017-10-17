@@ -125,4 +125,3 @@ class OurServices
         return $this->icon;
     }
 }
-

@@ -9,6 +9,7 @@ use AppBundle\Entity\SEO;
 use AppBundle\Entity\Groupp;
 use AppBundle\Entity\Team;
 use AppBundle\Entity\Game;
+use AppBundle\Entity\Round;
 
 /**
  * League controller.
@@ -29,14 +30,20 @@ class GameController extends Controller
         $groupps = $em->getRepository('AppBundle:Groupp')->findBy(
                 [ 'league' => $oneleague ]
                 );
-        $games = $em->getRepository('AppBundle:Game')->findAll();
+        $games = $em->getRepository('AppBundle:Game')->findBy(
+                [ 'groupp' => $groupps ]
+                );
+        $rounds = $em->getRepository('AppBundle:Round')->findBy(
+                [ 'game' => $games ]
+                );
         
  
         
 
         return $this->render('@AppBundle/Resources/views/front/game.html.twig.', array(           
-            'groupps' =>$groupps,
-            'games' => $games,
+            'rounds' =>$rounds,
+            'games' =>$games,
+            'groupps' =>$groupps,          
             'oneleague' => $oneleague,
             'sEOs' => $sEOs,
         ));

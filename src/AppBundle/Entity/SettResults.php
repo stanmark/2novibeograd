@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SettResults
  *
- * @ORM\Table(name="sett_results", indexes={@ORM\Index(name="id_game", columns={"id_game"})})
+ * @ORM\Table(name="sett_results" )
  * @ORM\Entity
  */
 class SettResults
@@ -15,16 +15,16 @@ class SettResults
     /**
      * @var integer
      *
-     * @ORM\Column(name="team1_set", type="integer", nullable=false)
+     * @ORM\Column(name="points_number1", type="integer", nullable=false)
      */
-    private $team1Set;
+    private $pointsNumber1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="team2_set", type="integer", nullable=false)
+     * @ORM\Column(name="points_number2", type="integer", nullable=false)
      */
-    private $team2Set;
+    private $pointsNumber2;
 
     /**
      * @var integer
@@ -35,15 +35,7 @@ class SettResults
      */
     private $id;
 
-    /**
-     *
-     * @var \AppBundle\Entity\Game
-     *
-     * Many Sets have One Game.
-     * @ORM\ManyToOne(targetEntity="Game", inversedBy="$settresults")
-     * @ORM\JoinColumn(name="id_game", referencedColumnName="id")    
-     */
-    private $idGame;
+    
     
     /**
      * @var datetime $created
@@ -58,56 +50,19 @@ class SettResults
      * @ORM\Column(type="datetime", nullable = true)
      */
     protected $updated;
-
-
-
-    /**
-     * Set team1Set
+    
+    
+    
+     /**
+     * @var \AppBundle\Entity\Game
      *
-     * @param integer $team1Set
-     *
-     * @return SettResults
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Game")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="game_id", referencedColumnName="id")
+     * })
      */
-    public function setTeam1Set($team1Set)
-    {
-        $this->team1Set = $team1Set;
+    private $game;
 
-        return $this;
-    }
-
-    /**
-     * Get team1Set
-     *
-     * @return integer
-     */
-    public function getTeam1Set()
-    {
-        return $this->team1Set;
-    }
-
-    /**
-     * Set team2Set
-     *
-     * @param integer $team2Set
-     *
-     * @return SettResults
-     */
-    public function setTeam2Set($team2Set)
-    {
-        $this->team2Set = $team2Set;
-
-        return $this;
-    }
-
-    /**
-     * Get team2Set
-     *
-     * @return integer
-     */
-    public function getTeam2Set()
-    {
-        return $this->team2Set;
-    }
 
     /**
      * Get id
@@ -166,30 +121,6 @@ class SettResults
     {
         return $this->updated;
     }
-
-    /**
-     * Set idGame
-     *
-     * @param \AppBundle\Entity\Game $idGame
-     *
-     * @return SettResults
-     */
-    public function setIdGame(\AppBundle\Entity\Game $idGame = null)
-    {
-        $this->idGame = $idGame;
-
-        return $this;
-    }
-
-    /**
-     * Get idGame
-     *
-     * @return \AppBundle\Entity\Game
-     */
-    public function getIdGame()
-    {
-        return $this->idGame;
-    }
     
      /**
      * Gets triggered only on insert
@@ -209,5 +140,78 @@ class SettResults
     public function onPreUpdate()
     {
         $this->updated = new \DateTime("now");
+    }
+
+
+    /**
+     * Set pointsNumber1
+     *
+     * @param integer $pointsNumber1
+     *
+     * @return SettResults
+     */
+    public function setPointsNumber1($pointsNumber1)
+    {
+        $this->pointsNumber1 = $pointsNumber1;
+
+        return $this;
+    }
+
+    /**
+     * Get pointsNumber1
+     *
+     * @return integer
+     */
+    public function getPointsNumber1()
+    {
+        return $this->pointsNumber1;
+    }
+
+    /**
+     * Set pointsNumber2
+     *
+     * @param integer $pointsNumber2
+     *
+     * @return SettResults
+     */
+    public function setPointsNumber2($pointsNumber2)
+    {
+        $this->pointsNumber2 = $pointsNumber2;
+
+        return $this;
+    }
+
+    /**
+     * Get pointsNumber2
+     *
+     * @return integer
+     */
+    public function getPointsNumber2()
+    {
+        return $this->pointsNumber2;
+    }
+
+    /**
+     * Set game
+     *
+     * @param \AppBundle\Entity\Game $game
+     *
+     * @return SettResults
+     */
+    public function setGame(\AppBundle\Entity\Game $game = null)
+    {
+        $this->game = $game;
+
+        return $this;
+    }
+
+    /**
+     * Get game
+     *
+     * @return \AppBundle\Entity\Game
+     */
+    public function getGame()
+    {
+        return $this->game;
     }
 }
