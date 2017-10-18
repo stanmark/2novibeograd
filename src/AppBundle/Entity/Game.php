@@ -120,17 +120,7 @@ class Game
     protected $updated;
     
     /**
-     * @var \AppBundle\Entity\Groupp
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="groupp", referencedColumnName="id")
-     * })
-     */
-    private $groupp;
-    
-    /**
-     * @var \AppBundle\Entity\League
+     * @var \AppBundle\Entity\Round
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Round")
      * @ORM\JoinColumns({

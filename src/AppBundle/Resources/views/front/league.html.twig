@@ -23,16 +23,16 @@
         <div class="c-content-box c-size-md c-bg-white">
             <div class="container">
                 <div class="c-content-title-1">
-                    <h3 class="c-center c-font-dark c-font-uppercase">{{oneleague.league}}</h3>
+                    <h3 class="c-center c-font-dark c-font-uppercase">{{ oneleague.league }}</h3>
                     <div class="c-line-center c-theme-bg"></div>
                     <p class="c-center">Description</p>
                 </div>
                 <div class="c-content-panel">
-                    <div class="c-label">Grupe {{oneleague.league}} </div>                      
+                    <div class="c-label">Grupe {{ oneleague.league }} </div>                      
                     <div class="c-body">
                         <div class="row">
                             <div class="col-md-12">						
-                                {% for groupp in groupps %}
+                                {% for groupp in oneleague.groupp %}
                                     <div class="table-responsive">
                                         {{ groupp.groupp }}
                                         <table class="table table-bordered">
@@ -48,10 +48,10 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {% for groupp in groupp.team %}
+                                                {% for team in groupp.team %}
                                                     <tr>
-                                                        <th scope="row"></th>
-                                                        <td>{{ groupp.team }} </td>
+                                                        <th></th>
+                                                        <td>{{ team.team }} </td>
                                                         <td>Table cell</td>
                                                         <td>Table cell</td>
                                                         <td>Table cell</td>
@@ -66,7 +66,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="c-content-panel">
                         <div class="c-label">Utakmice</div>                      
                         <div class="c-body">
@@ -77,6 +76,7 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th>Domacin</th>
                                                     <th>SET</th>
                                                     <th>SET</th>
@@ -88,26 +88,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {% for game in games %}
-                                                    <tr>
-                                                        <td>{{ game.team1.team }}</td>
-                                                        <td>{{ game.numberSet1 }}</td>
-                                                        <td>{{ game.numberSet2 }}</td>
-                                                        <td>{{ game.team2.team }}</td>     
-                                                        <td>{{ game.place.title }}</td>  
-                                                        <td>{{ game.date| date('d-m-Y') }}</td>  
-                                                        <td>{{ game.begin| date('H:i:s') }}</td>  
-                                                        <td>{{ game.end| date('H:i:s') }}</td>  
-                                                        
-                                                        {% set foo =  0 %}
-                                                       {% set foo = foo + game.numberSet1 %}
-                                                        {{ foo }}
-                                                    </tr>
+                                                {% for round in groupp.round %}
+                                                    {{round.round}}
+                                                    {% for game in round.game %}
+                                                        <tr>
+                                                            <td>{{ game.team1.team }}</td>
+                                                            <td>{{ game.numberSet1 }}</td>
+                                                            <td>{{ game.numberSet2 }}</td>
+                                                            <td>{{ game.team2.team }}</td>     
+                                                            <td>{{ game.place.title }}</td>  
+                                                            <td>{{ game.date| date('d-m-Y')  }}</td>  
+                                                            <td>{{ game.begin| date('H:i')  }}</td>  
+                                                            <td>{{ game.end| date('H:i') }}</td>                                                                                                        
+                                                        </tr>
+                                                    {% endfor %}
                                                	{% endfor %}					
                                             </tbody>
                                         </table>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -115,7 +113,6 @@
                 {% endfor %}         
             </div>
         </div>
-    </body>
-
+    </body> 
     {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}     

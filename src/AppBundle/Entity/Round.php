@@ -29,14 +29,25 @@ class Round
     private $round;
     
     /**
-     * One place has Many Gallery.
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="round")
      */
     private $game;
     
+    
+    /**
+     * @var \AppBundle\Entity\Groupp
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="groupp_id", referencedColumnName="id")
+     * })
+     */
+    private $groupp;
+    
+    
+    
     public function __construct()
     {
-    
         $this->$game = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -108,5 +119,29 @@ class Round
     public function getGame()
     {
         return $this->game;
+    }
+
+    /**
+     * Set groupp
+     *
+     * @param \AppBundle\Entity\Groupp $groupp
+     *
+     * @return Round
+     */
+    public function setGroupp(\AppBundle\Entity\Groupp $groupp = null)
+    {
+        $this->groupp = $groupp;
+
+        return $this;
+    }
+
+    /**
+     * Get groupp
+     *
+     * @return \AppBundle\Entity\Groupp
+     */
+    public function getGroupp()
+    {
+        return $this->groupp;
     }
 }

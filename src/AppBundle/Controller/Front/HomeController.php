@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Front;
 
 use AppBundle\Entity\HomeSlider;
+use AppBundle\Entity\teamMember;
 use AppBundle\Entity\WhyUs;
 use AppBundle\Entity\MainGallery;
 use AppBundle\Entity\OurServices;
@@ -27,8 +28,11 @@ class HomeController extends Controller
         $whyuses = $em->getRepository('AppBundle:WhyUs')->findBy([], ['created' => 'DESC'], 3) ;
         $mainPictures = $em->getRepository('AppBundle:MainGallery')->getAllImagesWhereMainIsTrue();
         $ourServices = $em->getRepository('AppBundle:OurServices')->findAll();
+        $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
+        
 
         return $this->render('@AppBundle/Resources/views/front/home.html.twig', array(
+            'teamMembers' => $teamMembers,
             'ourServices' => $ourServices,
             'homeSliders' => $homeSliders,
             'whyuses' => $whyuses,
