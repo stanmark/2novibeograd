@@ -49,10 +49,11 @@ class League
     protected $updated;
 
     /**
-     * One place has Many Gallery.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\LeagueGallery", mappedBy="league")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="league")
      */
-    private $galerry;
+    private $mainGallery;
     
     /**
      * One place has Many Gallery.
@@ -65,11 +66,34 @@ class League
     
     public function __construct()
     {
-       
-        $this->$galerry = new \Doctrine\Common\Collections\ArrayCollection();
+              
         $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+    
+
+  
+     /**
+     * Gets triggered only on insert
+     * 
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
+
     
 
     /**
@@ -153,59 +177,39 @@ class League
     {
         return $this->updated;
     }
-    
-     /**
-     * Gets triggered only on insert
-     * 
-     * @ORM\PrePersist
-     */
-    public function onPrePersist()
-    {
-        $this->created = new \DateTime("now");
-    }
 
     /**
-     * Gets triggered every time on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
-    {
-        $this->updated = new \DateTime("now");
-    }
-
-    /**
-     * Add galerry
+     * Add mainGallery
      *
-     * @param \AppBundle\Entity\LeagueGallery $galerry
+     * @param \AppBundle\Entity\MainGallery $mainGallery
      *
      * @return League
      */
-    public function addGalerry(\AppBundle\Entity\LeagueGallery $galerry)
+    public function addMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        $this->galerry[] = $galerry;
+        $this->mainGallery[] = $mainGallery;
 
         return $this;
     }
 
     /**
-     * Remove galerry
+     * Remove mainGallery
      *
-     * @param \AppBundle\Entity\LeagueGallery $galerry
+     * @param \AppBundle\Entity\MainGallery $mainGallery
      */
-    public function removeGalerry(\AppBundle\Entity\LeagueGallery $galerry)
+    public function removeMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        $this->galerry->removeElement($galerry);
+        $this->mainGallery->removeElement($mainGallery);
     }
 
     /**
-     * Get galerry
+     * Get mainGallery
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getGalerry()
+    public function getMainGallery()
     {
-        return $this->galerry;
+        return $this->mainGallery;
     }
 
     /**

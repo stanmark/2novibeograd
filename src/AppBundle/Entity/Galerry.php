@@ -129,7 +129,9 @@ class Galerry
     
     public function setImageFile(File $url = null) {
         $this->imageFile = $url;
-        return $this;
+       if ($this->image instanceof UploadedFile) {
+            $this->updated = new \DateTime('now');
+        }
     }
 
     public function getImageFile() {

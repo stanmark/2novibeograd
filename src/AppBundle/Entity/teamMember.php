@@ -121,15 +121,19 @@ class teamMember
     private $place;
     
     /**
-     * One member has Many Gallery.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\MemberGallery", mappedBy="teamMember")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="teamMember")
      */
-    private $membergalerry;
+    private $mainGallery;
+    
+    
+    
     
     public function __construct()
     {
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->membergalerry = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -383,53 +387,7 @@ class teamMember
         return $this->description;
     }
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return teamMember
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return teamMember
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
+   
     
      /**
      * Gets triggered only on insert
@@ -511,36 +469,36 @@ class teamMember
     }
 
     /**
-     * Add membergalerry
+     * Add mainGallery
      *
-     * @param \AppBundle\Entity\MemberGallery $membergalerry
+     * @param \AppBundle\Entity\MainGallery $mainGallery
      *
      * @return teamMember
      */
-    public function addMembergalerry(\AppBundle\Entity\MemberGallery $membergalerry)
+    public function addMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        $this->membergalerry[] = $membergalerry;
+        $this->mainGallery[] = $mainGallery;
 
         return $this;
     }
 
     /**
-     * Remove membergalerry
+     * Remove mainGallery
      *
-     * @param \AppBundle\Entity\MemberGallery $membergalerry
+     * @param \AppBundle\Entity\MainGallery $mainGallery
      */
-    public function removeMembergalerry(\AppBundle\Entity\MemberGallery $membergalerry)
+    public function removeMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        $this->membergalerry->removeElement($membergalerry);
+        $this->mainGallery->removeElement($mainGallery);
     }
 
     /**
-     * Get membergalerry
+     * Get mainGallery
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMembergalerry()
+    public function getMainGallery()
     {
-        return $this->membergalerry;
+        return $this->mainGallery;
     }
 }

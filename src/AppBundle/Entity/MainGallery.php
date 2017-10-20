@@ -53,13 +53,39 @@ class MainGallery
      */
     private $mainPicture;
     
-    /**
-     * 
-     * @ORM\ManyToOne(targetEntity="GalleryCategory", inversedBy="mainGalerry")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+   /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\League", inversedBy="mainGallery")
+     * @ORM\JoinTable(name="mainGallery_league",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="mainGallerry_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="league_id", referencedColumnName="id")
+     *   }
+     * )
      */
+    private $league;
     
-    private $category;
+    
+     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\teamMember", inversedBy="mainGallery")
+     * @ORM\JoinTable(name="mainGallery_teamMember",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="mainGallerry_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="teamMember_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $teamMember;
+    
+    
+    
     
     /**
      * @var string
@@ -298,27 +324,80 @@ class MainGallery
         return $this->updated;
     }
 
+    
     /**
-     * Set category
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->league = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add league
      *
-     * @param \AppBundle\Entity\GalleryCategory $category
+     * @param \AppBundle\Entity\League $league
      *
      * @return MainGallery
      */
-    public function setCategory(\AppBundle\Entity\GalleryCategory $category = null)
+    public function addLeague(\AppBundle\Entity\League $league)
     {
-        $this->category = $category;
+        $this->league[] = $league;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Remove league
      *
-     * @return \AppBundle\Entity\GalleryCategory
+     * @param \AppBundle\Entity\League $league
      */
-    public function getCategory()
+    public function removeLeague(\AppBundle\Entity\League $league)
     {
-        return $this->category;
+        $this->league->removeElement($league);
+    }
+
+    /**
+     * Get league
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLeague()
+    {
+        return $this->league;
+    }
+
+    /**
+     * Add teamMember
+     *
+     * @param \AppBundle\Entity\teamMember $teamMember
+     *
+     * @return MainGallery
+     */
+    public function addTeamMember(\AppBundle\Entity\teamMember $teamMember)
+    {
+        $this->teamMember[] = $teamMember;
+
+        return $this;
+    }
+
+    /**
+     * Remove teamMember
+     *
+     * @param \AppBundle\Entity\teamMember $teamMember
+     */
+    public function removeTeamMember(\AppBundle\Entity\teamMember $teamMember)
+    {
+        $this->teamMember->removeElement($teamMember);
+    }
+
+    /**
+     * Get teamMember
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTeamMember()
+    {
+        return $this->teamMember;
     }
 }

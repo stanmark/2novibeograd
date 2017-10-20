@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
+
 /**
  * HomeSlider
  *
@@ -29,12 +30,12 @@ class HomeSlider
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255)
      */
-    private $url;
+    private $image;
     
     /**
-     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="url")
+     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="image")
      * @var File
      */
     private $imageFile;
@@ -97,7 +98,7 @@ class HomeSlider
      * 
      * @ORM\Column(type="datetime", nullable = true)
      */
-    protected $updated;
+    protected $updatedAt;
     
     
     /**
@@ -110,28 +111,52 @@ class HomeSlider
         return $this->id;
     }
 
+   
+    
+    
+      /**
+     * Gets triggered only on insert
+     * 
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
+
     /**
-     * Set url
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updatedAt = new \DateTime("now");
+    }
+   
+
+    /**
+     * Set image
      *
-     * @param string $url
+     * @param string $image
      *
      * @return HomeSlider
      */
-    public function setUrl($url)
+    public function setImage($image)
     {
-        $this->url = $url;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get url
+     * Get image
      *
      * @return string
      */
-    public function getUrl()
+    public function getImage()
     {
-        return $this->url;
+        return $this->image;
     }
 
     /**
@@ -229,90 +254,6 @@ class HomeSlider
     {
         return $this->subTitleDescription;
     }
-    
-    
-      /**
-     * Gets triggered only on insert
-     * 
-     * @ORM\PrePersist
-     */
-    public function onPrePersist()
-    {
-        $this->created = new \DateTime("now");
-    }
-
-    /**
-     * Gets triggered every time on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
-    {
-        $this->updated = new \DateTime("now");
-    }
-
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     *
-     * @return HomeSlider
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set updated
-     *
-     * @param \DateTime $updated
-     *
-     * @return HomeSlider
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return \DateTime
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-    
-    
-    public function setImageFile(File $url = null) {
-        
-         $this->imageFile = $url;
-         if ($url) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->updated = new \DateTime('now');
-        }
-    }
-
-    public function getImageFile() {
-        return $this->imageFile;
-    }
-
 
     /**
      * Set callToActionLink
@@ -360,5 +301,67 @@ class HomeSlider
     public function getCallToActionButton()
     {
         return $this->CallToActionButton;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return HomeSlider
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return HomeSlider
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+    
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+        
+        return $this;
+    }
+    
+    
+    
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }

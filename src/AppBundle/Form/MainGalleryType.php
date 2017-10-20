@@ -17,7 +17,7 @@ class MainGalleryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('imageFile', VichImageType::class, ['label' => 'Slika'])
+                ->add('imageFile', VichImageType::class, ['label' => 'Slika', 'required' => false,])
                 ->add('alt', TextType::class, [
                     'label' => 'Alternativni naziv slike',
                     'attr' => [
@@ -25,11 +25,24 @@ class MainGalleryType extends AbstractType
             ]])
                 ->add('mainPicture')
                 ->add('title')
-                ->add('description')
-                ->add('category', EntityType::class, [
-                    'class' => \AppBundle\Entity\GalleryCategory::class,
-                    'choice_label' => 'category',
-                    ]);
+                ->add('description')      
+                ->add('league', EntityType::class, [
+                    'class' => \AppBundle\Entity\League::class,
+                    'choice_label' => 'league',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,
+                    
+    ]) 
+                ->add('teamMember', EntityType::class, [
+                    'class' => \AppBundle\Entity\teamMember::class,
+                    'choice_label' => 'name',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,
+                    
+    ]) 
+                ;
     }
     
     /**

@@ -12,7 +12,7 @@
             </tr>
             <tr>
                 <th>Url</th>
-                <td>{{ homeSlider.url }}</td>
+                <td>{{ homeSlider.image }}</td>
             </tr>
             <tr>
                 <th>Alt</th>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <th>Updated</th>
-                <td>{% if homeSlider.updated %}{{ homeSlider.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if homeSlider.updatedAt %}{{ homeSlider.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

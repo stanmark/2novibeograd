@@ -36,10 +36,10 @@
                                 <div class="c-media">
                                     <div class="c-content-media-2-slider" data-slider="owl">
                                         <div class="owl-carousel owl-theme c-theme owl-single" data-rtl="false" data-single-item="true" data-auto-play="4000">
-                                            {% for oneMember in oneMember.membergalerry %}                                         
+                                            {% for mainGallery in oneMember.mainGallery %}                                         
                                                 <div class="item">
                                                     <div class="c-content-media-2">
-                                                        <img src="{{ vich_uploader_asset(oneMember, 'imageFile') }}" alt="{{ oneMember.alt }}" />
+                                                        <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" />
                                                     </div>
                                                 </div>
                                             {% endfor %} 
@@ -63,7 +63,7 @@
                                 </div>
 
                                 <div class="c-desc">
-                                    <p>{{oneMember.description}}</p>                                
+                                    <p>{{oneMember.description | raw}}</p>                                
                                 </div>                           
                             </div>
                         </div>
