@@ -1,6 +1,8 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
 {% block thead %}
+    <h1>Companies list</h1>
+
    
         <thead>
             <tr>
@@ -19,8 +21,7 @@
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-{% endblock %}
+      {% endblock %}
 
 {% block tbody %}
         {% for company in companies %}
@@ -51,7 +52,7 @@
             </tr>
         {% endfor %}
         </tbody>
-   
+    </table>
 
     <ul>
         <li>

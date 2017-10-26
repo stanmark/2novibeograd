@@ -4,8 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\File;
 
 
 /**
@@ -13,7 +11,6 @@ use Symfony\Component\HttpFoundation\File\File;
  *
  * @ORM\Table(name="home_slider")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\HomeSliderRepository")
- * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks
  */
 class HomeSlider
@@ -26,27 +23,6 @@ class HomeSlider
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255)
-     */
-    private $image;
-    
-    /**
-     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="image")
-     * @var File
-     */
-    private $imageFile;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
-     */
-    
-    private $alt;
 
     /**
      * @var string
@@ -98,7 +74,14 @@ class HomeSlider
      * 
      * @ORM\Column(type="datetime", nullable = true)
      */
-    protected $updatedAt;
+    protected $updated;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="homeSlider")
+     */
+    private $mainGallery;
     
     
     /**
@@ -131,58 +114,9 @@ class HomeSlider
      */
     public function onPreUpdate()
     {
-        $this->updatedAt = new \DateTime("now");
+        $this->updated = new \DateTime("now");
     }
    
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return HomeSlider
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return HomeSlider
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
     /**
      * Set mainTitle
      *
@@ -325,43 +259,70 @@ class HomeSlider
     public function getCreated()
     {
         return $this->created;
+    }  
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Set updatedAt
+     * Set updated
      *
-     * @param \DateTime $updatedAt
+     * @param \DateTime $updated
      *
      * @return HomeSlider
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdated($updated)
     {
-        $this->updatedAt = $updatedAt;
+        $this->updated = $updated;
 
         return $this;
     }
 
     /**
-     * Get updatedAt
+     * Get updated
      *
      * @return \DateTime
      */
-    public function getUpdatedAt()
+    public function getUpdated()
     {
-        return $this->updatedAt;
+        return $this->updated;
     }
-    
-    public function setImageFile(File $image = null)
+
+    /**
+     * Add mainGallery
+     *
+     * @param \AppBundle\Entity\MainGallery $mainGallery
+     *
+     * @return HomeSlider
+     */
+    public function addMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        $this->imageFile = $image;
-        
+        $this->mainGallery[] = $mainGallery;
+
         return $this;
     }
-    
-    
-    
-    public function getImageFile()
+
+    /**
+     * Remove mainGallery
+     *
+     * @param \AppBundle\Entity\MainGallery $mainGallery
+     */
+    public function removeMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        return $this->imageFile;
+        $this->mainGallery->removeElement($mainGallery);
+    }
+
+    /**
+     * Get mainGallery
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMainGallery()
+    {
+        return $this->mainGallery;
     }
 }

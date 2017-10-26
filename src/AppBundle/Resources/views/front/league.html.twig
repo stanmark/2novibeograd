@@ -72,11 +72,14 @@
                             <div class="row">
                                 <div class="col-md-12">						
                                     <div class="table-responsive">
-                                        {{ groupp.groupp }}
+                                        {{ groupp.groupp }} <br><br>
+                                        {% for round in groupp.round %}
+                                                    {{round.round}}
+                                                   
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                   
                                                     <th>Domacin</th>
                                                     <th>SET</th>
                                                     <th>SET</th>
@@ -87,10 +90,9 @@
                                                     <th>Kraj</th>
                                                 </tr>
                                             </thead>
+                                             
                                             <tbody>
-                                                {% for round in groupp.round %}
-                                                    {{round.round}}
-                                                    {% for game in round.game %}
+                                                {% for game in round.game %}
                                                         <tr>
                                                             <td>{{ game.team1.team }}</td>
                                                             <td>{{ game.numberSet1 }}</td>
@@ -101,10 +103,12 @@
                                                             <td>{{ game.begin| date('H:i')  }}</td>  
                                                             <td>{{ game.end| date('H:i') }}</td>                                                                                                        
                                                         </tr>
-                                                    {% endfor %}
-                                               	{% endfor %}					
+                                                 {% endfor %}					
                                             </tbody>
+                                               
                                         </table>
+                                                        
+                                               	{% endfor %}
                                     </div>
                                 </div>
                             </div>

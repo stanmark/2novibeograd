@@ -19,60 +19,39 @@ class CompanyType extends AbstractType
     {
         $builder
                 ->add('name', TextType::class, [
-                    'label' => 'Ime firme',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    'label' => 'Ime firme'
+                    
+            ])
                 ->add('adress', TextType::class, [
                     'label' => 'Adresa',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                   ])
                 ->add('phone', TextType::class, [
                     'label' => 'Telefon',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    ])
                 ->add('mail', EmailType::class, [
                     'label' => 'mail',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    ])
                 ->add('city', TextType::class, [
                     'label' => 'Grad',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    ])
                 ->add('faceurl', TextType::class, [
                     'label' => 'Facebook url',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                   ])
                 ->add('gurl', TextType::class, [
                     'label' => 'Google + url',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    ])
                 ->add('pib', IntegerType::class, [
                     'label' => 'PIB',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    ])
                 ->add('matnumber', IntegerType::class, [
                     'label' => 'Maticni broj firme',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    ])
                 ->add('bankacount', TextType::class, [
                     'label' => 'Tekuci račun',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                    ])
                 ->add('bank', TextType::class, [
                     'label' => 'Banka',
-                    'attr' => [
-                        'class' => 'form-control input-circle-right'
-            ]])
+                   ])
                 ->add('description', CKEditorType::class, [
                     'label' => 'Opis'
                     ]);

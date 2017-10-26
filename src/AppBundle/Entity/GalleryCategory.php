@@ -31,12 +31,13 @@ class GalleryCategory
      */
     private $category;
 
-    /**
-     * @var string
+     /**
+     * @var \Doctrine\Common\Collections\Collection
      *
-     *@ORM\OneToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="galleryCategory")
      */
-    private $maincategory;
+    private $mainCategory;
+    
     
     
      /**

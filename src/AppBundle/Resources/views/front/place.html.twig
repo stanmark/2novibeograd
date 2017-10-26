@@ -35,13 +35,13 @@
                                 <div class="c-media">
                                     <div class="c-content-media-2-slider" data-slider="owl">
                                         <div class="owl-carousel owl-theme c-theme owl-single" data-rtl="false" data-single-item="true" data-auto-play="4000">
-                                            {% for onePlace in onePlace.galerry %}                                          
+                                            {% for mainGallery in onePlace.mainGallery %}                                                
                                                 <div class="item">
-                                                    <div class="c-content-media-2" style="background-image: url(/web/upload/images/599322376a438_1.jpg); min-height: 460px;">
-                                                        <img src="{{ vich_uploader_asset(onePlace, 'imageFile') }}" alt="{{ onePlace.alt }}" />
+                                                    <div class="c-content-media-2" style="background-image: url(''); min-height: 460px;">
+                                                        <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" />
                                                     </div>
-                                                </div>
-                                            {% endfor %}    
+                                                </div> 
+                                            {% endfor %}   
                                         </div>
                                     </div>
                                 </div>

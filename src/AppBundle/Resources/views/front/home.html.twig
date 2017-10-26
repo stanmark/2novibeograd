@@ -13,91 +13,96 @@
                     <ul>
                         {% for homeSlider in homeSliders %}
                             <!--BEGIN: SLIDE #1 -->
-                            <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-style="dark">			
-                                <img 
-                                    alt="{{ homeSlider.alt }}" 
-                                    src="{{ vich_uploader_asset(homeSlider, 'imageFile') }}"
-                                    data-bgposition="center center" 
-                                    data-bgfit="cover" 
-                                    data-bgrepeat="no-repeat"
-                                    >	
-                                <!--BEGIN: MAIN TITLE -->
-                                <div class="tp-caption customin customout"  
-                                     data-x="center" 
-                                     data-y="center"
-                                     data-hoffset="" 
-                                     data-voffset="-30"
+                            {% for mainGallery in homeSlider.mainGallery %}
+                                <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-style="dark">			                               
 
-                                     data-speed="500" 
-                                     data-start="1000" 
-                                     data-transform_in="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:500;e:Back.easeInOut;" 
-                                     data-transform_out="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:600;e:Back.easeInOut;" 
-                                     data-easing="Back.easeOut" 
-                                     data-splitin="none" 
-                                     data-splitout="none" 
-                                     data-elementdelay="0.1" 
-                                     data-endelementdelay="0.1" 
-                                     data-endspeed="600" 
+                                    <img 
 
-                                     >
-                                    <h3 class="c-main-title c-font-60 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
-                                        {{ homeSlider.mainTitle }}
-                                    </h3>
-                                </div>
-                                <!--END -->
+                                        alt="{{ mainGallery.alt }}" 
+                                        src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}"
+                                        data-bgposition="center center" 
+                                        data-bgfit="cover" 
+                                        data-bgrepeat="no-repeat"
+                                        >	
 
-                                <!--BEGIN: ACTION BUTTON -->
-                                <div class="tp-caption randomrotateou"  
-                                     data-x="center" 
-                                     data-y="center" 
-                                     data-hoffset=""
-                                     data-voffset="200"
-                                     data-speed="300" 
-                                     data-start="1500"
-                                     data-transform_in="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:300;e:Back.easeInOut;" 
-                                     data-transform_out="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:400;e:Back.easeInOut;" >
+                                    <!--BEGIN: MAIN TITLE -->
+                                    <div class="tp-caption customin customout"  
+                                         data-x="center" 
+                                         data-y="center"
+                                         data-hoffset="" 
+                                         data-voffset="-30"
 
-                                </div>
-                                <!--END -->
+                                         data-speed="500" 
+                                         data-start="1000" 
+                                         data-transform_in="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:500;e:Back.easeInOut;" 
+                                         data-transform_out="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:600;e:Back.easeInOut;" 
+                                         data-easing="Back.easeOut" 
+                                         data-splitin="none" 
+                                         data-splitout="none" 
+                                         data-elementdelay="0.1" 
+                                         data-endelementdelay="0.1" 
+                                         data-endspeed="600" 
 
-                                <!--BEGIN: SUB TITLE -->
-                                <div class="tp-caption customin customout"  
-                                     data-x="center" 
-                                     data-y="bottom"
-                                     data-hoffset="0" 
-                                     data-voffset="0"
-                                     data-width="full"
-                                     data-basealign="slide"
-                                     data-speed="500" 
-                                     data-start="1800" 
-                                     data-transform_in="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:500;e:Back.easeInOut;" 
-                                     data-transform_out="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:600;e:Back.easeInOut;" 
-                                     data-easing="Back.easeOut" 
-                                     data-splitin="none" 
-                                     data-splitout="none" 
-                                     data-elementdelay="0.1" 
-                                     data-endelementdelay="0.1" 
-                                     data-endspeed="600" 
-                                     style="width: 100%;"
-                                     >
-                                    <div class="c-action-bar">
-                                        <div class="container">
-                                            <div class="c-content ">
-                                                <h3 class="c-font-30 c-font-sbold c-font-white">
-                                                    {{ homeSlider.subTitle }}
-                                                </h3>
-                                                <p class="c-font-20 c-font-thin c-font-white c-opacity-08">
-                                                    {{ homeSlider.subTitleDescription }}
-                                                </p>
-                                            </div>
-                                            <div class="c-btn-container">
-                                                <a href="{{ homeSlider.CallToActionLink }}" class="btn c-action-btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">{{ homeSlider.CallToActionButton }}</a>
+                                         >
+                                        <h3 class="c-main-title c-font-60 c-font-bold c-font-center c-font-uppercase c-font-white c-block">
+                                            {{ homeSlider.mainTitle }}
+                                        </h3>
+                                    </div>
+                                    <!--END -->
+
+                                    <!--BEGIN: ACTION BUTTON -->
+                                    <div class="tp-caption randomrotateou"  
+                                         data-x="center" 
+                                         data-y="center" 
+                                         data-hoffset=""
+                                         data-voffset="200"
+                                         data-speed="300" 
+                                         data-start="1500"
+                                         data-transform_in="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:300;e:Back.easeInOut;" 
+                                         data-transform_out="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:400;e:Back.easeInOut;" >
+
+                                    </div>
+                                    <!--END -->
+
+                                    <!--BEGIN: SUB TITLE -->
+                                    <div class="tp-caption customin customout"  
+                                         data-x="center" 
+                                         data-y="bottom"
+                                         data-hoffset="0" 
+                                         data-voffset="0"
+                                         data-width="full"
+                                         data-basealign="slide"
+                                         data-speed="500" 
+                                         data-start="1800" 
+                                         data-transform_in="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:500;e:Back.easeInOut;" 
+                                         data-transform_out="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;s:600;e:Back.easeInOut;" 
+                                         data-easing="Back.easeOut" 
+                                         data-splitin="none" 
+                                         data-splitout="none" 
+                                         data-elementdelay="0.1" 
+                                         data-endelementdelay="0.1" 
+                                         data-endspeed="600" 
+                                         style="width: 100%;"
+                                         >
+                                        <div class="c-action-bar">
+                                            <div class="container">
+                                                <div class="c-content ">
+                                                    <h3 class="c-font-30 c-font-sbold c-font-white">
+                                                        {{ homeSlider.subTitle }}
+                                                    </h3>
+                                                    <p class="c-font-20 c-font-thin c-font-white c-opacity-08">
+                                                        {{ homeSlider.subTitleDescription }}
+                                                    </p>
+                                                </div>
+                                                <div class="c-btn-container">
+                                                    <a href="{{ homeSlider.CallToActionLink }}" class="btn c-action-btn btn-lg c-btn-square c-btn-border-2x c-btn-white c-btn-bold c-btn-uppercase">{{ homeSlider.CallToActionButton }}</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!--END -->
-                            </li>
+                                    <!--END -->
+                                </li>
+                            {% endfor %}
                         {% endfor %}
                         <!--END --> 
                     </ul>
@@ -192,14 +197,14 @@
                     <p class="c-font-center c-font-grey-3">Galerije kluba</p>
                 </div>
                 <div class="c-content-isotope-grid c-opt-2">
-                    {% for mainPicture in mainPictures %}      
+                    {% for mainGallery in mainGallerys if mainGallery.mainPictureGallery %}           
                         <div class="c-content-isotope-item">
                             <div class="c-content-isotope-image-container">
-                                <img class="c-content-isotope-image" src="{{ vich_uploader_asset(mainPicture, 'imageFile') }}"/>
+                                <img class="c-content-isotope-image" src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}"/>
                                 <div class="c-content-isotope-overlay">
                                     <div class="c-content-isotope-overlay-content">
-                                        <h3 class="c-content-isotope-overlay-title c-font-white c-font-uppercase">{{ mainPicture.title }}</h3>
-                                        <p class="c-content-isotope-overlay-desc c-font-white"> {{ mainPicture.description }}</p>
+                                        <h3 class="c-content-isotope-overlay-title c-font-white c-font-uppercase">{{ mainGallery.title }}</h3>
+                                        <p class="c-content-isotope-overlay-desc c-font-white"> {{ mainGallery.description }}</p>
                                         <a href="javascript:;" class="c-content-isotope-overlay-btn btn c-btn-white c-btn-uppercase c-btn-bold c-btn-border-1x c-btn-square">Read More</a>
                                     </div>
                                 </div>
@@ -303,7 +308,7 @@
         </div>
         <!-- END: FEATURES 4.3 --><!-- END: CONTENT/FEATURES/FEATURES-4-3 -->
 
-<!-- BEGIN: CONTENT/BLOG/RECENT-POSTS -->
+        <!-- BEGIN: CONTENT/BLOG/RECENT-POSTS -->
         <div class="c-content-box c-size-md c-bg-grey-1">
             <div class="container">
                 <!-- Begin: Testimonals 1 component -->
@@ -316,9 +321,9 @@
                     <!-- End-->
                     <!-- Begin: Owlcarousel -->
                     <div class="owl-carousel owl-theme c-theme c-owl-nav-center" data-items="3" data-slide-speed="8000" data-rtl="false"> 
-                        
-                        
-                        
+
+
+
                         <div class="item">
                             <div class="c-content-blog-post-card-1 c-option-2">		
                                 <div class="c-media c-content-overlay">
@@ -364,50 +369,46 @@
 
                     <!-- Begin: Owlcarousel -->
                     <div class="owl-carousel owl-theme c-theme c-owl-nav-center" data-rtl="false" data-items="3" data-slide-speed="8000"> 
-                        
-                        
-                        
-                       {% for teamMember in teamMembers %}   
-                        <div class="item">
-                            <div class="c-content-person-1">
-                                <div class="c-caption c-content-overlay">
-                                    <div class="c-overlay-wrapper">
-                                        <div class="c-overlay-content">
-                                            <a href="#"><i class="icon-link"></i></a>
-                                            {% for teamMember in teamMember.membergalerry %}
-                                            <a href="{{ vich_uploader_asset(teamMember, 'imageFile') }}" data-lightbox="fancybox" data-fancybox-group="gallery-1">
-                                            {% endfor %}
-                                                <i class="icon-magnifier"></i>
-                                            </a>
+
+                        {% for teamMember in teamMembers %} 
+                            <div class="item">
+                                <div class="c-content-person-1">
+                                    <div class="c-caption c-content-overlay">
+                                        <div class="c-overlay-wrapper">
+                                            <div class="c-overlay-content">
+                                                <a href="#"><i class="icon-link"></i></a>
+                                                    {% for mainGallery in teamMember.mainGallery %}
+                                                    <a href="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" data-lightbox="fancybox" data-fancybox-group="gallery-1">
+                                                    {% endfor %}
+                                                    <i class="icon-magnifier"></i>
+                                                </a>
+                                            </div>
                                         </div>
+                                        {% for mainGallery in teamMember.mainGallery if mainGallery.mainPicture %}   
+                                            <img class="c-overlay-object img-responsive" src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}">
+                                        {% endfor %} 
                                     </div>
-                                             {% for teamMember in teamMember.membergalerry %}   
-                                    <img class="c-overlay-object img-responsive" src="{{ vich_uploader_asset(teamMember, 'imageFile') }}" alt="">
-                               {% endfor %}
-                                             </div>
-                                <div class="c-body">
-                                    <div class="c-head">
-                                        <div class="c-name c-font-uppercase c-font-bold">John Doe</div>
-                                        <ul class="c-socials c-theme-ul">
-                                            <li><a href="#"><i class="icon-social-twitter"></i></a></li>
-                                            <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                                            <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
-                                        </ul>
+                                    <div class="c-body">
+                                        <div class="c-head">
+                                            <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}">
+                                                <div class="c-name c-font-uppercase c-font-bold">{{ teamMember.name }}</div>
+                                            </a>
+                                            <ul class="c-socials c-theme-ul">
+                                                <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                                                <li><a href="#"><i class="icon-social-facebook"></i></a></li>
+                                                <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="c-position">
+                                            {{ teamMember.position }}
+                                        </div>
+                                        <p>
+                                            {{ teamMember.description | raw }}
+                                        </p>
                                     </div>
-                                    <div class="c-position">
-                                        CEO, Mockingbird
-                                    </div>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, dolor adipisicing elit. 
-                                        Nulla nemo ad sapiente officia amet.
-                                    </p>
                                 </div>
                             </div>
-                        </div>
                         {% endfor %}
-                        
-                        
-                       		 
                     </div>
                     <!-- End-->
                 </div>
@@ -415,14 +416,14 @@
             </div>
         </div><!-- END: CONTENT/SLIDERS/TEAM-1 -->
 
-        
+
 
 
 
     </div>
     <!-- END: PAGE CONTAINER -->
 
-   
+
 
     <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
     <div class="c-layout-go2top">

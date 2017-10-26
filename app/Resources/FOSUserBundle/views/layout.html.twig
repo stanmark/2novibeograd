@@ -1,7 +1,4 @@
 
-
-
-
 <link href="{{ asset('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
 <link href="{{ asset('public/Admin/admincss/font-awesome.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
 <link href="{{ asset('public/Admin/admincss/simple-line-icons.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
@@ -12,7 +9,6 @@
 <link href="{{ asset('public/Admin/admincss/components.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
 <link href="{{ asset('public/Admin/admincss/plugins.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
 <link href="{{ asset('public/Admin/admincss/login-5.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-
 
 
 <body class=" login">
@@ -51,9 +47,18 @@
         </div>
     </div>
    
-    {% javascripts '@jq_admin'%}{# filter='uglifyjs'#}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %} 
+      {% javascripts 
+                '@jq_admin' 
+
+                '@AppBundle/Resources/skin/admin/jss/jquery.validate.min.js'
+                '@AppBundle/Resources/skin/admin/jss/additional-methods.min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.backstretch.min.js'
+                '@AppBundle/Resources/skin/admin/jss/login-5.min.js'
+                
+
+    filter = 'uglifyjs' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}        
  
 </body>
 

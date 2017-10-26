@@ -23,9 +23,11 @@ class MainGalleryType extends AbstractType
                     'attr' => [
                         'class' => 'form-control'
             ]])
-                ->add('mainPicture')
+               
+                
                 ->add('title')
-                ->add('description')      
+                ->add('description') 
+                 ->add('mainPicture')
                 ->add('league', EntityType::class, [
                     'class' => \AppBundle\Entity\League::class,
                     'choice_label' => 'league',
@@ -42,6 +44,33 @@ class MainGalleryType extends AbstractType
                     'required' => false,
                     
     ]) 
+                ->add('place', EntityType::class, [
+                    'class' => \AppBundle\Entity\place::class,
+                    'choice_label' => 'title',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,
+                    
+    ]) 
+                ->add('homeSlider', EntityType::class, [
+                    'class' => \AppBundle\Entity\HomeSlider::class,
+                    'choice_label' => 'mainTitle',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,
+                     'label' => 'Slika za home slider, jedna slika jedan check box',
+                    
+    ]) 
+                ->add('galleryCategory', EntityType::class, [
+                    'class' => \AppBundle\Entity\GalleryCategory::class,
+                    'choice_label' => 'category',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,
+                     
+                    
+    ]) 
+                ->add('mainPictureGallery')
                 ;
     }
     

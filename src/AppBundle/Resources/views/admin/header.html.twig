@@ -24,13 +24,13 @@
                     <li class="dropdown dropdown-user">
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
+                                <img alt="" class="img-circle" src="" />
                                 <span class="username username-hide-on-mobile"> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                         {% else %}
                             <a href=" {{ path('fos_user_security_login') }}" class="dropdown-toggle"   data-close-others="true">
-                                <img alt="" class="img-circle" src="../assets/layouts/layout2/img/avatar3_small.jpg" />
+                                <img alt="" class="img-circle" src="" />
                                 <span class="username username-hide-on-mobile"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }} </span>
                                 <i class="fa fa-angle-down"></i>
                             </a>  

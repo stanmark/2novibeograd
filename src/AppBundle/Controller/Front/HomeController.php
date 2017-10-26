@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         $homeSliders = $em->getRepository('AppBundle:HomeSlider')->findAll();
         $whyuses = $em->getRepository('AppBundle:WhyUs')->findBy([], ['created' => 'DESC'], 3) ;
-        $mainPictures = $em->getRepository('AppBundle:MainGallery')->getAllImagesWhereMainIsTrue();
+        $mainGallerys = $em->getRepository('AppBundle:MainGallery')->findAll();
         $ourServices = $em->getRepository('AppBundle:OurServices')->findAll();
         $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
         
@@ -36,7 +36,7 @@ class HomeController extends Controller
             'ourServices' => $ourServices,
             'homeSliders' => $homeSliders,
             'whyuses' => $whyuses,
-            'mainPictures' => $mainPictures
+            'mainGallerys' => $mainGallerys
         ));
     }
 }

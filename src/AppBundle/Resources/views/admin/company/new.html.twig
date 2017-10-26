@@ -1,13 +1,17 @@
 {% extends '@AppBundle/Resources/views/admin/form.html.twig' %}
 
 {% block form %}
-   
+    
+    <h1>Company creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" class="btn blue" />
+        <input type="submit" value="Create" class/>
     {{ form_end(form) }}
 
-            <a href="{{ path('company_index') }} "class="btn default">Nazad</a>
-  
+    <ul>
+        <li>
+            <a href="{{ path('company_index') }}">Back to the list</a>
+        </li>
+    </ul>
 {% endblock %}

@@ -31,16 +31,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        {% for place in places %} 
+                        {% for place in places if place.treaningPlace %}             
                             <div class="c-content-blog-post-1-list">
                                 <div class="c-content-blog-post-1">
                                     <div class="c-media">
                                         <div class="c-content-media-2-slider" data-slider="owl"> 
                                             <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-auto-play="4000" data-rtl="false">
-                                                {% for place in place.galerry %}
+                                                {% for mainGallery in place.mainGallery %}                                                  
                                                     <div class="item">
                                                         <div class="c-content-media-2" style="min-height: 460px;">
-                                                            <img src="{{ vich_uploader_asset(place, 'imageFile') }}" alt="{{ place.alt }}" />
+                                                            <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" />
                                                         </div> 
                                                     </div>  
                                                 {% endfor %} 

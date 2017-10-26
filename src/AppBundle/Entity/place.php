@@ -75,10 +75,18 @@ class place
     private $member;
     
     /**
-     * One place has Many Gallery.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Galerry", mappedBy="place")
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="place")
      */
-    private $galerry;
+    private $mainGallery;
+    
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="treaningPlace", type="boolean", nullable=true)
+     */
+    private $treaningPlace;
 
   
    
@@ -89,7 +97,7 @@ class place
     public function __construct()
     {
         $this->member = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->galerry = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -276,39 +284,63 @@ class place
     {
         return $this->member;
     }
-    
+   
 
     /**
-     * Add galerry
+     * Add mainGallery
      *
-     * @param \AppBundle\Entity\Galerry $galerry
+     * @param \AppBundle\Entity\MainGallery $mainGallery
      *
      * @return place
      */
-    public function addGalerry(\AppBundle\Entity\Galerry $galerry)
+    public function addMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        $this->galerry[] = $galerry;
+        $this->mainGallery[] = $mainGallery;
 
         return $this;
     }
 
     /**
-     * Remove galerry
+     * Remove mainGallery
      *
-     * @param \AppBundle\Entity\Galerry $galerry
+     * @param \AppBundle\Entity\MainGallery $mainGallery
      */
-    public function removeGalerry(\AppBundle\Entity\Galerry $galerry)
+    public function removeMainGallery(\AppBundle\Entity\MainGallery $mainGallery)
     {
-        $this->galerry->removeElement($galerry);
+        $this->mainGallery->removeElement($mainGallery);
     }
 
     /**
-     * Get galerry
+     * Get mainGallery
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getGalerry()
+    public function getMainGallery()
     {
-        return $this->galerry;
+        return $this->mainGallery;
+    }
+
+    /**
+     * Set treaningPlace
+     *
+     * @param boolean $treaningPlace
+     *
+     * @return place
+     */
+    public function setTreaningPlace($treaningPlace)
+    {
+        $this->treaningPlace = $treaningPlace;
+
+        return $this;
+    }
+
+    /**
+     * Get treaningPlace
+     *
+     * @return boolean
+     */
+    public function getTreaningPlace()
+    {
+        return $this->treaningPlace;
     }
 }

@@ -43,16 +43,12 @@
                                     {% for teamMember in teamMembers %}
                                         <div class="col-md-4 col-sm-6 c-margin-b-30">
                                             <div class="c-content-person-1 c-option-2">
-                                                {% for mainGallery in teamMember.mainGallery %}
-                                                      {{ dump(mainGallery) }}
+                                                {% for mainGallery in teamMember.mainGallery if mainGallery.mainPicture %}                               
                                                     <div class="c-caption c-content-overlay">
                                                         <div class="c-overlay-wrapper">
                                                             <div class="c-overlay-content">
                                                                 <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}"><i class="icon-link"></i></a>
-                                                                {% if mainGallery.main is true %}
                                                                 <a href="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" data-lightbox="fancybox" data-fancybox-group="gallery-4">
-                                                                {% endif %}
-                                                                    
                                                                     <i class="icon-magnifier"></i>
                                                                 </a>
                                                             </div>

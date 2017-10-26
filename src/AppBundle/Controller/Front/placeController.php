@@ -39,15 +39,12 @@ class placeController extends Controller
 
         $place = $em->getRepository(place::class);
         $onePlace = $place->findOneBy(['id' => $id]);
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
-        $galerries = $em->getRepository('AppBundle:Galerry')->findby(
-                ['place' => $onePlace]);
+        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();       
         $times = $em->getRepository('AppBundle:Time')->findby(
                 ['place' => $onePlace]);
 
         return $this->render('@AppBundle/Resources/views/front/place.html.twig', array(  
-            'times' => $times,
-            'galerries' => $galerries,
+            'times' => $times,           
             'onePlace' => $onePlace,
             'sEOs' => $sEOs,
             

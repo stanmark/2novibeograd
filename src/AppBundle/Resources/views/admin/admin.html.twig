@@ -19,6 +19,37 @@
             <!-- END CONTENT -->          
         </div>
         <!-- END CONTAINER -->
+        
      {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %} 
+     {% javascripts 
+                '@jq_admin' 
+                '@AppBundle/Resources/skin/admin/jss/moment.min.js'
+                '@AppBundle/Resources/skin/admin/jss/daterangepicker.min.js'
+                '@AppBundle/Resources/skin/admin/jss/morris.min.js'
+                '@AppBundle/Resources/skin/admin/jss/raphael-min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.waypoints.min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.counterup.min.js'
+                '@AppBundle/Resources/skin/admin/jss/amcharts.js'
+                '@AppBundle/Resources/skin/admin/jss/serial.js'
+                '@AppBundle/Resources/skin/admin/jss/pie.js'
+                '@AppBundle/Resources/skin/admin/jss/radar.js'
+                '@AppBundle/Resources/skin/admin/jss/light.js'
+                '@AppBundle/Resources/skin/admin/jss/patterns.js'
+                '@AppBundle/Resources/skin/admin/jss/chalk.js'
+                '@AppBundle/Resources/skin/admin/jss/ammap.js'
+                '@AppBundle/Resources/skin/admin/jss/worldLow.js'
+                '@AppBundle/Resources/skin/admin/jss/amstock.js'
+                '@AppBundle/Resources/skin/admin/jss/fullcalendar.min.js'
+                '@AppBundle/Resources/skin/admin/jss/horizontal-timeline.min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.flot.min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.flot.resize.min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.flot.categories.min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.easypiechart.min.js'
+                '@AppBundle/Resources/skin/admin/jss/jquery.sparkline.min.js'             
+                '@AppBundle/Resources/skin/admin/jss/dashboard.min.js'
+
+    filter = 'uglifyjs' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}      
 {% endblock %}
    

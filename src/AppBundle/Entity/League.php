@@ -51,7 +51,7 @@ class League
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="league")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="galleryCategory")
      */
     private $mainGallery;
     

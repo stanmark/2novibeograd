@@ -51,7 +51,14 @@ about:
 contact:
     path:     /kontakt/
     defaults: { _controller: "AppBundle:Front/Contact:index" }
-    methods:  GET      
+    methods:  GET    
+    
+galerys:
+    path:     /galerije/
+    defaults: { _controller: "AppBundle:Front/MainGallery:index" }
+    methods:  GET       
+    
+ 
         
   
     

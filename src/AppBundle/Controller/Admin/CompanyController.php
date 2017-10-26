@@ -4,17 +4,22 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Company;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Company controller.
  *
+ * @Route("company")
  */
 class CompanyController extends Controller
 {
     /**
      * Lists all company entities.
      *
+     * @Route("/admin/company", name="company_index")
+     * @Method("GET")
      */
     public function indexAction()
     {
@@ -30,6 +35,8 @@ class CompanyController extends Controller
     /**
      * Creates a new company entity.
      *
+     * @Route("/new", name="company_new")
+     * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
@@ -54,6 +61,8 @@ class CompanyController extends Controller
     /**
      * Finds and displays a company entity.
      *
+     * @Route("/{id}", name="company_show")
+     * @Method("GET")
      */
     public function showAction(Company $company)
     {
@@ -68,6 +77,8 @@ class CompanyController extends Controller
     /**
      * Displays a form to edit an existing company entity.
      *
+     * @Route("/{id}/edit", name="company_edit")
+     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Company $company)
     {
@@ -91,6 +102,8 @@ class CompanyController extends Controller
     /**
      * Deletes a company entity.
      *
+     * @Route("/{id}", name="company_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, Company $company)
     {
