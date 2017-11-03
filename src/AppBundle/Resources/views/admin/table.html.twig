@@ -1,60 +1,91 @@
 {% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
-{% block body %}
-    {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
-    <!-- BEGIN CONTAINER -->
-    <div class="page-container">
-        {% include '@AppBundle/Resources/views/admin/sidebar.html.twig' %}
-        <!-- BEGIN CONTENT -->
-        <div class="page-content-wrapper">
-            <!-- BEGIN CONTENT BODY -->
-            <div class="page-content">
 
+{% block head %}
+    {{ parent() }}
 
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                        <div class="portlet light ">
-                            <div class="portlet-title">
-                                <div class="caption font-dark">
-                                    <i class="icon-settings font-dark"></i>
-                                    <span class="caption-subject bold uppercase"> Lista</span>
-                                </div>                             
-                            </div>
-                            <div class="portlet-body">
-                                <div class="table-toolbar">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="btn-group">                                                
-                                            </div>
-                                        </div>                                     
-                                    </div>
-                                </div>
-                                <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">                                    
-                                    {% block thead %}
-                                    {% endblock %}
-                                    {% block tbody %}
-                                    {% endblock %}
-                                </table>
-                            </div>
-                        </div>
-                        <!-- END EXAMPLE TABLE PORTLET-->
-                    </div>
-                </div>
-
-
-
-
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-    <!-- END CONTAINER -->
-    {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %} 
+    <link href="{{ asset('public/Admin/admincss/datatables.min.cs')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>  
+    <link href="{{ asset('public/Admin/admincss/datatables.bootstrap.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>    
 {% endblock %}
 
+{% block main %}
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">
+        {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
+        <div class="page-container">
+            {% include '@AppBundle/Resources/views/admin/sidebar.html.twig' %}
+
+
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="{{ path ('admin_homepage') }}">Admin</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>              
+                        </ul>
+                        <div class="page-toolbar">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-bell"></i> Akcije</a>
+                                    </li>                           
+                                    <li class="divider"> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAGE HEADER-->                
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                            <div class="portlet light ">
+                                <div class="portlet-body">
+
+                                    {% block thead %}
+
+                                    {% endblock %}
+                                    {% block tbody %}
+
+                                    {% endblock %}
+
+                                </div>
+                            </div>
+                            <!-- END EXAMPLE TABLE PORTLET-->                      
+                        </div>
+                    </div>
+                </div>                                     
+                <!-- END CONTENT BODY -->
+            </div>                            
+            {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %}
+        </div>   
+    </body>
+
+
+
+
+
+    {% javascripts 
+                '@jq_admin'                 
+
+                '@AppBundle/Resources/skin/admin/jss/datatable.min.js'
+                '@AppBundle/Resources/skin/admin/jss/datatables.min.js'
+                '@AppBundle/Resources/skin/admin/jss/datatables.bootstrap.js'
+
+                '@AppBundle/Resources/skin/admin/jss/table-datatables-colreorder.min.js'
+
+
+    %}
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}  
+
+{% endblock %}
 

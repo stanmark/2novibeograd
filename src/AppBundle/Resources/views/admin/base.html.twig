@@ -24,12 +24,10 @@
         <link href="{{ asset('public/Admin/admincss/bootstrap.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/bootstrap-switch.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
         {# SIDEBAR #}
-        <link href="{{ asset('public/Admin/admincss/bootstrap-rtl.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/bootstrap-switch-rtl.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
-        
+       
         
          <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="{{ asset('public/Admin/admincss/daterangepicker.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
+        <link href="{{ asset('public/Admin/admincss/daterangepicker.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/morris.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/fullcalendar.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/jqvmap.css')}}"  filter='cssrewrite' rel="stylesheet" type="text/css"/>
@@ -38,27 +36,12 @@
          <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="{{ asset('public/Admin/admincss/components.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/plugins.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        {# SIDEBAR #}
-        <link href="{{ asset('public/Admin/admincss/components-rtl.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/plugins-rtl.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+        
         
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="{{ asset('public/Admin/admincss/layout.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/custom.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/blue.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-         {# SIDEBAR #}
-        <link href="{{ asset('public/Admin/admincss/layout-rtl.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/blue-rtl.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/custom-rtl.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-         {# SIDEBAR #}
-        
-       {# 
-        <link href="{{ asset('public/Admin/admincss/datatables.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/datatables.bootstrap.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/select2.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/select2-bootstrap.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-       
-       #} 
        <link rel="shortcut icon" href="favicon.ico" /> 
     </head>
     <!-- END HEAD -->
@@ -66,12 +49,12 @@
 
    {# <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">#}
        
-        {% block body %}
+        {% block main %}
         {% endblock %}
 
                 
             {% javascripts 
-                '@jq_admin' filter = 'uglifyjs' %}
+                '@jq_admin' %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}        
     {#</body>#}

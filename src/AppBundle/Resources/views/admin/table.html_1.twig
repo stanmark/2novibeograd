@@ -1,0 +1,60 @@
+{% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
+{% block body %}
+    {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        {% include '@AppBundle/Resources/views/admin/sidebar.html.twig' %}
+        <!-- BEGIN CONTENT -->
+        <div class="page-content-wrapper">
+            <!-- BEGIN CONTENT BODY -->
+            <div class="page-content">
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet light ">
+                            <div class="portlet-title">
+                                <div class="caption font-dark">
+                                    <i class="icon-settings font-dark"></i>
+                                    <span class="caption-subject bold uppercase"> Lista</span>
+                                </div>                             
+                            </div>
+                            <div class="portlet-body">
+                                <div class="table-toolbar">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="btn-group">                                                
+                                            </div>
+                                        </div>                                     
+                                    </div>
+                                </div>
+                                <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">                                    
+                                    {% block thead %}
+                                    {% endblock %}
+                                    {% block tbody %}
+                                    {% endblock %}
+                                </table>
+                            </div>
+                        </div>
+                        <!-- END EXAMPLE TABLE PORTLET-->
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- END CONTAINER -->
+    {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %} 
+{% endblock %}
+
+

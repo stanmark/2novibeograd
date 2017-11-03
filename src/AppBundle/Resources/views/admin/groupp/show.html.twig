@@ -1,40 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
+{% block tbody %}
     <h1>Groupp</h1>
 
-    <table>
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
         <tbody>
             <tr>
-                <th>Groupp</th>
+                <th>Liga</th>
+                <td>{{ groupp.league.league }}</td>               
+            </tr>
+            <tr>
+                <th>Group</th>
                 <td>{{ groupp.groupp }}</td>
             </tr>
+             <th>Runde</th>
+                <td>
+                    {% for round in groupp.round %}
+                    {{ round.rounds }},
+                    {% endfor %}
+                </td>
             <tr>
-                <th>Id</th>
-                <td>{{ groupp.id }}</td>
+                <th>Timovi</th>
+                <td>
+                    {% for team in groupp.team %}
+                    {{ team.team }},
+                    {% endfor %}
+                </td>              
             </tr>
-            <tr>
-                <th>Created</th>
-                <td>{% if groupp.created %}{{ groupp.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Updated</th>
-                <td>{% if groupp.updated %}{{ groupp.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
+            
+            
+          
+           
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('groupp_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('groupp_edit', { 'id': groupp.id }) }}">Edit</a>
-        </li>
-        <li>
+          
+      
+            
+       
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <div  class="btn-group btn-group-circle btn-group-solid">
+                  <a href="{{ path('groupp_index') }}" class="btn green">Back to the list</a>
+                  <a href="{{ path('groupp_edit', { 'id': groupp.id }) }}" class="btn yellow">Edit</a>
+                <input type="submit" value="Delete" class="btn red">
+                
+            </div>    
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+     
 {% endblock %}

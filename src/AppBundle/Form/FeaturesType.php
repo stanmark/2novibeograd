@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class FeaturesType extends AbstractType
@@ -15,12 +14,14 @@ class FeaturesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-                ->add('features', TextType::class, [
-                    'label' => 'Features',
-                    'attr' => [
-                        'class' => 'class="form-control"'
-            ]]);
+        $builder->add('features')
+                ->add('pricing',  EntityType::class, [
+                    'class' => \AppBundle\Entity\Pricing::class,
+                    'choice_label' => 'name',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,                   
+                    ]);
     }
     
     /**

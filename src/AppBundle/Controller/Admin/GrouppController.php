@@ -9,15 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Groupp controller.
  *
- * @Route("groupp")
+ *
  */
 class GrouppController extends Controller
 {
     /**
      * Lists all groupp entities.
      *
-     * @Route("/", name="groupp_index")
-     * @Method("GET")
+ 
      */
     public function indexAction()
     {
@@ -33,8 +32,7 @@ class GrouppController extends Controller
     /**
      * Creates a new groupp entity.
      *
-     * @Route("/new", name="groupp_new")
-     * @Method({"GET", "POST"})
+  
      */
     public function newAction(Request $request)
     {
@@ -59,8 +57,7 @@ class GrouppController extends Controller
     /**
      * Finds and displays a groupp entity.
      *
-     * @Route("/{id}", name="groupp_show")
-     * @Method("GET")
+
      */
     public function showAction(Groupp $groupp)
     {
@@ -75,8 +72,7 @@ class GrouppController extends Controller
     /**
      * Displays a form to edit an existing groupp entity.
      *
-     * @Route("/{id}/edit", name="groupp_edit")
-     * @Method({"GET", "POST"})
+ 
      */
     public function editAction(Request $request, Groupp $groupp)
     {
@@ -100,8 +96,7 @@ class GrouppController extends Controller
     /**
      * Deletes a groupp entity.
      *
-     * @Route("/{id}", name="groupp_delete")
-     * @Method("DELETE")
+
      */
     public function deleteAction(Request $request, Groupp $groupp)
     {
@@ -120,9 +115,7 @@ class GrouppController extends Controller
     /**
      * Creates a form to delete a groupp entity.
      *
-     * @param Groupp $groupp The groupp entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+
      */
     private function createDeleteForm(Groupp $groupp)
     {

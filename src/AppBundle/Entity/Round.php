@@ -24,9 +24,9 @@ class Round
       /**
      * @var string
      *
-     * @ORM\Column(name="round", type="string", length=255)
+     * @ORM\Column(name="rounds", type="string", length=255)
      */
-    private $round;
+    private $rounds;
     
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="round")
@@ -143,5 +143,29 @@ class Round
     public function getGroupp()
     {
         return $this->groupp;
+    }
+
+    /**
+     * Set rounds
+     *
+     * @param string $rounds
+     *
+     * @return Round
+     */
+    public function setRounds($rounds)
+    {
+        $this->rounds = $rounds;
+
+        return $this;
+    }
+
+    /**
+     * Get rounds
+     *
+     * @return string
+     */
+    public function getRounds()
+    {
+        return $this->rounds;
     }
 }

@@ -109,17 +109,4 @@ assetic:
                 -  '@AppBundle/Resources/skin/admin/jss/select2.full.min.js'
 #                 END MULTI USE
                 
-                
-#                -  '@AppBundle/Resources/skin/admin/jss/datatable.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/datatables.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/datatables.bootstrap.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/table-datatables-scroller.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/table-datatables-responsive.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/jquery.repeater.min.js'               
-#                -  '@AppBundle/Resources/skin/admin/jss/bootstrap-datepicker.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/form-repeater.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/components-date-time-pickers.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/respond.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/excanvas.min.js'
-#                -  '@AppBundle/Resources/skin/admin/jss/ie8.fix.min.js'
              

@@ -1,27 +1,50 @@
 {% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
 {% block body %}
-    {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
-     <!-- BEGIN CONTAINER -->
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">
+        {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
         <div class="page-container">
             {% include '@AppBundle/Resources/views/admin/sidebar.html.twig' %}
 
-            <!-- BEGIN CONTENT -->
+
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
                 <div class="page-content">
-                    <!-- BEGIN PAGE HEADER-->                 
-                    <h1 class="page-title"> OK Novi Beograd</h1>                   
+                    <!-- BEGIN PAGE HEADER-->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="{{ path ('admin_homepage') }}">Admin</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>              
+                        </ul>
+                        <div class="page-toolbar">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-bell"></i> Akcije</a>
+                                    </li>                           
+                                    <li class="divider"> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <!-- END PAGE HEADER-->
-                    
-                </div>
+                    <h1> OK Novi Beograd</h1>
+                </div>                                     
                 <!-- END CONTENT BODY -->
-            </div>
-            <!-- END CONTENT -->          
-        </div>
-        <!-- END CONTAINER -->
-        
-     {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %} 
-     {% javascripts 
+            </div>                            
+            {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %}
+        </div>   
+    </body>
+
+
+
+    {% javascripts 
                 '@jq_admin' 
                 '@AppBundle/Resources/skin/admin/jss/moment.min.js'
                 '@AppBundle/Resources/skin/admin/jss/daterangepicker.min.js'
@@ -46,10 +69,7 @@
                 '@AppBundle/Resources/skin/admin/jss/jquery.flot.categories.min.js'
                 '@AppBundle/Resources/skin/admin/jss/jquery.easypiechart.min.js'
                 '@AppBundle/Resources/skin/admin/jss/jquery.sparkline.min.js'             
-                '@AppBundle/Resources/skin/admin/jss/dashboard.min.js'
-
-    filter = 'uglifyjs' %}
-            <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}      
+                '@AppBundle/Resources/skin/admin/jss/dashboard.min.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}      
 {% endblock %}
-   

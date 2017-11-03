@@ -1,49 +1,65 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block thead %}
+{% block tbody %}
+    <h1>Game</h1>
+
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
         <tbody>
+             <tr>
+                <th>Kolo</th>
+                <td>{{ game.round.rounds }}</td>
+            </tr>
             <tr>
-                <th>Bodteam1</th>
+                <th>Domacin</th>
+                <td>{{ game.team1.team }}</td>
+            </tr>
+            <tr>
+                <th>Bodova domacin</th>
                 <td>{{ game.bodTeam1 }}</td>
             </tr>
             <tr>
-                <th>Bodteam2</th>
+                <th>Setova domacin</th>
+                <td>{{ game.numberSet1 }}</td>
+            </tr>
+             <tr>
+                <th>Setova gost</th>
+                <td>{{ game.numberSet2 }}</td>
+            </tr>
+             <tr>
+                <th>Bodova gost</th>
                 <td>{{ game.bodTeam2 }}</td>
             </tr>
-            <tr>
-                <th>Setteam1</th>
-                <td>{{ game.setTeam1 }}</td>
+             <tr>
+                <th>Gost gost</th>
+                <td>{{ game.team2.team }}</td>
             </tr>
             <tr>
-                <th>Setteam2</th>
-                <td>{{ game.setTeam2 }}</td>
+                <th>Date</th>
+                <td>{% if game.date %}{{ game.date|date('d-m-Y') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Id</th>
-                <td>{{ game.id }}</td>
+                <th>Mesto</th>
+                <td>{{ game.place.title }}</td>
             </tr>
             <tr>
-                <th>Created</th>
-                <td>{% if game.created %}{{ game.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Begin</th>
+                <td>{% if game.begin %}{{ game.begin|date('H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Updated</th>
-                <td>{% if game.updated %}{{ game.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
+                <th>End</th>
+                <td>{% if game.end %}{{ game.end|date('H:i:s') }}{% endif %}</td>
+            </tr>           
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('game_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('game_edit', { 'id': game.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+
+    {{ form_start(delete_form) }}
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('game_index') }}" class="btn green">Back to the list</a>
+        <a href="{{ path('game_edit', { 'id': game.id }) }}" class="btn yellow">Edit</a>
+        <input type="submit" value="Delete" class="btn red">
+    </div>
+    {{ form_end(delete_form) }}
+
 {% endblock %}

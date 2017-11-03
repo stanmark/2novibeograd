@@ -2,8 +2,7 @@
 
 {% block thead %}
     <h1>Companies list</h1>
-
-   
+    <table class="table table-striped table-bordered table-hover" id="sample_1">
         <thead>
             <tr>
                 <th>Name</th>
@@ -17,46 +16,38 @@
                 <th>Matnumber</th>
                 <th>Bankacount</th>
                 <th>Bank</th>
-                <th>Id</th>
                 <th>Description</th>
                 <th>Actions</th>
             </tr>
-      {% endblock %}
+        </thead>
+    {% endblock %}
 
-{% block tbody %}
-        {% for company in companies %}
-            <tr>
-                <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.name }}</a></td>
-                <td>{{ company.adress }}</td>
-                <td>{{ company.phone }}</td>
-                <td>{{ company.mail }}</td>
-                <td>{{ company.city }}</td>
-                <td>{{ company.faceurl }}</td>
-                <td>{{ company.gurl }}</td>
-                <td>{{ company.pib }}</td>
-                <td>{{ company.matnumber }}</td>
-                <td>{{ company.bankacount }}</td>
-                <td>{{ company.bank }}</td>
-                <td>{{ company.id }}</td>
-                <td>{{ company.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('company_show', { 'id': company.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+    {% block tbody %}
+
+        <tbody>
+            {% for company in companies  %}
+                <tr>
+                    <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.name }}</a></td>
+                    <td>{{ company.adress }}</td>
+                    <td>{{ company.phone }}</td>
+                    <td>{{ company.mail }}</td>
+                    <td>{{ company.city }}</td>
+                    <td>{{ company.faceurl }}</td>
+                    <td>{{ company.gurl }}</td>
+                    <td>{{ company.pib }}</td>
+                    <td>{{ company.matnumber }}</td>
+                    <td>{{ company.bankacount }}</td>
+                    <td>{{ company.bank }}</td>
+                    <td>{{ company.description  [:50] | raw  }}</td>
+                    <td class="btn-group btn-group-circle btn-group-solid">    
+                        <a  class="btn red" href="{{ path('company_show', { 'id': company.id }) }}">show</a>
+                        <a class="btn green" href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('company_new') }}">Create a new company</a>
-        </li>
-    </ul>
+    <a href="{{ path('company_new') }}" class="btn btn-circle green">Create a new company</a>
+
 {% endblock %}

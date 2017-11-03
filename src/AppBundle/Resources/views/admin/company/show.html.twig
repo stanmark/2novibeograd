@@ -1,9 +1,9 @@
-{% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
+{% block tbody %}
     <h1>Company</h1>
 
-    <table  class="table table-responsive">
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
         <tbody>
             <tr>
                 <th>Name</th>
@@ -60,17 +60,13 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('company_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('company_edit', { 'id': company.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(delete_form) }}
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('company_index') }}" class="btn green" >Back to the list</a>
+
+        <a href="{{ path('company_edit', { 'id': company.id }) }}"  class="btn yellow">Edit</a>
+        <input type="submit" value="Delete"  class="btn red">
+    </div>
+    {{ form_end(delete_form) }}
+
 {% endblock %}

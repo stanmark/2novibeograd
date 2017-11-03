@@ -55,7 +55,7 @@ class Groupp
     
     /**
      * 
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Team", mappedBy="group")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Team", mappedBy="groupp")
      */
     private $team;
     
@@ -68,8 +68,8 @@ class Groupp
      public function __construct()
     {
        
-        $this->$team = new \Doctrine\Common\Collections\ArrayCollection();       
-        $this->$round = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->$team = new \Doctrine\Common\Collections\ArrayCollection();       
+//        $this->$round = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 

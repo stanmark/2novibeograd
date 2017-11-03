@@ -22,8 +22,8 @@
             </div>
             <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
                 <div class="login-content"> 
-                    
-                    
+
+
                     {% if app.request.hasPreviousSession %}
                         {% for type, messages in app.session.flashbag.all() %}
                             {% for message in messages %}
@@ -34,32 +34,30 @@
                         {% endfor %}
                     {% endif %}
 
-                   
-                        {% block fos_user_content %}
-                        {% endblock fos_user_content %}
-                    
-                    
-                  
+
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+
+
+
                 </div>
-                    
-                    
+
+
             </div>
         </div>
     </div>
-   
-      {% javascripts 
+
+    {% javascripts 
                 '@jq_admin' 
 
                 '@AppBundle/Resources/skin/admin/jss/jquery.validate.min.js'
                 '@AppBundle/Resources/skin/admin/jss/additional-methods.min.js'
                 '@AppBundle/Resources/skin/admin/jss/jquery.backstretch.min.js'
                 '@AppBundle/Resources/skin/admin/jss/login-5.min.js'
-                
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}        
 
-    filter = 'uglifyjs' %}
-            <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}        
- 
 </body>
 
 

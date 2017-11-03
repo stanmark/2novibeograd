@@ -40,7 +40,7 @@ class Team
      *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
      * })
      */
-    private $group;
+    private $groupp;
     
     
 

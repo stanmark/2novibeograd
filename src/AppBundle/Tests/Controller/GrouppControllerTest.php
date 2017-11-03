@@ -4,7 +4,7 @@ namespace AppBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class GrouppControllerTest extends WebTestCase
+class grouppControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
