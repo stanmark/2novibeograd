@@ -1,11 +1,10 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block thead %}
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ pricing.id }}</td>
-            </tr>
+{% block tbody %}
+    <h1>Pricing</h1>
+
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
+        <tbody>        
             <tr>
                 <th>Name</th>
                 <td>{{ pricing.name }}</td>
@@ -18,20 +17,23 @@
                 <th>Description</th>
                 <td>{{ pricing.description }}</td>
             </tr>
+            <tr>
+                <th>Pogodnosti</th>
+                <td>
+                    {% for feature in pricing.features %}
+                        {{ feature.features }},
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('pricing_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('pricing_edit', { 'id': pricing.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    {{ form_start(delete_form) }}
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('pricing_index') }}" class="btn green">Back to the list</a>
+        <a href="{{ path('pricing_edit', { 'id': pricing.id }) }}" class="btn yellow">Edit</a>
+        <input type="submit" value="Delete" class="btn red">
+    </div>
+    {{ form_end(delete_form) }}
+
 {% endblock %}

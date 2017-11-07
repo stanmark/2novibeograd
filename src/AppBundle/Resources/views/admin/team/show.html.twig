@@ -1,48 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-{% block body %}
+{% block tbody %}
     <h1>Team</h1>
 
-    <table>
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ team.id }}</td>
+                <th>Liga</th>
+                <td>{{ team.groupp.league.league }}</td>
+            </tr>
+             <tr>
+                <th>Grupa</th>
+                <td>{{ team.groupp.groupp }}</td>
             </tr>
             <tr>
                 <th>Team</th>
                 <td>{{ team.team }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{% if team.created %}{{ team.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Updated</th>
-                <td>{% if team.updated %}{{ team.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>{{ team.url }}</td>
-            </tr>
-            <tr>
-                <th>Alt</th>
-                <td>{{ team.alt }}</td>
-            </tr>
+            </tr>           
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('team_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('team_edit', { 'id': team.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+    {{ form_start(delete_form) }}
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('team_index') }}" class="btn green">Back to the list</a>
+        <a href="{{ path('team_edit', { 'id': team.id }) }}" class="btn yellow">Edit</a>
+        <input type="submit" value="Delete" class="btn red">
+    </div>
+    {{ form_end(delete_form) }}
+
 {% endblock %}

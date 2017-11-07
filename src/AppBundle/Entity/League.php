@@ -51,12 +51,11 @@ class League
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="galleryCategory")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="league")
      */
     private $mainGallery;
     
     /**
-     * One place has Many Gallery.
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Groupp", mappedBy="league")
      */
     private $groupp;
@@ -68,7 +67,7 @@ class League
     {
               
         $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->$mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->$mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     

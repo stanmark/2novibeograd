@@ -34,7 +34,7 @@ class Time
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="day", type="string", length=20)
+     * @ORM\Column(name="day", type="date")
      */
     private $day;
 
@@ -79,14 +79,63 @@ class Time
     protected $updated;
 
 
+  
+
+    
+    /**
+     * Gets triggered only on insert
+     * 
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
+
+    
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Time
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**
@@ -140,7 +189,7 @@ class Time
     /**
      * Set end
      *
-     * @param string $end
+     * @param \DateTime $end
      *
      * @return Time
      */
@@ -154,31 +203,11 @@ class Time
     /**
      * Get end
      *
-     * @return string
+     * @return \DateTime
      */
     public function getEnd()
     {
         return $this->end;
-    }
-    
-    /**
-     * Gets triggered only on insert
-     * 
-     * @ORM\PrePersist
-     */
-    public function onPrePersist()
-    {
-        $this->created = new \DateTime("now");
-    }
-
-    /**
-     * Gets triggered every time on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
-    {
-        $this->updated = new \DateTime("now");
     }
 
     /**
@@ -251,29 +280,5 @@ class Time
     public function getPlace()
     {
         return $this->place;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Time
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 }

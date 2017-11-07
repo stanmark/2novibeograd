@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\OurServices;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Ourservice controller.
@@ -33,7 +34,7 @@ class OurServicesController extends Controller
      */
     public function newAction(Request $request)
     {
-        $ourService = new Ourservice();
+        $ourService = new OurServices();
         $form = $this->createForm('AppBundle\Form\OurServicesType', $ourService);
         $form->handleRequest($request);
 
@@ -94,16 +95,17 @@ class OurServicesController extends Controller
      */
     public function deleteAction(Request $request, OurServices $ourService)
     {
-        $form = $this->createDeleteForm($ourService);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($ourService);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($ourService);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('ourservices_index');
+//        }
+//
+//        return $this->redirectToRoute('ourservices_index');
+             return new Response (null, 204);
     }
 
     /**

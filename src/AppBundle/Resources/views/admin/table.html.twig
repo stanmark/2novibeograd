@@ -70,7 +70,7 @@
 
 
 
-
+{% block javascript %}
 
     {% javascripts 
                 '@jq_admin'                 
@@ -80,12 +80,14 @@
                 '@AppBundle/Resources/skin/admin/jss/datatables.bootstrap.js'
 
                 '@AppBundle/Resources/skin/admin/jss/table-datatables-colreorder.min.js'
+                '@AppBundle/Resources/skin/admin/jss/js-ajax-delete-table-row.js'
 
 
     %}
     <script src="{{ asset_url }}"></script>
 
-    {% endjavascripts %}  
+    {% endjavascripts %} 
+    {% endblock %}
 
 {% endblock %}
 

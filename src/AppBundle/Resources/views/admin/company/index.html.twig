@@ -2,7 +2,7 @@
 
 {% block thead %}
     <h1>Companies list</h1>
-    <table class="table table-striped table-bordered table-hover" id="sample_1">
+    <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
                 <th>Name</th>
@@ -40,8 +40,13 @@
                     <td>{{ company.bank }}</td>
                     <td>{{ company.description  [:50] | raw  }}</td>
                     <td class="btn-group btn-group-circle btn-group-solid">    
-                        <a  class="btn red" href="{{ path('company_show', { 'id': company.id }) }}">show</a>
-                        <a class="btn green" href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
+                        <a  class="btn blue" href="{{ path('company_show', { 'id': company.id }) }}">show</a>
+                        <a class="btn yellow" href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
+                        <a class="btn red 
+                           js-delete-row"  
+                           href="#"                          
+                           data-url="{{ path ('company_delete', {'id':company.id}) }}"
+                           >delete</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -49,5 +54,17 @@
     </table>
 
     <a href="{{ path('company_new') }}" class="btn btn-circle green">Create a new company</a>
+
+{% endblock %}
+{% block javascript %}   
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-table');
+            DeleteRow.initialize($table);
+            
+        });
+    </script>
+
 
 {% endblock %}

@@ -295,7 +295,7 @@ team_new:
 
 team_edit:
     path:     /team/{id}/edit
-    defaults: { _controller: "AppBundle:Admin/eam:edit" }
+    defaults: { _controller: "AppBundle:Admin/Team:edit" }
     methods:  [GET, POST]
 
 team_delete:
@@ -404,29 +404,30 @@ maingallery_delete:
     methods:  DELETE    
     
 ourservices_index:
-    path:     /
+    path:     /ourservices/
     defaults: { _controller: "AppBundle:Admin/OurServices:index" }
     methods:  GET
 
 ourservices_show:
-    path:     /{id}/show
+    path:     /ourservices/{id}/show
     defaults: { _controller: "AppBundle:Admin/OurServices:show" }
     methods:  GET
 
 ourservices_new:
-    path:     /new
+    path:     /ourservices/new
     defaults: { _controller: "AppBundle:Admin/OurServices:new" }
     methods:  [GET, POST]
 
 ourservices_edit:
-    path:     /{id}/edit
+    path:     /ourservices/{id}/edit
     defaults: { _controller: "AppBundle:Admin/OurServices:edit" }
     methods:  [GET, POST]
 
 ourservices_delete:
-    path:     /{id}/delete
+    path:     /ourservices/{id}/delete
     defaults: { _controller: "AppBundle:Admin/OurServices:delete" }
-    methods:  DELETE    
+    methods:  DELETE
+
     
     
     

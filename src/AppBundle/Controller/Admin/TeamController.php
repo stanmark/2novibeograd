@@ -4,22 +4,20 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Team;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Team controller.
  *
- * @Route("team")
+ *
  */
 class TeamController extends Controller
 {
     /**
      * Lists all team entities.
      *
-     * @Route("/", name="team_index")
-     * @Method("GET")
+   
      */
     public function indexAction()
     {
@@ -35,8 +33,7 @@ class TeamController extends Controller
     /**
      * Creates a new team entity.
      *
-     * @Route("/new", name="team_new")
-     * @Method({"GET", "POST"})
+   
      */
     public function newAction(Request $request)
     {
@@ -61,8 +58,7 @@ class TeamController extends Controller
     /**
      * Finds and displays a team entity.
      *
-     * @Route("/{id}", name="team_show")
-     * @Method("GET")
+ 
      */
     public function showAction(Team $team)
     {
@@ -77,8 +73,7 @@ class TeamController extends Controller
     /**
      * Displays a form to edit an existing team entity.
      *
-     * @Route("/{id}/edit", name="team_edit")
-     * @Method({"GET", "POST"})
+ 
      */
     public function editAction(Request $request, Team $team)
     {
@@ -102,21 +97,21 @@ class TeamController extends Controller
     /**
      * Deletes a team entity.
      *
-     * @Route("/{id}", name="team_delete")
-     * @Method("DELETE")
+
      */
     public function deleteAction(Request $request, Team $team)
     {
-        $form = $this->createDeleteForm($team);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($team);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($team);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('team_index');
+//        }
+//
+//        return $this->redirectToRoute('team_index');
+            return new Response (null, 204);
     }
 
     /**

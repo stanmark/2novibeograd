@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Game controller.
@@ -94,16 +95,16 @@ class GameController extends Controller
      */
     public function deleteAction(Request $request, Game $game)
     {
-        $form = $this->createDeleteForm($game);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($game);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($game);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('game_index');
+//        }
+            return new Response (null, 204);
+//        return $this->redirectToRoute('game_index');
     }
 
     /**

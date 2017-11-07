@@ -7,7 +7,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MainGalleryType extends AbstractType
 {
@@ -17,60 +16,45 @@ class MainGalleryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('imageFile', VichImageType::class, ['label' => 'Slika', 'required' => false,])
-                ->add('alt', TextType::class, [
-                    'label' => 'Alternativni naziv slike',
-                    'attr' => [
-                        'class' => 'form-control'
-            ]])
-               
-                
+                ->add('imageFile', VichImageType::class, [
+                    'required' => false, 
+                    ])
+                ->add('alt')
+                ->add('mainPicture')
+                ->add('mainPictureGallery')
                 ->add('title')
-                ->add('description') 
-                 ->add('mainPicture')
-                ->add('league', EntityType::class, [
+                ->add('description')
+                ->add('league',  EntityType::class, [
                     'class' => \AppBundle\Entity\League::class,
                     'choice_label' => 'league',
+                    'required' => false, 
                     'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                    
-    ]) 
-                ->add('teamMember', EntityType::class, [
+                    ])
+                ->add('teamMember',  EntityType::class, [
                     'class' => \AppBundle\Entity\teamMember::class,
-                    'choice_label' => 'name',
+                    'choice_label' => 'name',  
+                    'required' => false, 
                     'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                    
-    ]) 
-                ->add('place', EntityType::class, [
+                    ])
+                ->add('place',  EntityType::class, [
                     'class' => \AppBundle\Entity\place::class,
                     'choice_label' => 'title',
+                    'required' => false, 
                     'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                    
-    ]) 
-                ->add('homeSlider', EntityType::class, [
+                    ])
+                ->add('homeSlider',  EntityType::class, [
                     'class' => \AppBundle\Entity\HomeSlider::class,
                     'choice_label' => 'mainTitle',
+                    'required' => false,                    
                     'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                     'label' => 'Slika za home slider, jedna slika jedan check box',
-                    
-    ]) 
-                ->add('galleryCategory', EntityType::class, [
-                    'class' => \AppBundle\Entity\GalleryCategory::class,
+                    ])
+                ->add('galleryCategory',  EntityType::class, [
+                    'class' => \AppBundle\Entity\MainGallery::class,
                     'choice_label' => 'category',
+                    'required' => false, 
                     'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                     
                     
-    ]) 
-                ->add('mainPictureGallery')
+                    ])
                 ;
     }
     

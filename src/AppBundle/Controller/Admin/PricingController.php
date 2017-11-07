@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\Pricing;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Pricing controller.
@@ -94,16 +95,17 @@ class PricingController extends Controller
      */
     public function deleteAction(Request $request, Pricing $pricing)
     {
-        $form = $this->createDeleteForm($pricing);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($pricing);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($pricing);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('pricing_index');
+//        }
+//
+//        return $this->redirectToRoute('pricing_index');
+            return new Response (null, 204);
     }
 
     /**

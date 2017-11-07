@@ -3,16 +3,17 @@
 {% block thead %}
     <h1>Games list</h1>
 
-    <table class="table table-striped table-bordered table-hover" id="sample_1">
+    <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
                 <th>Kolo</th>
-                <th>Tim domacin</th>
-                <th>Bodova tim domacin</th>
-                <th>Setova domacin</th>
+                <th>Domacin</th>
+                <th>Bodova domacin</th>
+                <th>Setova domacin</th>                
+                <th>Domacin : Gost</th>
                 <th>Setova gost</th>
-                <th>Bodova tim gost</th>
-                <th>Tim gost</th>
+                <th>Bodova gost</th>
+                <th>Gost</th>
                 <th>Date</th>
                 <td>Mesto</td>
                 <th>Begin</th>
@@ -25,22 +26,33 @@
     {% block tbody %}
         <tbody>
 
-            {% for game in games %}           
+            {% for game in games %}  
+                
                 <tr>
                     <td>{{ game.round.rounds }}</td>  
                     <td>{{ game.team1.team }}</td>
                     <td><a href="{{ path('game_show', { 'id': game.id }) }}">{{ game.bodTeam1 }}</a></td>
-                    <td>{{ game.bodTeam2 }}</td>
                     <td>{{ game.numberSet1 }}</td>
+                     <td>
+                        {% for settresult in game.settresults %} 
+                        {{ settresult.pointsNumber1 }}:{{ settresult.pointsNumber2 }};
+                         {% endfor %}
+                    </td>
                     <td>{{ game.numberSet2 }}</td>
+                    <td>{{ game.bodTeam2 }}</td>
                     <td>{{ game.team2.team }}</td>
                     <td>{% if game.date %}{{ game.date|date('d-m-Y') }}{% endif %}</td>
                     <td>{{ game.place.title }}</td>
                     <td>{% if game.begin %}{{ game.begin|date('H:i:s') }}{% endif %}</td>
                     <td>{% if game.end %}{{ game.end|date('H:i:s') }}{% endif %}</td>
                     <td class="btn-group btn-group-circle btn-group-solid">
-                        <a href="{{ path('game_show', { 'id': game.id }) }}" class="btn red">show</a>
+                        <a href="{{ path('game_show', { 'id': game.id }) }}" class="btn green">show</a>
                         <a href="{{ path('game_edit', { 'id': game.id }) }}" class="btn yellow">edit</a>
+                        <a class="btn red 
+                           js-delete-row"  
+                           href="#"                          
+                           data-url="{{ path ('game_delete', {'id':game.id}) }}"
+                           >delete</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -48,5 +60,17 @@
     </table>
 
     <a href="{{ path('game_new') }}" class="btn btn-circle green">Create a new game</a>
+
+{% endblock %}
+{% block javascript %}   
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-table');
+            DeleteRow.initialize($table);
+            
+        });
+    </script>
+
 
 {% endblock %}

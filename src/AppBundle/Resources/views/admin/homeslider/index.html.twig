@@ -1,52 +1,65 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-
-
 {% block thead %}
+    <h1>Homesliders list</h1>
+
+    <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
-                <th>Id</th>
-               
-                <th>Alt</th>
+                <th>Slika</th>
                 <th>Maintitle</th>
                 <th>Subtitle</th>
                 <th>Subtitledescription</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th>Calltoactionlink</th>
+                <th>Calltoactionbutton</th>             
                 <th>Actions</th>
             </tr>
         </thead>
-       {% endblock %}
 
-{% block tbody %}
-        {% for homeSlider in homeSliders %}
-            <tr>
-                <td><a href="{{ path('homeslider_show', { 'id': homeSlider.id }) }}">{{ homeSlider.id }}</a></td>
-               
-                <td>{{ homeSlider.alt }}</td>
-                <td>{{ homeSlider.mainTitle }}</td>
-                <td>{{ homeSlider.subTitle }}</td>
-                <td>{{ homeSlider.subTitleDescription }}</td>
-                <td>{% if homeSlider.created %}{{ homeSlider.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if homeSlider.updatedAt %}{{ homeSlider.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('homeslider_show', { 'id': homeSlider.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('homeslider_edit', { 'id': homeSlider.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+    {% endblock %}
+
+    {% block tbody %}
+        <tbody>
+            {% for homeSlider in homeSliders %}             
+                <tr>
+                     <td>
+                        {% for picture in homeSlider.mainGallery %}
+                            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" height="50" width="50" />
+                        {% endfor %}
+                    </td>
+                    <td>{{ homeSlider.mainTitle }}</td>
+                    <td>{{ homeSlider.subTitle }}</td>
+                    <td>{{ homeSlider.subTitleDescription }}</td>
+                    <td>{{ homeSlider.CallToActionLink }}</td>
+                    <td>{{ homeSlider.CallToActionButton }}</td> 
+                   
+                    <td class="btn-group btn-group-circle btn-group-solid">
+                        <a class="btn green" href="{{ path('homeslider_show', { 'id': homeSlider.id }) }}">show</a>
+                        <a  class="btn yellow" href="{{ path('homeslider_edit', { 'id': homeSlider.id }) }}">edit</a>
+                         <a class="btn red 
+                           js-delete-row"  
+                           href="#"                          
+                           data-url="{{ path ('homeslider_delete', {'id':homeSlider.id}) }}"
+                           >delete</a>
+                    </td>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('homeslider_new') }}">Create a new homeSlider</a>
-        </li>
-    </ul>
+    <a href="{{ path('homeslider_new') }}" class="btn btn-circle green">Create a new homeSlider</a>
+
+{% endblock %}
+{% block javascript %}   
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-table');
+            DeleteRow.initialize($table);
+            
+        });
+    </script>
+
+
 {% endblock %}

@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\SettResults;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Settresult controller.
@@ -100,16 +101,17 @@ class SettResultsController extends Controller
      */
     public function deleteAction(Request $request, SettResults $settResult)
     {
-        $form = $this->createDeleteForm($settResult);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($settResult);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($settResult);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('settresults_index');
+//        }
+//
+//        return $this->redirectToRoute('settresults_index');
+            return new Response (null, 204);
     }
 
     /**

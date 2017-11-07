@@ -3,7 +3,7 @@
 {% block thead %}
     <h1>Groupps list</h1>
 
-    <table class="table table-striped table-bordered table-hover" id="sample_1">
+    <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
                 <th>Liga</th> 
@@ -32,8 +32,14 @@
                         {% endfor %}
                     </td>           
                     <td class="btn-group btn-group-circle btn-group-solid">  
-                        <a href="{{ path('groupp_show', { 'id': groupp.id }) }}"  class="btn red">show</a>
-                        <a href="{{ path('groupp_edit', { 'id': groupp.id }) }}" class="btn green">edit</a>
+                        <a href="{{ path('groupp_show', { 'id': groupp.id }) }}"  class="btn green">show</a>
+                        <a href="{{ path('groupp_edit', { 'id': groupp.id }) }}" class="btn yellow">edit</a>
+                        <a class="btn red 
+                           js-delete-row"  
+                           href="#"                          
+                           data-url="{{ path ('groupp_delete', {'id':groupp.id}) }}"
+                           >delete</a>
+                    </td>
                     </td>
                 </tr>
             {% endfor %}
@@ -43,4 +49,16 @@
    
             <a href="{{ path('groupp_new') }}"  class="btn btn-circle green">Create a new groupp</a>
     
+{% endblock %}
+{% block javascript %}   
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-table');
+            DeleteRow.initialize($table);
+            
+        });
+    </script>
+
+
 {% endblock %}

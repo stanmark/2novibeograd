@@ -52,11 +52,12 @@
         {% block main %}
         {% endblock %}
 
-                
+        {% block javascript %}             
             {% javascripts 
                 '@jq_admin' %}
             <script src="{{ asset_url }}"></script>
-            {% endjavascripts %}        
+            {% endjavascripts %} 
+            {% endblock %}
     {#</body>#}
 
 </html>

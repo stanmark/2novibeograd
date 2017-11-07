@@ -35,10 +35,11 @@ class Team
     /**
      * @var \AppBundle\Entity\Groupp
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp", inversedBy="team")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="groupp_id", referencedColumnName="id")
      * })
+     * 
      */
     private $groupp;
     
@@ -60,30 +61,33 @@ class Team
      */
     protected $updated;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
+
+
     
-    /**
-     * @Vich\UploadableField(mapping="user_upload", fileNameProperty="url")
-     * @var File
+      /**
+     * Gets triggered only on insert
+     * 
+     * @ORM\PrePersist
      */
-    private $imageFile;
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
      */
-    private $alt;
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -163,127 +167,26 @@ class Team
     }
 
     /**
-     * Set url
+     * Set groupp
      *
-     * @param string $url
+     * @param \AppBundle\Entity\Groupp $groupp
      *
      * @return Team
      */
-    public function setUrl($url)
+    public function setGroupp(\AppBundle\Entity\Groupp $groupp = null)
     {
-        $this->url = $url;
+        $this->groupp = $groupp;
 
         return $this;
     }
 
     /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     *
-     * @return Team
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set group
-     *
-     * @param \AppBundle\Entity\Groupp $group
-     *
-     * @return Team
-     */
-    public function setGroup(\AppBundle\Entity\Groupp $group = null)
-    {
-        $this->group = $group;
-
-        return $this;
-    }
-
-    /**
-     * Get group
+     * Get groupp
      *
      * @return \AppBundle\Entity\Groupp
      */
-    public function getGroup()
+    public function getGroupp()
     {
-        return $this->group;
-    }
-    
-      /**
-     * Gets triggered only on insert
-     * 
-     * @ORM\PrePersist
-     */
-    public function onPrePersist()
-    {
-        $this->created = new \DateTime("now");
-    }
-
-    /**
-     * Gets triggered every time on update
-
-     * @ORM\PreUpdate
-     */
-    public function onPreUpdate()
-    {
-        $this->updated = new \DateTime("now");
-    }
-    
-     public function setImageFile(File $url = null) {
-        $this->imageFile = $url;
-        return $this;
-    }
-
-    public function getImageFile() {
-        return $this->imageFile;
-    }
-
-    /**
-     * Set league
-     *
-     * @param \AppBundle\Entity\League $league
-     *
-     * @return Team
-     */
-    public function setLeague(\AppBundle\Entity\League $league = null)
-    {
-        $this->league = $league;
-
-        return $this;
-    }
-
-    /**
-     * Get league
-     *
-     * @return \AppBundle\Entity\League
-     */
-    public function getLeague()
-    {
-        return $this->league;
+        return $this->groupp;
     }
 }

@@ -5,8 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
-
 
 class HomeSliderType extends AbstractType
 {
@@ -16,15 +14,12 @@ class HomeSliderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('imageFile', VichImageType::class, [
-                'required' => false,
-            ])
-                ->add('alt')
                 ->add('mainTitle')
                 ->add('subTitle')
                 ->add('subTitleDescription')
                 ->add('CallToActionLink')
-                ->add('CallToActionButton');
+                ->add('CallToActionButton')                
+                ;
     }
     
     /**

@@ -37,7 +37,7 @@ class Round
     /**
      * @var \AppBundle\Entity\Groupp
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Groupp", inversedBy="round")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="groupp_id", referencedColumnName="id")
      * })

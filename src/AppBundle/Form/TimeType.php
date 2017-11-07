@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class TimeType extends AbstractType
 {
@@ -17,8 +18,11 @@ class TimeType extends AbstractType
                 ->add('date')
                 ->add('day')
                 ->add('begin')
-                ->add('end')             
-                ->add('place');
+                ->add('end')
+                ->add('place',  EntityType::class, [
+                    'class' => \AppBundle\Entity\place::class,
+                    'choice_label' => 'title',
+                    ]);
     }
     
     /**

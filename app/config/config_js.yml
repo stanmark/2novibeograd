@@ -4,11 +4,7 @@ assetic:
     use_controller: '%kernel.debug%'
    
     filters:
-        cssrewrite: ~
-        uglifyjs:
-            bin:  %kernel.root_dir%\Resources\node_modules\uglify-js\bin\uglifyjs
-        uglifycss:
-            bin: %kernel.root_dir%\Resources\node_modules\uglifycss\uglifycss
+        cssrewrite: ~       
 
     assets:
         jq_front:

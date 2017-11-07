@@ -1,6 +1,6 @@
 {% extends '@AppBundle/Resources/views/admin/form.html.twig' %}
 
-{% block form %}
+{% block body %}
     <h1>Time creation</h1>
 
     {{ form_start(form) }}
@@ -8,9 +8,6 @@
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
             <a href="{{ path('time_index') }}">Back to the list</a>
-        </li>
-    </ul>
+   
 {% endblock %}

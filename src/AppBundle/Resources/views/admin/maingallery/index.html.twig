@@ -1,52 +1,60 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
-
-    
-
- {% block thead %}
+{% block thead %}
+    <h1>Maingalleries list</h1>
+    <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Url</th>
                 <th>Alt</th>
                 <th>Mainpicture</th>
+                <th>Mainpicturegallery</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Created</th>
-                <th>Updated</th>
                 <th>Actions</th>
             </tr>
         </thead>
-     {% endblock %}
-     {% block tbody %}
-        {% for mainGallery in mainGalleries %}
-            <tr>
-                <td><a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">{{ mainGallery.id }}</a></td>
-                <td>{{ mainGallery.url }}</td>
-                <td>{{ mainGallery.alt }}</td>
-                <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
-                <td>{{ mainGallery.title }}</td>
-                <td>{{ mainGallery.description }}</td>
-                <td>{% if mainGallery.created %}{{ mainGallery.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if mainGallery.updated %}{{ mainGallery.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('maingallery_edit', { 'id': mainGallery.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+        <tbody>
+        {% endblock %}
+
+        {% block tbody %}
+            {% for mainGallery in mainGalleries %}
+                <tr>
+                    <td><a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">{{ mainGallery.id }}</a></td>
+                    <td><img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" /></td>
+                    <td>{{ mainGallery.alt }}</td>
+                    <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if mainGallery.mainPictureGallery %}Yes{% else %}No{% endif %}</td>
+                    <td>{{ mainGallery.title }}</td>
+                    <td>{{ mainGallery.description }}</td>
+                    <td class="btn-group btn-group-circle btn-group-solid"> 
+                        <a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}" class="btn green">show</a>
+                        <a href="{{ path('maingallery_edit', { 'id': mainGallery.id }) }}" class="btn yellow">edit</a>
+                        <a class="btn red 
+                           js-delete-row"  
+                           href="#"                          
+                           data-url="{{ path ('maingallery_delete', {'id':mainGallery.id}) }}"
+                           >delete</a>
+                    </td>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('maingallery_new') }}">Create a new mainGallery</a>
-        </li>
-    </ul>
+    <a href="{{ path('maingallery_new') }}" class="btn btn-circle green">Create a new mainGallery</a>
+
+{% endblock %}
+{% block javascript %}   
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-table');
+            DeleteRow.initialize($table);
+            
+        });
+    </script>
+
+
 {% endblock %}

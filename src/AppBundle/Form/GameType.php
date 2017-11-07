@@ -15,10 +15,15 @@ class GameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+//                 ->add('Legaue',  EntityType::class, [
+//                    'class' => \AppBundle\Entity\League::class,
+//                    'choice_label' => 'league',                                       
+//                    'required' => false,                   
+//                    ])
+                
                 ->add('round',  EntityType::class, [
                     'class' => \AppBundle\Entity\Round::class,
-                    'choice_label' => 'rounds',                                       
-                    'required' => false,                   
+                    'choice_label' => 'rounds',                                                                         
                     ])
                 ->add('team1',  EntityType::class, [
                     'class' => \AppBundle\Entity\Team::class,
@@ -38,6 +43,13 @@ class GameType extends AbstractType
                 ->add('place',  EntityType::class, [
                     'class' => \AppBundle\Entity\place::class,
                     'choice_label' => 'title'                
+                    ])
+                ->add('settresults',  EntityType::class, [
+                    'class' => \AppBundle\Entity\SettResults::class,
+                    'choice_label' => 'id',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,  
                     ])
                 
                 

@@ -4,21 +4,19 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Time;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Time controller.
  *
- * @Route("time")
  */
 class TimeController extends Controller
 {
     /**
      * Lists all time entities.
      *
-     * @Route("/", name="time_index")
-     * @Method("GET")
+
      */
     public function indexAction()
     {
@@ -34,8 +32,7 @@ class TimeController extends Controller
     /**
      * Creates a new time entity.
      *
-     * @Route("/new", name="time_new")
-     * @Method({"GET", "POST"})
+
      */
     public function newAction(Request $request)
     {
@@ -60,8 +57,6 @@ class TimeController extends Controller
     /**
      * Finds and displays a time entity.
      *
-     * @Route("/{id}", name="time_show")
-     * @Method("GET")
      */
     public function showAction(Time $time)
     {
@@ -76,8 +71,6 @@ class TimeController extends Controller
     /**
      * Displays a form to edit an existing time entity.
      *
-     * @Route("/{id}/edit", name="time_edit")
-     * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Time $time)
     {
@@ -101,21 +94,20 @@ class TimeController extends Controller
     /**
      * Deletes a time entity.
      *
-     * @Route("/{id}", name="time_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, Time $time)
     {
-        $form = $this->createDeleteForm($time);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($time);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($time);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('time_index');
+//        }
+//
+//        return $this->redirectToRoute('time_index');
+            return new Response (null, 204);
     }
 
     /**

@@ -46,10 +46,9 @@ class Groupp
     /**
      * @var \AppBundle\Entity\League
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\League")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="league_id", referencedColumnName="id")
-     * })
+     * 
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\League", inversedBy="groupp")
+     * @ORM\JoinColumn(name="game_id", referencedColumnName="id")
      */
     private $league;
     

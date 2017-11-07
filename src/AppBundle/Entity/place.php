@@ -3,8 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * place
@@ -12,7 +11,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Table(name="place")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\placeRepository")
- * @Vich\Uploadable
  */
 class place
 {
@@ -87,6 +85,8 @@ class place
      * @ORM\Column(name="treaningPlace", type="boolean", nullable=true)
      */
     private $treaningPlace;
+    
+    
 
   
    

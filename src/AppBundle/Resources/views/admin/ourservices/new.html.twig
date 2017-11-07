@@ -1,16 +1,17 @@
 {% extends '@AppBundle/Resources/views/admin/form.html.twig' %}
 
-{% block form %}
+{% block body %}
     <h1>Ourservice creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_widget(form) }}
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('ourservices_index') }}" class="btn red">Back to the list</a>
+        <input type="submit" value="Create" class="btn green"/>
+    
+    </div>
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('ourservices_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+
 {% endblock %}

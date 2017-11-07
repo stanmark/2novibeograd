@@ -6,6 +6,7 @@ use AppBundle\Entity\Features;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Feature controller.
@@ -101,16 +102,13 @@ class FeaturesController extends Controller
      */
     public function deleteAction(Request $request, Features $feature)
     {
-        $form = $this->createDeleteForm($feature);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+       
             $em = $this->getDoctrine()->getManager();
             $em->remove($feature);
             $em->flush();
-        }
+    
 
-        return $this->redirectToRoute('features_index');
+        return new Response (null, 204);
     }
 
     /**

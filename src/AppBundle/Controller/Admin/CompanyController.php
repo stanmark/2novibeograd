@@ -4,8 +4,8 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Company;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Company controller.
@@ -99,16 +99,17 @@ class CompanyController extends Controller
      */
     public function deleteAction(Request $request, Company $company)
     {
-        $form = $this->createDeleteForm($company);
-        $form->handleRequest($request);
+//        $form = $this->createDeleteForm($company);
+//        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+//        if ($form->isSubmitted() && $form->isValid())         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($company);
             $em->flush();
-        }
+//        }
 
-        return $this->redirectToRoute('company_index');
+//        return $this->redirectToRoute('company_index');
+        return new Response (null, 204);
     }
 
     /**

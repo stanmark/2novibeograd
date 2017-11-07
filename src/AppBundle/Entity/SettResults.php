@@ -54,15 +54,12 @@ class SettResults
     
     
      /**
-     * @var \AppBundle\Entity\Game
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Game")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="game_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Game", inversedBy="settresults")
+     * @ORM\JoinColumn(name="game_id", referencedColumnName="id")
      */
     private $game;
-
+    
 
     /**
      * Get id

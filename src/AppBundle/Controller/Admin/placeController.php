@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\place;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Place controller.
@@ -94,16 +95,17 @@ class placeController extends Controller
      */
     public function deleteAction(Request $request, place $place)
     {
-        $form = $this->createDeleteForm($place);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($place);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($place);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('place_index');
+//        }
+//
+//        return $this->redirectToRoute('place_index');
+            return new Response (null, 204);
     }
 
     /**

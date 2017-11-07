@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\WhyUs;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Whyu controller.
@@ -94,16 +95,17 @@ class WhyUsController extends Controller
      */
     public function deleteAction(Request $request, WhyUs $whyU)
     {
-        $form = $this->createDeleteForm($whyU);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($whyU);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($whyU);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('whyus_index');
+//        }
+//
+//        return $this->redirectToRoute('whyus_index');
+            return new Response (null, 204);
     }
 
     /**

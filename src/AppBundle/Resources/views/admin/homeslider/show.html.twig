@@ -1,22 +1,16 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
+{% block tbody %}
+    <h1>Homeslider</h1>
 
-
-
- {% block thead %}
-         <h1>Homeslider</h1>
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ homeSlider.id }}</td>
-            </tr>
-            <tr>
-                <th>Url</th>
-                <td>{{ homeSlider.image }}</td>
-            </tr>
-            <tr>
-                <th>Alt</th>
-                <td>{{ homeSlider.alt }}</td>
+                <th>Slika</th>
+                <td>
+                    {% for picture in homeSlider.mainGallery %}
+                            <img src="{{ vich_uploader_asset(picture, 'imageFile') }}" height="100" width="100" />
+                        {% endfor %}</td>
             </tr>
             <tr>
                 <th>Maintitle</th>
@@ -31,24 +25,26 @@
                 <td>{{ homeSlider.subTitleDescription }}</td>
             </tr>
             <tr>
-                <th>Created</th>
-                <td>{% if homeSlider.created %}{{ homeSlider.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Calltoactionlink</th>
+                <td>{{ homeSlider.CallToActionLink }}</td>
             </tr>
             <tr>
-                <th>Updated</th>
-                <td>{% if homeSlider.updatedAt %}{{ homeSlider.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
+                <th>Calltoactionbutton</th>
+                <td>{{ homeSlider.CallToActionButton }}</td>
+            </tr>           
         </tbody>
     </table>
 
-
-            <a href="{{ path('homeslider_index') }}">Back to the list</a>
-    
-            <a href="{{ path('homeslider_edit', { 'id': homeSlider.id }) }}">Edit</a>
+  
+            
       
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <div  class="btn-group btn-group-circle btn-group-solid">
+                <a href="{{ path('homeslider_index') }}" class="btn green">Back to the list</a>
+       
+            <a href="{{ path('homeslider_edit', { 'id': homeSlider.id }) }}" class="btn yellow">Edit</a>
+                <input type="submit" value="Delete" class="btn red">
+            </div>    
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+       
 {% endblock %}

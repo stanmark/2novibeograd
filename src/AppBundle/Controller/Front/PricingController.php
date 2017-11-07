@@ -25,15 +25,12 @@ class PricingController extends Controller
         $pricings = $em->getRepository('AppBundle:Pricing')->findAll();
         $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
         $featuress = $em->getRepository('AppBundle:Features')->findAll();
-        $fAQs = $em->getRepository('AppBundle:FAQ')->findBy(
-                ['category' => 'cenovnik']
-                );
+       
 
         return $this->render('@AppBundle/Resources/views/front/pricing.html.twig', array(
             'featuress' => $featuress,
             'pricings' => $pricings,
             'sEOs' => $sEOs,
-            'fAQs' => $fAQs,
         ));
     }
 

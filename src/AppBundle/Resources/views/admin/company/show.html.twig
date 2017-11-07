@@ -55,7 +55,7 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ company.description }}</td>
+                <td>{{ company.description | raw }}</td>
             </tr>
         </tbody>
     </table>
@@ -70,3 +70,4 @@
     {{ form_end(delete_form) }}
 
 {% endblock %}
+

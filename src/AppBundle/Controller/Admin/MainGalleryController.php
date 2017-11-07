@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\MainGallery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Maingallery controller.
@@ -94,16 +95,16 @@ class MainGalleryController extends Controller
      */
     public function deleteAction(Request $request, MainGallery $mainGallery)
     {
-        $form = $this->createDeleteForm($mainGallery);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($mainGallery);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($mainGallery);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('maingallery_index');
+//        }
+            return new Response (null, 204);
+//        return $this->redirectToRoute('maingallery_index');
     }
 
     /**

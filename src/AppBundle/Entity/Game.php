@@ -121,10 +121,9 @@ class Game
     
     /**
      * @var \AppBundle\Entity\Round
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Round")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="round_id", referencedColumnName="id")
+     * 
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Round", inversedBy="game")
+     * @ORM\JoinColumn(name="round_id", referencedColumnName="id")
      * })
      */
     private $round;
@@ -134,6 +133,15 @@ class Game
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\SettResults", mappedBy="game")
      */
     private $settresults;
+   
+    
+     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->settresults = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -509,13 +517,7 @@ class Game
 
 
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->settresults = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+  
 
     /**
      * Add settresult
@@ -550,4 +552,9 @@ class Game
     {
         return $this->settresults;
     }
+    
+//    public function getLegaue()
+//    {
+//        return $this->getRound()->getGroupp()->getLeague();
+//    }
 }

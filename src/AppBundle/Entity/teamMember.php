@@ -133,7 +133,7 @@ class teamMember
     public function __construct()
     {
         $this->place = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->$mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->$mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**

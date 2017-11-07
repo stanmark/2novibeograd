@@ -1,9 +1,11 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
 {% block thead %}
+    <h1>Teammembers list</h1>
+
+    <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Position</th>
                 <th>Phone</th>
@@ -13,46 +15,62 @@
                 <th>Gurl</th>
                 <th>Inurl</th>
                 <th>Description</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th>Mesto</th>
+                <th>Slika</th>
                 <th>Actions</th>
             </tr>
         </thead>
-        {% endblock %}
+    {% endblock %}
 
-{% block tbody %}
-        {% for teamMember in teamMembers %}
-            <tr>
-                <td><a href="{{ path('teammember_show', { 'id': teamMember.id }) }}">{{ teamMember.id }}</a></td>
-                <td>{{ teamMember.name }}</td>
-                <td>{{ teamMember.position }}</td>
-                <td>{{ teamMember.phone }}</td>
-                <td>{{ teamMember.mail }}</td>
-                <td>{{ teamMember.education }}</td>
-                <td>{{ teamMember.faceurl }}</td>
-                <td>{{ teamMember.gurl }}</td>
-                <td>{{ teamMember.inurl }}</td>
-                <td>{{ teamMember.description }}</td>
-                <td>{% if teamMember.created %}{{ teamMember.created|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if teamMember.updated %}{{ teamMember.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('teammember_show', { 'id': teamMember.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('teammember_edit', { 'id': teamMember.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+    {% block tbody %}
+        <tbody>
+            {% for teamMember in teamMembers %}
+                <tr>
+                    <td>{{ teamMember.name }}</td>
+                    <td>{{ teamMember.position }}</td>
+                    <td>{{ teamMember.phone }}</td>
+                    <td>{{ teamMember.mail }}</td>
+                    <td>{{ teamMember.education }}</td>
+                    <td>{{ teamMember.faceurl }}</td>
+                    <td>{{ teamMember.gurl }}</td>
+                    <td>{{ teamMember.inurl }}</td>
+                    <td>{{ teamMember.description [:50] |raw }}</td>
+                    <td>
+                        {% for place in teamMember.place %}
+                            {{ place.title }},
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for mainGallery in teamMember.mainGallery %}
+                            <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" />
+                        {% endfor %}
+                    </td>
+                    <td class="btn-group btn-group-circle btn-group-solid">                 
+                        <a href="{{ path('teammember_show', { 'id': teamMember.id }) }}" class="btn blue">show</a>                      
+                        <a href="{{ path('teammember_edit', { 'id': teamMember.id }) }}" class="btn yellow">edit</a>
+                        <a class="btn red 
+                           js-delete-row"  
+                           href="#"                          
+                           data-url="{{ path ('teammember_delete', {'id':teamMember.id}) }}"
+                           >delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('teammember_new') }}">Create a new teamMember</a>
-        </li>
-    </ul>
+    <a href="{{ path('teammember_new') }}" class="btn btn-circle green">Create a new teamMember</a>
+
+{% endblock %}
+{% block javascript %}   
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-table');
+            DeleteRow.initialize($table);
+
+        });
+    </script>
+
+
 {% endblock %}

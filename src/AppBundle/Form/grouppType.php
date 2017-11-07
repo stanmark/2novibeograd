@@ -5,22 +5,21 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-
-class LeagueType extends AbstractType
+class grouppType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-                ->add('league', TextType::class, [
-                    'label' => 'Liga',
-                    'attr' => [
-                        'class' => 'form-control'
-            ]]) ;
+        $builder->add('league',  EntityType::class, [
+                    'class' => \AppBundle\Entity\League::class,
+                    'choice_label' => 'league',                                                                         
+                    ])
+                ->add('groupp')
+                ;
     }
     
     /**
@@ -29,7 +28,7 @@ class LeagueType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\League'
+            'data_class' => 'AppBundle\Entity\groupp'
         ));
     }
 
@@ -38,7 +37,7 @@ class LeagueType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_league';
+        return 'appbundle_groupp';
     }
 
 

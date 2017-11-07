@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\HomeSlider;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Homeslider controller.
@@ -94,16 +95,17 @@ class HomeSliderController extends Controller
      */
     public function deleteAction(Request $request, HomeSlider $homeSlider)
     {
-        $form = $this->createDeleteForm($homeSlider);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($homeSlider);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($homeSlider);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('homeslider_index');
+//        }
+//
+//        return $this->redirectToRoute('homeslider_index');
+            return new Response (null, 204);
     }
 
     /**

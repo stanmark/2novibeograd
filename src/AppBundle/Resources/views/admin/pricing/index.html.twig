@@ -1,42 +1,58 @@
 {% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
 
 {% block thead %}
+    <h1>Pricings list</h1>
+
+    <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>Pogodnosti</th>
                 <th>Actions</th>
             </tr>
         </thead>
-       {% endblock %}
+        {% endblock %}
 
-{% block tbody %}
+    {% block tbody %}
+        <tbody>
         {% for pricing in pricings %}
             <tr>
-                <td><a href="{{ path('pricing_show', { 'id': pricing.id }) }}">{{ pricing.id }}</a></td>
-                <td>{{ pricing.name }}</td>
+                <td><a href="{{ path('pricing_show', { 'id': pricing.id }) }}">{{ pricing.name }}</a></td>
                 <td>{{ pricing.price }}</td>
                 <td>{{ pricing.description }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('pricing_show', { 'id': pricing.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('pricing_edit', { 'id': pricing.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                {% for feature in pricing.features %}
+                    {{ feature.features }},
+                {% endfor %}
+                </td>
+                <td class="btn-group btn-group-circle btn-group-solid"> 
+                            <a href="{{ path('pricing_show', { 'id': pricing.id }) }}"  class="btn blue">show</a>
+                            <a href="{{ path('pricing_edit', { 'id': pricing.id }) }}" class="btn yellow">edit</a>
+                            <a class="btn red 
+                           js-delete-row"  
+                           href="#"                          
+                           data-url="{{ path ('pricing_delete', {'id':pricing.id}) }}"
+                           >delete</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('pricing_new') }}">Create a new pricing</a>
-        </li>
-    </ul>
+            <a href="{{ path('pricing_new') }}" class="btn btn-circle green">Create a new pricing</a>
+   
+{% endblock %}
+{% block javascript %}   
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            var $table = $('.js-table');
+            DeleteRow.initialize($table);
+            
+        });
+    </script>
+
+
 {% endblock %}

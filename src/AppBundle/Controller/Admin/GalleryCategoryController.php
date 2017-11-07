@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\GalleryCategory;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Gallerycategory controller.
@@ -94,16 +95,17 @@ class GalleryCategoryController extends Controller
      */
     public function deleteAction(Request $request, GalleryCategory $galleryCategory)
     {
-        $form = $this->createDeleteForm($galleryCategory);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($galleryCategory);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($galleryCategory);
             $em->flush();
-        }
+//        }
 
-        return $this->redirectToRoute('gallerycategory_index');
+//        return $this->redirectToRoute('gallerycategory_index');
+        return new Response (null, 204);
     }
 
     /**

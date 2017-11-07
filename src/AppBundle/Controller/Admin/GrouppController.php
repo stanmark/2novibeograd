@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\Groupp;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Groupp controller.
@@ -37,7 +38,7 @@ class GrouppController extends Controller
     public function newAction(Request $request)
     {
         $groupp = new Groupp();
-        $form = $this->createForm('AppBundle\Form\GrouppType', $groupp);
+        $form = $this->createForm('AppBundle\Form\grouppType', $groupp);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -100,16 +101,17 @@ class GrouppController extends Controller
      */
     public function deleteAction(Request $request, Groupp $groupp)
     {
-        $form = $this->createDeleteForm($groupp);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+//        $form = $this->createDeleteForm($groupp);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($groupp);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('groupp_index');
+//        }
+//
+//        return $this->redirectToRoute('groupp_index');
+            return new Response (null, 204);
     }
 
     /**
