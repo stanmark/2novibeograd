@@ -1,10 +1,15 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
-
+{% block BasePlugins %}
+    {{ parent() }}
+    <link href="{{ asset('public/Front/csss/settings.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('public/Front/csss/layers.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('public/Front/csss/navigation.css')}}" rel="stylesheet" type="text/css"/>
+{% endblock %}
 {% block body %}
 
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen"> 
 
-        {% include '@AppBundle/Resources/views/front/header.html.twig' %}
+        {% include '@AppBundle/Resources/views/front/header-home.html.twig' %}
         <!-- BEGIN: PAGE CONTENT -->
         <!-- BEGIN: LAYOUT/SLIDERS/REVO-SLIDER-8 -->
         <section class="c-layout-revo-slider c-layout-revo-slider-8" dir="ltr">
@@ -435,12 +440,5 @@
 {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 
 
-{% block jq %}
-    {% javascripts '@jq_front_home' %}
 
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-
-{% endblock %}  
 {% endblock %}

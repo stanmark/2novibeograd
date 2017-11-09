@@ -1,0 +1,14 @@
+{% extends '@AppBundle/Resources/views/admin/form.html.twig' %}
+
+{% block body %}
+    <h1>Breadcrump edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <div  class="btn-group btn-group-circle btn-group-solid">
+            <a href="{{ path('breadcrumps_index') }}" class="btn green">Back to the list</a>
+        <input type="submit" value="Edit" class="btn yellow"/>
+    {{ form_end(edit_form) }}
+
+  
+{% endblock %}

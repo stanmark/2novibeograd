@@ -48,9 +48,16 @@ class MainGalleryType extends AbstractType
                     'required' => false,                    
                     'multiple' => true,
                     ])
-                ->add('galleryCategory',  EntityType::class, [
-                    'class' => \AppBundle\Entity\MainGallery::class,
-                    'choice_label' => 'category',
+////                ->add('galleryCategory',  EntityType::class, [
+////                    'class' => \AppBundle\Entity\MainGallery::class,
+////                    'choice_label' => 'category',
+////                    'required' => false, 
+////                    'multiple' => true,
+//                    
+//                    ])
+                ->add('breadCrumps',  EntityType::class, [
+                    'class' => \AppBundle\Entity\BreadCrumps::class,
+                    'choice_label' => 'name',
                     'required' => false, 
                     'multiple' => true,
                     

@@ -1,0 +1,86 @@
+{% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
+
+
+{% block main %}
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">
+        {% include '@AppBundle/Resources/views/admin/header.html.twig' %}
+        <div class="page-container">
+            {% include '@AppBundle/Resources/views/admin/sidebar.html.twig' %}
+
+
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="{{ path ('admin_homepage') }}">Admin</a>
+                                <i class="fa fa-angle-right"></i>
+                            </li>              
+                        </ul>
+                        <div class="page-toolbar">
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a href="#">
+                                            <i class="icon-bell"></i> Akcije</a>
+                                    </li>                           
+                                    <li class="divider"> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END PAGE HEADER-->                
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                            <div class="portlet light ">
+                                <div class="portlet-body">
+
+                                    {% block body %}
+
+                                    {% endblock %}
+                                  
+
+                                </div>
+                            </div>
+                            <!-- END EXAMPLE TABLE PORTLET-->                      
+                        </div>
+                    </div>
+                </div>                                     
+                <!-- END CONTENT BODY -->
+            </div>                            
+            {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %}
+        </div>   
+    </body>
+
+
+
+
+
+    {% javascripts 
+                '@jq_admin'                 
+
+                '@AppBundle/Resources/skin/admin/jss/datatable.min.js'
+                '@AppBundle/Resources/skin/admin/jss/datatables.min.js'
+                '@AppBundle/Resources/skin/admin/jss/datatables.bootstrap.js'
+
+                '@AppBundle/Resources/skin/admin/jss/table-datatables-colreorder.min.js'
+
+
+    %}
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}  
+
+{% endblock %}
+
+
+
+

@@ -66,6 +66,7 @@ assetic:
                 - '@AppBundle/Resources/skin/front/js/jquery.smooth-scroll.js'
                 - '@AppBundle/Resources/skin/front/js/typed.min.js' 
                 - '@AppBundle/Resources/skin/front/js/bootstrap-slider.js' 
+                - '@AppBundle/Resources/skin/front/js/js.cookie.js' 
                
 #                <!-- END: LAYOUT PLUGINS -->
 #                <!-- BEGIN: THEME SCRIPTS -->

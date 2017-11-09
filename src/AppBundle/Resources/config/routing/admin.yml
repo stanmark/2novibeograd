@@ -427,6 +427,31 @@ ourservices_delete:
     path:     /ourservices/{id}/delete
     defaults: { _controller: "AppBundle:Admin/OurServices:delete" }
     methods:  DELETE
+    
+breadcrumps_index:
+    path:     /breadcrumps/
+    defaults: { _controller: "AppBundle:Admin/BreadCrumps:index" }
+    methods:  GET
+
+breadcrumps_show:
+    path:     /breadcrumps/{id}/show
+    defaults: { _controller: "AppBundle:Admin/BreadCrumps:show" }
+    methods:  GET
+
+breadcrumps_new:
+    path:     /breadcrumps/new
+    defaults: { _controller: "AppBundle:Admin/BreadCrumps:new" }
+    methods:  [GET, POST]
+
+breadcrumps_edit:
+    path:     /breadcrumps/{id}/edit
+    defaults: { _controller: "AppBundle:Admin/BreadCrumps:edit" }
+    methods:  [GET, POST]
+
+breadcrumps_delete:
+    path:     /breadcrumps/{id}/delete
+    defaults: { _controller: "AppBundle:BreadCrumps:delete" }
+    methods:  DELETE    
 
     
     

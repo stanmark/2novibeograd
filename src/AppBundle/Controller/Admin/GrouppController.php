@@ -78,7 +78,7 @@ class GrouppController extends Controller
     public function editAction(Request $request, Groupp $groupp)
     {
         $deleteForm = $this->createDeleteForm($groupp);
-        $editForm = $this->createForm('AppBundle\Form\GrouppType', $groupp);
+        $editForm = $this->createForm('AppBundle\Form\grouppType', $groupp);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

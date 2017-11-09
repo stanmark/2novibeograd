@@ -21,10 +21,7 @@
         {% endblock %}
         
         {% block BasePlugins %}
-            
-            <link href="{{ asset('public/Front/csss/settings.css')}}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('public/Front/csss/layers.css')}}" rel="stylesheet" type="text/css"/>
-            <link href="{{ asset('public/Front/csss/navigation.css')}}" rel="stylesheet" type="text/css"/>
+
             <link href="{{ asset('public/Front/csss/cubeportfolio.min.css')}}" rel="stylesheet" type="text/css"/>
             <link href="{{ asset('public/Front/csss/owl.carousel.css')}}" rel="stylesheet" type="text/css"/>
             <link href="{{ asset('public/Front/csss/jquery.fancybox.css')}}" rel="stylesheet" type="text/css"/>
@@ -41,10 +38,6 @@
         
 
       {#
-        <link href="{{ asset('public/Front/csss/bootstrap-rtl.min.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/custom-rtl.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Front/csss/default-rtl.css')}}" rel="stylesheet" type="text/css"/>#}
-
         {# {% stylesheets 'public/Front/csss/*' filter='cssrewrite' filter='uglifycss' %}
          <link rel="stylesheet" href="{{ asset_url }}" /> 
          {% endstylesheets %}#}
@@ -75,6 +68,7 @@
     {% javascripts '@jq_front' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    
     {% endblock %}  
 
 

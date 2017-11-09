@@ -121,9 +121,7 @@ class MainGallery
      */
     private $homeSlider;
     
-    
-    
-    
+ 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
@@ -138,6 +136,24 @@ class MainGallery
      * )
      */
     private $galleryCategory;
+    
+    
+    
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\BreadCrumps", inversedBy="mainCategory")
+     * @ORM\JoinTable(name="mainGallery_BreadCrumps",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="mainGallerry_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="BreadCrumps_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $breadCrumps;
     
     
     
@@ -594,5 +610,39 @@ class MainGallery
     public function removeGalleryCategory(\AppBundle\Entity\GalleryCategory $galleryCategory)
     {
         $this->galleryCategory->removeElement($galleryCategory);
+    }
+
+    /**
+     * Add breadCrump
+     *
+     * @param \AppBundle\Entity\BreadCrumps $breadCrump
+     *
+     * @return MainGallery
+     */
+    public function addBreadCrump(\AppBundle\Entity\BreadCrumps $breadCrump)
+    {
+        $this->breadCrumps[] = $breadCrump;
+
+        return $this;
+    }
+
+    /**
+     * Remove breadCrump
+     *
+     * @param \AppBundle\Entity\BreadCrumps $breadCrump
+     */
+    public function removeBreadCrump(\AppBundle\Entity\BreadCrumps $breadCrump)
+    {
+        $this->breadCrumps->removeElement($breadCrump);
+    }
+
+    /**
+     * Get breadCrumps
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBreadCrumps()
+    {
+        return $this->breadCrumps;
     }
 }

@@ -23,6 +23,24 @@ class League
      * @ORM\Column(name="league", type="string", length=255, nullable=false)
      */
     private $league;
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="year", type="string", length=5, nullable=false)
+     */
+    private $year;
+    
+    
 
     /**
      * @var integer
@@ -66,7 +84,7 @@ class League
     public function __construct()
     {
               
-        $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->$groupp = new \Doctrine\Common\Collections\ArrayCollection();
 //        $this->$mainGallery = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -243,5 +261,53 @@ class League
     public function getGroupp()
     {
         return $this->groupp;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return League
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set year
+     *
+     * @param string $year
+     *
+     * @return League
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+
+        return $this;
+    }
+
+    /**
+     * Get year
+     *
+     * @return string
+     */
+    public function getYear()
+    {
+        return $this->year;
     }
 }

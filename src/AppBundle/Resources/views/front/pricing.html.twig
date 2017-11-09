@@ -2,66 +2,71 @@
 {% block body %}
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-         style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
-    <div class="c-breadcrumbs-wrapper">
-        <div class="container">
-            <div class="c-page-title c-pull-left">
-                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
-                <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
-            </div>
-            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
-                <li class="c-font-white">/</li>
-                <li><a href="#" class="c-font-white">Tim trenera</a></li>
-            </ul>
-        </div>
-    </div>
-</div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-    
-    <!-- BEGIN: PAGE CONTAINER -->
-    <div class="c-layout-page">
-        <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+        <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+             {% for BreadCrump in BreadCrumps %}
+                 {% if  BreadCrump.id  == 4 %}
+                     {% for mainGallery in BreadCrump.mainGallery %}
+                         style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
+                     {% endfor %}
+                     <div class="c-breadcrumbs-wrapper">
+                         <div class="container">
+                             <div class="c-page-title c-pull-left">
+                                 <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
+                             </div>
+                             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                                 <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
+                                 <li class="c-font-white">/</li>
+                                 <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                 {% endif %}
+             {% endfor %}
+        </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 
-       
-        <!-- BEGIN: PAGE CONTENT -->
-        <!-- BEGIN: CONTENT/PRICING/PRICING-5 -->
-        <div class="c-content-box c-size-md">
-            <div class="container">
-                <div class="row c-margin-t-10 c-margin-b-10">
-                    <div class="col-md-12">
-                        <div class="c-content-title-1 c-title-pricing-1">
-                            <h3 class="c-font-uppercase c-font-bold">Paketi</h3>
-                            <div class="c-row c-try">
-                                <button class="btn btn-md c-btn-square c-btn-red c-btn-uppercase c-btn-bold">PRVI TRENING BESPLATAN</button>
+        <!-- BEGIN: PAGE CONTAINER -->
+        <div class="c-layout-page">
+            <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+
+
+            <!-- BEGIN: PAGE CONTENT -->
+            <!-- BEGIN: CONTENT/PRICING/PRICING-5 -->
+            <div class="c-content-box c-size-md">
+                <div class="container">
+                    <div class="row c-margin-t-10 c-margin-b-10">
+                        <div class="col-md-12">
+                            <div class="c-content-title-1 c-title-pricing-1">
+                                <h3 class="c-font-uppercase c-font-bold">Paketi</h3>
+                                <div class="c-row c-try">
+                                    <button class="btn btn-md c-btn-square c-btn-red c-btn-uppercase c-btn-bold">PRVI TRENING BESPLATAN</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="c-content-pricing-1 c-opt-1">
-                        {% for price in pricings %}
-                            <div class="col-md-3 col-sm-4">
-                                <div class="c-content c-column-even c-padding-adjustment"> 
-                                    <div class="c-row c-type c-font-20">{{ price.name }}<br> {{price.description}}</div>
-                                        {% for price in price.features %}
-                                        <div class="c-row c-font-17">
-                                            {{ price.features }} <span class="c-sub-title">End Products</span>
+                    <div class="row">
+                        <div class="c-content-pricing-1 c-opt-1">
+                            {% for price in pricings %}
+                                <div class="col-md-3 col-sm-4">
+                                    <div class="c-content c-column-even c-padding-adjustment"> 
+                                        <div class="c-row c-type c-font-20">{{ price.name }}<br> {{price.description}}</div>
+                                            {% for price in price.features %}
+                                            <div class="c-row c-font-17">
+                                                {{ price.features }} <span class="c-sub-title">End Products</span>
+                                            </div>
+                                        {% endfor %}
+                                        <div class="c-row c-purchase">
+                                            <button class="btn btn-md c-btn-square c-btn-border-2x c-btn-green c-btn-uppercase c-btn-bold">{{price.price}} rsd</button>
                                         </div>
-                                    {% endfor %}
-                                    <div class="c-row c-purchase">
-                                        <button class="btn btn-md c-btn-square c-btn-border-2x c-btn-green c-btn-uppercase c-btn-bold">{{price.price}} rsd</button>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div><!-- END: CONTENT/PRICING/PRICING-5 -->
-    </div>
-                    </body>
+            </div><!-- END: CONTENT/PRICING/PRICING-5 -->
+        </div>
+    </body>
     <!-- END: PAGE CONTAINER -->    
     {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}  

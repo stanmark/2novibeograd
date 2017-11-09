@@ -14,6 +14,47 @@
                 <td> <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="100" width="100" /></td>
             </tr>
             <tr>
+                <th>Liga</th>
+                <td> 
+                    {% for league in mainGallery.league %}
+                        {{ league.league }}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Clan tima</th>
+                <td> 
+                    {% for teamMember in mainGallery.teamMember %}
+                        {{ teamMember.name }};                 
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Mesto</th>
+                <td> 
+                    {% for place in mainGallery.place %}
+                        {{ place.title }};                  
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Slajder</th>
+                <td> 
+                    {% for homeSlider in mainGallery.homeSlider %}
+                        {{ homeSlider.mainTitle }};                  
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Slika na svakoj strani</th>
+                <td> 
+                    {% for breadCrumps in mainGallery.breadCrumps %}
+                        {{ breadCrumps.name }};
+                    {% endfor %}
+                </td>
+            </tr>
+
+            <tr>
                 <th>Alt</th>
                 <td>{{ mainGallery.alt }}</td>
             </tr>

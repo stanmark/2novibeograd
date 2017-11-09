@@ -1,0 +1,23 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+{% block tbody %}
+    <h1>Breadcrump</h1>
+
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ breadCrump.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ breadCrump.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('breadcrumps_index') }}" class="btn green">Back to the list</a>
+        <a href="{{ path('breadcrumps_edit', { 'id': breadCrump.id }) }}" class="btn yellow">Edit</a>
+    </div>
+
+{% endblock %}

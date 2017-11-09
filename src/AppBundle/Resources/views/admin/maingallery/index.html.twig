@@ -6,8 +6,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Url</th>
-                <th>Alt</th>
+                <th>Slika</th>
+                <th>Liga</th>
+                <th>Clan tima</th>
+                <th>Mesto</th>
+                <th>Slajder</th>
+                <th>Slika na svakoj strani</th>
                 <th>Mainpicture</th>
                 <th>Mainpicturegallery</th>
                 <th>Title</th>
@@ -23,6 +27,31 @@
                 <tr>
                     <td><a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">{{ mainGallery.id }}</a></td>
                     <td><img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" /></td>
+                    <td> 
+                        {% for league in mainGallery.league %}
+                            {{ league.league }}
+                        {% endfor %}
+                    </td>
+                    <td> 
+                        {% for teamMember in mainGallery.teamMember %}
+                            {{ teamMember.name }};                 
+                        {% endfor %}
+                    </td>
+                    <td> 
+                        {% for place in mainGallery.place %}
+                            {{ place.title }};                  
+                        {% endfor %}
+                    </td>
+                    <td> 
+                        {% for homeSlider in mainGallery.homeSlider %}
+                            {{ homeSlider.mainTitle }};                  
+                        {% endfor %}
+                    </td>
+                    <td> 
+                        {% for breadCrumps in mainGallery.breadCrumps %}
+                            {{ breadCrumps.name }};
+                        {% endfor %}
+                    </td>
                     <td>{{ mainGallery.alt }}</td>
                     <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
                     <td>{% if mainGallery.mainPictureGallery %}Yes{% else %}No{% endif %}</td>
@@ -52,7 +81,7 @@
         $(document).ready(function () {
             var $table = $('.js-table');
             DeleteRow.initialize($table);
-            
+
         });
     </script>
 

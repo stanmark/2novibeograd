@@ -7,6 +7,8 @@
         <thead>
             <tr>
                 <th>League</th>
+                <th>Opis</th>
+                <th>Godina</th>
                 <th>Grupa</th>
                 <th>Actions</th>
             </tr>
@@ -18,6 +20,8 @@
             {% for league in leagues %}
                 <tr>
                     <td><a href="{{ path('league_show', { 'id': league.id }) }}">{{ league.league }}</a></td>
+                    <td>{{ league.description }}</td>
+                    <td>{{ league.year }}</td>
                     <td>
                         {% for groupp in league.groupp %}
                             {{ groupp.groupp }},

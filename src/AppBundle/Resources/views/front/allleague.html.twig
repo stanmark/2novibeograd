@@ -1,65 +1,84 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
 {% block body %}
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
-<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-         style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
-    <div class="c-breadcrumbs-wrapper">
-        <div class="container">
-            <div class="c-page-title c-pull-left">
-                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
-                <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
-            </div>
-            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
-                <li class="c-font-white">/</li>
-                <li><a href="#" class="c-font-white">Tim trenera</a></li>
-            </ul>
-        </div>
-    </div>
-</div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-    
-    <!-- BEGIN: PAGE CONTAINER -->
-    <div class="c-layout-page">
-        <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+    <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+       <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+             {% for BreadCrump in BreadCrumps %}
+                 {% if  BreadCrump.id  == 3 %}
+                     {% for mainGallery in BreadCrump.mainGallery %}
+                         style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
+                     {% endfor %}
+                     <div class="c-breadcrumbs-wrapper">
+                         <div class="container">
+                             <div class="c-page-title c-pull-left">
+                                 <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
+                             </div>
+                             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                                 <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
+                                 <li class="c-font-white">/</li>
+                                 <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                 {% endif %}
+             {% endfor %}
+        </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 
-        
-        <!-- BEGIN: PAGE CONTENT -->
-        <!-- BEGIN: BLOG LISTING -->
-        <div class="c-content-box c-size-md">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        {% for league in leagues %}
-                            <div class="c-content-blog-post-1-list">
-                                <div class="c-content-blog-post-1">
-                                    <div class="c-media">
-                                        <div class="c-content-media-2-slider" data-slider="owl"> 
-                                            <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-auto-play="4000" data-rtl="false"> 
-                                                 {% for mainGallery in league.mainGallery %}
-                                                <div class="item">
-                                                    <div class="c-content-media-2" style="min-height: 460px;">
-                                                        <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" />
-                                                    </div> 
+        <!-- BEGIN: PAGE CONTAINER -->
+        <div class="c-layout-page">
+            <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+
+            <div class="c-content-box c-size-md c-bg-grey-1">
+                <div class="container">
+                    <!-- Begin: Testimonals 1 component -->
+                    <div class="c-content-team-1-slider" data-slider="owl" data-items="3">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-center c-font-uppercase c-font-bold">Takmičenja</h3>
+                            <div class="c-line-center c-theme-bg"></div>
+                        </div>
+                        <!-- End-->
+                        <div class="row">
+                            {% for league in leagues %}
+                                <div class="col-md-4 col-sm-6 c-margin-b-30">
+                                    <div class="c-content-person-1 c-option-2">
+                                        <div class="c-caption c-content-overlay">
+                                            <div class="c-overlay-wrapper">
+                                                <div class="c-overlay-content">
+                                                    <a href="{{ path('league_detail', {'id': league.id, 'name': league.league}) }}"><i class="icon-link"></i></a>
                                                 </div>
-                                                 {% endfor %}     
                                             </div>
+                                            {% for mainGallery in league.mainGallery %}
+                                                <img class="c-overlay-object img-responsive" src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}">
+                                            {% endfor %}
+                                        </div>
+                                        <div class="c-body">
+                                            <div class="c-head">
+                                                <div class="c-name c-font-uppercase c-font-bold">{{league.league}}</div>                                   
+                                            </div>
+                                            <div class="c-position">
+                                                {% for groupp in league.groupp %}
+                                                    {{groupp.groupp }};
+                                                {% endfor %}
+                                            </div>
+                                            <p>
+                                                {{ league.description }}
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="c-title c-font-bold c-font-uppercase">
-                                        <a href="{{ path('league_detail', {'id': league.id, 'name': league.league}) }}">{{ league.league }}</a>
-                                    </div>               
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+
+                            <!-- End-->
+                        </div>
+                        <!-- End-->
                     </div>
-                </div>
-            </div> 
+                </div><!-- END: CONTENT/MISC/TEAM-3 -->
+
+                <!-- END: PAGE CONTENT -->
+            </div>            
         </div>
-        <!-- END: BLOG LISTING  -->
-        <!-- END: PAGE CONTENT -->
-    </div>
-    <!-- END: PAGE CONTAINER -->
-</body>
+        <!-- END: PAGE CONTAINER -->
+    </body>
     {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}      
