@@ -137,13 +137,10 @@ class MainGallery
      */
     private $galleryCategory;
     
-    
-    
-    
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\BreadCrumps", inversedBy="mainCategory")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\BreadCrumps", inversedBy="mainGallery")
      * @ORM\JoinTable(name="mainGallery_BreadCrumps",
      *   joinColumns={
      *     @ORM\JoinColumn(name="mainGallerry_id", referencedColumnName="id")
@@ -156,7 +153,20 @@ class MainGallery
     private $breadCrumps;
     
     
-    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Blog", inversedBy="mainGallery")
+     * @ORM\JoinTable(name="mainGallery_Blog",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="mainGallerry_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="Blog_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $blog;
     
     /**
      * @var string
@@ -644,5 +654,39 @@ class MainGallery
     public function getBreadCrumps()
     {
         return $this->breadCrumps;
+    }
+
+    /**
+     * Add blog
+     *
+     * @param \AppBundle\Entity\Blog $blog
+     *
+     * @return MainGallery
+     */
+    public function addBlog(\AppBundle\Entity\Blog $blog)
+    {
+        $this->blog[] = $blog;
+
+        return $this;
+    }
+
+    /**
+     * Remove blog
+     *
+     * @param \AppBundle\Entity\Blog $blog
+     */
+    public function removeBlog(\AppBundle\Entity\Blog $blog)
+    {
+        $this->blog->removeElement($blog);
+    }
+
+    /**
+     * Get blog
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBlog()
+    {
+        return $this->blog;
     }
 }

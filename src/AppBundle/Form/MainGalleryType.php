@@ -62,6 +62,13 @@ class MainGalleryType extends AbstractType
                     'multiple' => true,
                     
                     ])
+                ->add('blog',  EntityType::class, [
+                    'class' => \AppBundle\Entity\Blog::class,
+                    'choice_label' => 'title',
+                    'required' => false, 
+                    
+                    ])
+                
                 ;
     }
     

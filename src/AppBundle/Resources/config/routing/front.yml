@@ -9,12 +9,12 @@ trener_detail:
     methods:  GET
     
 team:
-    path:     /tim/
+    path:     /tim-trenera/
     defaults: { _controller: "AppBundle:Front/teamMember:index" }
     methods:  GET   
     
 place:
-    path:     /raspored/
+    path:     /raspored-treninga/
     defaults: { _controller: "AppBundle:Front/place:index" }
     methods:  GET  
     
@@ -44,7 +44,7 @@ game_detail:
     methods:  GET  
     
 about:
-    path:     /onama/
+    path:     /o-nama/
     defaults: { _controller: "AppBundle:Front/Company:index" }
     methods:  GET
     

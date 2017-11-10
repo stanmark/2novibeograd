@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-{% block head %}
+
 <html lang="en">
     <!--<![endif]-->
     <!-- BEGIN HEAD -->
 
     <head>
+        {% block head %}
         <meta charset="utf-8" />
         <title>OK Novi Beograd</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,24 +41,19 @@
         
         <!-- BEGIN THEME LAYOUT STYLES -->
         <link href="{{ asset('public/Admin/admincss/layout.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/Admin/admincss/custom.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/Admin/admincss/custom.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/Admin/admincss/blue.min.css')}}" filter='cssrewrite' rel="stylesheet" type="text/css"/>
        <link rel="shortcut icon" href="favicon.ico" /> 
-    </head>
+    {% endblock %}
+        </head>
     <!-- END HEAD -->
-{% endblock %}
+
 
    {# <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid">#}
        
         {% block main %}
         {% endblock %}
 
-        {% block javascript %}             
-            {% javascripts 
-                '@jq_admin' %}
-            <script src="{{ asset_url }}"></script>
-            {% endjavascripts %} 
-            {% endblock %}
     {#</body>#}
 
 </html>

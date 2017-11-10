@@ -7,11 +7,13 @@
             <tr>
                 <th>Id</th>
                 <th>Slika</th>
+                <th>Alt</th>
                 <th>Liga</th>
                 <th>Clan tima</th>
                 <th>Mesto</th>
                 <th>Slajder</th>
                 <th>Slika na svakoj strani</th>
+                <th>Blog</th>
                 <th>Mainpicture</th>
                 <th>Mainpicturegallery</th>
                 <th>Title</th>
@@ -27,6 +29,7 @@
                 <tr>
                     <td><a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">{{ mainGallery.id }}</a></td>
                     <td><img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" /></td>
+                    <td>{{ mainGallery.alt }}</td>
                     <td> 
                         {% for league in mainGallery.league %}
                             {{ league.league }}
@@ -52,7 +55,12 @@
                             {{ breadCrumps.name }};
                         {% endfor %}
                     </td>
-                    <td>{{ mainGallery.alt }}</td>
+                    <td> 
+                        {% for blog in mainGallery.blog %}
+                            {{ blog.title }};
+                        {% endfor %}
+                    </td>
+                    
                     <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
                     <td>{% if mainGallery.mainPictureGallery %}Yes{% else %}No{% endif %}</td>
                     <td>{{ mainGallery.title }}</td>

@@ -3,7 +3,7 @@
 {% block head %}
     {{ parent() }}
 
-    <link href="{{ asset('public/Admin/admincss/datatables.min.cs')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>  
+    <link href="{{ asset('public/Admin/admincss/datatables.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>  
     <link href="{{ asset('public/Admin/admincss/datatables.bootstrap.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>    
 {% endblock %}
 
@@ -70,7 +70,7 @@
 
 
 
-{% block javascript %}
+
 
     {% javascripts 
                 '@jq_admin'                 
@@ -87,7 +87,7 @@
     <script src="{{ asset_url }}"></script>
 
     {% endjavascripts %} 
-    {% endblock %}
+  
 
 {% endblock %}
 
