@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Groupp
@@ -19,6 +20,13 @@ class Groupp
      * @ORM\Column(name="groupp", type="string", length=255, nullable=false)
      */
     private $groupp;
+    
+    
+      /**
+     * @Gedmo\Slug(fields={"groupp"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
     /**
      * @var integer
@@ -300,5 +308,29 @@ class Groupp
     public function getGame()
     {
         return $this->game;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Groupp
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

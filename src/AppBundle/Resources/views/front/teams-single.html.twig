@@ -52,7 +52,7 @@
                                                     <div class="c-caption c-content-overlay">
                                                         <div class="c-overlay-wrapper">
                                                             <div class="c-overlay-content">
-                                                                <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}"><i class="icon-link"></i></a>
+                                                                <a href="{{ path('trener_detail', { 'slug': teamMember.slug}) }}"><i class="icon-link"></i></a>
                                                                 <a href="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" data-lightbox="fancybox" data-fancybox-group="gallery-4">
                                                                     <i class="icon-magnifier"></i>
                                                                 </a>
@@ -65,7 +65,7 @@
                                                 <div class="c-body">
                                                     <div class="c-head">
                                                         <div class="c-name c-font-uppercase c-font-bold">
-                                                            <a href="{{ path('trener_detail', {'id': teamMember.id, 'name': teamMember.name}) }}">{{ teamMember.name }}</a>
+                                                            <a href="{{ path('trener_detail', { 'slug': teamMember.slug}) }}">{{ teamMember.name }}</a>
                                                         </div>
                                                         <ul class="c-socials c-theme-ul-ul">
                                                             <li><a href="{{ teamMember.faceurl }}"><i class="icon-social-twitter"></i></a></li>

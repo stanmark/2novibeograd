@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * BreadCrumps
@@ -27,6 +28,12 @@ class BreadCrumps
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+     /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
     
     
     /**
@@ -110,5 +117,29 @@ class BreadCrumps
     public function getMainGallery()
     {
         return $this->mainGallery;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return BreadCrumps
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

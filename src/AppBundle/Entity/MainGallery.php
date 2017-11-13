@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * MainGallery
@@ -45,6 +46,12 @@ class MainGallery
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
+    
+       /**
+     * @Gedmo\Slug(fields={"alt"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
     /**
      * @var bool
@@ -162,7 +169,7 @@ class MainGallery
      *     @ORM\JoinColumn(name="mainGallerry_id", referencedColumnName="id")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="Blog_id", referencedColumnName="id")
+     *     @ORM\JoinColumn(name="blog_id", referencedColumnName="id")
      *   }
      * )
      */
@@ -688,5 +695,29 @@ class MainGallery
     public function getBlog()
     {
         return $this->blog;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return MainGallery
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

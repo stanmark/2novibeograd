@@ -3,14 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\File;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * teamMember
  *
  * @ORM\Table(name="team_member")
- * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\teamMemberRepository")
  */
@@ -104,6 +102,12 @@ class teamMember
      * @ORM\Column(type="datetime", nullable = true)
      */
     protected $updated;
+    
+     /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
     
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -500,5 +504,29 @@ class teamMember
     public function getMainGallery()
     {
         return $this->mainGallery;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return teamMember
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

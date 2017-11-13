@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 
@@ -30,6 +31,13 @@ class HomeSlider
      * @ORM\Column(name="MainTitle", type="string", length=255)
      */
     private $mainTitle;
+    
+    
+      /**
+     * @Gedmo\Slug(fields={"mainTitle"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -324,5 +332,29 @@ class HomeSlider
     public function getMainGallery()
     {
         return $this->mainGallery;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return HomeSlider
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

@@ -20,6 +20,16 @@ class LeagueType extends AbstractType
                 ->add('description')
                 ->add('league')
                 ->add('year')
+                ->add('mainGallery', EntityType::class, [
+                    'class' => \AppBundle\Entity\MainGallery::class,
+                    'choice_label' => 'alt',
+                    'by_reference' => false,
+                    'required' => false, 
+                    'multiple' => true,
+                    'expanded' => true,
+                    
+               
+                ])
                
                 
                 ;

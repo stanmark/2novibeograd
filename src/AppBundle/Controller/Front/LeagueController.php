@@ -33,11 +33,11 @@ class LeagueController extends Controller
         ));
     }
     
-     public function detailAction($id, $name)
+     public function detailAction(League $League, $slug)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $oneleague = $em->getRepository('AppBundle:League')->findOneBy(['id' => $id]);
+        $oneleague = $em->getRepository('AppBundle:League')->findOneBy(['slug' => $slug]);
         
         $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();

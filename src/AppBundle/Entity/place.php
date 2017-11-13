@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
@@ -29,6 +30,12 @@ class place
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+    
+     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -75,7 +82,7 @@ class place
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="place")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="place", fetch="EXTRA_LAZY")
      */
     private $mainGallery;
     
@@ -85,6 +92,8 @@ class place
      * @ORM\Column(name="treaningPlace", type="boolean", nullable=true)
      */
     private $treaningPlace;
+    
+   
     
     
 
@@ -342,5 +351,29 @@ class place
     public function getTreaningPlace()
     {
         return $this->treaningPlace;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return place
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

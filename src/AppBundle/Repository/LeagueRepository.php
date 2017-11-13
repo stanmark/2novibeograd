@@ -10,6 +10,11 @@ namespace AppBundle\Repository;
  */
 class LeagueRepository extends \Doctrine\ORM\EntityRepository
 {
-    
+    public function createLeagueGrouppQueryBuilder()
+    {
+        return $this->createQueryBuilder('league')
+            ->andWhere('groupp = groupp.id')
+            ->setParameter('groupp.id', true);
+    }
     
 }

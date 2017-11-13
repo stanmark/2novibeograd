@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * GalleryCategory
@@ -30,6 +31,12 @@ class GalleryCategory
      * @ORM\Column(name="category", type="string", length=255)
      */
     private $category;
+    
+    /**
+     * @Gedmo\Slug(fields={"category"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
      /**
      * @var \Doctrine\Common\Collections\Collection
@@ -198,5 +205,29 @@ class GalleryCategory
     public function getMaincategory()
     {
         return $this->maincategory;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return GalleryCategory
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

@@ -30,7 +30,7 @@
                 <div class="c-content-title-1">
                     <h3 class="c-center c-font-dark c-font-uppercase">{{ oneleague.league }}</h3>
                     <div class="c-line-center c-theme-bg"></div>
-                    <p class="c-center">Description</p>
+                    <p class="c-center">{{ oneleague.description }}</p>
                 </div>
                 <div class="c-content-panel">
                     <div class="c-label">Grupe {{ oneleague.league }} </div>                      
@@ -120,6 +120,8 @@
                 {% endfor %}         
             </div>
         </div>
+
     </body> 
+
     {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}     

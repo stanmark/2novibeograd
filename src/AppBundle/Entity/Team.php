@@ -3,15 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Team
  *
  * @ORM\Table(name="team")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TeamRepository")
- * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks
  */
 class Team
@@ -31,6 +30,12 @@ class Team
      * @ORM\Column(name="team", type="string", length=255)
      */
     private $team;
+    
+     /**
+     * @Gedmo\Slug(fields={"team"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
     /**
      * @var \AppBundle\Entity\Groupp
@@ -188,5 +193,29 @@ class Team
     public function getGroupp()
     {
         return $this->groupp;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Team
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

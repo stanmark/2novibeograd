@@ -3,23 +3,26 @@
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
     <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-         
-         style="background-image: url(../../public/Front/images/volleyball-1034436_1920.jpg)">
-        
-    <div class="c-breadcrumbs-wrapper">
-        <div class="container">
-            <div class="c-page-title c-pull-left">
-                <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">Tim trenera</h3>
-                <h4 class="c-font-white c-font-thin c-opacity-09">Tim</h4>
-            </div>
-            <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                <li><a href="javascript:;" class="c-font-white">Naslovna</a></li>
-                <li class="c-font-white">/</li>
-                <li><a href="#" class="c-font-white">Tim trenera</a></li>
-            </ul>
-        </div>
-    </div>
-</div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
+             {% for BreadCrump in BreadCrumps %}
+                 {% if  BreadCrump.id  == 2 %}
+                     {% for mainGallery in BreadCrump.mainGallery %}
+                         style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
+                     {% endfor %}
+                     <div class="c-breadcrumbs-wrapper">
+                         <div class="container">
+                             <div class="c-page-title c-pull-left">
+                                 <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
+                             </div>
+                             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                                 <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
+                                 <li class="c-font-white">/</li>
+                                 <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
+                             </ul>
+                         </div>
+                     </div>
+                 {% endif %}
+             {% endfor %}
+        </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
     
     
     <!-- BEGIN: PAGE CONTAINER -->
@@ -50,11 +53,11 @@
                                         </div>
                                     </div>
                                     <div class="c-title c-font-bold c-font-uppercase">
-                                        <a href="{{ path('place_detail', {'id': place.id, 'name': place.title}) }}">{{ place.title }}</a>
+                                        <a href="{{ path('place_detail', { 'slug': place.slug}) }}">{{ place.title }}</a>
                                     </div>
                                     <div class="c-desc">
-                                        {{ place.description }}
-                                        <a href="{{ path('place_detail', {'id': place.id, 'name': place.title}) }}">više</a>
+                                        {{ place.description |raw }}
+                                        <a href="{{ path('place_detail', { 'slug': place.slug}) }}">više</a>
                                     </div>
                                     <div class="c-panel">
                                         <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>

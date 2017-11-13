@@ -45,7 +45,7 @@
                                         <div class="c-caption c-content-overlay">
                                             <div class="c-overlay-wrapper">
                                                 <div class="c-overlay-content">
-                                                    <a href="{{ path('league_detail', {'id': league.id, 'name': league.league}) }}"><i class="icon-link"></i></a>
+                                                    <a href="{{ path('league_detail', { 'slug': league.slug}) }}"><i class="icon-link"></i></a>
                                                 </div>
                                             </div>
                                             {% for mainGallery in league.mainGallery %}
@@ -54,7 +54,9 @@
                                         </div>
                                         <div class="c-body">
                                             <div class="c-head">
-                                                <div class="c-name c-font-uppercase c-font-bold">{{league.league}}</div>                                   
+                                                <div class="c-name c-font-uppercase c-font-bold">
+                                                     <a href="{{ path('league_detail', { 'slug': league.slug}) }}">{{league.league}}</a>
+                                                </div>                                   
                                             </div>
                                             <div class="c-position">
                                                 {% for groupp in league.groupp %}

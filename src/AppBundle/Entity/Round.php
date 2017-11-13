@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Round
@@ -27,6 +28,14 @@ class Round
      * @ORM\Column(name="rounds", type="string", length=255)
      */
     private $rounds;
+    
+    /**
+     * @Gedmo\Slug(fields={"rounds"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
+    
+    
     
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="round")
@@ -167,5 +176,29 @@ class Round
     public function getRounds()
     {
         return $this->rounds;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Round
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

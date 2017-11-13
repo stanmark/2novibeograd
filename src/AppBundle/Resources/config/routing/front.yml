@@ -4,7 +4,7 @@ home:
     methods:  GET
 
 trener_detail:
-    path:     /trener/{id}/{name}/
+    path:     /trener/{slug}/
     defaults: { _controller: "AppBundle:Front/teamMember:detail" }
     methods:  GET
     
@@ -19,7 +19,7 @@ place:
     methods:  GET  
     
 place_detail:
-    path:     /raspored/{id}/{name}/
+    path:     /lokacija/{slug}/
     defaults: { _controller: "AppBundle:Front/place:detail" }
     methods:  GET    
     
@@ -34,7 +34,7 @@ league:
     methods:  GET  
     
 league_detail:
-    path:     /takmicenja/{id}/{name}/
+    path:     /takmicenja/{slug}/
     defaults: { _controller: "AppBundle:Front/League:detail" }
     methods:  GET     
     
@@ -56,7 +56,18 @@ contact:
 galerys:
     path:     /galerije/
     defaults: { _controller: "AppBundle:Front/MainGallery:index" }
-    methods:  GET       
+    methods:  GET   
+    
+allblog:
+    path:     /vesti/
+    defaults: { _controller: "AppBundle:Front/Blog:index" }
+    methods:  GET  
+    
+blog:
+    path:     /vesti/{id}/{name}/
+    defaults: { _controller: "AppBundle:Front/Blog:detail" }
+    methods:  GET        
+    
     
  
         

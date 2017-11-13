@@ -3,15 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * League
  *
  * @ORM\Table(name="league")
  * @ORM\Entity
- * @Vich\Uploadable
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LeagueRepository")
  */
@@ -23,6 +22,13 @@ class League
      * @ORM\Column(name="league", type="string", length=255, nullable=false)
      */
     private $league;
+    
+    
+      /**
+     * @Gedmo\Slug(fields={"league"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
     
     
     /**
@@ -309,5 +315,29 @@ class League
     public function getYear()
     {
         return $this->year;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return League
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

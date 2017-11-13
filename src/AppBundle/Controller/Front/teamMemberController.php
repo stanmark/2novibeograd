@@ -37,13 +37,13 @@ class teamMemberController extends Controller
     
     
     
-    public function detailAction($id, $name)
+    public function detailAction(teamMember $teamMember, $slug)
     {
         $em = $this->getDoctrine()->getManager();
         
 
         $member = $em->getRepository(teamMember::class);
-        $oneMember = $member->findOneBy(['id' => $id]);
+        $oneMember = $member->findOneBy(['slug' => $slug]);
         $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
 

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Features
@@ -27,6 +28,13 @@ class Features
      * @ORM\Column(name="features", type="string", length=255)
      */
     private $features;
+    
+    
+      /**
+     * @Gedmo\Slug(fields={"features"})
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $slug;
 
     
     /**
@@ -110,5 +118,29 @@ class Features
     public function getPricing()
     {
         return $this->pricing;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Features
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
