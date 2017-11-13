@@ -47,7 +47,7 @@ class FeaturesController extends Controller
             $em->persist($feature);
             $em->flush();
 
-            return $this->redirectToRoute('features_show', array('id' => $feature->getId()));
+            return $this->redirectToRoute('features_show', array('slug' => $feature->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/features/new.html.twig', array(
@@ -85,7 +85,7 @@ class FeaturesController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('features_edit', array('id' => $feature->getId()));
+            return $this->redirectToRoute('features_edit', array('slug' => $feature->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/features/edit.html.twig', array(
@@ -119,7 +119,7 @@ class FeaturesController extends Controller
     private function createDeleteForm(Features $feature)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('features_delete', array('id' => $feature->getId())))
+            ->setAction($this->generateUrl('features_delete', array('slug' => $feature->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

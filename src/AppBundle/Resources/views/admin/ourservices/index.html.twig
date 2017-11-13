@@ -18,18 +18,18 @@
         <tbody>
             {% for ourService in ourServices %}
                 <tr>
-                    <td><a href="{{ path('ourservices_show', { 'id': ourService.id }) }}">{{ ourService.id }}</a></td>
+                    <td><a href="{{ path('ourservices_show', { 'slug': ourService.slug }) }}">{{ ourService.slug }}</a></td>
                     <td>{{ ourService.title }}</td>
                     <td>{{ ourService.description }}</td>
                     <td>{{ ourService.icon }}</td>
                     <td class="btn-group btn-group-circle btn-group-solid">
-                        <a href="{{ path('ourservices_show', { 'id': ourService.id }) }}" class="btn blue">show</a>
+                        <a href="{{ path('ourservices_show', { 'slug': ourService.slug }) }}" class="btn blue">show</a>
 
-                        <a href="{{ path('ourservices_edit', { 'id': ourService.id }) }}" class="btn yellow">edit</a>                  
+                        <a href="{{ path('ourservices_edit', { 'slug': ourService.slug }) }}" class="btn yellow">edit</a>                  
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('ourservices_delete', {'id':ourService.id}) }}"
+                           data-url="{{ path ('ourservices_delete', {'slug':ourService.slug}) }}"
                            >delete</a>
                     </td>
                 </tr>
@@ -41,15 +41,3 @@
 
 {% endblock %}
 
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
-
-
-{% endblock %}

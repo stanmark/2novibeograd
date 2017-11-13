@@ -62,15 +62,4 @@
     <a href="{{ path('game_new') }}" class="btn btn-circle green">Create a new game</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
 
-
-{% endblock %}

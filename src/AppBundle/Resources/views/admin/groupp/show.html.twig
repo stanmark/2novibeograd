@@ -41,7 +41,7 @@
             {{ form_start(delete_form) }}
             <div  class="btn-group btn-group-circle btn-group-solid">
                   <a href="{{ path('groupp_index') }}" class="btn green">Back to the list</a>
-                  <a href="{{ path('groupp_edit', { 'id': groupp.id }) }}" class="btn yellow">Edit</a>
+                  <a href="{{ path('groupp_edit', { 'slug': groupp.slug }) }}" class="btn yellow">Edit</a>
                 <input type="submit" value="Delete" class="btn red">
                 
             </div>    

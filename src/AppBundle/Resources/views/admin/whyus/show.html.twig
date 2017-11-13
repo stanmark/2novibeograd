@@ -22,7 +22,7 @@
     <div  class="btn-group btn-group-circle btn-group-solid">
         <a href="{{ path('whyus_index') }}" class="btn green">Back to the list</a>
 
-        <a href="{{ path('whyus_edit', { 'id': whyU.id }) }}" class="btn yellow">Edit</a>
+        <a href="{{ path('whyus_edit', { 'slug': whyU.slug }) }}" class="btn yellow">Edit</a>
     </div>
     {{ form_end(delete_form) }}
 

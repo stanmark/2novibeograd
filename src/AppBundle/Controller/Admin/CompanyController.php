@@ -44,7 +44,7 @@ class CompanyController extends Controller
             $em->persist($company);
             $em->flush();
 
-            return $this->redirectToRoute('company_show', array('id' => $company->getId()));
+            return $this->redirectToRoute('company_show', array('slug' => $company->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/company/new.html.twig', array(
@@ -82,7 +82,7 @@ class CompanyController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('company_edit', array('id' => $company->getId()));
+            return $this->redirectToRoute('company_edit', array('slug' => $company->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/company/edit.html.twig', array(
@@ -122,7 +122,7 @@ class CompanyController extends Controller
     private function createDeleteForm(Company $company)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('company_delete', array('id' => $company->getId())))
+            ->setAction($this->generateUrl('company_delete', array('slug' => $company->getslug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

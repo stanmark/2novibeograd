@@ -43,7 +43,7 @@ class PricingController extends Controller
             $em->persist($pricing);
             $em->flush();
 
-            return $this->redirectToRoute('pricing_show', array('id' => $pricing->getId()));
+            return $this->redirectToRoute('pricing_show', array('slug' => $pricing->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/pricing/new.html.twig', array(
@@ -79,7 +79,7 @@ class PricingController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('pricing_edit', array('id' => $pricing->getId()));
+            return $this->redirectToRoute('pricing_edit', array('slug' => $pricing->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/pricing/edit.html.twig', array(
@@ -118,7 +118,7 @@ class PricingController extends Controller
     private function createDeleteForm(Pricing $pricing)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('pricing_delete', array('id' => $pricing->getId())))
+            ->setAction($this->generateUrl('pricing_delete', array('slug' => $pricing->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

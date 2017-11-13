@@ -27,7 +27,7 @@
         {% block tbody %}
             {% for mainGallery in mainGalleries %}
                 <tr>
-                    <td><a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}">{{ mainGallery.id }}</a></td>
+                    <td><a href="{{ path('maingallery_show', { 'slug': mainGallery.slug }) }}">{{ mainGallery.id }}</a></td>
                     <td><img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" /></td>
                     <td>{{ mainGallery.alt }}</td>
                     <td> 
@@ -66,12 +66,12 @@
                     <td>{{ mainGallery.title }}</td>
                     <td>{{ mainGallery.description }}</td>
                     <td class="btn-group btn-group-circle btn-group-solid"> 
-                        <a href="{{ path('maingallery_show', { 'id': mainGallery.id }) }}" class="btn green">show</a>
-                        <a href="{{ path('maingallery_edit', { 'id': mainGallery.id }) }}" class="btn yellow">edit</a>
+                        <a href="{{ path('maingallery_show', { 'slug': mainGallery.slug }) }}" class="btn green">show</a>
+                        <a href="{{ path('maingallery_edit', { 'slug': mainGallery.slug }) }}" class="btn yellow">edit</a>
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('maingallery_delete', {'id':mainGallery.id}) }}"
+                           data-url="{{ path ('maingallery_delete', {'slug':mainGallery.slug}) }}"
                            >delete</a>
                     </td>
                     </td>
@@ -83,15 +83,4 @@
     <a href="{{ path('maingallery_new') }}" class="btn btn-circle green">Create a new mainGallery</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
 
-        });
-    </script>
-
-
-{% endblock %}

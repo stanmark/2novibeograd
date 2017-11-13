@@ -21,8 +21,8 @@
     </table>
     {{ form_start(delete_form) }}
     <div  class="btn-group btn-group-circle btn-group-solid">
-        <a href="{{ path('seo_index') }}" class="btn green" class="btn yellow">Back to the list</a>
-        <a href="{{ path('seo_edit', { 'id': sEO.id }) }}">Edit</a>
+        <a href="{{ path('seo_index') }}" class="btn green" >Back to the list</a>
+        <a href="{{ path('seo_edit', { 'slug': sEO.slug }) }}" class="btn yellow">Edit</a>
         <input type="submit" value="Delete" class="btn red">
     </div>    
     {{ form_end(delete_form) }}

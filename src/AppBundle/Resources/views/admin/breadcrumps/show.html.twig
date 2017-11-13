@@ -17,7 +17,7 @@
     </table>
     <div  class="btn-group btn-group-circle btn-group-solid">
         <a href="{{ path('breadcrumps_index') }}" class="btn green">Back to the list</a>
-        <a href="{{ path('breadcrumps_edit', { 'id': breadCrump.id }) }}" class="btn yellow">Edit</a>
+        <a href="{{ path('breadcrumps_edit', { 'slug': breadCrump.slug }) }}" class="btn yellow">Edit</a>
     </div>
 
 {% endblock %}

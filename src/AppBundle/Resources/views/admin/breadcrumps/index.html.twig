@@ -17,11 +17,11 @@
         <tbody>
             {% for breadCrump in breadCrumps %}
                 <tr>
-                    <td><a href="{{ path('breadcrumps_show', { 'id': breadCrump.id }) }}">{{ breadCrump.id }}</a></td>
+                    <td><a href="{{ path('breadcrumps_show', { 'slug': breadCrump.slug }) }}">{{ breadCrump.slug }}</a></td>
                     <td>{{ breadCrump.name }}</td>
                     <td class="btn-group btn-group-circle btn-group-solid">  
-                        <a href="{{ path('breadcrumps_show', { 'id': breadCrump.id }) }}" class="btn blue">show</a>
-                        <a href="{{ path('breadcrumps_edit', { 'id': breadCrump.id }) }}" class="btn yellow">edit</a>
+                        <a href="{{ path('breadcrumps_show', { 'slug': breadCrump.slug }) }}" class="btn blue">show</a>
+                        <a href="{{ path('breadcrumps_edit', { 'slug': breadCrump.slug }) }}" class="btn yellow">edit</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -29,17 +29,5 @@
     </table>
 
     <a href="{{ path('breadcrumps_new') }}" class="btn btn-circle green">Create a new breadCrump</a>
-
-{% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-
-        });
-    </script>
-
 
 {% endblock %}

@@ -19,7 +19,7 @@
         {% block tbody %}
             {% for league in leagues %}
                 <tr>
-                    <td><a href="{{ path('league_show', { 'id': league.id }) }}">{{ league.league }}</a></td>
+                    <td><a href="{{ path('league_show', { 'slug': league.slug }) }}">{{ league.league }}</a></td>
                     <td>{{ league.description }}</td>
                     <td>{{ league.year }}</td>
                     <td>
@@ -28,12 +28,12 @@
                         {% endfor %}
                     </td>   
                     <td class="btn-group btn-group-circle btn-group-solid"> 
-                        <a href="{{ path('league_show', { 'id': league.id }) }}" class="btn green">show</a>
-                        <a href="{{ path('league_edit', { 'id': league.id }) }}" class="btn yellow">edit</a>
+                        <a href="{{ path('league_show', { 'slug': league.slug }) }}" class="btn green">show</a>
+                        <a href="{{ path('league_edit', { 'slug': league.slug }) }}" class="btn yellow">edit</a>
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('league_delete', {'id':league.id}) }}"
+                           data-url="{{ path ('league_delete', {'slug':league.slug}) }}"
                            >delete</a>
                     </td>
                     </td>

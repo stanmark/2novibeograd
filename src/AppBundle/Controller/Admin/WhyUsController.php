@@ -43,7 +43,7 @@ class WhyUsController extends Controller
             $em->persist($whyU);
             $em->flush();
 
-            return $this->redirectToRoute('whyus_show', array('id' => $whyU->getId()));
+            return $this->redirectToRoute('whyus_show', array('slug' => $whyU->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/whyus/new.html.twig', array(
@@ -79,7 +79,7 @@ class WhyUsController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('whyus_edit', array('id' => $whyU->getId()));
+            return $this->redirectToRoute('whyus_edit', array('slug' => $whyU->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/whyus/edit.html.twig', array(
@@ -118,7 +118,7 @@ class WhyUsController extends Controller
     private function createDeleteForm(WhyUs $whyU)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('whyus_delete', array('id' => $whyU->getId())))
+            ->setAction($this->generateUrl('whyus_delete', array('slug' => $whyU->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

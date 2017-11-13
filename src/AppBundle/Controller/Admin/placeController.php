@@ -43,7 +43,7 @@ class placeController extends Controller
             $em->persist($place);
             $em->flush();
 
-            return $this->redirectToRoute('place_show', array('id' => $place->getId()));
+            return $this->redirectToRoute('place_show', array('slug' => $place->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/place/new.html.twig', array(
@@ -79,7 +79,7 @@ class placeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('place_edit', array('id' => $place->getId()));
+            return $this->redirectToRoute('place_edit', array('slug' => $place->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/place/edit.html.twig', array(
@@ -118,7 +118,7 @@ class placeController extends Controller
     private function createDeleteForm(place $place)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('place_delete', array('id' => $place->getId())))
+            ->setAction($this->generateUrl('place_delete', array('slug' => $place->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

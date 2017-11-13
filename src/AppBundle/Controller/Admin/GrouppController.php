@@ -46,7 +46,7 @@ class GrouppController extends Controller
             $em->persist($groupp);
             $em->flush();
 
-            return $this->redirectToRoute('groupp_show', array('id' => $groupp->getId()));
+            return $this->redirectToRoute('groupp_show', array('slug' => $groupp->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/groupp/new.html.twig', array(
@@ -84,7 +84,7 @@ class GrouppController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('groupp_edit', array('id' => $groupp->getId()));
+            return $this->redirectToRoute('groupp_edit', array('slug' => $groupp->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/groupp/edit.html.twig', array(
@@ -122,7 +122,7 @@ class GrouppController extends Controller
     private function createDeleteForm(Groupp $groupp)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('groupp_delete', array('id' => $groupp->getId())))
+            ->setAction($this->generateUrl('groupp_delete', array('slug' => $groupp->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

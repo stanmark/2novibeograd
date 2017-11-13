@@ -46,7 +46,7 @@ class TeamController extends Controller
             $em->persist($team);
             $em->flush();
 
-            return $this->redirectToRoute('team_show', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_show', array('slug' => $team->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/team/new.html.twig', array(
@@ -84,7 +84,7 @@ class TeamController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('team_edit', array('id' => $team->getId()));
+            return $this->redirectToRoute('team_edit', array('slug' => $team->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/team/edit.html.twig', array(
@@ -124,7 +124,7 @@ class TeamController extends Controller
     private function createDeleteForm(Team $team)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('team_delete', array('id' => $team->getId())))
+            ->setAction($this->generateUrl('team_delete', array('slug' => $team->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

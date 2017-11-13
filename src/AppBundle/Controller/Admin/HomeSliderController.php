@@ -43,7 +43,7 @@ class HomeSliderController extends Controller
             $em->persist($homeSlider);
             $em->flush();
 
-            return $this->redirectToRoute('homeslider_show', array('id' => $homeSlider->getId()));
+            return $this->redirectToRoute('homeslider_show', array('slug' => $homeSlider->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/homeslider/new.html.twig', array(
@@ -79,7 +79,7 @@ class HomeSliderController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('homeslider_edit', array('id' => $homeSlider->getId()));
+            return $this->redirectToRoute('homeslider_edit', array('slug' => $homeSlider->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/homeslider/edit.html.twig', array(
@@ -118,7 +118,7 @@ class HomeSliderController extends Controller
     private function createDeleteForm(HomeSlider $homeSlider)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('homeslider_delete', array('id' => $homeSlider->getId())))
+            ->setAction($this->generateUrl('homeslider_delete', array('slug' => $homeSlider->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

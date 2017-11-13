@@ -43,7 +43,7 @@ class SEOController extends Controller
             $em->persist($sEO);
             $em->flush();
 
-            return $this->redirectToRoute('seo_show', array('id' => $sEO->getId()));
+            return $this->redirectToRoute('seo_show', array('slug' => $sEO->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/seo/new.html.twig', array(
@@ -79,7 +79,7 @@ class SEOController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('seo_edit', array('id' => $sEO->getId()));
+            return $this->redirectToRoute('seo_edit', array('slug' => $sEO->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/seo/edit.html.twig', array(
@@ -118,7 +118,7 @@ class SEOController extends Controller
     private function createDeleteForm(SEO $sEO)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('seo_delete', array('id' => $sEO->getId())))
+            ->setAction($this->generateUrl('seo_delete', array('slug' => $sEO->getslug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

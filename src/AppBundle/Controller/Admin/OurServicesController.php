@@ -43,7 +43,7 @@ class OurServicesController extends Controller
             $em->persist($ourService);
             $em->flush();
 
-            return $this->redirectToRoute('ourservices_show', array('id' => $ourService->getId()));
+            return $this->redirectToRoute('ourservices_show', array('slug' => $ourService->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/ourservices/new.html.twig', array(
@@ -79,7 +79,7 @@ class OurServicesController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('ourservices_edit', array('id' => $ourService->getId()));
+            return $this->redirectToRoute('ourservices_edit', array('slug' => $ourService->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/ourservices/edit.html.twig', array(
@@ -118,7 +118,7 @@ class OurServicesController extends Controller
     private function createDeleteForm(OurServices $ourService)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('ourservices_delete', array('id' => $ourService->getId())))
+            ->setAction($this->generateUrl('ourservices_delete', array('slug' => $ourService->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

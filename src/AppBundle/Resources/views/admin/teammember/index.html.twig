@@ -46,12 +46,12 @@
                         {% endfor %}
                     </td>
                     <td class="btn-group btn-group-circle btn-group-solid">                 
-                        <a href="{{ path('teammember_show', { 'id': teamMember.id }) }}" class="btn blue">show</a>                      
-                        <a href="{{ path('teammember_edit', { 'id': teamMember.id }) }}" class="btn yellow">edit</a>
+                        <a href="{{ path('teammember_show', { 'slug': teamMember.slug }) }}" class="btn blue">show</a>                      
+                        <a href="{{ path('teammember_edit', { 'slug': teamMember.slug }) }}" class="btn yellow">edit</a>
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('teammember_delete', {'id':teamMember.id}) }}"
+                           data-url="{{ path ('teammember_delete', {'slug':teamMember.slug}) }}"
                            >delete</a>
                     </td>
                 </tr>
@@ -62,15 +62,4 @@
     <a href="{{ path('teammember_new') }}" class="btn btn-circle green">Create a new teamMember</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
 
-        });
-    </script>
-
-
-{% endblock %}

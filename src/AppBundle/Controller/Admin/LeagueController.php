@@ -43,7 +43,7 @@ class LeagueController extends Controller
             $em->persist($league);
             $em->flush();
 
-            return $this->redirectToRoute('league_show', array('id' => $league->getId()));
+            return $this->redirectToRoute('league_show', array('slug' => $league->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/league/new.html.twig', array(
@@ -79,7 +79,7 @@ class LeagueController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('league_edit', array('id' => $league->getId()));
+            return $this->redirectToRoute('league_edit', array('slug' => $league->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/league/edit.html.twig', array(
@@ -118,7 +118,7 @@ class LeagueController extends Controller
     private function createDeleteForm(League $league)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('league_delete', array('id' => $league->getId())))
+            ->setAction($this->generateUrl('league_delete', array('slug' => $league->getSlug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

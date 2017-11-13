@@ -22,12 +22,12 @@
                     <td>{{ team.groupp.groupp }}</td>   
                     <td>{{ team.team }}</td>     
                     <td class="btn-group btn-group-circle btn-group-solid"> 
-                        <a href="{{ path('team_show', { 'id': team.id }) }}"class="btn blue">show</a>
-                        <a href="{{ path('team_edit', { 'id': team.id }) }}"class="btn yellow">edit</a>
+                        <a href="{{ path('team_show', { 'slug': team.slug }) }}"class="btn blue">show</a>
+                        <a href="{{ path('team_edit', { 'slug': team.slug }) }}"class="btn yellow">edit</a>
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('team_delete', {'id':team.id}) }}"
+                           data-url="{{ path ('team_delete', {'slug':team.id}) }}"
                            >delete</a>
                     </td>
                     </td>
@@ -39,15 +39,4 @@
     <a href="{{ path('team_new') }}" class="btn btn-circle green">Create a new team</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
 
-        });
-    </script>
-
-
-{% endblock %}

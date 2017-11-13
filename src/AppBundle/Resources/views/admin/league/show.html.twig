@@ -32,7 +32,7 @@
             {{ form_start(delete_form) }}
             <div  class="btn-group btn-group-circle btn-group-solid">
             <a href="{{ path('league_index') }}"class="btn green" >Back to the list</a>
-            <a href="{{ path('league_edit', { 'id': league.id }) }}" class="btn yellow">Edit</a>
+            <a href="{{ path('league_edit', { 'slug': league.slug }) }}" class="btn yellow">Edit</a>
             <input type="submit" value="Delete" class="btn red">
             </div>
             {{ form_end(delete_form) }}

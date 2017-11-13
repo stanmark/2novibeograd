@@ -8,7 +8,7 @@ seo_index:
     methods:  GET
 
 seo_show:
-    path:     /seo/{id}/show
+    path:     /seo/{slug}/show
     defaults: { _controller: "AppBundle:Admin/SEO:show" }
     methods:  GET
 
@@ -18,12 +18,12 @@ seo_new:
     methods:  [GET, POST]
 
 seo_edit:
-    path:     /seo/{id}/edit
+    path:     /seo/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/SEO:edit" }
     methods:  [GET, POST]
 
 seo_delete:
-    path:     /seo/{id}/delete
+    path:     /seo/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/SEO:delete" }
     methods:  DELETE
   
@@ -33,7 +33,7 @@ company_index:
     methods:  GET
 
 company_show:
-    path:     /company/{id}/show
+    path:     /company/{slug}/show
     defaults: { _controller: "AppBundle:Admin/Company:show" }
     methods:  GET
 
@@ -43,12 +43,12 @@ company_new:
     methods:  [GET, POST]
 
 company_edit:
-    path:     /company/{id}/edit
+    path:     /company/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/Company:edit" }
     methods:  [GET, POST]
 
 company_delete:
-    path:     /company/{id}/delete
+    path:     /company/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/Company:delete" }
     methods:  DELETE    
     
@@ -58,7 +58,7 @@ teammember_index:
     methods:  GET
 
 teammember_show:
-    path:     /teammember/{id}/show
+    path:     /teammember/{slug}/show
     defaults: { _controller: "AppBundle:Admin/teamMember:show" }
     methods:  GET
 
@@ -68,12 +68,12 @@ teammember_new:
     methods:  [GET, POST]
 
 teammember_edit:
-    path:     /teammember/{id}/edit
+    path:     /teammember/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/teamMember:edit" }
     methods:  [GET, POST]
 
 teammember_delete:
-    path:     /teammember/{id}/delete
+    path:     /teammember/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/teamMember:delete" }
     methods:  DELETE 
     
@@ -83,7 +83,7 @@ place_index:
     methods:  GET
 
 place_show:
-    path:     /place/{id}/show
+    path:     /place/{slug}/show
     defaults: { _controller: "AppBundle:Admin/place:show" }
     methods:  GET
 
@@ -93,12 +93,12 @@ place_new:
     methods:  [GET, POST]
 
 place_edit:
-    path:     /place/{id}/edit
+    path:     /place/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/place:edit" }
     methods:  [GET, POST]
 
 place_delete:
-    path:     /place/{id}/delete
+    path:     /place/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/place:delete" }
     methods:  DELETE  
     
@@ -134,7 +134,7 @@ pricing_index:
     methods:  GET
 
 pricing_show:
-    path:     /cenovnik/{id}/show
+    path:     /cenovnik/{slug}/show
     defaults: { _controller: "AppBundle:Admin/Pricing:show" }
     methods:  GET
 
@@ -144,12 +144,12 @@ pricing_new:
     methods:  [GET, POST]
 
 pricing_edit:
-    path:     /cenovnik/{id}/edit
+    path:     /cenovnik/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/Pricing:edit" }
     methods:  [GET, POST]
 
 pricing_delete:
-    path:     /cenovnik/{id}/delete
+    path:     /cenovnik/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/Pricing:delete" }
     methods:  DELETE 
     
@@ -159,7 +159,7 @@ features_index:
     methods:  GET
 
 features_show:
-    path:     /features/{id}/show
+    path:     /features/{slug}/show
     defaults: { _controller: "AppBundle:Admin/Features:show" }
     methods:  GET
 
@@ -169,12 +169,12 @@ features_new:
     methods:  [GET, POST]
 
 features_edit:
-    path:     /features/{id}/edit
+    path:     /features/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/Features:edit" }
     methods:  [GET, POST]
 
 features_delete:
-    path:     /features/{id}/delete
+    path:     /features/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/Features:delete" }
     methods:  DELETE    
   
@@ -184,7 +184,7 @@ league_index:
     methods:  GET
 
 league_show:
-    path:     /league/{id}/show
+    path:     /league/{slug}/show
     defaults: { _controller: "AppBundle:Admin/League:show" }
     methods:  GET
 
@@ -194,12 +194,12 @@ league_new:
     methods:  [GET, POST]
 
 league_edit:
-    path:     /league/{id}/edit
+    path:     /league/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/League:edit" }
     methods:  [GET, POST]
 
 league_delete:
-    path:     /league/{id}/delete
+    path:     /league/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/League:delete" }
     methods:  DELETE  
     
@@ -209,7 +209,7 @@ groupp_index:
     methods:  GET
 
 groupp_show:
-    path:     /groupp/{id}/show
+    path:     /groupp/{slug}/show
     defaults: { _controller: "AppBundle:Admin/Groupp:show" }
     methods:  GET
 
@@ -219,12 +219,12 @@ groupp_new:
     methods:  [GET, POST]
 
 groupp_edit:
-    path:     /groupp/{id}/edit
+    path:     /groupp/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/Groupp:edit" }
     methods:  [GET, POST]
 
 groupp_delete:
-    path:     /groupp/{id}/delete
+    path:     /groupp/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/Groupp:delete" }
     methods:  DELETE    
     
@@ -234,7 +234,7 @@ game_index:
     methods:  GET
 
 game_show:
-    path:     /game/{id}/show
+    path:     /game/{slug}/show
     defaults: { _controller: "AppBundle:Admin/Game:show" }
     methods:  GET
 
@@ -244,12 +244,12 @@ game_new:
     methods:  [GET, POST]
 
 game_edit:
-    path:     /game/{id}/edit
+    path:     /game/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/Game:edit" }
     methods:  [GET, POST]
 
 game_delete:
-    path:     /game/{id}/delete
+    path:     /game/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/Game:delete" }
     methods:  DELETE
  
@@ -284,7 +284,7 @@ team_index:
     methods:  GET
 
 team_show:
-    path:     /team/{id}/show
+    path:     /team/{slug}/show
     defaults: { _controller: "AppBundle:Admin/Team:show" }
     methods:  GET
 
@@ -294,12 +294,12 @@ team_new:
     methods:  [GET, POST]
 
 team_edit:
-    path:     /team/{id}/edit
+    path:     /team/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/Team:edit" }
     methods:  [GET, POST]
 
 team_delete:
-    path:     /team/{id}/delete
+    path:     /team/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/Team:delete" }
     methods:  DELETE
  
@@ -309,7 +309,7 @@ homeslider_index:
     methods:  GET
 
 homeslider_show:
-    path:     /homeslider/{id}/show
+    path:     /homeslider/{slug}/show
     defaults: { _controller: "AppBundle:Admin/HomeSlider:show" }
     methods:  GET
 
@@ -319,12 +319,12 @@ homeslider_new:
     methods:  [GET, POST]
 
 homeslider_edit:
-    path:     /homeslider/{id}/edit
+    path:     /homeslider/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/HomeSlider:edit" }
     methods:  [GET, POST]
 
 homeslider_delete:
-    path:     /homeslider/{id}/delete
+    path:     /homeslider/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/HomeSlider:delete" }
     methods:  DELETE
     
@@ -334,7 +334,7 @@ whyus_index:
     methods:  GET
 
 whyus_show:
-    path:     /whyus/{id}/show
+    path:     /whyus/{slug}/show
     defaults: { _controller: "AppBundle:Admin/WhyUs:show" }
     methods:  GET
 
@@ -344,12 +344,12 @@ whyus_new:
     methods:  [GET, POST]
 
 whyus_edit:
-    path:     /whyus/{id}/edit
+    path:     /whyus/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/WhyUs:edit" }
     methods:  [GET, POST]
 
 whyus_delete:
-    path:     /whyus/{id}/delete
+    path:     /whyus/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/WhyUs:delete" }
     methods:  DELETE   
     
@@ -384,7 +384,7 @@ maingallery_index:
     methods:  GET
 
 maingallery_show:
-    path:     /maingallery/{id}/show
+    path:     /maingallery/{slug}/show
     defaults: { _controller: "AppBundle:Admin/MainGallery:show" }
     methods:  GET
 
@@ -394,12 +394,12 @@ maingallery_new:
     methods:  [GET, POST]
 
 maingallery_edit:
-    path:     /maingallery/{id}/edit
+    path:     /maingallery/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/MainGallery:edit" }
     methods:  [GET, POST]
 
 maingallery_delete:
-    path:     /maingallery/{id}/delete
+    path:     /maingallery/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/MainGallery:delete" }
     methods:  DELETE    
     
@@ -409,7 +409,7 @@ ourservices_index:
     methods:  GET
 
 ourservices_show:
-    path:     /ourservices/{id}/show
+    path:     /ourservices/{slug}/show
     defaults: { _controller: "AppBundle:Admin/OurServices:show" }
     methods:  GET
 
@@ -419,12 +419,12 @@ ourservices_new:
     methods:  [GET, POST]
 
 ourservices_edit:
-    path:     /ourservices/{id}/edit
+    path:     /ourservices/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/OurServices:edit" }
     methods:  [GET, POST]
 
 ourservices_delete:
-    path:     /ourservices/{id}/delete
+    path:     /ourservices/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/OurServices:delete" }
     methods:  DELETE
     
@@ -434,7 +434,7 @@ breadcrumps_index:
     methods:  GET
 
 breadcrumps_show:
-    path:     /breadcrumps/{id}/show
+    path:     /breadcrumps/{slug}/show
     defaults: { _controller: "AppBundle:Admin/BreadCrumps:show" }
     methods:  GET
 
@@ -444,12 +444,12 @@ breadcrumps_new:
     methods:  [GET, POST]
 
 breadcrumps_edit:
-    path:     /breadcrumps/{id}/edit
+    path:     /breadcrumps/{slug}/edit
     defaults: { _controller: "AppBundle:Admin/BreadCrumps:edit" }
     methods:  [GET, POST]
 
 breadcrumps_delete:
-    path:     /breadcrumps/{id}/delete
+    path:     /breadcrumps/{slug}/delete
     defaults: { _controller: "AppBundle:BreadCrumps:delete" }
     methods:  DELETE    
 

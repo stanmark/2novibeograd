@@ -20,7 +20,7 @@
             {% for groupp in groupps %}             
                 <tr>
                     <td>{{ groupp.league.league }}</td>
-                    <td><a href="{{ path('groupp_show', { 'id': groupp.id }) }}">{{ groupp.groupp }}</a></td>
+                    <td><a href="{{ path('groupp_show', { 'slug': groupp.slug }) }}">{{ groupp.groupp }}</a></td>
                     <td>
                         {% for round in groupp.round %}                  
                             {{ round.rounds }},
@@ -32,12 +32,12 @@
                         {% endfor %}
                     </td>           
                     <td class="btn-group btn-group-circle btn-group-solid">  
-                        <a href="{{ path('groupp_show', { 'id': groupp.id }) }}"  class="btn green">show</a>
-                        <a href="{{ path('groupp_edit', { 'id': groupp.id }) }}" class="btn yellow">edit</a>
+                        <a href="{{ path('groupp_show', { 'slug': groupp.slug }) }}"  class="btn green">show</a>
+                        <a href="{{ path('groupp_edit', { 'slug': groupp.slug }) }}" class="btn yellow">edit</a>
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('groupp_delete', {'id':groupp.id}) }}"
+                           data-url="{{ path ('groupp_delete', {'slug':groupp.slug}) }}"
                            >delete</a>
                     </td>
                     </td>
@@ -49,16 +49,4 @@
    
             <a href="{{ path('groupp_new') }}"  class="btn btn-circle green">Create a new groupp</a>
     
-{% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
-
-
 {% endblock %}

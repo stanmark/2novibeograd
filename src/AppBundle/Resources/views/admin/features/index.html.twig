@@ -17,19 +17,19 @@
         <tbody>
             {% for feature in features %}
                 <tr>
-                    <td><a href="{{ path('features_show', { 'id': feature.id }) }}">{{ feature.features }}</a></td>
+                    <td><a href="{{ path('features_show', { 'slug': feature.id }) }}">{{ feature.features }}</a></td>
                     <td>
                     {% for pricing in feature.pricing %}
                     {{ pricing.name }},
                     {% endfor %}
                     </td>
                     <td class="btn-group btn-group-circle btn-group-solid">  
-                        <a href="{{ path('features_show', { 'id': feature.id }) }} " class="btn green">show</a>
-                        <a href="{{ path('features_edit', { 'id': feature.id }) }}" class="btn yellow">edit</a>
+                        <a href="{{ path('features_show', { 'slug': feature.slug }) }} " class="btn green">show</a>
+                        <a href="{{ path('features_edit', { 'slug': feature.slug }) }}" class="btn yellow">edit</a>
                          <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('features_delete', {'id':feature.id}) }}"
+                           data-url="{{ path ('features_delete', {'slug':feature.slug}) }}"
                            >delete</a>
                     </td>
                 </tr>
@@ -41,15 +41,4 @@
     <a href="{{ path('features_new') }} " class="btn btn-circle green">Create a new feature</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
 
-
-{% endblock %}

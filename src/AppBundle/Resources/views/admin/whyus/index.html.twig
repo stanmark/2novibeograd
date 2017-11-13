@@ -17,22 +17,11 @@
                     <td>{{ whyU.title }}</td>
                     <td>{{ whyU.description [:50] | raw }}</td>
                     <td class="btn-group btn-group-circle btn-group-solid"> 
-                        <a href="{{ path('whyus_show', { 'id': whyU.id }) }}" class="btn blue">show</a>
-                        <a href="{{ path('whyus_edit', { 'id': whyU.id }) }}" class="btn yellow">edit</a>                       
+                        <a href="{{ path('whyus_show', { 'slug': whyU.slug }) }}" class="btn blue">show</a>
+                        <a href="{{ path('whyus_edit', { 'slug': whyU.slug }) }}" class="btn yellow">edit</a>                       
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
 
-
-{% endblock %}

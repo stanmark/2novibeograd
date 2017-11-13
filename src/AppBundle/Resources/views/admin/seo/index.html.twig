@@ -18,17 +18,17 @@
         <tbody>
             {% for sEO in sEOs %}              
                 <tr>
-                    <td><a href="{{ path('seo_show', { 'id': sEO.id }) }}">{{ sEO.id }}</a></td>
+                    <td><a href="{{ path('seo_show', { 'slug': sEO.slug }) }}">{{ sEO.id }}</a></td>
                     <td>{{ sEO.description }}</td>
                     <td>{{ sEO.titletag }}</td>
                     <td>{{ sEO.title }}</td>
                     <td class="btn-group btn-group-circle btn-group-solid">  
-                        <a href="{{ path('seo_show', { 'id': sEO.id }) }}" class="btn blue">show</a>
-                        <a href="{{ path('seo_edit', { 'id': sEO.id }) }}" class="btn yellow">edit</a>  
+                        <a href="{{ path('seo_show', { 'slug': sEO.slug }) }}" class="btn blue">show</a>
+                        <a href="{{ path('seo_edit', { 'slug': sEO.slug }) }}" class="btn yellow">edit</a>  
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('company_delete', {'id':company.id}) }}"
+                           data-url="{{ path ('seo_delete', {'slug':sEO.slug}) }}"
                            >delete</a>
                     </td>
                 </tr>
@@ -39,13 +39,4 @@
     <a href="{{ path('seo_new') }}"class="btn btn-circle green">Create a new sEO</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
 
-        });
-    </script>
-{% endblock %}

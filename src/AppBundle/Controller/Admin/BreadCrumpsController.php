@@ -42,7 +42,7 @@ class BreadCrumpsController extends Controller
             $em->persist($breadCrump);
             $em->flush();
 
-            return $this->redirectToRoute('breadcrumps_show', array('id' => $breadCrump->getId()));
+            return $this->redirectToRoute('breadcrumps_show', array('slug' => $breadCrump->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/breadcrumps/new.html.twig', array(
@@ -78,7 +78,7 @@ class BreadCrumpsController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('breadcrumps_edit', array('id' => $breadCrump->getId()));
+            return $this->redirectToRoute('breadcrumps_edit', array('slug' => $breadCrump->getslug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/breadcrumps/edit.html.twig', array(
@@ -116,7 +116,7 @@ class BreadCrumpsController extends Controller
     private function createDeleteForm(BreadCrumps $breadCrump)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('breadcrumps_delete', array('id' => $breadCrump->getId())))
+            ->setAction($this->generateUrl('breadcrumps_delete', array('slug' => $breadCrump->getslug())))
             ->setMethod('DELETE')
             ->getForm()
         ;

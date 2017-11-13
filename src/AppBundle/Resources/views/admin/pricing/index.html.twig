@@ -19,7 +19,7 @@
         <tbody>
         {% for pricing in pricings %}
             <tr>
-                <td><a href="{{ path('pricing_show', { 'id': pricing.id }) }}">{{ pricing.name }}</a></td>
+                <td><a href="{{ path('pricing_show', { 'slug': pricing.slug }) }}">{{ pricing.name }}</a></td>
                 <td>{{ pricing.price }}</td>
                 <td>{{ pricing.description }}</td>
                 <td>
@@ -28,12 +28,12 @@
                 {% endfor %}
                 </td>
                 <td class="btn-group btn-group-circle btn-group-solid"> 
-                            <a href="{{ path('pricing_show', { 'id': pricing.id }) }}"  class="btn blue">show</a>
-                            <a href="{{ path('pricing_edit', { 'id': pricing.id }) }}" class="btn yellow">edit</a>
+                            <a href="{{ path('pricing_show', { 'slug': pricing.slug }) }}"  class="btn blue">show</a>
+                            <a href="{{ path('pricing_edit', { 'slug': pricing.slug }) }}" class="btn yellow">edit</a>
                             <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('pricing_delete', {'id':pricing.id}) }}"
+                           data-url="{{ path ('pricing_delete', {'slug':pricing.slug}) }}"
                            >delete</a>
                 </td>
             </tr>
@@ -44,15 +44,4 @@
             <a href="{{ path('pricing_new') }}" class="btn btn-circle green">Create a new pricing</a>
    
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
 
-
-{% endblock %}

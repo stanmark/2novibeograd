@@ -34,12 +34,12 @@
                     <td>{{ homeSlider.CallToActionButton }}</td> 
                    
                     <td class="btn-group btn-group-circle btn-group-solid">
-                        <a class="btn green" href="{{ path('homeslider_show', { 'id': homeSlider.id }) }}">show</a>
-                        <a  class="btn yellow" href="{{ path('homeslider_edit', { 'id': homeSlider.id }) }}">edit</a>
+                        <a class="btn green" href="{{ path('homeslider_show', { 'slug': homeSlider.slug }) }}">show</a>
+                        <a  class="btn yellow" href="{{ path('homeslider_edit', { 'slug': homeSlider.slug }) }}">edit</a>
                          <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('homeslider_delete', {'id':homeSlider.id}) }}"
+                           data-url="{{ path ('homeslider_delete', {'slug':homeSlider.slug}) }}"
                            >delete</a>
                     </td>
                     </td>
@@ -51,15 +51,4 @@
     <a href="{{ path('homeslider_new') }}" class="btn btn-circle green">Create a new homeSlider</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
 
-
-{% endblock %}

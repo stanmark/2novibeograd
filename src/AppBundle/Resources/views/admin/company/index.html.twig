@@ -27,7 +27,7 @@
         <tbody>
             {% for company in companies  %}
                 <tr>
-                    <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.name }}</a></td>
+                    <td><a href="{{ path('company_show', { 'slug': company.slug }) }}">{{ company.name }}</a></td>
                     <td>{{ company.adress }}</td>
                     <td>{{ company.phone }}</td>
                     <td>{{ company.mail }}</td>
@@ -40,12 +40,12 @@
                     <td>{{ company.bank }}</td>
                     <td>{{ company.description  [:50] | raw  }}</td>
                     <td class="btn-group btn-group-circle btn-group-solid">    
-                        <a  class="btn blue" href="{{ path('company_show', { 'id': company.id }) }}">show</a>
-                        <a class="btn yellow" href="{{ path('company_edit', { 'id': company.id }) }}">edit</a>
+                        <a  class="btn blue" href="{{ path('company_show', { 'slug': company.slug }) }}">show</a>
+                        <a class="btn yellow" href="{{ path('company_edit', { 'slug': company.slug }) }}">edit</a>
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('company_delete', {'id':company.id}) }}"
+                           data-url="{{ path ('company_delete', {'slug':company.slug}) }}"
                            >delete</a>
                     </td>
                 </tr>
@@ -54,17 +54,5 @@
     </table>
 
     <a href="{{ path('company_new') }}" class="btn btn-circle green">Create a new company</a>
-
-{% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
-            
-        });
-    </script>
-
 
 {% endblock %}

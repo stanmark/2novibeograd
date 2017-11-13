@@ -21,7 +21,7 @@
         <tbody>
             {% for place in places %}
                 <tr>
-                    <td><a href="{{ path('place_show', { 'id': place.id }) }}">{{ place.title }}</a></td>            
+                    <td><a href="{{ path('place_show', { 'slug': place.slug }) }}">{{ place.title }}</a></td>            
                     <td>{{ place.adress }}</td>
                     <td>{{ place.description [:50] | raw }}</td>              
                     <td>{% if place.treaningPlace %}Yes{% else %}No{% endif %}</td>
@@ -38,12 +38,12 @@
                     </td>
 
                     <td class="btn-group btn-group-circle btn-group-solid">                 
-                        <a href="{{ path('place_show', { 'id': place.id }) }}" class="btn blue">show</a>
-                        <a href="{{ path('place_edit', { 'id': place.id }) }}" class="btn yellow">edit</a>
+                        <a href="{{ path('place_show', { 'slug': place.slug }) }}" class="btn blue">show</a>
+                        <a href="{{ path('place_edit', { 'slug': place.slug }) }}" class="btn yellow">edit</a>
                         <a class="btn red 
                            js-delete-row"  
                            href="#"                          
-                           data-url="{{ path ('place_delete', {'id':place.id}) }}"
+                           data-url="{{ path ('place_delete', {'slug':place.slug}) }}"
                            >delete</a>
                     </td>
                     </td>
@@ -55,15 +55,4 @@
     <a href="{{ path('place_new') }}" class="btn btn-circle green">Create a new place</a>
 
 {% endblock %}
-{% block javascript %}   
-    {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $table = $('.js-table');
-            DeleteRow.initialize($table);
 
-        });
-    </script>
-
-
-{% endblock %}
