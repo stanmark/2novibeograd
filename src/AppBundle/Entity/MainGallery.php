@@ -56,9 +56,16 @@ class MainGallery
     /**
      * @var bool
      *
-     * @ORM\Column(name="mainPicture", type="boolean", nullable=true)
+     * @ORM\Column(name="mainTeamMemberPicture", type="boolean", nullable=true)
      */
-    private $mainPicture;
+    private $mainTeamMemberPicture;
+    
+      /**
+     * @var bool
+     *
+     * @ORM\Column(name="mainBlogPicture", type="boolean", nullable=true)
+     */
+    private $mainBlogPicture;
     
     /**
      * @var bool
@@ -719,5 +726,53 @@ class MainGallery
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set mainBlogPicture
+     *
+     * @param boolean $mainBlogPicture
+     *
+     * @return MainGallery
+     */
+    public function setMainBlogPicture($mainBlogPicture)
+    {
+        $this->mainBlogPicture = $mainBlogPicture;
+
+        return $this;
+    }
+
+    /**
+     * Get mainBlogPicture
+     *
+     * @return boolean
+     */
+    public function getMainBlogPicture()
+    {
+        return $this->mainBlogPicture;
+    }
+
+    /**
+     * Set mainTeamMemberPicture
+     *
+     * @param boolean $mainTeamMemberPicture
+     *
+     * @return MainGallery
+     */
+    public function setMainTeamMemberPicture($mainTeamMemberPicture)
+    {
+        $this->mainTeamMemberPicture = $mainTeamMemberPicture;
+
+        return $this;
+    }
+
+    /**
+     * Get mainTeamMemberPicture
+     *
+     * @return boolean
+     */
+    public function getMainTeamMemberPicture()
+    {
+        return $this->mainTeamMemberPicture;
     }
 }

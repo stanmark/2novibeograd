@@ -10,11 +10,12 @@
                 <th>Alt</th>
                 <th>Liga</th>
                 <th>Clan tima</th>
+                <th>Glavna slika za clana tima</th>
                 <th>Mesto</th>
                 <th>Slajder</th>
                 <th>Slika na svakoj strani</th>
                 <th>Blog</th>
-                <th>Mainpicture</th>
+                <th>Glavna slika za blog</th>
                 <th>Mainpicturegallery</th>
                 <th>Title</th>
                 <th>Description</th>
@@ -40,6 +41,7 @@
                             {{ teamMember.name }};                 
                         {% endfor %}
                     </td>
+                    <td>{% if mainGallery.mainTeamMemberPicture %}Yes{% else %}No{% endif %}</td>
                     <td> 
                         {% for place in mainGallery.place %}
                             {{ place.title }};                  
@@ -60,8 +62,8 @@
                             {{ blog.title }};
                         {% endfor %}
                     </td>
+                    <td>{% if mainGallery.mainBlogPicture %}Yes{% else %}No{% endif %}</td>
                     
-                    <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
                     <td>{% if mainGallery.mainPictureGallery %}Yes{% else %}No{% endif %}</td>
                     <td>{{ mainGallery.title }}</td>
                     <td>{{ mainGallery.description }}</td>

@@ -30,6 +30,11 @@
                 </td>
             </tr>
             <tr>
+                <th>mainTeamMemberPicture</th>
+                <td>{% if mainGallery.mainTeamMemberPicture %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            
+            <tr>
                 <th>Mesto</th>
                 <td> 
                     {% for place in mainGallery.place %}
@@ -61,15 +66,16 @@
                     {% endfor %}
                 </td>
             </tr>
+            <tr>
+                <th>mainBlogPicture</th>
+                <td>{% if mainGallery.mainBlogPicture %}Yes{% else %}No{% endif %}</td>
+            </tr>
 
             <tr>
                 <th>Alt</th>
                 <td>{{ mainGallery.alt }}</td>
             </tr>
-            <tr>
-                <th>Mainpicture</th>
-                <td>{% if mainGallery.mainPicture %}Yes{% else %}No{% endif %}</td>
-            </tr>
+            
             <tr>
                 <th>Mainpicturegallery</th>
                 <td>{% if mainGallery.mainPictureGallery %}Yes{% else %}No{% endif %}</td>

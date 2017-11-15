@@ -49,6 +49,21 @@ class Blog
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="blog")
      */
     private $mainGallery;
+    
+    
+     /**
+     * @var datetime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var datetime $updated
+     * 
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    protected $updated;
 
 
     /**
@@ -172,5 +187,53 @@ class Blog
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Blog
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Blog
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
     }
 }

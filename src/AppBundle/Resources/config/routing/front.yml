@@ -64,7 +64,7 @@ allblog:
     methods:  GET  
     
 blog:
-    path:     /vesti/{id}/{name}/
+    path:     /vesti/{slug}/
     defaults: { _controller: "AppBundle:Front/Blog:detail" }
     methods:  GET        
     

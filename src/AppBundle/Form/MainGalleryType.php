@@ -20,7 +20,7 @@ class MainGalleryType extends AbstractType
                     'required' => false, 
                     ])
                 ->add('alt')
-                ->add('mainPicture')
+                
                 ->add('mainPictureGallery')
                 ->add('title')
                 ->add('description')
@@ -36,6 +36,8 @@ class MainGalleryType extends AbstractType
                     'required' => false, 
                     'multiple' => true,
                     ])
+                
+                ->add('mainTeamMemberPicture')
                 ->add('place',  EntityType::class, [
                     'class' => \AppBundle\Entity\place::class,
                     'choice_label' => 'title',
@@ -48,6 +50,8 @@ class MainGalleryType extends AbstractType
                     'required' => false,                    
                     'multiple' => true,
                     ])
+                
+                
 ////                ->add('galleryCategory',  EntityType::class, [
 ////                    'class' => \AppBundle\Entity\MainGallery::class,
 ////                    'choice_label' => 'category',
@@ -62,12 +66,13 @@ class MainGalleryType extends AbstractType
                     'multiple' => true,
                     
                     ])
-                ->add('blog',  EntityType::class, [
-                    'class' => \AppBundle\Entity\Blog::class,
-                    'choice_label' => 'title',
-                    'required' => false, 
+                ->add('mainBlogPicture')
+                
+                 ->add('homeSlider',  EntityType::class, [
+                    'class' => \AppBundle\Entity\HomeSlider::class,
+                    'choice_label' => 'mainTitle',
+                    'required' => false,                    
                     'multiple' => true,
-                    
                     ])
                 
                 ;

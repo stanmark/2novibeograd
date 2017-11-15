@@ -7,6 +7,7 @@ use AppBundle\Entity\teamMember;
 use AppBundle\Entity\WhyUs;
 use AppBundle\Entity\MainGallery;
 use AppBundle\Entity\OurServices;
+use AppBundle\Entity\Blog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -29,14 +30,16 @@ class HomeController extends Controller
         $mainGallerys = $em->getRepository('AppBundle:MainGallery')->findAll();
         $ourServices = $em->getRepository('AppBundle:OurServices')->findAll();
         $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
+        $blogs = $em->getRepository('AppBundle:Blog')->findAll();
         
 
-        return $this->render('@AppBundle/Resources/views/front/home.html.twig', array(
+        return $this->render('@AppBundle/Resources/views/front/home.html.twig', [
             'teamMembers' => $teamMembers,
             'ourServices' => $ourServices,
             'homeSliders' => $homeSliders,
             'whyuses' => $whyuses,
+            'blogs' => $blogs,
             'mainGallerys' => $mainGallerys
-        ));
+        ]);
     }
 }

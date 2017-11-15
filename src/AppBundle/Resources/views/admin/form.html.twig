@@ -1,5 +1,13 @@
 {% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
+{% block head %}
 
+
+    <link href="{{ asset('public/Admin/admincss/bootstrap-datepicker3.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/> 
+    <link href="{{ asset('public/Admin/admincss/bootstrap-timepicker.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>  
+    <link href="{{ asset('public/Admin/admincss/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/> 
+    <link href="{{ asset('public/Admin/admincss/clockface.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/> 
+    {{ parent() }}
+{% endblock %}
 
 {% block main %}
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed">
@@ -46,7 +54,7 @@
                                     {% block body %}
 
                                     {% endblock %}
-                                  
+
 
                                 </div>
                             </div>
@@ -57,15 +65,37 @@
                 <!-- END CONTENT BODY -->
             </div>                            
             {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %}
-        </div>   
-    </body>
+        </div>  
+         </body>  
+            {% endblock %}
+            
+         
+{% block jq %}
+    {{ parent() }}
+
+       
+        <script src="{{ asset('public/Admin/jss/datatable.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/datatables.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/datatables.bootstrap.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/table-datatables-colreorder.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/moment.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/daterangepicker.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/bootstrap-timepicker.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/bootstrap-datetimepicker.min.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/clockface.js') }}"></script>
+        <script src="{{ asset('public/Admin/jss/components-date-time-pickers.min.js') }}"></script>
+    
 
 
 
 
+{% endblock %}
 
+{#
     {% javascripts 
-                '@jq_admin'                 
+
+'@jq_admin'                 
 
                 '@AppBundle/Resources/skin/admin/jss/datatable.min.js'
                 '@AppBundle/Resources/skin/admin/jss/datatables.min.js'
@@ -73,12 +103,21 @@
 
                 '@AppBundle/Resources/skin/admin/jss/table-datatables-colreorder.min.js'
 
-    %}
+
+                '@AppBundle/Resources/skin/admin/jss/moment.min.js'
+                '@AppBundle/Resources/skin/admin/jss/daterangepicker.min.js'
+                '@AppBundle/Resources/skin/admin/jss/bootstrap-datepicker.min.js'
+                '@AppBundle/Resources/skin/admin/jss/bootstrap-timepicker.min.js'
+                '@AppBundle/Resources/skin/admin/jss/bootstrap-datetimepicker.min.js'
+                '@AppBundle/Resources/skin/admin/jss/clockface.js'
+                '@AppBundle/Resources/skin/admin/jss/components-date-time-pickers.min.js'
+
+    output='jss/compiled/form.js' %}
     <script src="{{ asset_url }}"></script>
 
     {% endjavascripts %}  
+   #}
 
-{% endblock %}
 
 
 

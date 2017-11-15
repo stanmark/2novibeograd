@@ -2,7 +2,8 @@
 
 {% block body %}
     <h1>Game creation</h1>
-
+    <form action="#" class="form-horizontal">
+<div class="form-group">
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <div  class="btn-group btn-group-circle btn-group-solid">
@@ -10,5 +11,8 @@
             <input type="submit" value="Create" class="btn green" />
         </div>
     {{ form_end(form) }}
-
+</div>
+    </form>
+    
+  
 {% endblock %}

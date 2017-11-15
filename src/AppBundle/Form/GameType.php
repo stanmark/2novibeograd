@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class GameType extends AbstractType {
 
@@ -39,12 +40,24 @@ class GameType extends AbstractType {
                 ->add('date', DateType::class, [
                     'widget' => 'single_text',
                     'attr' => [
-                        'class' => 'js-datepicker'
+                        'class' => 'form-control form-control-inline input-medium date-picker'
                     ],
                     'html5' => false,
                 ])
-                ->add('begin')
-                ->add('end')
+                ->add('begin', DateTimeType::class, [
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control timepicker timepicker-24'
+                    ],
+                    'html5' => false,
+                ])
+                ->add('end', DateTimeType::class, [
+                    'widget' => 'single_text',
+                    'attr' => [
+                        'class' => 'form-control timepicker timepicker-24'
+                    ],
+                    'html5' => false,
+                ])
                 ->add('place', EntityType::class, [
                     'class' => \AppBundle\Entity\place::class,
                     'choice_label' => 'title'
