@@ -41,12 +41,14 @@ class BlogController extends Controller
         
 
         $AllBlog = $em->getRepository(Blog::class);
-        $Blog = $AllBlog->findOneBy(['slug' => $slug]);
+        $blog = $AllBlog->findOneBy(['slug' => $slug]);
+        $blogs = $em->getRepository('AppBundle:Blog')->findAll();     
         $sEOs = $em->getRepository('AppBundle:SEO')->findAll();       
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
 
         return $this->render('@AppBundle/Resources/views/front/blog.html.twig', array(  
-            'Blog' => $Blog,           
+            'blogs' => $blogs, 
+            'blog' => $blog,           
             'sEOs' => $sEOs,
             'BreadCrumps' => $BreadCrumps,
             

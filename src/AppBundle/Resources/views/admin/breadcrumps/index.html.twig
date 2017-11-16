@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Slika</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -14,10 +15,14 @@
 
     {% block tbody %}
         <tbody>
-            {% for breadCrump in breadCrumps %}
-                {{ dump(breadCrump) }}
+            {% for breadCrump in breadCrumps %}               
                 <tr>                   
                     <td>{{ breadCrump.name }}</td>
+                    <td>
+                        {% for mainGallery in breadCrump.mainGallery %}
+                            <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" />
+                        {% endfor %}
+                    </td>
                     <td class="btn-group btn-group-circle btn-group-solid">  
                         <a href="{{ path('breadcrumps_show', { 'slug': breadCrump.slug }) }}" class="btn blue">show</a>
                         <a href="{{ path('breadcrumps_edit', { 'slug': breadCrump.slug }) }}" class="btn yellow">edit</a>                      

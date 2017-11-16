@@ -9,6 +9,14 @@
                 <th>Name</th>
                 <td>{{ breadCrump.name }}</td>
             </tr>
+            <tr>
+                <th>Slike</th>
+                <td>
+                    {% for mainGallery in breadCrump.mainGallery %}
+                        <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" />
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
     <div  class="btn-group btn-group-circle btn-group-solid">

@@ -28,10 +28,8 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="c-content-blog-post-card-1-grid">
-
                             <div class="row">
-
-                                {% for blog in AllBlog%}
+                                {% for blog in AllBlog %}
                                     <div class="col-md-6">
                                         <div class="c-content-blog-post-card-1 c-option-2 c-bordered">			  			
                                             <div class="c-media c-content-overlay">
@@ -51,26 +49,23 @@
                                                 <div class="c-title c-font-bold c-font-uppercase">
                                                     <a href="{{ path ('blog', {'slug' : blog.slug }) }}">{{ blog.title }}</a>
                                                 </div>
-                                                 <div class="c-author">
-                                                        {% if blog.updated %}
-                                                            Azuriran <span class="c-font-uppercase">{{ blog.updated |date('d-m-Y')}}</span>
-                                                        {% else %}
-                                                            Kreiran <span class="c-font-uppercase">{{ blog.created |date('d-m-Y')}}</span>
-                                                        {% endif %}
-                                                    </div>
-
+                                                <div class="c-author">
+                                                    {% if blog.updated %}
+                                                        Azuriran <span class="c-font-uppercase">{{ blog.updated |date('d-m-Y')}}</span>
+                                                    {% else %}
+                                                        Kreiran <span class="c-font-uppercase">{{ blog.created |date('d-m-Y')}}</span>
+                                                    {% endif %}
+                                                </div>
                                                 <div class="c-panel">
                                                     <ul class="c-tags c-theme-ul-bg">
                                                         <li>ux</li>
                                                         <li>web</li>
                                                         <li>events</li>
                                                     </ul>							
-                                                  
                                                 </div>
                                                 <p> {{ blog.description [:200] |raw }}</p>
                                             </div>
                                         </div>
-
                                     </div>
                                 {% endfor %}
                             </div>
@@ -89,9 +84,9 @@
                     </div>
                     <div class="col-md-3">
                         <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
-                        
 
-                        
+
+
 
                         <div class="c-content-tab-1 c-theme c-margin-t-30">
                             <div class="nav-justified">
@@ -101,33 +96,33 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="blog_recent_posts">
-                                        
+
                                         <ul class="c-content-recent-posts-1">
-                                             {% for blog in AllBlog  if blog.created %}
-                                            <li>
-                                               
-                                                <div class="c-image">
-                                                     {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
-                                                    <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="" class="img-responsive">
-                                                     {% endfor %}
-                                                     </div>
-                                                <div class="c-post">
-                                                     <a href="{{ path ('blog', {'slug' : blog.slug }) }}" class="c-title">
+                                            {% for blog in AllBlog  if blog.created %}
+                                                <li>
+
+                                                    <div class="c-image">
+                                                        {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
+                                                            <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" class="img-responsive">
+                                                        {% endfor %}
+                                                    </div>
+                                                    <div class="c-post">
+                                                        <a href="{{ path ('blog', {'slug' : blog.slug }) }}" class="c-title">
                                                             {{ blog.title  }}
                                                         </a>
-                                                    <div class="c-date">{{ blog.created |date('d-m-Y') }}</div>
+                                                        <div class="c-date">{{ blog.created |date('d-m-Y') }}</div>
                                                     {% else %}
                                                         <div class="c-date">{{ blog.updated |date('d-m-Y') }}</div>
-                                                </div>
-                                                
-                                            </li>
+                                                    </div>
+
+                                                </li>
                                             {% endfor %}
                                         </ul>
-                                        
+
                                     </div>
-                                    
-                                    
-                                    
+
+
+
                                     <div class="tab-pane" id="blog_popular_posts">
                                         <ul class="c-content-recent-posts-1">
                                             <li>
@@ -141,7 +136,6 @@
                                                     <div class="c-date">27 Jan 2015</div>
                                                 </div>
                                             </li>
-                                         
                                         </ul>
                                     </div>
                                 </div>

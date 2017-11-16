@@ -4,7 +4,7 @@
 <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
     <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
              {% for BreadCrump in BreadCrumps %}
-                 {% if  BreadCrump.id  == 8 %}
+                 {% if  BreadCrump.name  == 'Trener' %}
                      {% for mainGallery in BreadCrump.mainGallery %}
                          style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
                      {% endfor %}
