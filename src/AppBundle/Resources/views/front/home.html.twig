@@ -331,19 +331,21 @@
                         {% for blog in blogs %}
                             <div class="item">
                                 <div class="c-content-blog-post-card-1 c-option-2">		
+                                     {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
                                     <div class="c-media c-content-overlay">
                                         <div class="c-overlay-wrapper">
                                             <div class="c-overlay-content">
                                                 <a href="{{ path ('blog', {'slug' : blog.slug }) }}"><i class="icon-link"></i></a>
-                                                    {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
+                                                   
                                                     <a href="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" data-lightbox="fancybox" data-fancybox-group="gallery">
-                                                    {% endfor %} 
+                                                    
                                                     <i class="icon-magnifier"></i>
                                                 </a>
                                             </div>
                                         </div>
-                                        <img class="c-overlay-object img-responsive" src="../../assets/base/img/content/stock2/06.jpg" alt="">
+                                        <img class="c-overlay-object img-responsive" src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.title}}">
                                     </div>
+                                                    {% endfor %} 
                                     <div class="c-body">
                                         <div class="c-title c-font-uppercase c-font-bold">
                                             <a href="{{ path ('blog', {'slug' : blog.slug }) }}">{{ blog.title }}</a>
@@ -441,6 +443,8 @@
 
 </body>
 {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+
+{% endblock %}
 {% block jq %}
     {{parent()}}
     
@@ -453,4 +457,3 @@
         
         <!-- END: PAGE SCRIPTS -->
     {% endblock %}
-{% endblock %}

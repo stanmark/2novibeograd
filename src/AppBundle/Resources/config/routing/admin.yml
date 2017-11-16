@@ -452,6 +452,31 @@ breadcrumps_delete:
     path:     /breadcrumps/{slug}/delete
     defaults: { _controller: "AppBundle:BreadCrumps:delete" }
     methods:  DELETE    
+    
+blog_index:
+    path:     /blog/
+    defaults: { _controller: "AppBundle:Admin/Blog:index" }
+    methods:  GET
+
+blog_show:
+    path:     /blog/{slug}/show
+    defaults: { _controller: "AppBundle:Admin/Blog:show" }
+    methods:  GET
+
+blog_new:
+    path:     /blog/new
+    defaults: { _controller: "AppBundle:Admin/Blog:new" }
+    methods:  [GET, POST]
+
+blog_edit:
+    path:     /blog/{slug}/edit
+    defaults: { _controller: "AppBundle:Admin/Blog:edit" }
+    methods:  [GET, POST]
+
+blog_delete:
+    path:     /blog/{slug}/delete
+    defaults: { _controller: "AppBundle:Admin/Blog:delete" }
+    methods:  DELETE    
 
     
     

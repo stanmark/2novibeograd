@@ -5,6 +5,7 @@ namespace AppBundle\Controller\Admin;
 use AppBundle\Entity\BreadCrumps;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Breadcrump controller.
@@ -42,7 +43,7 @@ class BreadCrumpsController extends Controller
             $em->persist($breadCrump);
             $em->flush();
 
-            return $this->redirectToRoute('breadcrumps_show', array('slug' => $breadCrump->getslug()));
+            return $this->redirectToRoute('breadcrumps_show', array('slug' => $breadCrump->getSlug()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/breadcrumps/new.html.twig', array(
@@ -94,16 +95,11 @@ class BreadCrumpsController extends Controller
      */
     public function deleteAction(Request $request, BreadCrumps $breadCrump)
     {
-        $form = $this->createDeleteForm($breadCrump);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+      
             $em = $this->getDoctrine()->getManager();
             $em->remove($breadCrump);
             $em->flush();
-        }
-
-        return $this->redirectToRoute('breadcrumps_index');
+       return new Response (null, 204);
     }
 
     /**

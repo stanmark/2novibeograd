@@ -1,7 +1,8 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
 {% block body %}
+    <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
-<body class="c-layout-header-fixed c-layout-header-mobile-fixed">
+
     <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
              {% for BreadCrump in BreadCrumps %}
                  {% if  BreadCrump.id  == 2 %}
