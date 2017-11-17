@@ -5,7 +5,6 @@ namespace AppBundle\Controller\Front;
 use AppBundle\Entity\place;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\SEO;
 use AppBundle\Entity\Time;
 use AppBundle\Entity\BreadCrumps;
 
@@ -23,14 +22,12 @@ class placeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $places = $em->getRepository('AppBundle:place')->findAll();      
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();  
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
         
         
         return $this->render('@AppBundle/Resources/views/front/allplace.html.twig', array(
    
             'places' => $places,        
-            'sEOs' => $sEOs,
             'BreadCrumps' => $BreadCrumps,
             
         ));
@@ -42,8 +39,7 @@ class placeController extends Controller
         
 
         $place = $em->getRepository(place::class);
-        $onePlace = $place->findOneBy(['slug' => $slug]);
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();       
+        $onePlace = $place->findOneBy(['slug' => $slug]);     
         $times = $em->getRepository('AppBundle:Time')->findby(
                 ['place' => $onePlace]);
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
@@ -51,7 +47,6 @@ class placeController extends Controller
         return $this->render('@AppBundle/Resources/views/front/place.html.twig', array(  
             'times' => $times,           
             'onePlace' => $onePlace,
-            'sEOs' => $sEOs,
             'BreadCrumps' => $BreadCrumps,
             
         ));

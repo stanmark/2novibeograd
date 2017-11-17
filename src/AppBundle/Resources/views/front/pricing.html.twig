@@ -1,10 +1,19 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block SEO %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Cenovnik' %}
+        <title>{{ BreadCrump.titletag }}</title>
+        <meta name="description" content="{{ BreadCrump.description }}" />
+    {% endfor %}
+{% endblock %}
+
 {% block body %}
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
         <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-             {% for BreadCrump in BreadCrumps %}
-                 {% if  BreadCrump.name  == 'Cenovnik' %}
+             {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Cenovnik' %}
                      {% for mainGallery in BreadCrump.mainGallery %}
                          style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
                      {% endfor %}
@@ -20,7 +29,6 @@
                              </ul>
                          </div>
                      </div>
-                 {% endif %}
              {% endfor %}
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 

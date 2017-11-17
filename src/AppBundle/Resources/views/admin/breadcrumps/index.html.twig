@@ -7,6 +7,8 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Naslov u kartici croma</th>
+                <th>Opis u pretrazi</th>
                 <th>Slika</th>
                 <th>Actions</th>
             </tr>
@@ -18,6 +20,8 @@
             {% for breadCrump in breadCrumps %}               
                 <tr>                   
                     <td>{{ breadCrump.name }}</td>
+                    <td>{{ breadCrump.titletag }}</td>
+                    <td>{{ breadCrump.description }}</td>
                     <td>
                         {% for mainGallery in breadCrump.mainGallery %}
                             <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" height="50" width="50" />

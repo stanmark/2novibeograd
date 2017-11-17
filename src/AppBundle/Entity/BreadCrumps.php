@@ -42,6 +42,20 @@ class BreadCrumps
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\MainGallery", mappedBy="breadCrumps")
      */
     private $mainGallery;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titletag", type="string", length=255)
+     */
+    private $titletag;
 
 
     /**
@@ -141,5 +155,53 @@ class BreadCrumps
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return BreadCrumps
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set titletag
+     *
+     * @param string $titletag
+     *
+     * @return BreadCrumps
+     */
+    public function setTitletag($titletag)
+    {
+        $this->titletag = $titletag;
+
+        return $this;
+    }
+
+    /**
+     * Get titletag
+     *
+     * @return string
+     */
+    public function getTitletag()
+    {
+        return $this->titletag;
     }
 }

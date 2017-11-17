@@ -1,4 +1,14 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block SEO %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Naslovna' %}
+        <title>{{ BreadCrump.titletag }}</title>
+        <meta name="description" content="{{ BreadCrump.description }}" />
+    {% endfor %}
+{% endblock %}
+
 {% block BasePlugins %}
     {{ parent() }}
     <link href="{{ asset('public/Front/csss/settings.css')}}" rel="stylesheet" type="text/css"/>

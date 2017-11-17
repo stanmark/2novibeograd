@@ -5,7 +5,6 @@ namespace AppBundle\Controller\Front;
 use AppBundle\Entity\Blog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\SEO;
 use AppBundle\Entity\BreadCrumps;
 
 /**
@@ -22,14 +21,12 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $AllBlog = $em->getRepository('AppBundle:Blog')->findAll();      
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();  
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
         
         
         return $this->render('@AppBundle/Resources/views/front/allblog.html.twig', array(
    
             'BreadCrumps' => $BreadCrumps,
-            'sEOs' => $sEOs,
             'AllBlog' => $AllBlog,
             
         ));

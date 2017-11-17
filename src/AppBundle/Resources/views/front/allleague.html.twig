@@ -1,27 +1,35 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block SEO %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Takmicenja' %}
+        <title>{{ BreadCrump.titletag }}</title>
+        <meta name="description" content="{{ BreadCrump.description }}" />
+    {% endfor %}
+{% endblock %}
+
 {% block body %}
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
-    {% include '@AppBundle/Resources/views/front/header.html.twig' %}
-    
-       <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-             {% for BreadCrump in BreadCrumps %}
-                 {% if  BreadCrump.name  == 'Takmicenja' %}
-                     {% for mainGallery in BreadCrump.mainGallery %}
-                         style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
-                     {% endfor %}
-                     <div class="c-breadcrumbs-wrapper">
-                         <div class="container">
-                             <div class="c-page-title c-pull-left">
-                                 <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
-                             </div>
-                             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                                 <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
-                                 <li class="c-font-white">/</li>
-                                 <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
-                             </ul>
+        {% include '@AppBundle/Resources/views/front/header.html.twig' %}
+
+        <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+             {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Takmicenja' %}
+                 {% for mainGallery in BreadCrump.mainGallery %}
+                     style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
+                 {% endfor %}
+                 <div class="c-breadcrumbs-wrapper">
+                     <div class="container">
+                         <div class="c-page-title c-pull-left">
+                             <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
                          </div>
+                         <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                             <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
+                             <li class="c-font-white">/</li>
+                             <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
+                         </ul>
                      </div>
-                 {% endif %}
+                 </div>
              {% endfor %}
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 
@@ -56,7 +64,7 @@
                                         <div class="c-body">
                                             <div class="c-head">
                                                 <div class="c-name c-font-uppercase c-font-bold">
-                                                     <a href="{{ path('league_detail', { 'slug': league.slug}) }}">{{league.league}}</a>
+                                                    <a href="{{ path('league_detail', { 'slug': league.slug}) }}">{{league.league}}</a>
                                                 </div>                                   
                                             </div>
                                             <div class="c-position">
@@ -83,5 +91,5 @@
         </div>
         <!-- END: PAGE CONTAINER -->
     </body>
-     {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+    {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}      

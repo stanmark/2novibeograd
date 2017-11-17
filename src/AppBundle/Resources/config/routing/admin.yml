@@ -1,31 +1,6 @@
 admin_homepage:
     path:     /
     defaults: { _controller: AppBundle:Admin/Dash:index }
-
-seo_index:
-    path:     /seo/
-    defaults: { _controller: "AppBundle:Admin/SEO:index" }
-    methods:  GET
-
-seo_show:
-    path:     /seo/{slug}/show
-    defaults: { _controller: "AppBundle:Admin/SEO:show" }
-    methods:  GET
-
-seo_new:
-    path:     /seo/new
-    defaults: { _controller: "AppBundle:Admin/SEO:new" }
-    methods:  [GET, POST]
-
-seo_edit:
-    path:     /seo/{slug}/edit
-    defaults: { _controller: "AppBundle:Admin/SEO:edit" }
-    methods:  [GET, POST]
-
-seo_delete:
-    path:     /seo/{slug}/delete
-    defaults: { _controller: "AppBundle:Admin/SEO:delete" }
-    methods:  DELETE
   
 company_index:
     path:     /company/

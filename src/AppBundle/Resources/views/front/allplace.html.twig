@@ -1,80 +1,89 @@
 {% extends '@AppBundle/Resources/views/front/base.html.twig' %}
+{% block SEO %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Raspored treninga' %}
+        <title>{{ BreadCrump.titletag }}</title>
+        <meta name="description" content="{{ BreadCrump.description }}" />
+    {% endfor %}
+{% endblock %}
+
 {% block body %}
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
-    {% include '@AppBundle/Resources/views/front/header.html.twig' %}
+        {% include '@AppBundle/Resources/views/front/header.html.twig' %}
 
-    <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-             {% for BreadCrump in BreadCrumps %}
-                 {% if  BreadCrump.name  == 'Raspored treninga' %}
-                     {% for mainGallery in BreadCrump.mainGallery %}
-                         style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
-                     {% endfor %}
-                     <div class="c-breadcrumbs-wrapper">
-                         <div class="container">
-                             <div class="c-page-title c-pull-left">
-                                 <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
-                             </div>
-                             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                                 <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
-                                 <li class="c-font-white">/</li>
-                                 <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
-                             </ul>
+        <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
+             {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Raspored treninga' %}
+                 {% for mainGallery in BreadCrump.mainGallery %}
+                     style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
+                 {% endfor %}
+                 <div class="c-breadcrumbs-wrapper">
+                     <div class="container">
+                         <div class="c-page-title c-pull-left">
+                             <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
                          </div>
+                         <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                             <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
+                             <li class="c-font-white">/</li>
+                             <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
+                         </ul>
                      </div>
-                 {% endif %}
+                 </div>
+
              {% endfor %}
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-    
-    
-    <!-- BEGIN: PAGE CONTAINER -->
-    <div class="c-layout-page">
-        <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
 
-     
-        <!-- BEGIN: PAGE CONTENT -->
-        <!-- BEGIN: BLOG LISTING -->
-        <div class="c-content-box c-size-md">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        {% for place in places if place.treaningPlace %}             
-                            <div class="c-content-blog-post-1-list">
-                                <div class="c-content-blog-post-1">
-                                    <div class="c-media">
-                                        <div class="c-content-media-2-slider" data-slider="owl"> 
-                                            <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-auto-play="4000" data-rtl="false">
-                                                {% for mainGallery in place.mainGallery %}                                                  
-                                                    <div class="item">
-                                                        <div class="c-content-media-2" style="min-height: 460px;">
-                                                            <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" />
-                                                        </div> 
-                                                    </div>  
-                                                {% endfor %} 
+
+        <!-- BEGIN: PAGE CONTAINER -->
+        <div class="c-layout-page">
+            <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+
+
+            <!-- BEGIN: PAGE CONTENT -->
+            <!-- BEGIN: BLOG LISTING -->
+            <div class="c-content-box c-size-md">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for place in places if place.treaningPlace %}             
+                                <div class="c-content-blog-post-1-list">
+                                    <div class="c-content-blog-post-1">
+                                        <div class="c-media">
+                                            <div class="c-content-media-2-slider" data-slider="owl"> 
+                                                <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-auto-play="4000" data-rtl="false">
+                                                    {% for mainGallery in place.mainGallery %}                                                  
+                                                        <div class="item">
+                                                            <div class="c-content-media-2" style="min-height: 460px;">
+                                                                <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" />
+                                                            </div> 
+                                                        </div>  
+                                                    {% endfor %} 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="c-title c-font-bold c-font-uppercase">
-                                        <a href="{{ path('place_detail', { 'slug': place.slug}) }}">{{ place.title }}</a>
-                                    </div>
-                                    <div class="c-desc">
-                                        {{ place.description |raw }}
-                                        <a href="{{ path('place_detail', { 'slug': place.slug}) }}">više</a>
-                                    </div>
-                                    <div class="c-panel">
-                                        <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
-                                        <div class="c-date">on <span class="c-font-uppercase">{{place.created | date('d-m-Y') }}</span></div>                                      					                              
+                                        <div class="c-title c-font-bold c-font-uppercase">
+                                            <a href="{{ path('place_detail', { 'slug': place.slug}) }}">{{ place.title }}</a>
+                                        </div>
+                                        <div class="c-desc">
+                                            {{ place.description |raw }}
+                                            <a href="{{ path('place_detail', { 'slug': place.slug}) }}">više</a>
+                                        </div>
+                                        <div class="c-panel">
+                                            <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
+                                            <div class="c-date">on <span class="c-font-uppercase">{{place.created | date('d-m-Y') }}</span></div>                                      					                              
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            </div> 
+                </div> 
+            </div>
+            <!-- END: BLOG LISTING  -->
+            <!-- END: PAGE CONTENT -->
         </div>
-        <!-- END: BLOG LISTING  -->
-        <!-- END: PAGE CONTENT -->
-    </div>
-    <!-- END: PAGE CONTAINER -->
+        <!-- END: PAGE CONTAINER -->
     </body>
     {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
 {% endblock %}        

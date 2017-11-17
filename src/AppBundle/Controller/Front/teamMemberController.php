@@ -5,7 +5,6 @@ namespace AppBundle\Controller\Front;
 use AppBundle\Entity\teamMember;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\SEO;
 use AppBundle\Entity\BreadCrumps;
 
 /**
@@ -24,13 +23,11 @@ class teamMemberController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
         
 
         return $this->render('@AppBundle/Resources/views/front/teams-single.html.twig', array(
             'teamMembers' => $teamMembers,
-            'sEOs' => $sEOs,
             'BreadCrumps' => $BreadCrumps
         ));
     }
@@ -44,12 +41,10 @@ class teamMemberController extends Controller
 
         $member = $em->getRepository(teamMember::class);
         $oneMember = $member->findOneBy(['slug' => $slug]);
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
 
         return $this->render('@AppBundle/Resources/views/front/teams-member.html.twig', array(
             'oneMember' => $oneMember,
-            'sEOs' => $sEOs,
             'BreadCrumps' => $BreadCrumps
             
         ));
