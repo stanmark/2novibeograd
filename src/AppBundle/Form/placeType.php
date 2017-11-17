@@ -24,14 +24,7 @@ class placeType extends AbstractType {
                     'multiple' => true,
                     'expanded' => true,
                     'required' => false,                   
-                    ])
-                ->add('mainGallery',  EntityType::class, [
-                    'class' => \AppBundle\Entity\MainGallery::class,
-                    'choice_label' => 'alt',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,                   
-                    ])
+                    ])         
                 ->add('description', CKEditorType::class, [
                     'label' => 'Opis'
                 ])

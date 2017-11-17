@@ -20,7 +20,7 @@ class BlogController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $AllBlog = $em->getRepository('AppBundle:Blog')->findAll();      
+        $AllBlog = $em->getRepository('AppBundle:Blog')->findby([], ['created' => 'DESC']);      
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
         
         
@@ -39,14 +39,12 @@ class BlogController extends Controller
 
         $AllBlog = $em->getRepository(Blog::class);
         $blog = $AllBlog->findOneBy(['slug' => $slug]);
-        $blogs = $em->getRepository('AppBundle:Blog')->findAll();     
-        $sEOs = $em->getRepository('AppBundle:SEO')->findAll();       
+        $blogs = $em->getRepository('AppBundle:Blog')->findAll();        
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
 
         return $this->render('@AppBundle/Resources/views/front/blog.html.twig', array(  
             'blogs' => $blogs, 
             'blog' => $blog,           
-            'sEOs' => $sEOs,
             'BreadCrumps' => $BreadCrumps,
             
         ));
