@@ -14,21 +14,21 @@
         {% include '@AppBundle/Resources/views/front/header.html.twig' %}
         <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
              {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Vesti' %}
-                     {% for mainGallery in BreadCrump.mainGallery %}
-                         style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
-                     {% endfor %}
-                     <div class="c-breadcrumbs-wrapper">
-                         <div class="container">
-                             <div class="c-page-title c-pull-left">
-                                 <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
-                             </div>
-                             <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
-                                 <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
-                                 <li class="c-font-white">/</li>
-                                 <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
-                             </ul>
+                 {% for mainGallery in BreadCrump.mainGallery %}
+                     style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
+                 {% endfor %}
+                 <div class="c-breadcrumbs-wrapper">
+                     <div class="container">
+                         <div class="c-page-title c-pull-left">
+                             <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim c-opacity-09">{{BreadCrump.name}}</h3>
                          </div>
+                         <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                             <li><a href="{{ path ('home') }}" class="c-font-white">Naslovna</a></li>
+                             <li class="c-font-white">/</li>
+                             <li><a href="#" class="c-font-white">{{BreadCrump.name}}</a></li>
+                         </ul>
                      </div>
+                 </div>
              {% endfor %}
         </div>
         <div class="c-content-box c-size-md">
@@ -154,6 +154,7 @@
             </div> 
         </div>                                        
         <!-- BEGIN: PAGE CONTAINER -->
+        {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
     </body>
-    {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+
 {% endblock %}
