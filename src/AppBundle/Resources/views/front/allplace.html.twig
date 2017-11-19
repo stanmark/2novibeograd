@@ -43,15 +43,15 @@
                             <div class="c-content-media-1 c-bordered wow animated fadeInLeft" style="min-height: 380px;">
                                 <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">{{ place.adress }}</div>
                                 <a href="{{ path('place_detail', { 'slug': place.slug}) }}" class="c-title c-font-uppercase c-theme-on-hover c-font-bold">{{ place.title }}</a>
-                                <p>{{ place.description [:20] | raw}}</p>
-                                <div class="c-author">
-                                    {% for member in place.member %}
+                                <p>{{ place.description [:20] | raw}}</p>                                
+                                {% for member in place.member %}
+                                    <div class="c-author">
                                         {% for mainGallery in member.mainGallery if mainGallery.mainTeamMemberPicture  %}
                                             <div class="c-portrait" style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})"></div>
                                         {% endfor %}
-                                        <a href="{{ path('trener_detail', { 'slug': member.slug}) }}" class="c-name c-font-uppercase">{{ member.name }}</a>
-                                    {% endfor%}
-                                </div>
+                                        <a href="{{ path('trener_detail', { 'slug': member.slug}) }}" class="c-name c-font-uppercase ">{{ member.name }}</a>
+                                    </div>
+                                {% endfor%}
                             </div>
                         </div>
                         <div class="col-md-8">		
