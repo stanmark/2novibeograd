@@ -10,6 +10,7 @@ use AppBundle\Entity\OurServices;
 use AppBundle\Entity\Blog;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\BreadCrumps;
 
 /**
  * Company controller.
@@ -31,6 +32,7 @@ class HomeController extends Controller
         $ourServices = $em->getRepository('AppBundle:OurServices')->findAll();
         $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
         $blogs = $em->getRepository('AppBundle:Blog')->findAll();
+        $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
         
 
         return $this->render('@AppBundle/Resources/views/front/home.html.twig', [
@@ -39,7 +41,8 @@ class HomeController extends Controller
             'homeSliders' => $homeSliders,
             'whyuses' => $whyuses,
             'blogs' => $blogs,
-            'mainGallerys' => $mainGallerys
+            'mainGallerys' => $mainGallerys,
+            'BreadCrumps' => $BreadCrumps
         ]);
     }
 }
