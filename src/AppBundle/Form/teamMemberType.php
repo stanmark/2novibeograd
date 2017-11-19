@@ -34,13 +34,7 @@ class teamMemberType extends AbstractType
                     'expanded' => true,
                     'required' => false,                   
                     ])
-                ->add('mainGallery',  EntityType::class, [
-                    'class' => \AppBundle\Entity\MainGallery::class,
-                    'choice_label' => 'alt',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,                   
-                    ]);
+               ;
     }
     
     /**

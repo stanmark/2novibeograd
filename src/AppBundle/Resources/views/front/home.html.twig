@@ -404,7 +404,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        {% for mainGallery in teamMember.mainGallery if mainGallery.mainPicture %}   
+                                        {% for mainGallery in teamMember.mainGallery if mainGallery.mainTeamMemberPicture %}   
                                             <img class="c-overlay-object img-responsive" src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}">
                                         {% endfor %} 
                                     </div>
@@ -455,7 +455,19 @@
     <script src="{{ asset('public/Front/js/isotope.pkgd.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/Front/js/imagesloaded.pkgd.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('public/Front/js/packery-mode.pkgd.min.js'  ) }}" type="text/javascript"></script>
-    <script src="{{ asset('public/Front/js/isotope-grid.js'  ) }}" type="text/javascript"></script>  
+    <script src="{{ asset('public/Front/js/isotope-grid.js'  ) }}" type="text/javascript"></script> 
+    
+    
+    <!-- BEGIN: LAYOUT PLUGINS -->
+        <script src="{{ asset('public/Front/js/jquery.themepunch.revolution.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('public/Front/js/jquery.themepunch.tools.min.js'   ) }}" type="text/javascript"></script>
+        <script src="{{ asset('public/Front/js/revolution.extension.slideanims.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('public/Front/js/revolution.extension.layeranimation.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('public/Front/js/revolution.extension.navigation.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('public/Front/js/revolution.extension.parallax.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('public/Front/js/revolution.extension.video.min.js') }}" type="text/javascript"></script>
+        
+        
 
     <!-- END: PAGE SCRIPTS -->
 {% endblock %}

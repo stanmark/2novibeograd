@@ -35,53 +35,39 @@
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 
 
-        <!-- BEGIN: PAGE CONTAINER -->
-        <div class="c-layout-page">
-            <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
-
-
-            <!-- BEGIN: PAGE CONTENT -->
-            <!-- BEGIN: BLOG LISTING -->
-            <div class="c-content-box c-size-md">
-                <div class="container">
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                {% for place in places if place.treaningPlace %} 
                     <div class="row">
-                        <div class="col-md-12">
-                            {% for place in places if place.treaningPlace %}             
-                                <div class="c-content-blog-post-1-list">
-                                    <div class="c-content-blog-post-1">
-                                        <div class="c-media">
-                                            <div class="c-content-media-2-slider" data-slider="owl"> 
-                                                <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-auto-play="4000" data-rtl="false">
-                                                    {% for mainGallery in place.mainGallery %}                                                  
-                                                        <div class="item">
-                                                            <div class="c-content-media-2" style="min-height: 460px;">
-                                                                <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" />
-                                                            </div> 
-                                                        </div>  
-                                                    {% endfor %} 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="c-title c-font-bold c-font-uppercase">
-                                            <a href="{{ path('place_detail', { 'slug': place.slug}) }}">{{ place.title }}</a>
-                                        </div>
-                                        <div class="c-desc">
-                                            {{ place.description |raw }}
-                                            <a href="{{ path('place_detail', { 'slug': place.slug}) }}">više</a>
-                                        </div>
-                                        <div class="c-panel">
-                                            <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
-                                            <div class="c-date">on <span class="c-font-uppercase">{{place.created | date('d-m-Y') }}</span></div>                                      					                              
-                                        </div>
-                                    </div>
+                        <div class="col-md-4">
+                            <div class="c-content-media-1 c-bordered wow animated fadeInLeft" style="min-height: 380px;">
+                                <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">{{ place.adress }}</div>
+                                <a href="{{ path('place_detail', { 'slug': place.slug}) }}" class="c-title c-font-uppercase c-theme-on-hover c-font-bold">{{ place.title }}</a>
+                                <p>{{ place.description [:20] | raw}}</p>
+                                <div class="c-author">
+                                    {% for member in place.member %}
+                                        {% for mainGallery in member.mainGallery if mainGallery.mainTeamMemberPicture  %}
+                                            <div class="c-portrait" style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})"></div>
+                                        {% endfor %}
+                                        <a href="{{ path('trener_detail', { 'slug': member.slug}) }}" class="c-name c-font-uppercase">{{ member.name }}</a>
+                                    {% endfor%}
                                 </div>
-                            {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-8">		
+                            <div class="c-content-media-2-slider wow animated fadeInRight" data-slider="owl">
+                                <div class="c-content-label c-font-uppercase c-font-bold">Lokacija</div>						
+                                <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-navigation-dots="true" data-auto-play="4000" data-rtl="false">						
+                                    {% for mainGallery in place.mainGallery %}   
+                                        <div class="c-content-media-2 c-bg-img-center" style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }}); min-height: 380px;"></div>
+                                    {% endfor %}
+                                </div>
+                            </div>		
                         </div>
                     </div>
-                </div> 
+
+                {% endfor %} 
             </div>
-            <!-- END: BLOG LISTING  -->
-            <!-- END: PAGE CONTENT -->
         </div>
         <!-- END: PAGE CONTAINER -->
         {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
