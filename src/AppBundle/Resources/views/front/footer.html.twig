@@ -1,4 +1,5 @@
-<!-- BEGIN: LAYOUT/FOOTERS/FOOTER-5 -->
+{% block footer %}
+
 <a name="footer"></a>
 <footer class="c-layout-footer c-layout-footer-3 c-bg-dark">
     <div class="c-prefooter">
@@ -7,42 +8,39 @@
                 <div class="col-md-6">
                     <div class="c-container c-first">
                         <div class="c-content-title-1">
-                            <h3 class="c-font-uppercase c-font-bold c-font-white">OK Novi<span class="c-theme-font">Beograd</span></h3>
+                            <h3 class="c-font-uppercase c-font-bold c-font-white">NOVI<span class="c-theme-font">BEOGRAD</span></h3>
                             <div class="c-line-left hide"></div>
                             <p class="c-text">
-                                Odbojkaški klub Novi Beograd osnovan je u martu 2007. godine. 
-                                Sve do danas uspešno se bavimo sportskom edukacijom dece, kao i takmičarskim aktivnostima koje su organizovane na nivou grada Beograda.</p>
+                                OK NOvi beograd opis
+                            </p>
                         </div>
                         <ul class="c-links">
-                            <li><a href="#">Naslovna</a></li>
+                            <li><a href="{{ path('home') }}">Naslovna</a></li>
                             <li><a href="{{ path('team') }}">Tim trenera</a></li>
-                            <li><a href="{{ path('place') }}">Raspored treninga</a></li>
-                            <li><a href="{{ path('pricing') }}">Cenovnik</a></li>
+                            <li><a href="{{ path('place') }}"">Raspored treninga</a></li>
+                            <li><a href="{{ path('pricing') }}"">Cenovnik</a></li>
                             <li><a href="{{ path('league') }}">Takmicenja</a></li>
+                            <li><a href="{{ path('allblog') }}">Vesti</a></li>
                             <li><a href="{{ path('about') }}">O nama</a></li>
-                            <li><a href="{{ path('contact') }}">Kontakt</a></li> 
+                            <li><a href="{{ path('contact') }}">Kontakt</a></li>
                         </ul>
                     </div>
                 </div>
-             
+                 
+
                 <div class="col-md-6">
                     <div class="c-container c-last">
                         <div class="c-content-title-1">
-                            <h3 class="c-font-uppercase c-font-bold c-font-white">Lokacije</h3>
+                            <h3 class="c-font-uppercase c-font-bold c-font-white">Budimo u kontaktu</h3>
                             <div class="c-line-left hide"></div>
-                            <p>
-                                Sticanje početnih znanja iz oblasti odbojkaškog sporta održavaju se na dve lokacije: u salama OŠ “Drinka Pavlović”, u samom centru grada, iza Narodne skupštine i u X Beogradskoj gimnaziji “Mihajlo Pupin” na Novom Beogradu, blok 21. 
-                                Sale su savremeno opremljene i pružaju idealne uslove za treniranje i uživanje u sticanju novih odbojkaških znanja i veština.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy ad minim.</p>
                         </div>
                         <ul class="c-socials">
-                            <li><a href="#"><i class="icon-social-facebook"></i></a></li>
-                            <li><a href="#"><i class="icon-social-twitter"></i></a></li>
-                            <li><a href="#"><i class="icon-social-youtube"></i></a></li>
-                            <li><a href="#"><i class="icon-social-tumblr"></i></a></li>
+                            <li><a href="#"><i class="icon-social-facebook"></i></a></li>                       
                         </ul>
                         <ul class="c-address">
                             <li><i class="icon-pointer c-theme-font"></i> Palmira Toljatija 5</li>
-                            <li><i class="icon-call-end c-theme-font"></i>+381 60 33 86 930</li>
+                            <li><i class="icon-call-end c-theme-font"></i> 060 33 86 930</li>
                             <li><i class="icon-envelope c-theme-font"></i> office@oknovibeograd.rs</li>
                         </ul>
                     </div>
@@ -54,16 +52,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12 c-col">
-                    <p class="c-copyright c-font-grey">2017 OK Novi Beograd
+                    <p class="c-copyright c-font-grey">2015 &copy; JANGO
                         <span class="c-font-grey-3">All Rights Reserved.</span>
                     </p>
                 </div>
             </div>
         </div>
-    </div>                        
+    </div>
 </footer><!-- END: LAYOUT/FOOTERS/FOOTER-5 -->
 
 <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
 <div class="c-layout-go2top">
     <i class="icon-arrow-up"></i>
 </div><!-- END: LAYOUT/FOOTERS/GO2TOP -->
+
+{% endblock %}
