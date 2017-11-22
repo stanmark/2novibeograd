@@ -44,13 +44,14 @@
                         <div class="col-sm-8 c-desktop"></div>
                         <div class="col-sm-4">
 
-                            {% for company in companies %}
+                            
                                 <div class="c-body">
+                                    {% for company in companies %}
                                     <div class="c-section">
                                         <h3>{{company.name}}</h3>
                                     </div>
                                     <div class="c-section">
-                                        <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Addresa</div>
+                                        <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">Adresa</div>
                                         <p>{{company.adress}}<br/>{{company.city}}</p>
                                     </div>
                                     <div class="c-section">
@@ -64,8 +65,9 @@
                                             <li><a href="{{ company.gurl }}"><i class="fa fa-google-plus"></i></a></li>
                                         </ul>
                                     </div>
+                                        {% endfor %}
                                 </div>
-                            {% endfor %}
+                            
                         </div>
                     </div>
                 </div>
@@ -145,6 +147,22 @@
 
         <!-- END: PAGE CONTAINER -->
         {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
+        <script>
+    function initMap() {
+        var uluru = {lat: 44.829527, lng: 20.412322};
+        var map = new google.maps.Map(document.getElementById('gmapbg'), {
+            zoom: 19,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT1EkDSM41qV_b3JfpMXYLka8kESxGc20&callback=initMap">
+</script>
     </body>
 
 {% endblock %}     
