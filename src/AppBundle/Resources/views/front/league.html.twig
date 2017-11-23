@@ -40,12 +40,15 @@
                     <div class="c-line-center c-theme-bg"></div>
                     <p class="c-center">{{ oneleague.description }}</p>
                 </div>
+                 {% for groupp in oneleague.groupp %}
                 <div class="c-content-panel">
-                    <div class="c-label">Grupe {{ oneleague.league }} </div>                      
+                    <div class="c-label">Grupa {{ oneleague.league }} </div> 
+                    
                     <div class="c-body">
+                        
                         <div class="row">
                             <div class="col-md-12">						
-                                {% for groupp in oneleague.groupp %}
+                               
                                     <div class="table-responsive">
                                         {{ groupp.groupp }}
                                         <table class="table table-bordered">
@@ -63,7 +66,7 @@
                                             <tbody>
                                                 {% for team in groupp.team %}
                                                     <tr>
-                                                        <th></th>
+                                                        <th>Broj</th>
                                                         <td>{{ team.team }} </td>
                                                         <td>Table cell</td>
                                                         <td>Table cell</td>
@@ -98,7 +101,6 @@
                                                         <th>Mesto</th>
                                                         <th>Datum</th>
                                                         <th>Pocetak</th>
-                                                        <th>Kraj</th>
                                                     </tr>
                                                 </thead>
 
@@ -109,10 +111,9 @@
                                                             <td>{{ game.numberSet1 }}</td>
                                                             <td>{{ game.numberSet2 }}</td>
                                                             <td>{{ game.team2.team }}</td>     
-                                                            <td>{{ game.place.title }}</td>  
+                                                            <td><a href="{{ path('place_detail', { 'slug': game.place.slug }) }}">{{ game.place.title }}</a></td>  
                                                             <td>{{ game.date| date('d-m-Y')  }}</td>  
-                                                            <td>{{ game.begin| date('H:i')  }}</td>  
-                                                            <td>{{ game.end| date('H:i') }}</td>                                                                                                        
+                                                            <td>{{ game.begin| date('H:i')  }}</td>                                                                                                                                            
                                                         </tr>
                                                     {% endfor %}					
                                                 </tbody>

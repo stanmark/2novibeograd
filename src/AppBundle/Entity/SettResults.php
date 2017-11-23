@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="sett_results" )
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class SettResults
 {

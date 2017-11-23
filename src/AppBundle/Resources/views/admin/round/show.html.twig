@@ -1,0 +1,27 @@
+{% extends '@AppBundle/Resources/views/admin/table.html.twig' %}
+
+{% block tbody %}
+    <h1>Round</h1>
+
+    <table  class="table table-striped table-bordered table-hover" id="sample_1">
+        <tbody>
+             <tr>
+                <th>Liga</th>
+                <td>{{ round.groupp.league.league }}</td>
+            </tr>
+             <tr>
+                <th>Grupa</th>
+                <td>{{ round.groupp.groupp }}</td>
+            </tr>
+            <tr>
+                <th>Rounds</th>
+                <td>{{ round.rounds }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('round_index') }}"class="btn green" >Back to the list</a>
+        <a href="{{ path('round_edit', { 'slug': round.slug }) }}"  class="btn yellow">Edit</a>
+        <input type="submit" value="Delete"class="btn red">
+    </div>
+{% endblock %}

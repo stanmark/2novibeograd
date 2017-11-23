@@ -6,9 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
-class BlogType extends AbstractType
+class RoundType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,18 +15,14 @@ class BlogType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('title')
-                ->add('description', CKEditorType::class, [
-                    'label' => 'Opis'
-                ])
-                ->add('mainGallery',  EntityType::class, [
-                    'class' => \AppBundle\Entity\MainGallery::class,
-                    'choice_label' => 'alt',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false, 
+                ->add('rounds')
+                ->add('groupp',  EntityType::class, [
+                    'class' => \AppBundle\Entity\Groupp::class,
+                    'choice_label' => 'groupp',                  
+                    'required' => true,  
                     ])
-           
+                
+                
                 ;
     }
     
@@ -37,7 +32,7 @@ class BlogType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Blog'
+            'data_class' => 'AppBundle\Entity\Round'
         ));
     }
 
@@ -46,7 +41,7 @@ class BlogType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_blog';
+        return 'appbundle_round';
     }
 
 

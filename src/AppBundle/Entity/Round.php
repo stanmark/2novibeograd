@@ -55,10 +55,10 @@ class Round
     
     
     
-    public function __construct()
-    {
-        $this->$game = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+//    public function __construct()
+//    {
+//        $this->$game = new \Doctrine\Common\Collections\ArrayCollection();
+//    }
     
 
 
@@ -201,4 +201,12 @@ class Round
     {
         return $this->slug;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->game = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }

@@ -16,7 +16,7 @@ class GameType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-//                 ->add('Legaue',  EntityType::class, [
+//                ->add('Legaue',  EntityType::class, [
 //                    'class' => \AppBundle\Entity\League::class,
 //                    'choice_label' => 'league',                                       
 //                    'required' => false,                   
@@ -39,36 +39,25 @@ class GameType extends AbstractType {
                 ->add('numberSet2')
                 ->add('date', DateType::class, [
                     'widget' => 'single_text',
-                    'attr' => [
-                        'class' => 'form-control form-control-inline input-medium date-picker'
-                    ],
-                    'html5' => false,
+
                 ])
                 ->add('begin', DateTimeType::class, [
                     'widget' => 'single_text',
-                    'attr' => [
-                        'class' => 'form-control timepicker timepicker-24'
-                    ],
-                    'html5' => false,
+                    'required' => false,
+                 
                 ])
                 ->add('end', DateTimeType::class, [
                     'widget' => 'single_text',
-                    'attr' => [
-                        'class' => 'form-control timepicker timepicker-24'
-                    ],
-                    'html5' => false,
+                    'required' => false,
+               
+                
                 ])
                 ->add('place', EntityType::class, [
                     'class' => \AppBundle\Entity\place::class,
                     'choice_label' => 'title'
                 ])
-                ->add('settresults', EntityType::class, [
-                    'class' => \AppBundle\Entity\SettResults::class,
-                    'choice_label' => 'id',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,
-                ])
+               
+                
 
 
         ;

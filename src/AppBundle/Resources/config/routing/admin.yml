@@ -209,7 +209,7 @@ game_index:
     methods:  GET
 
 game_show:
-    path:     /game/{slug}/show
+    path:     /game/{id}/show
     defaults: { _controller: "AppBundle:Admin/Game:show" }
     methods:  GET
 
@@ -219,12 +219,12 @@ game_new:
     methods:  [GET, POST]
 
 game_edit:
-    path:     /game/{slug}/edit
+    path:     /game/{id}/edit
     defaults: { _controller: "AppBundle:Admin/Game:edit" }
     methods:  [GET, POST]
 
 game_delete:
-    path:     /game/{slug}/delete
+    path:     /game/{id}/delete
     defaults: { _controller: "AppBundle:Admin/Game:delete" }
     methods:  DELETE
  
@@ -451,6 +451,31 @@ blog_edit:
 blog_delete:
     path:     /blog/{slug}/delete
     defaults: { _controller: "AppBundle:Admin/Blog:delete" }
+    methods:  DELETE   
+    
+round_index:
+    path:     /round/
+    defaults: { _controller: "AppBundle:Admin/Round:index" }
+    methods:  GET
+
+round_show:
+    path:     /round/{slug}/show
+    defaults: { _controller: "AppBundle:Admin/Round:show" }
+    methods:  GET
+
+round_new:
+    path:     /round/new
+    defaults: { _controller: "AppBundle:Admin/Round:new" }
+    methods:  [GET, POST]
+
+round_edit:
+    path:     /round/{slug}/edit
+    defaults: { _controller: "AppBundle:Admin/Round:edit" }
+    methods:  [GET, POST]
+
+round_delete:
+    path:     /round/{slug}/delete
+    defaults: { _controller: "AppBundle:Admin/Round:delete" }
     methods:  DELETE    
 
     

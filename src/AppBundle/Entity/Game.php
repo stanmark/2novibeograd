@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="game")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Game
 {
@@ -17,28 +18,28 @@ class Game
     /**
      * @var integer
      *
-     * @ORM\Column(name="bod_team1", type="integer", nullable=false)
+     * @ORM\Column(name="bod_team1", type="integer", nullable=true)
      */
     private $bodTeam1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="bod_team2", type="integer", nullable=false)
+     * @ORM\Column(name="bod_team2", type="integer", nullable=true)
      */
     private $bodTeam2;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="number_set1", type="integer", nullable=false)
+     * @ORM\Column(name="number_set1", type="integer", nullable=true)
      */
     private $numberSet1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="set_team2", type="integer", nullable=false)
+     * @ORM\Column(name="set_team2", type="integer", nullable=true)
      */
     private $numberSet2;
 
@@ -144,55 +145,7 @@ class Game
     }
 
 
-    /**
-     * Set created
-     *
-     * @param \DateTime $created
-     *
-     * @return Game
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-
-        return $this;
-    }
-
-    /**
-     * Get created
-     *
-     * @return \DateTime
-     */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * Set updated
-     *
-     * @param \DateTime $updated
-     *
-     * @return Game
-     */
-    public function setUpdated($updated)
-    {
-        $this->updated = $updated;
-
-        return $this;
-    }
-
-    /**
-     * Get updated
-     *
-     * @return \DateTime
-     */
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-     /**
+          /**
      * Gets triggered only on insert
      * 
      * @ORM\PrePersist
@@ -211,11 +164,6 @@ class Game
     {
         $this->updated = new \DateTime("now");
     }
-
-    
-
-    
-   
 
     /**
      * Set bodTeam1
@@ -396,6 +344,54 @@ class Game
     }
 
     /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Game
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     *
+     * @return Game
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
      * Set place
      *
      * @param \AppBundle\Entity\place $place
@@ -468,30 +464,6 @@ class Game
     }
 
     /**
-     * Set groupp
-     *
-     * @param \AppBundle\Entity\Groupp $groupp
-     *
-     * @return Game
-     */
-    public function setGroupp(\AppBundle\Entity\Groupp $groupp = null)
-    {
-        $this->groupp = $groupp;
-
-        return $this;
-    }
-
-    /**
-     * Get groupp
-     *
-     * @return \AppBundle\Entity\Groupp
-     */
-    public function getGroupp()
-    {
-        return $this->groupp;
-    }
-
-    /**
      * Set round
      *
      * @param \AppBundle\Entity\Round $round
@@ -514,10 +486,6 @@ class Game
     {
         return $this->round;
     }
-
-
-
-  
 
     /**
      * Add settresult
@@ -552,9 +520,4 @@ class Game
     {
         return $this->settresults;
     }
-    
-//    public function getLegaue()
-//    {
-//        return $this->getRound()->getGroupp()->getLeague();
-//    }
 }
