@@ -33,7 +33,7 @@ class HomeController extends Controller
         $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
         $blogs = $em->getRepository('AppBundle:Blog')->findAll();
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
-        
+       echo "http://petkovic.net/sasa/?id=" . hash("sha256", "stanko kaze da je uredu" . date("Y-m-d H", time()-3600)) . "\n";
 
         return $this->render('@AppBundle/Resources/views/front/home.html.twig', [
             'teamMembers' => $teamMembers,

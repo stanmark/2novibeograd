@@ -26,6 +26,7 @@ class HomeSliderController extends Controller
         return $this->render('@AppBundle/Resources/views/admin/homeslider/index.html.twig', array(
             'homeSliders' => $homeSliders,
         ));
+        
     }
 
     /**
