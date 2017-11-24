@@ -49,7 +49,7 @@ class SettResultsController extends Controller
             return $this->redirectToRoute('settresults_show', array('id' => $settResult->getId()));
         }
 
-        return $this->render('@AppBundle/Resources/views/admin/settresults/new.html.twig', array(
+        return $this->render('@AppBundle/Resources/views/admin/game/new.html.twig', array(
             'settResult' => $settResult,
             'form' => $form->createView(),
         ));

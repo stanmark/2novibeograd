@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class GameType extends AbstractType {
 
@@ -55,6 +56,13 @@ class GameType extends AbstractType {
                 ->add('place', EntityType::class, [
                     'class' => \AppBundle\Entity\place::class,
                     'choice_label' => 'title'
+                ])
+                
+                 ->add('settresults', CollectionType::class, [
+                    'entry_type' => SettResultsType::class,
+                    'entry_options' => array('label' => true),
+                    'allow_add' => true,
+                 
                 ])
                
                 
