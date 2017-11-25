@@ -60,8 +60,14 @@ class GameType extends AbstractType {
                 
                  ->add('settresults', CollectionType::class, [
                     'entry_type' => SettResultsType::class,
-                    'entry_options' => array('label' => true),
+                    'entry_options' => ['label' => true],
                     'allow_add' => true,
+                    'by_reference' => false,
+                    'allow_delete' => true,
+                    'prototype' => true,
+                    'attr' => [
+                        'class' => 'my-selector'
+                    ]
                  
                 ])
                

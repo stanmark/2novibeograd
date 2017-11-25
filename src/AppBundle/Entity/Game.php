@@ -131,7 +131,7 @@ class Game
     
     /**
      * 
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SettResults", mappedBy="game")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SettResults", mappedBy="game", cascade={"persist"})
      */
     private $settresults;
    

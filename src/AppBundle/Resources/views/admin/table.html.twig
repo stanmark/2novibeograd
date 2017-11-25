@@ -1,14 +1,14 @@
 {% extends '@AppBundle/Resources/views/admin/base.html.twig' %}
 
 {% block head %}
-    
+
 
     <link href="{{ asset('public/Admin/admincss/datatables.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>  
     <link href="{{ asset('public/Admin/admincss/datatables.bootstrap.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/> 
     <link href="{{ asset('public/Admin/admincss/datatables.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>  
-    
-   
-{{ parent() }}
+
+
+    {{ parent() }}
 {% endblock %}
 
 {% block main %}
@@ -70,9 +70,9 @@
             </div>                            
             {% include   '@AppBundle/Resources/views/admin/footer.html.twig' %}
         </div>  
-        
-     
-  
+
+
+
     </body>
 
 
@@ -96,22 +96,22 @@
 
 
     {% endjavascripts %} #}
-  
+
 
 {% endblock %}
-       {% block jq %}
-                {{ parent() }}
-        <script src="{{ asset('public/Admin/jss/datatable.min.js') }}"></script>
-        <script src="{{ asset('public/Admin/jss/datatables.min.js') }}"></script>
-        <script src="{{ asset('public/Admin/jss/datatables.bootstrap.js') }}"></script>       
-        <script src="{{ asset('public/Admin/jss/table-datatables-colreorder.min.js') }}"></script>
-        <script src="{{ asset('public/Admin/jss/js-ajax-delete-table-row.js') }}"></script>
-        <script src="{{ asset('public/Admin/jss/bootstrap-datepicker.min.js') }}"></script>
-         <script>
+{% block jq %}
+    {{ parent() }}
+    <script src="{{ asset('public/Admin/jss/datatable.min.js') }}"></script>
+    <script src="{{ asset('public/Admin/jss/datatables.min.js') }}"></script>
+    <script src="{{ asset('public/Admin/jss/datatables.bootstrap.js') }}"></script>       
+    <script src="{{ asset('public/Admin/jss/table-datatables-colreorder.min.js') }}"></script>
+    <script src="{{ asset('public/Admin/jss/js-ajax-delete-table-row.js') }}"></script>
+    <script src="{{ asset('public/Admin/jss/bootstrap-datepicker.min.js') }}"></script>
+    <script>
         $(document).ready(function () {
             var $table = $('.js-table');
             DeleteRow.initialize($table);
 
         });
     </script>
-            {% endblock %}
+{% endblock %}
