@@ -66,27 +66,24 @@
                                             <tbody>    
                                                 {% set counterteam=0 %}
                                                 {% for team in groupp.team   %}
-                                                  
+
                                                     <tr>
-                                                        
+
                                                         <th>
-                                                             {% set counterteam = counterteam + 1%}
+                                                            {% set counterteam = counterteam + 1%}
                                                             {{ counterteam }}
                                                         </th>
                                                         <td>{{ team.team }} </td>
                                                         <td> 
                                                             {% set countergame=0 %}
-                                                            
-                                                            {% for game in team.team1game     %}                                
+                                                            {% for game in team.team1game if game.bodTeam1 is not empty  %}  
                                                                 {% set countergame = countergame + 1%}
-
                                                             {% endfor %} 
-                                                             {% for game in team.team2game      %}
-                                                                 
-                                                                 {% set countergame = countergame + 1%}
-                                                           {% endfor %} 
+                                                            {% for game in team.team2game if game.bodTeam2 is not empty    %}
+
+                                                                {% set countergame = countergame + 1%}
+                                                            {% endfor %} 
                                                             {{ countergame }}
-                                                        
                                                         </td>
                                                         <td>
                                                             {% set counterbod=0 %}
@@ -94,17 +91,31 @@
                                                                 {% set counterbod = counterbod + game.bodTeam1%}
                                                             {% endfor %}
                                                             {% for game in team.team2game %}
+
                                                                 {% set counterbod = counterbod + game.bodTeam2%}
                                                             {% endfor %}
                                                             {{ counterbod }}
                                                         </td>
                                                         <td>
                                                             {% set counterwin=0 %}
-                                                         
+                                                            {% for game in team.team1game if game.bodTeam1 > game.bodTeam2  %}
+                                                                {% set counterwin = counterwin + 1%}
+                                                            {% endfor %}
+                                                            {% for game in team.team2game if game.bodTeam2 > game.bodTeam1 %}
+                                                                {% set counterwin = counterwin + 1%}
+                                                            {% endfor %}
                                                             {{ counterwin }}
-                                                            
                                                         </td>
-                                                        <td>Table cell</td>
+                                                        <td>
+                                                            {% set counterlose=0 %}
+                                                            {% for game in team.team1game if game.bodTeam1 < game.bodTeam2  %}
+                                                                {% set counterlose = counterlose + 1%}
+                                                            {% endfor %}
+                                                            {% for game in team.team2game if game.bodTeam2 < game.bodTeam1 %}
+                                                                {% set counterlose = counterlose + 1%}
+                                                            {% endfor %}
+                                                            {{ counterlose }}
+                                                        </td>
                                                     </tr>
                                                 {% endfor %}							
                                             </tbody>
@@ -135,7 +146,6 @@
                                                         <th>Pocetak</th>
                                                     </tr>
                                                 </thead>
-
                                                 <tbody>
                                                     {% for game in round.game %}
                                                         <tr>
@@ -149,9 +159,7 @@
                                                         </tr>
                                                     {% endfor %}					
                                                 </tbody>
-
                                             </table>
-
                                         {% endfor %}
                                     </div>
                                 </div>
