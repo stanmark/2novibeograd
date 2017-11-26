@@ -1,0 +1,167 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Game
+ *
+ * @ORM\Table(name="game")
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ */
+class Game
+{
+    
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bod_team1", type="integer", nullable=true)
+     */
+    private $bodTeam1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bod_team2", type="integer", nullable=true)
+     */
+    private $bodTeam2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="number_set1", type="integer", nullable=true)
+     */
+    private $numberSet1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="set_team2", type="integer", nullable=true)
+     */
+    private $numberSet2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
+     * @var \AppBundle\Entity\place
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\place")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="place_id", referencedColumnName="id")
+     * })
+     */
+    private $place;
+
+
+    /**
+     * @var \AppBundle\Entity\Team
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="team1_id", referencedColumnName="id")
+     * })
+     */
+    private $team1;
+
+    /**
+     * @var \AppBundle\Entity\Team
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="team2_id", referencedColumnName="id")
+     * })
+     */
+    private $team2;
+    
+    /**
+     * @var datetime $date
+     *
+     * @ORM\Column(type="date")
+     */
+    protected $date;
+    
+    /**
+     * @var datetime $begin
+     *
+     * @ORM\Column(type="time")
+     */
+    protected $begin;
+    
+    /**
+     * @var datetime $end
+     *
+     * @ORM\Column(type="time", nullable = true)
+     */
+    protected $end;
+    
+    
+    
+    /**
+     * @var datetime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var datetime $updated
+     * 
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    protected $updated;
+    
+    /**
+     * @var \AppBundle\Entity\Round
+     * 
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Round", inversedBy="game")
+     * @ORM\JoinColumn(name="round_id", referencedColumnName="id")
+     * })
+     */
+    private $round;
+    
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SettResults", mappedBy="game")
+     */
+    private $settresults;
+   
+    
+     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->settresults = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+          /**
+     * Gets triggered only on insert
+     * 
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered every time on update
+
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
+    }
+}
