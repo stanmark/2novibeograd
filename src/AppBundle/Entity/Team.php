@@ -48,7 +48,17 @@ class Team
      */
     private $groupp;
     
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team1")
+     */
+    private $team1game;
     
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team2")
+     */
+    private $team2game;
 
     
     
@@ -217,5 +227,81 @@ class Team
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->team1game = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->team2game = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add team1game
+     *
+     * @param \AppBundle\Entity\Game $team1game
+     *
+     * @return Team
+     */
+    public function addTeam1game(\AppBundle\Entity\Game $team1game)
+    {
+        $this->team1game[] = $team1game;
+
+        return $this;
+    }
+
+    /**
+     * Remove team1game
+     *
+     * @param \AppBundle\Entity\Game $team1game
+     */
+    public function removeTeam1game(\AppBundle\Entity\Game $team1game)
+    {
+        $this->team1game->removeElement($team1game);
+    }
+
+    /**
+     * Get team1game
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTeam1game()
+    {
+        return $this->team1game;
+    }
+
+    /**
+     * Add team2game
+     *
+     * @param \AppBundle\Entity\Game $team2game
+     *
+     * @return Team
+     */
+    public function addTeam2game(\AppBundle\Entity\Game $team2game)
+    {
+        $this->team2game[] = $team2game;
+
+        return $this;
+    }
+
+    /**
+     * Remove team2game
+     *
+     * @param \AppBundle\Entity\Game $team2game
+     */
+    public function removeTeam2game(\AppBundle\Entity\Game $team2game)
+    {
+        $this->team2game->removeElement($team2game);
+    }
+
+    /**
+     * Get team2game
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTeam2game()
+    {
+        return $this->team2game;
     }
 }

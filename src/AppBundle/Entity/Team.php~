@@ -48,7 +48,17 @@ class Team
      */
     private $groupp;
     
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team1")
+     */
+    private $team1game;
     
+    /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Game", mappedBy="team2")
+     */
+    private $team2game;
 
     
     

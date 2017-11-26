@@ -40,38 +40,70 @@
                     <div class="c-line-center c-theme-bg"></div>
                     <p class="c-center">{{ oneleague.description }}</p>
                 </div>
-                 {% for groupp in oneleague.groupp %}
-                <div class="c-content-panel">
-                    <div class="c-label">Grupa {{ oneleague.league }} </div> 
-                    
-                    <div class="c-body">
-                        
-                        <div class="row">
-                            <div class="col-md-12">						
-                               
+                {% for groupp in oneleague.groupp %}
+
+                    <div class="c-content-panel">
+                        <div class="c-label">Grupa {{ oneleague.league }} </div> 
+
+                        <div class="c-body">
+
+                            <div class="row">
+                                <div class="col-md-12">						
+
                                     <div class="table-responsive">
                                         {{ groupp.groupp }}
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
-                                                    <th>Ekipe</th>
                                                     <th>Pozicija</th>
-                                                    <th>Suma setova</th>
-                                                    <th>Izgubljenih</th>
+                                                    <th>Ekipe</th>   
                                                     <th>Broj utakmica</th>
-                                                    <th>%</th>
+                                                    <th>Bodovi</th>
+                                                    <th>Pobedjenih</th>                                                   
+                                                    <th>Izgubljenih</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                {% for team in groupp.team %}
+                                            <tbody>    
+                                                {% set counterteam=0 %}
+                                                {% for team in groupp.team   %}
+                                                  
                                                     <tr>
-                                                        <th>Broj</th>
+                                                        
+                                                        <th>
+                                                             {% set counterteam = counterteam + 1%}
+                                                            {{ counterteam }}
+                                                        </th>
                                                         <td>{{ team.team }} </td>
-                                                        <td>Table cell</td>
-                                                        <td>Table cell</td>
-                                                        <td>Table cell</td>
-                                                        <td>Table cell</td>
+                                                        <td> 
+                                                            {% set countergame=0 %}
+                                                            
+                                                            {% for game in team.team1game     %}                                
+                                                                {% set countergame = countergame + 1%}
+
+                                                            {% endfor %} 
+                                                             {% for game in team.team2game      %}
+                                                                 
+                                                                 {% set countergame = countergame + 1%}
+                                                           {% endfor %} 
+                                                            {{ countergame }}
+                                                        
+                                                        </td>
+                                                        <td>
+                                                            {% set counterbod=0 %}
+                                                            {% for game in team.team1game %}
+                                                                {% set counterbod = counterbod + game.bodTeam1%}
+                                                            {% endfor %}
+                                                            {% for game in team.team2game %}
+                                                                {% set counterbod = counterbod + game.bodTeam2%}
+                                                            {% endfor %}
+                                                            {{ counterbod }}
+                                                        </td>
+                                                        <td>
+                                                            {% set counterwin=0 %}
+                                                         
+                                                            {{ counterwin }}
+                                                            
+                                                        </td>
                                                         <td>Table cell</td>
                                                     </tr>
                                                 {% endfor %}							
