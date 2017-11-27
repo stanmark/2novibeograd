@@ -20,7 +20,8 @@
         {% endstylesheets %}#}
         {% block head %}
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
-        <link href="{{ asset('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
+        {#<link href="{{ asset('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>#}
+        <link href="{{ asset('public/Admin/admincss/googlefonts.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>      
         <link href="{{ asset('public/Admin/admincss/font-awesome.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>      
         <link href="{{ asset('public/Admin/admincss/simple-line-icons.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>        
         <link href="{{ asset('public/Admin/admincss/bootstrap.min.css')}}" rel="stylesheet" filter='cssrewrite' type="text/css"/>
