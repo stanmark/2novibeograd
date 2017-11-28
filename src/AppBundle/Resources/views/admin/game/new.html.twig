@@ -3,15 +3,15 @@
 {% block body %}
     <h1>Game creation</h1>
 
-
+ {% form_theme form 'jquery.collection.html.twig' %}
     {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <div  class="btn-group btn-group-circle btn-group-solid">
+  
+    
+    {{ form_end(form) }}
+
+<div  class="btn-group btn-group-circle btn-group-solid">
         <a href="{{ path('game_index') }}"class="btn red">Back to the list</a>
         <input type="submit" value="Create" class="btn green" />
     </div>
-    {{ form_end(form) }}
-
-
 
 {% endblock %}

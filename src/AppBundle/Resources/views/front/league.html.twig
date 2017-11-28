@@ -162,9 +162,9 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Domacin</th>
+                                                        <th>Gost</th>
                                                         <th>SET</th>
                                                         <th>Rezultat</th>
-                                                        <th>Gost</th>
                                                         <th>Mesto</th>
                                                         <th>Datum</th>
                                                         <th>Pocetak</th>
@@ -174,13 +174,13 @@
                                                     {% for game in round.game %}
                                                         <tr>
                                                             <td>{{ game.team1.team }}</td>
+                                                            <td>{{ game.team2.team }}</td>  
                                                             <td>{{ game.numberSet1 }} : {{ game.numberSet2 }}</td>
                                                             <td>
                                                                 {% for setresult in game.settresults %}
                                                                     {{ setresult.pointsNumber1 }} : {{ setresult.pointsNumber2 }}; 
                                                                 {% endfor %}
                                                             </td>  
-                                                            <td>{{ game.team2.team }}</td>     
                                                             <td><a href="{{ path('place_detail', { 'slug': game.place.slug }) }}">{{ game.place.title }}</a></td>  
                                                             <td>{{ game.date| date('d-m-Y')  }}</td>  
                                                             <td>{{ game.begin| date('H:i')  }}</td>                                                                                                                                            
