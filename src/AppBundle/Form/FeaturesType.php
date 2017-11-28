@@ -14,14 +14,7 @@ class FeaturesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('features')
-                ->add('pricing',  EntityType::class, [
-                    'class' => \AppBundle\Entity\Pricing::class,
-                    'choice_label' => 'name',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,                   
-                    ]);
+        $builder->add('features');
     }
     
     /**

@@ -89,7 +89,11 @@
         <script src="{{ asset('public/Front/js/components-shop.js') }}" type="text/javascript"></script> 
         <script src="{{ asset('public/Front/js/app.js') }}" type="text/javascript"></script>
         <!-- END: THEME SCRIPTS -->
-
+<script>
+	$(document).ready(function() {    
+		App.init(); // init core    
+	});
+	</script>
 
     {% endblock %}  
 
