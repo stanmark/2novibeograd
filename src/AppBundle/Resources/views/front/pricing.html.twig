@@ -65,8 +65,13 @@
                                         {% for feature in price.features %}
                                             <div class="c-row">
                                                 <i class="fa fa-check c-font-20"></i> <span class="c-sub-title">{{feature.features }}</span>
-                                            </div> 
+                                            </div>  
                                         {% endfor %}  
+                                       
+                                            <div class="c-row c-purchase">
+							<button class="btn btn-md c-btn-square c-btn-green c-btn-uppercase c-btn-bold">{{price.price}}</button>
+						</div>
+                                      
                                         {#<div class="c-row">
                                                 <i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Standard Features</span>
                                         </div>

@@ -31,13 +31,9 @@
                  </div>
              {% endfor %}
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-
-
         <!-- BEGIN: PAGE CONTAINER -->
         <div class="c-layout-page">
             <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
-
-
             <!-- BEGIN: PAGE CONTENT -->
             <!-- BEGIN: BLOG LISTING -->
             <div class="c-content-box c-size-md">
@@ -63,18 +59,6 @@
                                     <div class="c-title c-font-bold c-font-uppercase">
                                         <a href="">{{ oneMember.name }}</a>
                                     </div>
-
-                                    <div class="c-panel c-margin-b-30">
-                                        <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
-                                        <div class="c-date">on <span class="c-font-uppercase">20 May 2015, 10:30AM</span></div>
-                                        <ul class="c-tags c-theme-ul-bg">
-                                            <li>ux</li>
-                                            <li>marketing</li>
-                                            <li>events</li>
-                                        </ul>							
-                                        <div class="c-comments"><a href="#"><i class="icon-speech"></i> 30 comments</a></div>
-                                    </div>
-
                                     <div class="c-desc">
                                         <p>{{oneMember.description | raw}}</p>                                
                                     </div>                           
@@ -83,17 +67,16 @@
                         </div>
                         <div class="col-md-3">
                             <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
-
-
                             <div class="c-content-ver-nav">
                                 <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
                                     <h3 class="c-font-bold c-font-uppercase">INFO</h3>
                                     <div class="c-line-left c-theme-bg"></div>
                                 </div>
                                 <ul class="c-menu c-arrow-dot1 c-theme">
-                                    <li><a href="#">{{ oneMember.position }}</a></li>
-
-
+                                    <li><b>Radno mesto:</b> {{ oneMember.position }}</li>
+                                    <li><b>Stručna sprema:</b> {{ oneMember.education }}</li>
+                                    <li><b>Telefon:</b> {{ oneMember.phone }}</li>
+                                    <li><b>E-mail:</b> {{ oneMember.mail }}</li>
                                 </ul>
                             </div>            
                         </div>
@@ -107,5 +90,4 @@
         {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
     </body>
     <!-- END: PAGE CONTAINER -->
-
 {% endblock %} 
