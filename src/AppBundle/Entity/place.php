@@ -93,6 +93,12 @@ class place
      */
     private $treaningPlace;
     
+      /**
+     * 
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Time", mappedBy="place")
+     */
+    private $time;
+    
    
     
     
@@ -375,5 +381,41 @@ class place
     public function getSlug()
     {
         return $this->slug;
+    }
+
+   
+
+    /**
+     * Add time
+     *
+     * @param \AppBundle\Entity\Time $time
+     *
+     * @return place
+     */
+    public function addTime(\AppBundle\Entity\Time $time)
+    {
+        $this->time[] = $time;
+
+        return $this;
+    }
+
+    /**
+     * Remove time
+     *
+     * @param \AppBundle\Entity\Time $time
+     */
+    public function removeTime(\AppBundle\Entity\Time $time)
+    {
+        $this->time->removeElement($time);
+    }
+
+    /**
+     * Get time
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTime()
+    {
+        return $this->time;
     }
 }

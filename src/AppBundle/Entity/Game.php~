@@ -66,7 +66,7 @@ class Game
     /**
      * @var \AppBundle\Entity\Team
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="team1game")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="team1_id", referencedColumnName="id")
      * })
@@ -76,7 +76,7 @@ class Game
     /**
      * @var \AppBundle\Entity\Team
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="team2game")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="team2_id", referencedColumnName="id")
      * })

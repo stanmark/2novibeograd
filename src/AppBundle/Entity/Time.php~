@@ -22,33 +22,28 @@ class Time
      */
     private $id;
     
-     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="date")
-     */
-    private $date;
+ 
     
     
     
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="day", type="date")
+     * @ORM\Column(name="day",  type="string", length=255)
      */
     private $day;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="begin", type="time")
+     * @ORM\Column(name="begin", type="datetime")
      */
     private $begin;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="end", type="time")
+     * @ORM\Column(name="end", type="datetime")
      */
     private $end;
     
@@ -56,7 +51,7 @@ class Time
     /**
      * @var \AppBundle\Entity\place
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\place")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\place", inversedBy="time")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="place_id", referencedColumnName="id")
      * })
@@ -114,101 +109,7 @@ class Time
         return $this->id;
     }
 
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Time
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
 
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set day
-     *
-     * @param \DateTime $day
-     *
-     * @return Time
-     */
-    public function setDay($day)
-    {
-        $this->day = $day;
-
-        return $this;
-    }
-
-    /**
-     * Get day
-     *
-     * @return \DateTime
-     */
-    public function getDay()
-    {
-        return $this->day;
-    }
-
-    /**
-     * Set begin
-     *
-     * @param \DateTime $begin
-     *
-     * @return Time
-     */
-    public function setBegin($begin)
-    {
-        $this->begin = $begin;
-
-        return $this;
-    }
-
-    /**
-     * Get begin
-     *
-     * @return \DateTime
-     */
-    public function getBegin()
-    {
-        return $this->begin;
-    }
-
-    /**
-     * Set end
-     *
-     * @param \DateTime $end
-     *
-     * @return Time
-     */
-    public function setEnd($end)
-    {
-        $this->end = $end;
-
-        return $this;
-    }
-
-    /**
-     * Get end
-     *
-     * @return \DateTime
-     */
-    public function getEnd()
-    {
-        return $this->end;
-    }
 
     /**
      * Set created
@@ -280,5 +181,77 @@ class Time
     public function getPlace()
     {
         return $this->place;
+    }
+
+    /**
+     * Set day
+     *
+     * @param string $day
+     *
+     * @return Time
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+
+        return $this;
+    }
+
+    /**
+     * Get day
+     *
+     * @return string
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
+
+    /**
+     * Set begin
+     *
+     * @param \DateTime $begin
+     *
+     * @return Time
+     */
+    public function setBegin($begin)
+    {
+        $this->begin = $begin;
+
+        return $this;
+    }
+
+    /**
+     * Get begin
+     *
+     * @return \DateTime
+     */
+    public function getBegin()
+    {
+        return $this->begin;
+    }
+
+    /**
+     * Set end
+     *
+     * @param \DateTime $end
+     *
+     * @return Time
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+
+        return $this;
+    }
+
+    /**
+     * Get end
+     *
+     * @return \DateTime
+     */
+    public function getEnd()
+    {
+        return $this->end;
     }
 }

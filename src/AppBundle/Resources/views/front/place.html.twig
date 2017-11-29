@@ -32,16 +32,6 @@
              {% endfor %}
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
 
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
         <!-- BEGIN: PAGE CONTAINER -->
         <div class="c-layout-page">
             <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
@@ -69,18 +59,6 @@
                                     <div class="c-title c-font-bold c-font-uppercase">
                                         <a href="">{{onePlace.title}}</a>
                                     </div>
-
-                                    <div class="c-panel c-margin-b-30">
-                                        <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
-                                        <div class="c-date">on <span class="c-font-uppercase">20 May 2015, 10:30AM</span></div>
-                                        <ul class="c-tags c-theme-ul-bg">
-                                            <li>ux</li>
-                                            <li>marketing</li>
-                                            <li>events</li>
-                                        </ul>							
-                                        <div class="c-comments"><a href="#"><i class="icon-speech"></i> 30 comments</a></div>
-                                    </div>
-
                                     <div class="c-desc">
                                         <p>{{onePlace.description |raw}}</p>                                
                                     </div>                           
@@ -97,12 +75,12 @@
                                     <div class="c-line-left c-theme-bg"></div>
                                 </div>
                                 <ul class="c-menu c-arrow-dot1 c-theme">
-                                    <li>{{onePlace.adress}}</li>
+                                    <li><b>Adresa: </b>{{onePlace.adress}}</li>
                                         {% for onePlace in onePlace.member %}
-                                        <li><a href="#">{{ onePlace.name  }}</a></li>
+                                        <li><a href="{{ path('trener_detail', { 'slug': onePlace.slug}) }}"><b>Trener: </b>{{ onePlace.name  }}</a></li>
                                         {% endfor %}
-                                        {% for time in times %}
-                                        <li><a href="#">{{ time.day }} OD {{ time.begin|date('H-m') }} DO {{ time.end|date('H-m') }}</a></li>                                  
+                                        {% for time in onePlace.time %}
+                                        <li><a href="#">{{ time.day }} OD {{ time.begin| date('H:i') }} DO {{ time.end|date('H:i') }}</a></li>                                  
                                         {% endfor %}                               
                                 </ul>
                             </div>            
@@ -111,7 +89,6 @@
                 </div> 
             </div>
             <!-- END: BLOG LISTING  -->
-
             <!-- END: PAGE CONTENT -->
         </div>
         <!-- END: PAGE CONTAINER -->

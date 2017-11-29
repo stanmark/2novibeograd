@@ -4,30 +4,21 @@
     <h1>Time</h1>
 
     <table  class="table table-striped table-bordered table-hover" id="sample_1">
-        <tbody> 
-            <tr>
-                <th>Mesto</th>
-                <td>{{ time.place.title }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{% if time.date %}{{ time.date|date('d-m-Y') }}{% endif %}</td>
-            </tr>
+        <tbody>
             <tr>
                 <th>Day</th>
-                <td>{{ time.day|date('d') }}</td>
+                <td>{{ time.day }}</td>
             </tr>
             <tr>
                 <th>Begin</th>
-                <td>{% if time.begin %}{{ time.begin|date('H:i:s') }}{% endif %}</td>
+                <td>{% if time.begin %}{{ time.begin|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>End</th>
-                <td>{% if time.end %}{{ time.end|date('H:i:s') }}{% endif %}</td>
-            </tr>           
+                <td>{% if time.end %}{{ time.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>          
         </tbody>
     </table>
-
     {{ form_start(delete_form) }}
     <div  class="btn-group btn-group-circle btn-group-solid">
         <a href="{{ path('time_index') }}" class="btn green">Back to the list</a>
