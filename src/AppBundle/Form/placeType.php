@@ -17,14 +17,7 @@ class placeType extends AbstractType {
         $builder
                 ->add('title')
                 ->add('adress')
-                ->add('treaningPlace')
-                ->add('member',  EntityType::class, [
-                    'class' => \AppBundle\Entity\teamMember::class,
-                    'choice_label' => 'name',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false,                   
-                    ])         
+                ->add('treaningPlace')                     
                 ->add('description', CKEditorType::class, [
                     'label' => 'Opis'
                 ])
