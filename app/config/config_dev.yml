@@ -41,4 +41,20 @@ swiftmailer:
     delivery_addresses: ['sasam09@gmail.com']
     
     
- 
+vich_uploader:
+    db_driver: orm  
+    
+    mappings:
+        user_upload:
+            uri_prefix:         /web/upload/images
+            upload_destination: '%kernel.root_dir%/../web/upload/images'
+            namer:              vich_uploader.namer_origname
+            
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            
+        admin_upload:
+            uri_prefix:         /web/public/Front/images
+            upload_destination: '%kernel.root_dir%/../web/public/Front/images'    
+            namer:              vich_uploader.namer_origname 
