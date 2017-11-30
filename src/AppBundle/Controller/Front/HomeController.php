@@ -27,7 +27,7 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $homeSliders = $em->getRepository('AppBundle:HomeSlider')->findAll();
-        $whyuses = $em->getRepository('AppBundle:WhyUs')->findBy([], ['created' => 'DESC'], 3) ;
+        $whyuses = $em->getRepository('AppBundle:WhyUs')->findBy([], ['created' => 'ASC'], 3) ;
         $mainGallerys = $em->getRepository('AppBundle:MainGallery')->findAll();
         $ourServices = $em->getRepository('AppBundle:OurServices')->findAll();
         $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
