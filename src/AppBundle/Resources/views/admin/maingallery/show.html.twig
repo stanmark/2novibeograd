@@ -97,7 +97,7 @@
 
     <div  class="btn-group btn-group-circle btn-group-solid">
         <a href="{{ path('maingallery_index') }}" class="btn green">Back to the list</a>
-        <a href="{{ path('maingallery_edit', { 'slug': mainGallery.slug }) }}" class="btn yellow">Edit</a>
+        <a href="{{ path('maingallery_edit', { 'id': mainGallery.id }) }}" class="btn yellow">Edit</a>
         <input type="submit" value="Delete" class="btn red">
     </div>    
     {{ form_end(delete_form) }}

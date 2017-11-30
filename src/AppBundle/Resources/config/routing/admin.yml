@@ -359,7 +359,7 @@ maingallery_index:
     methods:  GET
 
 maingallery_show:
-    path:     /maingallery/{slug}/show
+    path:     /maingallery/{id}/show
     defaults: { _controller: "AppBundle:Admin/MainGallery:show" }
     methods:  GET
 
@@ -369,12 +369,12 @@ maingallery_new:
     methods:  [GET, POST]
 
 maingallery_edit:
-    path:     /maingallery/{slug}/edit
+    path:     /maingallery/{id}/edit
     defaults: { _controller: "AppBundle:Admin/MainGallery:edit" }
     methods:  [GET, POST]
 
 maingallery_delete:
-    path:     /maingallery/{slug}/delete
+    path:     /maingallery/{id}/delete
     defaults: { _controller: "AppBundle:Admin/MainGallery:delete" }
     methods:  DELETE    
     

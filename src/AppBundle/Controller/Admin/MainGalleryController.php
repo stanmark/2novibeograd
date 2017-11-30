@@ -43,7 +43,7 @@ class MainGalleryController extends Controller
             $em->persist($mainGallery);
             $em->flush();
 
-            return $this->redirectToRoute('maingallery_show', array('slug' => $mainGallery->getSlug()));
+            return $this->redirectToRoute('maingallery_show', array('id' => $mainGallery->getId()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/maingallery/new.html.twig', array(
@@ -79,7 +79,7 @@ class MainGalleryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('maingallery_edit', array('slug' => $mainGallery->getSlug()));
+            return $this->redirectToRoute('maingallery_edit', array('id' => $mainGallery->getId()));
         }
 
         return $this->render('@AppBundle/Resources/views/admin/maingallery/edit.html.twig', array(
@@ -117,7 +117,7 @@ class MainGalleryController extends Controller
     private function createDeleteForm(MainGallery $mainGallery)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('maingallery_delete', array('slug' => $mainGallery->getSlug())))
+            ->setAction($this->generateUrl('maingallery_delete', array('id' => $mainGallery->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
