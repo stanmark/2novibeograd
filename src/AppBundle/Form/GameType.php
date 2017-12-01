@@ -70,10 +70,6 @@ class GameType extends AbstractType {
                     ]
                  
                 ])
-               
-                
-
-
         ;
     }
 
