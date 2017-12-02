@@ -1,5 +1,5 @@
 {
-    "name": "symfony/4joblider",
+    "name": "symfony/oknovibeograd",
     "license": "MIT",
     "type": "project",
     "description": "The \"Symfony Standard Edition\" distribution",
@@ -14,7 +14,7 @@
         "files": [ "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php" ]
     },
     "require": {
-        "php": ">=7.1.3",
+        "php": ">=7.1.",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/orm": "^2.5",
@@ -57,7 +57,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.1.3"
+            "php": "7.1."
         },
         "sort-packages": true
     },
