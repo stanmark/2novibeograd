@@ -7,5 +7,8 @@
             "version": "1.0",
             "ref": "e921bdbfe20cdefa3b82f379d1cd36df1bc8d115"
         }
+    },
+    "incenteev/composer-parameter-handler": {
+        "version": "v2.1.2"
     }
 }
