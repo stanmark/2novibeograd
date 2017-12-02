@@ -90,7 +90,7 @@ vich_uploader:
     mappings:
         user_upload:
             uri_prefix:         /upload/images
-            upload_destination: '%kernel.root_dir%/../upload/images'
+            upload_destination: '%kernel.root_dir%/../web/upload/images'
             namer:              vich_uploader.namer_origname
             
             inject_on_load:     false
@@ -99,7 +99,7 @@ vich_uploader:
             
         admin_upload:
             uri_prefix:         /public/Front/images
-            upload_destination: '%kernel.root_dir%/../public/Front/images'    
+            upload_destination: '%kernel.root_dir%/../web/public/Front/images'    
             namer:              vich_uploader.namer_origname
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
