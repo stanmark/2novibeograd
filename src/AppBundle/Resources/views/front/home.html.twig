@@ -136,9 +136,8 @@
                                     <div class="c-line-left c-bg-blue-3 c-theme-bg"></div>
                                 </div>
                                 <div class="c-text wow animate fadeInLeft">
-                                    OK Novi Beograd vrši upis novih članova tokom cele godine. 
-                                </div>
-                                <button type="submit" class="btn c-btn-uppercase btn-md c-btn-bold c-btn-square c-theme-btn wow animate fadeIn">Explore</button>
+                                    Treninge drže licnecirani treneri sa dozvolama za rad. 
+                                </div>                               
                                 <img class="c-photo img-responsive wow animate fadeInUp" width="420" alt="" src="{{ asset ('images/why us.jpg') }}"/>
                             </div>
                         </div>
@@ -231,7 +230,7 @@
                             <div class="col-md-4 col-sm-6">
                                 <div class="c-content-feature-2 c-option-2 c-theme-bg-parent-hover">
                                     <div class="c-icon-wrapper c-theme-bg-on-parent-hover">
-                                        <div class="c-content-line-icon c-theme c-icon-screen-{{ourService.icon}}"></div>
+                                        <div class="c-content-line-icon {{ourService.icon}}"></div>
                                     </div>
                                     <h3 class="c-font-uppercase c-title">{{ ourService.title }}</h3>
                                     <p>{{ ourService.description }}</p>
@@ -247,7 +246,7 @@
         <!-- BEGIN: FEATURES 4.4 --> 
         <div class="c-content-box c-size-md c-no-padding c-bg-dark-2">
             <div class="c-content-feature-4">
-                <div class="c-bg-parallax c-feature-bg c-content-left c-diagonal c-border-right-dark-2" style="background-image: url(../../../web/public/Front/images/volleyball-1034436_1920.jpg)"></div>		
+                <div class="c-bg-parallax c-feature-bg c-content-left c-diagonal c-border-right-dark-2" style="background-image: url(../../../web/public/Front/images/home_page_first.jpg)"></div>		
                 <div class="c-content-area c-content-right"></div>		
                 <div class="container">
                     <div class="c-feature-content c-right">
@@ -255,17 +254,15 @@
                             <div class="c-wrapper wow fadeInDown">
                                 <div class="c-body c-animate">
                                     <div class="c-content-title-1 animated wow fadeInDown" data-wow-delay="0.2s">
-                                        <h3 class="c-font-uppercase c-font-bold c-font-white">Ovo popuniti rucno</h3>
+                                        <h3 class="c-font-uppercase c-font-bold c-font-white">Širimo se i rastemo</h3>
                                         <div class="c-line-right"></div>
-                                        <p>Ever growing with constant innovation</p>
+                                        <p>Sirimo se uz konstantne inovacije</p>
                                     </div>
                                     <div class="c-content animated wow fadeInDown" data-wow-delay="0.7s">
                                         <p class="c-margin-b-30">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy tincidunt 
-                                            ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud. 
+                                           Svaki nas clan dobija karticu kojom upisuje svoje pristvo na treningu
                                         </p>
-                                        <button class="btn btn-lg c-btn-green c-btn-border-2x c-btn-square c-btn-bold wow animated fadeIn" data-wow-delay="1s">EXPLORE</button> 
-                                        <button class="btn btn-lg c-btn-green c-btn-square c-btn-bold wow animated fadeIn" data-wow-delay="1.3s">PURCHASE</button>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -281,7 +278,7 @@
         <!-- BEGIN: FEATURES 4.3 --> 
         <div class="c-content-box c-size-md c-no-padding c-bg-white">
             <div class="c-content-feature-4">
-                <div class="c-bg-parallax c-feature-bg c-content-right c-diagonal c-border-left-white" style="background-image: url(../../../web/public/Front/images/volleyball-1034436_1920.jpg)"></div>		
+                <div class="c-bg-parallax c-feature-bg c-content-right c-diagonal c-border-left-white" style="background-image: url(../../../web/public/Front/images/home_page_second.jpg)"></div>		
                 <div class="c-content-area c-content-left"></div>		
                 <div class="container">
                     <div class="c-feature-content c-left">
@@ -289,17 +286,14 @@
                             <div class="c-wrapper">
                                 <div class="c-body">
                                     <div class="c-content-title-1 wow animate fadeInDown">
-                                        <h3 class="c-font-uppercase c-font-bold c-left">Ovo isto popuniti rucno</h3>
+                                        <h3 class="c-font-uppercase c-font-bold c-left">NEke prednosti ne znam koje</h3>
                                         <div class="c-line-left"></div>
-                                        <p class="c-left">JANGO has it all</p>
+                                        <p class="c-left">Naslov tih nekih prednosti</p>
                                     </div>
                                     <div class="c-content">
                                         <p class="c-margin-b-30 c-left wow animate fadeInDown">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed elit diam nonummy tincidunt 
-                                            ut laoreet dolore magna aluam erat volutpat. Ut wisi enim ad minim veniam quis nostrud. 
-                                        </p>
-                                        <button class="btn btn-lg c-btn-green c-btn-border-2x c-btn-square c-btn-bold wow animate fadeIn">EXPLORE</button> 
-                                        <button class="btn btn-lg c-btn-green c-btn-square c-btn-bold wow animate fadeIn" data-wow-delay="0.2s">PURCHASE</button>
+                                           Opis gore pomenutih
+                                        </p>                                        
                                     </div>
                                 </div>
                             </div>
@@ -341,8 +335,7 @@
                                             <div class="c-title c-font-uppercase c-font-bold">
                                                 <a href="{{ path ('blog', {'slug' : blog.slug }) }}">{{ blog.title  }}</a>
                                             </div>
-                                            <p>
-                                                {{ blog.description [:100] | raw }}
+                                            <p>                                               
                                             </p>
                                         </div>
                                     </div>

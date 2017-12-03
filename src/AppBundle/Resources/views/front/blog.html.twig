@@ -59,12 +59,7 @@
                                             <div class="c-date">Azuriran <span class="c-font-uppercase">{{ blog.updated |date('d-m-Y')}}</span></div>
                                             {% else %}
                                             <div class="c-date">Kreiran <span class="c-font-uppercase">{{ blog.created |date('d-m-Y')}}</span></div>
-                                            {% endif %}
-                                        <ul class="c-tags c-theme-ul-bg">
-                                            <li>ux</li>
-                                            <li>marketing</li>
-                                            <li>events</li>
-                                        </ul>							                                                                                
+                                            {% endif %}                                    						                                                                                
                                     </div>
                                     <div class="c-desc">
                                         <p>{{ blog.description |raw }}</p>                                 
