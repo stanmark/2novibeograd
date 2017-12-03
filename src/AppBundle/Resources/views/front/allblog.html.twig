@@ -33,12 +33,12 @@
         <div class="c-content-box c-size-md">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="c-content-blog-post-card-1-grid">
                             <div class="row">
                                 {% for blog in AllBlog %}
                                     {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="c-content-blog-post-card-1 c-option-2 c-bordered">			  			
                                                 <div class="c-media c-content-overlay">
                                                     <div class="c-overlay-wrapper">
@@ -81,7 +81,7 @@
                                </div> #}
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    {#<div class="col-md-3">
                         <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
                         <div class="c-content-tab-1 c-theme c-margin-t-30">
                             <div class="nav-justified">
@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                         </div>           
-                    </div>
+                    </div> #}
                 </div>
             </div> 
         </div>                                        

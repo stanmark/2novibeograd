@@ -20,14 +20,6 @@ class BlogType extends AbstractType
                 ->add('description', CKEditorType::class, [
                     'label' => 'Opis'
                 ])
-                ->add('mainGallery',  EntityType::class, [
-                    'class' => \AppBundle\Entity\MainGallery::class,
-                    'choice_label' => 'alt',
-                    'multiple' => true,
-                    'expanded' => true,
-                    'required' => false, 
-                    ])
-           
                 ;
     }
     
