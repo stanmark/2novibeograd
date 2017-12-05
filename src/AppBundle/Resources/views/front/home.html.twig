@@ -29,16 +29,13 @@
                             <!--BEGIN: SLIDE #1 -->
                             {% for mainGallery in homeSlider.mainGallery %}
                                 <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-style="dark">			                               
-
                                     <img 
-
                                         alt="{{ mainGallery.alt }}" 
                                         src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}"
                                         data-bgposition="center center" 
                                         data-bgfit="cover" 
                                         data-bgrepeat="no-repeat"
                                         >	
-
                                     <!--BEGIN: MAIN TITLE -->
                                     <div class="tp-caption customin customout"  
                                          data-x="center" 
@@ -176,7 +173,7 @@
                                                     id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" 
                                                 {% endif %}>
                                                 <div class="panel-body c-font-18">
-                                                    {{  whyU.description | raw}}
+                                                    {{  whyU.description | raw }}
                                                 </div>
                                             </div>
                                         </div>
@@ -189,7 +186,7 @@
             </div>
         </div>
         <!-- END: CONTENT/MISC/WHY-CHOOSE-US-1 -->
-
+{#
         <!-- BEGIN: CONTENT/ISOTOPE/GRID-2 -->
         <div class="c-content-box c-size-md c-bg-img-center" style="background-image: url(../../../web/public/Front/images/volleyball-1034436_1920.jpg)">
             <div class="container">
@@ -198,6 +195,7 @@
                     <div class="c-line-center c-theme-bg"></div>
                     <p class="c-font-center c-font-grey-3">Galerije kluba</p>
                 </div>
+                
                 <div class="c-content-isotope-grid c-opt-2">
                     {% for mainGallery in mainGallerys if mainGallery.mainPictureGallery %}           
                         <div class="c-content-isotope-item">
@@ -214,6 +212,7 @@
                         </div>
                     {% endfor %}
                 </div>
+                #}
             </div> 
         </div><!-- END: CONTENT/ISOTOPE/GRID-2 -->
 
