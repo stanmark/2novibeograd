@@ -4,10 +4,8 @@ parameters:
     database_name: '%env(DB_DATABASE_NAME)%'
     database_user: '%env(DB_USER)%'
     database_password: '%env(DB_PASSWORD)%'
-
     mailer_transport: smtp
     mailer_host: '%env(MAILER_HOST)%'
     mailer_user: '%env(MAILER_USER)%'
     mailer_password: '%env(MAILER_PASSWORD)%'
-
     secret: '%env(SECRET)%'

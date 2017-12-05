@@ -15,13 +15,13 @@ class TimeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('date')
                 ->add('day')
                 ->add('begin')
-                ->add('end')
+                ->add('end')              
                 ->add('place',  EntityType::class, [
                     'class' => \AppBundle\Entity\place::class,
-                    'choice_label' => 'title',
+                    'choice_label' => 'title',  
+                    'required' => true, 
                     ]);
     }
     

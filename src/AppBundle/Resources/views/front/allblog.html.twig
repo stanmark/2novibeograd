@@ -8,7 +8,6 @@
         <meta name="description" content="{{ BreadCrump.description }}" />
     {% endfor %}
 {% endblock %}
-
 {% block body %}
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
         {% include '@AppBundle/Resources/views/front/header.html.twig' %}
@@ -34,15 +33,14 @@
         <div class="c-content-box c-size-md">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="c-content-blog-post-card-1-grid">
                             <div class="row">
                                 {% for blog in AllBlog %}
                                     {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
-                                    <div class="col-md-6">
-                                        <div class="c-content-blog-post-card-1 c-option-2 c-bordered">			  			
-                                            <div class="c-media c-content-overlay">
-                                                
+                                        <div class="col-md-4">
+                                            <div class="c-content-blog-post-card-1 c-option-2 c-bordered">			  			
+                                                <div class="c-media c-content-overlay">
                                                     <div class="c-overlay-wrapper">
                                                         <div class="c-overlay-content">
                                                             <a href="{{ path ('blog', {'slug' : blog.slug }) }}"><i class="icon-link"></i></a>
@@ -52,52 +50,39 @@
                                                         </div>
                                                     </div>
                                                     <img class="c-overlay-object img-responsive" src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="">
-                                               
-                                            </div>
-                                            <div class="c-body">
-                                                <div class="c-title c-font-bold c-font-uppercase">
-                                                    <a href="{{ path ('blog', {'slug' : blog.slug }) }}">{{ blog.title }}</a>
                                                 </div>
-                                                <div class="c-author">
-                                                    {% if blog.updated %}
-                                                        Azuriran <span class="c-font-uppercase">{{ blog.updated |date('d-m-Y')}}</span>
-                                                    {% else %}
-                                                        Kreiran <span class="c-font-uppercase">{{ blog.created |date('d-m-Y')}}</span>
-                                                    {% endif %}
-                                                </div>
-                                                <div class="c-panel">
-                                                    <ul class="c-tags c-theme-ul-bg">
-                                                        <li>ux</li>
-                                                        <li>web</li>
-                                                        <li>events</li>
-                                                    </ul>							
+                                                <div class="c-body">
+                                                    <div class="c-title c-font-bold c-font-uppercase">
+                                                        <a href="{{ path ('blog', {'slug' : blog.slug }) }}">{{ blog.title }}</a>
+                                                    </div>
+                                                    <div class="c-author">
+                                                        {% if blog.updated %}
+                                                            Azuriran <span class="c-font-uppercase">{{ blog.updated |date('d-m-Y')}}</span>
+                                                        {% else %}
+                                                            Kreiran <span class="c-font-uppercase">{{ blog.created |date('d-m-Y')}}</span>
+                                                        {% endif %}
+                                                    </div>                                                 						
                                                 </div>
                                                 <p> {{ blog.description [:200] |raw }}</p>
                                             </div>
                                         </div>
-                                    </div>
-                                             {% endfor %}
+                                    {% endfor %}
                                 {% endfor %}
                             </div>
-
-                            <div class="c-pagination">
-                                <ul class="c-content-pagination c-theme">
-                                    <li class="c-prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li class="c-active"><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li class="c-next"><a href="#"><i class="fa fa-angle-right"></i></a></li>							
-                                </ul>
-                            </div>
+                            {#   <div class="c-pagination">
+                                   <ul class="c-content-pagination c-theme">
+                                       <li class="c-prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                       <li><a href="#">1</a></li>
+                                       <li class="c-active"><a href="#">2</a></li>
+                                       <li><a href="#">3</a></li>
+                                       <li><a href="#">4</a></li>
+                                       <li class="c-next"><a href="#"><i class="fa fa-angle-right"></i></a></li>							
+                                   </ul>
+                               </div> #}
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    {#<div class="col-md-3">
                         <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
-
-
-
-
                         <div class="c-content-tab-1 c-theme c-margin-t-30">
                             <div class="nav-justified">
                                 <ul class="nav nav-tabs nav-justified">
@@ -106,33 +91,28 @@
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane active" id="blog_recent_posts">
-
                                         <ul class="c-content-recent-posts-1">
                                             {% for blog in AllBlog  if blog.created %}
-                                                <li>
-
-                                                    <div class="c-image">
-                                                        {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
+                                                {% for mainGallery in blog.mainGallery if mainGallery.mainBlogPicture %}
+                                                    <li>
+                                                        <div class="c-image">
                                                             <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" class="img-responsive">
-                                                        {% endfor %}
-                                                    </div>
-                                                    <div class="c-post">
-                                                        <a href="{{ path ('blog', {'slug' : blog.slug }) }}" class="c-title">
-                                                            {{ blog.title  }}
-                                                        </a>
-                                                        <div class="c-date">{{ blog.created |date('d-m-Y') }}</div>
-                                                    {% else %}
-                                                        <div class="c-date">{{ blog.updated |date('d-m-Y') }}</div>
-                                                    </div>
-
-                                                </li>
+                                                        </div>
+                                                        <div class="c-post">
+                                                            <a href="{{ path ('blog', {'slug' : blog.slug }) }}" class="c-title">
+                                                                {{ blog.title  }}
+                                                            </a>
+                                                            {% if blog.updated %}
+                                                                <div class="c-date">{{ blog.updated |date('d-m-Y') }}</div>
+                                                            {% else %}
+                                                                <div class="c-date">{{ blog.created |date('d-m-Y') }}</div>
+                                                            {% endif %}
+                                                        </div>
+                                                    </li>
+                                                {% endfor %}
                                             {% endfor %}
                                         </ul>
-
                                     </div>
-
-
-
                                     <div class="tab-pane" id="blog_popular_posts">
                                         <ul class="c-content-recent-posts-1">
                                             <li>
@@ -151,7 +131,7 @@
                                 </div>
                             </div>
                         </div>           
-                    </div>
+                    </div> #}
                 </div>
             </div> 
         </div>                                        

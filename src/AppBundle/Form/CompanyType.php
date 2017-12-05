@@ -40,6 +40,9 @@ class CompanyType extends AbstractType
                 ->add('gurl', TextType::class, [
                     'label' => 'Google + url',
                     ])
+                ->add('instagram', TextType::class, [
+                    'label' => 'instagram',
+                    ])
                 ->add('pib', IntegerType::class, [
                     'label' => 'PIB',
                     ])

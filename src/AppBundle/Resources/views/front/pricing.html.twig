@@ -13,7 +13,7 @@
     {% include '@AppBundle/Resources/views/front/header.html.twig' %}
     <body class="c-layout-header-fixed c-layout-header-mobile-fixed">
         <div class="c-layout-breadcrumbs-1 c-bgimage-full   c-fonts-uppercase c-fonts-bold   c-bg-img-center" 
-             {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Cenovnik' %}
+             {% for BreadCrump in BreadCrumps if BreadCrump.name == 'Cenovnik' %}               
                  {% for mainGallery in BreadCrump.mainGallery %}
                      style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }})">
                  {% endfor %}
@@ -31,12 +31,9 @@
                  </div>
              {% endfor %}
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-
         <!-- BEGIN: PAGE CONTAINER -->
         <div class="c-layout-page">
             <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
-
-
             <!-- BEGIN: PAGE CONTENT -->
             <!-- BEGIN: CONTENT/PRICING/PRICING-5 -->
             <div class="c-content-box c-size-md">
@@ -51,24 +48,45 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="c-content-pricing-1 c-opt-1">
+                            <div class="col-md-2 c-sm-hidden">
+                                <div class="c-content c-column-odd c-padding-adjustment">
+                                    <div class="c-row c-type c-font-20 c-align-left">Pogodnosti</div>						                                              
+                                    {% for feature in featuress  %}
+                                        <div class="c-row c-title c-font-17">{{feature.features }}</div>
+                                    {% endfor %}  
+                                </div>
+                            </div>
                             {% for price in pricings %}
-                                <div class="col-md-3 col-sm-4">
-                                    <div class="c-content c-column-even c-padding-adjustment"> 
-                                        <div class="c-row c-type c-font-20">{{ price.name }}<br> {{price.description}}</div>
-                                            {% for price in price.features %}
-                                            <div class="c-row c-font-17">
-                                                {{ price.features }} <span class="c-sub-title">End Products</span>
-                                            </div>
-                                        {% endfor %}
-                                        <div class="c-row c-purchase">
-                                            <button class="btn btn-md c-btn-square c-btn-border-2x c-btn-green c-btn-uppercase c-btn-bold">{{price.price}} rsd</button>
+                                <div  {% if loop.index is even %} class="col-md-2 col-sm-4" {% elseif loop.index is odd  %} class="col-md-3 col-sm-4"{% endif %}>
+                                    <div  {% if loop.index is even %} class="c-content c-column-odd c-padding-adjustment" {% elseif loop.index is odd  %} class="c-content c-column-even c-padding-adjustment"{% endif %}>
+                                        <div class="c-row c-type c-font-20">{{ price.name }}</div>
+                                        {% for feature in price.features %}
+                                            <div class="c-row">
+                                                <i class="fa fa-check c-font-20"></i> <span class="c-sub-title">{{feature.features }}</span>
+                                            </div>  
+                                        {% endfor %}  
+                                       
+                                            <div class="c-row c-purchase">
+							<button class="btn btn-md c-btn-square c-btn-green c-btn-uppercase c-btn-bold">{{price.price}}</button>
+						</div>
+                                      
+                                        {#<div class="c-row">
+                                                <i class="fa fa-check c-font-20"></i> <span class="c-sub-title">Standard Features</span>
                                         </div>
+                                        <div class="c-row">
+                                                <i class="fa fa-times c-font-20"></i> <span class="c-sub-title">Free Issues</span>
+                                        </div>
+                                        <div class="c-row">
+                                                <i class="fa fa-times c-font-20"></i> <span class="c-sub-title">Paid Issues</span>
+                                        </div>
+                                        <div class="c-row c-price">
+                                                <span class="c-dollar c-font-20">$</span> <span class="c-font-30 c-font-bold">49</span>
+                                        </div>#}
                                     </div>
                                 </div>
-                            {% endfor %}
+                            {% endfor %} 
                         </div>
                     </div>
                 </div>

@@ -49,7 +49,7 @@
                         <div class="col-md-12">
                             <!-- BEGIN EXAMPLE TABLE PORTLET-->
                             <div class="portlet light ">
-                                <div class="portlet-body">
+                                <div class="portlet-body" >
 
                                     {% block body %}
 
@@ -85,10 +85,13 @@
     <script src="{{ asset('public/Admin/jss/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('public/Admin/jss/clockface.js') }}"></script>
     <script src="{{ asset('public/Admin/jss/components-date-time-pickers.min.js') }}"></script>
+    <script src="{{ asset('public/Admin/jss/jquery.collection.js') }}"></script>
+  
 
 
-
-
+<script type="text/javascript">
+        $('.my-selector').collection();
+    </script>
 
 {% endblock %}
 

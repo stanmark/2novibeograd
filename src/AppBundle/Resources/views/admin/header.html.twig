@@ -6,7 +6,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="{{ path ('admin_homepage') }}">
-                <img src="{{ path ('admin_homepage') }}" alt="OK NOVI BEOGRAD" class="logo-default" /> </a>
+                <img src="{{ asset('images/logo.png')}}" alt="OK NOVI BEOGRAD" class="logo-default" width = 35 /> </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
@@ -84,6 +84,10 @@
                     <li>
                         <a href="{{ path ('groupp_new') }}">
                             <i class="icon-docs"></i> Grupu </a>
+                    </li>
+                    <li>
+                        <a href="{{ path ('round_new') }}">
+                            <i class="icon-docs"></i> Rundu </a>
                     </li>
                     <li>
                         <a href="{{ path ('game_new') }}">

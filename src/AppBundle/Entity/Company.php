@@ -66,7 +66,14 @@ class Company
      *
      * @ORM\Column(name="gurl", type="string", length=255, nullable=false)
      */
-    private $gurl;   
+    private $gurl;  
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="instagram", type="string", length=255, nullable=false)
+     */
+    private $instagram;  
 
     /**
      * @var integer
@@ -435,5 +442,29 @@ class Company
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set instagram
+     *
+     * @param string $instagram
+     *
+     * @return Company
+     */
+    public function setInstagram($instagram)
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    /**
+     * Get instagram
+     *
+     * @return string
+     */
+    public function getInstagram()
+    {
+        return $this->instagram;
     }
 }

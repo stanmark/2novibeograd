@@ -40,36 +40,108 @@
                     <div class="c-line-center c-theme-bg"></div>
                     <p class="c-center">{{ oneleague.description }}</p>
                 </div>
-                <div class="c-content-panel">
-                    <div class="c-label">Grupe {{ oneleague.league }} </div>                      
-                    <div class="c-body">
-                        <div class="row">
-                            <div class="col-md-12">						
-                                {% for groupp in oneleague.groupp %}
+                {% for groupp in oneleague.groupp %}
+                    <div class="c-content-panel">
+                        <div class="c-label">Grupa {{ oneleague.league }} </div> 
+                        <div class="c-body">
+                            <div class="row">
+                                <div class="col-md-12">						
                                     <div class="table-responsive">
                                         {{ groupp.groupp }}
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
-                                                    <th>Ekipe</th>
                                                     <th>Pozicija</th>
-                                                    <th>Suma setova</th>
-                                                    <th>Izgubljenih</th>
+                                                    <th>Ekipe</th>   
                                                     <th>Broj utakmica</th>
-                                                    <th>%</th>
+                                                    <th>Bodovi</th>
+                                                    <th>Setovi</th>                                                   
+                                                    <th>Poeni</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                {% for team in groupp.team %}
+                                            <tbody>    
+                                                {% set counterteam=0 %}
+                                                {% for team in groupp.team   %}
+                                                    
+                                                  
                                                     <tr>
-                                                        <th></th>
+                                                        <th>
+                                                            {% set counterteam = counterteam + 1%}
+                                                            {{ counterteam }}
+                                                        </th>
                                                         <td>{{ team.team }} </td>
-                                                        <td>Table cell</td>
-                                                        <td>Table cell</td>
-                                                        <td>Table cell</td>
-                                                        <td>Table cell</td>
-                                                        <td>Table cell</td>
+                                                        <td> 
+                                                            {% set countergame=0 %}
+                                                            {% for game in team.team1game if game.bodTeam1 is not empty  %}  
+                                                                {% set countergame = countergame + 1%}
+                                                            {% endfor %} 
+                                                            {% for game in team.team2game if game.bodTeam2 is not empty    %}
+
+                                                                {% set countergame = countergame + 1%}
+                                                            {% endfor %} 
+                                                            {{ countergame }}
+                                                        </td>
+                                                        <td>
+                                                            {% set counterbod=0 %}
+                                                            {% for game in team.team1game %}
+                                                                {% set counterbod = counterbod + game.bodTeam1%}
+                                                            {% endfor %}
+                                                            {% for game in team.team2game %}
+
+                                                                {% set counterbod = counterbod + game.bodTeam2%}
+                                                            {% endfor %}
+                                                            {{ counterbod }}
+                                                        </td>
+                                                        <td>
+                                                            {% set counterwin=0 %}
+                                                            {% for game in team.team1game if game.bodTeam1 > game.bodTeam2  %}
+                                                                {% set counterwin = counterwin + 1%}
+                                                            {% endfor %}
+                                                            {% for game in team.team2game if game.bodTeam2 > game.bodTeam1 %}
+                                                                {% set counterwin = counterwin + 1%}
+                                                            {% endfor %}
+                                                            {{ counterwin }}
+                                                            :
+                                                            {% set counterlose=0 %}
+                                                            {% for game in team.team1game if game.bodTeam1 < game.bodTeam2  %}
+
+
+                                                                {% set counterlose = counterlose + 1%}
+                                                            {% endfor %}
+                                                            {% for game in team.team2game if game.bodTeam2 < game.bodTeam1 %}
+                                                                {% set counterlose = counterlose + 1%}
+                                                            {% endfor %}
+                                                            {{ counterlose }}
+                                                        </td>                                                  
+                                                        <td>
+                                                            {% set counterwinpoints=0 %}
+                                                            {% for game in team.team1game   %}
+                                                                {% for setresult in game.settresults  %}                            
+                                                                    {% set counterwinpoints = counterwinpoints + setresult.pointsNumber1 %}
+                                                                {% endfor %}
+                                                            {% endfor %}
+
+                                                            {% for game in team.team2game   %}
+                                                                {% for setresult in game.settresults %}
+                                                                    {% set counterwinpoints = counterwinpoints + setresult.pointsNumber2 %}
+                                                                {% endfor %}
+                                                            {% endfor %}
+                                                            {{ counterwinpoints }}
+                                                            :
+                                                            {% set counterlosepoints=0 %}
+                                                            {% for game in team.team1game   %}
+                                                                {% for setresult in game.settresults  %}                            
+                                                                    {% set counterlosepoints = counterlosepoints + setresult.pointsNumber2 %}
+                                                                {% endfor %}
+                                                            {% endfor %}
+
+                                                            {% for game in team.team2game   %}
+                                                                {% for setresult in game.settresults %}
+                                                                    {% set counterlosepoints = counterlosepoints + setresult.pointsNumber1 %}
+                                                                {% endfor %}
+                                                            {% endfor %}
+                                                            {{ counterlosepoints }}
+                                                        </td>
                                                     </tr>
                                                 {% endfor %}							
                                             </tbody>
@@ -92,33 +164,32 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Domacin</th>
-                                                        <th>SET</th>
-                                                        <th>SET</th>
                                                         <th>Gost</th>
+                                                        <th>SET</th>
+                                                        <th>Rezultat</th>
                                                         <th>Mesto</th>
                                                         <th>Datum</th>
                                                         <th>Pocetak</th>
-                                                        <th>Kraj</th>
                                                     </tr>
                                                 </thead>
-
                                                 <tbody>
                                                     {% for game in round.game %}
                                                         <tr>
                                                             <td>{{ game.team1.team }}</td>
-                                                            <td>{{ game.numberSet1 }}</td>
-                                                            <td>{{ game.numberSet2 }}</td>
-                                                            <td>{{ game.team2.team }}</td>     
-                                                            <td>{{ game.place.title }}</td>  
+                                                            <td>{{ game.team2.team }}</td>  
+                                                            <td>{{ game.numberSet1 }} : {{ game.numberSet2 }}</td>
+                                                            <td>
+                                                                {% for setresult in game.settresults %}
+                                                                    {{ setresult.pointsNumber1 }} : {{ setresult.pointsNumber2 }}; 
+                                                                {% endfor %}
+                                                            </td>  
+                                                            <td><a href="{{ path('place_detail', { 'slug': game.place.slug }) }}">{{ game.place.title }}</a></td>  
                                                             <td>{{ game.date| date('d-m-Y')  }}</td>  
-                                                            <td>{{ game.begin| date('H:i')  }}</td>  
-                                                            <td>{{ game.end| date('H:i') }}</td>                                                                                                        
+                                                            <td>{{ game.begin| date('H:i')  }}</td>                                                                                                                                            
                                                         </tr>
                                                     {% endfor %}					
                                                 </tbody>
-
                                             </table>
-
                                         {% endfor %}
                                     </div>
                                 </div>

@@ -38,12 +38,7 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
-    form_themes:
-#        - bootstrap_3_layout.html.twig
-        [ bootstrap_3_horizontal_layout.html.twig ]
-#        - form_div_layout.html.twig
-#        - form_table_layout.html.twig
-#        - foundation_5_layout.html.twig
+    form_themes: ['bootstrap_4_layout.html.twig']
 
 # Doctrine Configuration
 doctrine:
@@ -89,7 +84,7 @@ vich_uploader:
     
     mappings:
         user_upload:
-            uri_prefix:         /web/upload/images
+            uri_prefix:         /upload/images
             upload_destination: '%kernel.root_dir%/../web/upload/images'
             namer:              vich_uploader.namer_origname
             
@@ -98,10 +93,9 @@ vich_uploader:
             delete_on_remove:   true
             
         admin_upload:
-            uri_prefix:         /web/public/Front/images
-            upload_destination: '%kernel.root_dir%/../web/public/Front/images'
-            namer:              vich_uploader.namer_origname     
-           
+            uri_prefix:         /public/Front/images
+            upload_destination: '%kernel.root_dir%/../web/public/Front/images'    
+            namer:              vich_uploader.namer_origname
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main

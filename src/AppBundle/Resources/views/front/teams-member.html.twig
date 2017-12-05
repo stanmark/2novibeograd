@@ -31,13 +31,9 @@
                  </div>
              {% endfor %}
         </div><!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-4 -->
-
-
         <!-- BEGIN: PAGE CONTAINER -->
         <div class="c-layout-page">
             <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
-
-
             <!-- BEGIN: PAGE CONTENT -->
             <!-- BEGIN: BLOG LISTING -->
             <div class="c-content-box c-size-md">
@@ -59,46 +55,89 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="c-title c-font-bold c-font-uppercase">
                                         <a href="">{{ oneMember.name }}</a>
                                     </div>
-
-                                    <div class="c-panel c-margin-b-30">
-                                        <div class="c-author"><a href="#">By <span class="c-font-uppercase">Nick Strong</span></a></div>
-                                        <div class="c-date">on <span class="c-font-uppercase">20 May 2015, 10:30AM</span></div>
-                                        <ul class="c-tags c-theme-ul-bg">
-                                            <li>ux</li>
-                                            <li>marketing</li>
-                                            <li>events</li>
-                                        </ul>							
-                                        <div class="c-comments"><a href="#"><i class="icon-speech"></i> 30 comments</a></div>
-                                    </div>
-
                                     <div class="c-desc">
                                         <p>{{oneMember.description | raw}}</p>                                
-                                    </div>                           
+                                    </div> 
+
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
-
-
                             <div class="c-content-ver-nav">
                                 <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
                                     <h3 class="c-font-bold c-font-uppercase">INFO</h3>
                                     <div class="c-line-left c-theme-bg"></div>
                                 </div>
                                 <ul class="c-menu c-arrow-dot1 c-theme">
-                                    <li><a href="#">{{ oneMember.position }}</a></li>
-
-
+                                    <li><b>Radno mesto:</b> {{ oneMember.position }}</li>
+                                    <li><b>Stručna sprema:</b> {{ oneMember.education }}</li>
+                                    <li><b>Telefon:</b> {{ oneMember.phone }}</li>
+                                    <li><b>E-mail:</b> {{ oneMember.mail }}</li>
                                 </ul>
                             </div>            
                         </div>
+
                     </div>
+                    <br>
+                    <br>
+                    <h2 class="c-title c-font-bold c-font-uppercase" >Trening koje vodi {{ oneMember.name }} </h2>
                 </div> 
+
+                {% for place in oneMember.place %} 
+                    <div {% if loop.index is odd %} class="c-content-box c-size-md c-bg-white" {% elseif loop.index is even  %} class="c-content-box c-size-md c-bg-grey-1" {% endif %} >
+                        <div class="container">
+                            {% if loop.index is odd %}
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="c-content-media-1 c-bordered wow animated fadeInLeft" style="min-height: 380px;">
+                                            <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">{{ place.adress }}</div>
+                                            <a href="{{ path('place_detail', { 'slug': place.slug}) }}" class="c-title c-font-uppercase c-theme-on-hover c-font-bold">{{ place.title }}</a>                                                                                      
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">		
+                                        <div class="c-content-media-2-slider wow animated fadeInRight" data-slider="owl">
+                                            <div class="c-content-label c-font-uppercase c-font-bold">Lokacija</div>						
+                                            <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-navigation-dots="true" data-auto-play="4000" data-rtl="false">						
+                                                {% for mainGallery in place.mainGallery %}   
+                                                    <div class="c-content-media-2 c-bg-img-center" style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }}); min-height: 380px;"></div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>		
+                                    </div>
+                                </div>
+                            {% elseif true %}
+                                <div class="row">
+
+                                    <div class="col-md-8">		
+                                        <div class="c-content-media-2-slider wow animated fadeInRight" data-slider="owl">
+                                            <div class="c-content-label c-font-uppercase c-font-bold">Lokacija</div>						
+                                            <div class="owl-carousel owl-theme c-theme owl-single" data-single-item="true" data-navigation-dots="true" data-auto-play="4000" data-rtl="false">						
+                                                {% for mainGallery in place.mainGallery %}   
+                                                    <div class="c-content-media-2 c-bg-img-center" style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }}); min-height: 380px;"></div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>		
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="c-content-media-1 c-bordered wow animated fadeInLeft" style="min-height: 380px;">
+                                            <div class="c-content-label c-font-uppercase c-font-bold c-theme-bg">{{ place.adress }}</div>
+                                            <a href="{{ path('place_detail', { 'slug': place.slug}) }}" class="c-title c-font-uppercase c-theme-on-hover c-font-bold">{{ place.title }}</a>                                                                                      
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+                {% endfor %}            
             </div>
             <!-- END: BLOG LISTING  -->
 
@@ -107,5 +146,4 @@
         {% include '@AppBundle/Resources/views/front/footer.html.twig' %}
     </body>
     <!-- END: PAGE CONTAINER -->
-
 {% endblock %} 

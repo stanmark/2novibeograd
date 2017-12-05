@@ -1,0 +1,18 @@
+{% extends '@AppBundle/Resources/views/admin/form.html.twig' %}
+
+{% block body %}
+    <h1>Round edit</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <div  class="btn-group btn-group-circle btn-group-solid">
+        <a href="{{ path('round_index') }}" class="btn green">Back to the list</a>
+        <input type="submit" value="Edit" class="btn yellow"/>
+        {{ form_end(edit_form) }}
+        <div  class="btn-group btn-group-circle btn-group-solid">
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete" class="btn red">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

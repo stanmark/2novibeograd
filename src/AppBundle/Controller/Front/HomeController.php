@@ -27,13 +27,12 @@ class HomeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $homeSliders = $em->getRepository('AppBundle:HomeSlider')->findAll();
-        $whyuses = $em->getRepository('AppBundle:WhyUs')->findBy([], ['created' => 'DESC'], 3) ;
+        $whyuses = $em->getRepository('AppBundle:WhyUs')->findBy([], ['created' => 'ASC'], 3) ;
         $mainGallerys = $em->getRepository('AppBundle:MainGallery')->findAll();
         $ourServices = $em->getRepository('AppBundle:OurServices')->findAll();
         $teamMembers = $em->getRepository('AppBundle:teamMember')->findAll();
-        $blogs = $em->getRepository('AppBundle:Blog')->findAll();
+        $blogs = $em->getRepository('AppBundle:Blog')->findBy([], ['created' => 'ASC']) ;
         $BreadCrumps = $em->getRepository('AppBundle:BreadCrumps')->findAll();
-        
 
         return $this->render('@AppBundle/Resources/views/front/home.html.twig', [
             'teamMembers' => $teamMembers,

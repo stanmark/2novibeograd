@@ -2,9 +2,20 @@
 
 {% block body %}
     <h1>Settresult creation</h1>
-
+ 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+  
+        {# {{ form_label(form.pointsNumber1) }}
+        {{ form_errors(form.pointsNumber1) }}
+        {{ form_widget(form.pointsNumber1) }}
+        
+        {{ form_label(form.pointsNumber2) }}
+        {{ form_errors(form.pointsNumber2) }}
+        {{ form_widget(form.pointsNumber2) }}
+        
+         {{ form_label(form.game) }}
+        {{ form_errors(form.game) }}
+        {{ form_widget(form.game) }}#}
         <div  class="btn-group btn-group-circle btn-group-solid">
         <a href="{{ path('settresults_index') }}" class="btn red">Back to the list</a>
         <input type="submit" value="Create" class="btn green" />

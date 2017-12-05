@@ -45,7 +45,7 @@
                         </div>
                         <!-- End-->
                         {% for company in companies %}
-                            <p>{{ company.description }}</p>
+                            <p>{{ company.description | raw }}</p>
                         {% endfor %}
 
                     </div>

@@ -37,20 +37,21 @@
             <div class="c-content-box c-size-md">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <div class="c-content-blog-post-1-view">
                                 <div class="c-content-blog-post-1">
                                     <div class="c-media">
                                         <div class="c-content-media-2-slider" data-slider="owl">
                                             <div class="owl-carousel owl-theme c-theme owl-single" data-rtl="false" data-single-item="true" data-auto-play="4000">
-                                                {% for mainGallery in blog.mainGallery %}    
+                                                {% for mainGallery in blog.mainGallery %} 
                                                     <div class="item">
                                                         <div class="c-content-media-2" style="background-image: url({{ vich_uploader_asset(mainGallery, 'imageFile') }}); min-height: 460px;"></div>
                                                     </div>
-                                                {% endfor %}                                       
+                                                {% endfor %}                                 
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="c-title c-font-bold c-font-uppercase">
                                         <a href="#">{{ blog.title }}</a>
                                     </div>
@@ -59,12 +60,7 @@
                                             <div class="c-date">Azuriran <span class="c-font-uppercase">{{ blog.updated |date('d-m-Y')}}</span></div>
                                             {% else %}
                                             <div class="c-date">Kreiran <span class="c-font-uppercase">{{ blog.created |date('d-m-Y')}}</span></div>
-                                            {% endif %}
-                                        <ul class="c-tags c-theme-ul-bg">
-                                            <li>ux</li>
-                                            <li>marketing</li>
-                                            <li>events</li>
-                                        </ul>							                                                                                
+                                            {% endif %}                                    						                                                                                
                                     </div>
                                     <div class="c-desc">
                                         <p>{{ blog.description |raw }}</p>                                 
@@ -72,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                   {#     <div class="col-md-3">
                             <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
                             <div class="nav-justified">
                                 <ul class="nav nav-tabs nav-justified">
@@ -83,24 +79,25 @@
                                     <div class="tab-pane active" id="blog_recent_posts">
                                         <ul class="c-content-recent-posts-1">
                                             {% for blo in blogs  if blo.created %}
+                                                {% for mainGallery in blo.mainGallery if mainGallery.mainBlogPicture %}
+                                                    <li>
+                                                        <div class="c-image">
 
-                                                <li>
-                                                    <div class="c-image">
-                                                        {% for mainGallery in blo.mainGallery if mainGallery.mainBlogPicture %}
                                                             <img src="{{ vich_uploader_asset(mainGallery, 'imageFile') }}" alt="{{ mainGallery.alt }}" class="img-responsive">
-                                                        {% endfor %}
-                                                    </div>
-                                                    <div class="c-post">
-                                                        <a href="{{ path ('blog', {'slug' : blog.slug }) }}" class="c-title">
-                                                            {{ blo.title  }}
-                                                        </a>
-                                                        {% if blo.updated %}
-                                                            <div class="c-date">{{ blo.updated |date('d-m-Y')}}</div>
-                                                        {% else %}
-                                                            <div class="c-date">{{ blo.created |date('d-m-Y')}}</div>
-                                                        {% endif %}
-                                                    </div>
-                                                </li>
+
+                                                        </div>
+                                                        <div class="c-post">
+                                                            <a href="{{ path ('blog', {'slug' : blog.slug }) }}" class="c-title">
+                                                                {{ blo.title  }}
+                                                            </a>
+                                                            {% if blo.updated %}
+                                                                <div class="c-date">{{ blo.updated |date('d-m-Y')}}</div>
+                                                            {% else %}
+                                                                <div class="c-date">{{ blo.created |date('d-m-Y')}}</div>
+                                                            {% endif %}
+                                                        </div>
+                                                    </li>
+                                                {% endfor %}
                                             {% endfor %}
                                         </ul>
                                     </div>
@@ -121,7 +118,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> #}
                     </div> 
                 </div>
             </div>

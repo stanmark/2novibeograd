@@ -6,27 +6,25 @@
     <table class="table table-striped table-bordered table-hover js-table" id="sample_1"  >
         <thead>
             <tr>
-                <th>Mesto</th>
-                <th>Date</th>
+
                 <th>Day</th>
                 <th>Begin</th>
                 <th>End</th>
                 <th>Actions</th>
             </tr>
         </thead>
+
     {% endblock %}
 
     {% block tbody %}
         <tbody>
             {% for time in times %}
                 <tr>
-                    <td>{{ time.place.title }}</td>
-                    <td>{% if time.date %}{{ time.date|date('d-m-Y') }}{% endif %}</td>
-                    <td>{{ time.day |date('d') }}</td>
-                    <td>{% if time.begin %}{{ time.begin|date('H:i:s') }}{% endif %}</td>
-                    <td>{% if time.end %}{{ time.end|date('H:i:s') }}{% endif %}</td>
+                    <td>{{ time.day }}</td>
+                    <td>{% if time.begin %}{{ time.begin|date('d-m-Y H:i:s') }}{% endif %}</td>
+                    <td>{% if time.end %}{{ time.end|date('d-m-Y H:i:s') }}{% endif %}</td>
                     <td class="btn-group btn-group-circle btn-group-solid">
-                        <a href="{{ path('time_show', { 'id': time.id }) }}" class="btn blue">show</a>
+                        <a href="{{ path('time_show', { 'id': time.id }) }} " class="btn green">show</a>
                         <a href="{{ path('time_edit', { 'id': time.id }) }}" class="btn yellow">edit</a>
                         <a class="btn red 
                            js-delete-row"  
@@ -39,7 +37,6 @@
         </tbody>
     </table>
 
-            <a href="{{ path('time_new') }}" class="btn btn-circle green">Create a new time</a>
-      
-{% endblock %}
+    <a href="{{ path('time_new') }}" class="btn btn-circle green">Create a new time</a>
 
+{% endblock %}
